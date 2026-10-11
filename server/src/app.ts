@@ -3,7 +3,8 @@ import {randomUUID} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
 import {transaction} from './db';
 import {hashPassword,verifyPassword,digest} from './security';
-import {knowledgeIds,lessonIds} from './catalog';
+import {lessonIds} from './catalog';
+import {publicKnowledge,adminKnowledge,publishedIds} from './knowledge';
 import {HttpError,invalid} from './errors';
 import {session,publicUser,validPassword} from './auth';
 import {installAdminRoutes} from './admin';
@@ -30,7 +31,8 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.vary('Origin');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type');res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE, OPTIONS');}
     if(req.method==='OPTIONS'){res.sendStatus(204);return;}next();
   });
-  app.use(express.json({limit:'64kb',strict:true}));
+  app.use(express.json({limit:'256kb',strict:true}));
+  publicKnowledge(app,pool);
   app.get('/healthz',async(_req,res)=>{await pool.query('SELECT 1');res.json({status:'ok'});});
   const limit=async(req:Request,_res:Response,next:NextFunction)=>{
     const key=digest(req.ip??req.socket.remoteAddress??'unknown');
@@ -92,13 +94,14 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     next();
   });
   installAdminRoutes(app,pool,limit);
+  adminKnowledge(app,pool);
   app.get('/api/study',async(_req,res)=>{res.json(await study(pool,res.locals.user.id));});
   app.put('/api/bookmarks/:id',async(req,res)=>{
-    if(!knowledgeIds.has(req.params.id))throw invalid();
+    if(!(await publishedIds(pool)).has(req.params.id))throw invalid();
     await pool.query('INSERT INTO bookmarks(user_id,knowledge_id) VALUES($1,$2) ON CONFLICT DO NOTHING',[res.locals.user.id,req.params.id]);res.sendStatus(204);
   });
   app.delete('/api/bookmarks/:id',async(req,res)=>{
-    if(!knowledgeIds.has(req.params.id))throw invalid();
+    if(!(await publishedIds(pool)).has(req.params.id))throw invalid();
     await pool.query('DELETE FROM bookmarks WHERE user_id=$1 AND knowledge_id=$2',[res.locals.user.id,req.params.id]);res.sendStatus(204);
   });
   app.put('/api/completions/:id',async(req,res)=>{
@@ -109,7 +112,7 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     const validate=(value:unknown,allowed:Set<string>):string[]=>{
       if(!Array.isArray(value)||value.length>500||value.some(id=>typeof id!=='string'||!allowed.has(id)))throw invalid();return [...new Set(value)];
     };
-    const bookmarks=validate(req.body?.bookmarks,knowledgeIds),completed=validate(req.body?.completed,lessonIds);
+    const bookmarks=validate(req.body?.bookmarks,await publishedIds(pool)),completed=validate(req.body?.completed,lessonIds);
     const data=await transaction(pool,async client=>{
       for(const id of bookmarks)await client.query('INSERT INTO bookmarks(user_id,knowledge_id) VALUES($1,$2) ON CONFLICT DO NOTHING',[res.locals.user.id,id]);
       for(const id of completed)await client.query('INSERT INTO lesson_completions(user_id,lesson_id) VALUES($1,$2) ON CONFLICT DO NOTHING',[res.locals.user.id,id]);

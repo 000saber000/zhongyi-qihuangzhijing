@@ -36,6 +36,60 @@ async function register() {
   const result = await request('/api/auth/register', 'POST', {username: 'Learner_' + (++serial), password});
   assert.equal(result.status, 201); return result.data;
 }
+const classicContent=(id:string)=>({id,type:'经',title:'测试典籍',subtitle:'典籍副标题',summary:'典籍简介',body:'第一段原文\n第二段原文',source:'校订本·第一篇',tags:['经典'],relations:['theory-yinyang'],confidence:'已核对整理本',keyPoints:['先阅读原文']});
+async function editor(){
+  const user=await register();
+  await pool.query("UPDATE users SET role='admin' WHERE id=$1",[user.user.id]);
+  return user;
+}
+test('public catalog returns published seeds without requiring a session',async()=>{
+  const response=await request('/api/knowledge');
+  assert.equal(response.status,200);
+  assert.ok(response.data.items.some((item:any)=>item.id==='classic-huangdi'));
+});
+test('admin rights cannot be registered or forged and are checked again after revocation',async()=>{
+  assert.equal((await request('/api/admin/classics')).status,401);
+  const user=await request('/api/auth/register','POST',{username:'Forged_'+(++serial),password,isAdmin:true,is_admin:true});
+  assert.equal(user.data.user.role,'user');
+  assert.equal((await request('/api/admin/classics','GET',undefined,user.data.token)).status,403);
+  assert.equal((await request('/api/admin/classics','POST',{content:classicContent('classic-forged')},user.data.token)).status,403);
+  const adminUser=await editor();
+  assert.equal((await request('/api/auth/me','GET',undefined,adminUser.token)).data.user.role,'admin');
+  assert.equal((await request('/api/admin/classics','GET',undefined,adminUser.token)).status,200);
+  await pool.query("UPDATE users SET role='user' WHERE id=$1",[adminUser.user.id]);
+  assert.equal((await request('/api/admin/classics','GET',undefined,adminUser.token)).status,403);
+});
+test('drafts stay private, publishing persists, and published additions support bookmarks and import',async()=>{
+  const user=await editor(),id='classic-added',content=classicContent(id);
+  const created=await request('/api/admin/classics','POST',{content},user.token);
+  assert.equal(created.status,201);assert.equal(created.data.version,1);assert.equal(created.data.published,null);
+  assert.ok(!(await request('/api/knowledge')).data.items.some((item:any)=>item.id===id));
+  assert.equal((await request('/api/bookmarks/'+id,'PUT',undefined,user.token)).status,400);
+  const published=await request('/api/admin/classics/'+id+'/publish','POST',{version:1},user.token);
+  assert.equal(published.status,200);assert.equal(published.data.version,2);
+  assert.deepEqual((await request('/api/knowledge')).data.items.find((item:any)=>item.id===id),content);
+  assert.equal((await request('/api/bookmarks/'+id,'PUT',undefined,user.token)).status,204);
+  assert.equal((await request('/api/study/import','POST',{bookmarks:[id],completed:[]},user.token)).status,200);
+  await migrate(pool);
+  assert.deepEqual((await request('/api/knowledge')).data.items.find((item:any)=>item.id===id),content);
+  const edited=await request('/api/admin/classics/'+id,'PUT',{version:2,content:{...content,title:'新的草稿标题'}},user.token);
+  assert.equal(edited.status,200);
+  assert.equal((await request('/api/knowledge')).data.items.find((item:any)=>item.id===id).title,content.title);
+});
+test('classic writes validate IDs, text, published relations and immutable type; stale versions conflict',async()=>{
+  const user=await editor(),content=classicContent('classic-versions');
+  assert.equal((await request('/api/admin/classics','POST',{content},user.token)).status,201);
+  assert.equal((await request('/api/admin/classics','POST',{content},user.token)).status,409);
+  for(const change of [{id:'../bad'},{type:'药'},{title:' '},{body:'x'.repeat(50001)},{relations:['does-not-exist']},{relations:['classic-versions']},{tags:[1]}]){
+    assert.equal((await request('/api/admin/classics','POST',{content:{...classicContent('classic-invalid-'+(++serial)),...change}},user.token)).status,400);
+  }
+  assert.equal((await request('/api/admin/classics/classic-versions','PUT',{version:1,content:{...content,title:'新标题'}},user.token)).status,200);
+  assert.equal((await request('/api/admin/classics/classic-versions','PUT',{version:1,content},user.token)).status,409);
+  assert.equal((await request('/api/admin/classics/classic-versions/publish','POST',{version:1},user.token)).status,409);
+  assert.equal((await request('/api/admin/classics/classic-versions/publish','POST',{version:2},user.token)).status,200);
+  assert.equal((await request('/api/admin/classics/classic-huangdi','PUT',{version:1,content:{...content,id:'changed-id'}},user.token)).status,400);
+  assert.equal((await request('/api/admin/classics/herb-guizhi','PUT',{version:1,content:{...content,id:'herb-guizhi'}},user.token)).status,400);
+});
 test('registers, hashes credentials and tokens, and restores case-insensitive login', async () => {
   const user = await register();
   const rows = await pool.query('SELECT password_hash FROM users WHERE id=$1', [user.user.id]);

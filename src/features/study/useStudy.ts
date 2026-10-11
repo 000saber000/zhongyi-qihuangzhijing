@@ -1,18 +1,17 @@
 import {useCallback,useEffect,useRef,useState} from 'react';
-import {knowledge,courses} from '../../data/catalog';
+import {courses} from '../../data/catalog';
 import {api,ApiError} from '../../lib/api';
 
 type Records={bookmarks:string[];completed:string[]};
 export type Session={user:{id:string;username:string;role:'user'|'admin';mustChangePassword:boolean};token:string;expiresAt:string};
 const tokenKey='qihuang-session';
 const empty:Records={bookmarks:[],completed:[]};
-const knowledgeIds=new Set(knowledge.map(k=>k.id));
 const lessonIds=new Set(courses.flatMap(c=>c.lessons.map((_,i)=>c.id+'-'+i)));
-function readArray(key:string,allowed:Set<string>):string[]{
- const value:unknown=JSON.parse(localStorage.getItem(key)??'null');return Array.isArray(value)?[...new Set(value.filter((id):id is string=>typeof id==='string'&&allowed.has(id)))]:[];
+function readArray(key:string,allowed?:Set<string>):string[]{
+ const value:unknown=JSON.parse(localStorage.getItem(key)??'null');return Array.isArray(value)?[...new Set(value.filter((id):id is string=>typeof id==='string'&&(allowed?allowed.has(id):/^[a-z][a-z0-9-]{2,79}$/.test(id))))]:[];
 }
 function readGuest(){
- try{return {data:{bookmarks:readArray('qihuang-bookmarks',knowledgeIds),completed:readArray('qihuang-completed',lessonIds)},error:''};}
+ try{return {data:{bookmarks:readArray('qihuang-bookmarks'),completed:readArray('qihuang-completed',lessonIds)},error:''};}
  catch{return {data:empty,error:'无法读取本地学习记录，请允许网站存储后重试。'};}
 }
 function savedSession():Session|null{

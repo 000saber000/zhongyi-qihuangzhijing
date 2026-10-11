@@ -8,7 +8,7 @@ import {discTexture} from './disc';
 import {useStore} from '../state/store';
 export default function KnowledgeStars({selected,filter,select}:{selected:string|null;filter:string;select:(id:string)=>void}){
  const group=useRef<THREE.Group>(null);const time=useRef(0);const [hover,setHover]=useState<string|null>(null);
- const related=useMemo(()=>new Set(selected?[selected,...(nodeById.get(selected)?.item.relations||[]),...spaceNodes.filter(n=>n.item.relations.includes(selected)).map(n=>n.item.id)]:[]),[selected]);
+ const related=useMemo(()=>new Set(selected?[selected,...(nodeById.get(selected)?.item.relations||[]),...spaceNodes.filter(n=>n.item.relations.includes(selected)).map(n=>n.item.id)]:[]),[selected,spaceNodes]);
  useFrame((_,dt)=>{if(group.current)group.current.rotation.y=galaxySpin.angle;if(!useStore.getState().cinema&&!useStore.getState().reading)time.current+=dt});
  return <group ref={group}>{spaceNodes.map(n=>{const active=selected===n.item.id;const filtered=filter==='全部'||filter===n.item.type;const bright=active||hover===n.item.id;const label=bright||related.has(n.item.id)||(!selected&&landmarks.has(n.item.id)&&filtered);return <group key={n.item.id} position={n.position} visible={filtered||active}>
  <sprite scale={bright?[260,260,1]:[80,80,1]}><spriteMaterial map={discTexture()} color={n.color} blending={THREE.AdditiveBlending} depthWrite={false} transparent opacity={selected&&!related.has(n.item.id)?.15:.8}/></sprite>

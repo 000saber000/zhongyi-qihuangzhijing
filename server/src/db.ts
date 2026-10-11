@@ -1,5 +1,6 @@
 import {readFile} from 'node:fs/promises';
 import type {Pool, PoolClient} from 'pg';
+import {seedKnowledge,seedKeyPoints} from '../../src/data/catalog';
 
 export async function migrate(pool: Pool): Promise<void> {
   const client = await pool.connect();
@@ -7,10 +8,16 @@ export async function migrate(pool: Pool): Promise<void> {
     await client.query('BEGIN');
     await client.query('SELECT pg_advisory_xact_lock(7348012)');
     await client.query('CREATE TABLE IF NOT EXISTS schema_migrations (version integer PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())');
-    for(const [version,file] of [[1,'001-accounts.sql'],[2,'002-administration.sql']] as const){
+    for(const [version,file] of [[1,'001-accounts.sql'],[2,'002-administration.sql'],[3,'003-knowledge.sql']] as const){
       const applied=await client.query('SELECT version FROM schema_migrations WHERE version=$1',[version]);
       if(!applied.rowCount){
         await client.query(await readFile(new URL('../migrations/'+file,import.meta.url),'utf8'));
+        if(version===3){
+          for(const item of seedKnowledge){
+            const content={...item,body:'',keyPoints:seedKeyPoints[item.id]??[]};
+            await client.query('INSERT INTO knowledge_entries(id,draft,published) VALUES($1,$2,$2)',[item.id,JSON.stringify(content)]);
+          }
+        }
         await client.query('INSERT INTO schema_migrations(version) VALUES($1)',[version]);
       }
     }
