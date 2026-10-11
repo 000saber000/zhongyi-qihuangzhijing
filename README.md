@@ -6,7 +6,11 @@
 
 - 网站：https://qihuang-zhijing.onrender.com
 - 源码：https://github.com/000saber000/zhongyi-qihuangzhijing
-- API：见 Render 中 `qihuang-api` 服务的实际 URL。
+- API：https://qihuang-api.onrender.com
+- 数据库：[qihuang-study](https://dashboard.render.com/d/dpg-db5lq0ss728c7388r170-a)
+- API 配置：[环境变量](https://dashboard.render.com/web/srv-db5lqh2d0e5s73ftnfa0/env-vars)
+
+云端 API 首次启动需要在上述环境变量页面添加 `DATABASE_URL`：复制数据库页面的 **Internal Database URL**，填入变量值后选择 Save, rebuild, and deploy。Render 连接器不返回这个连接串，因此该项需要在 Dashboard 内配置；不要把连接串提交到仓库。服务器启动时会自动建表。
 
 账号会话保存在当前标签页的 sessionStorage，刷新后可以继续使用；关闭标签页后通常需要重新登录。当前不提供密码找回，请妥善保存密码。
 
@@ -51,7 +55,7 @@ Playwright 配置自动启动测试 API（3001）和 Vite（5173），浏览器�
 现有静态站点继续发布 `qihuang-unified.html`，保持原网址和原部署命令。源码更新后必须重新导出该单文件并提交：
 
 ```sh
-VITE_API_BASE_URL=https://YOUR-ACTUAL-API.onrender.com npm run release:export
+VITE_API_BASE_URL=https://qihuang-api.onrender.com npm run release:export
 ```
 
 把源码和新的 `qihuang-unified.html` 一起提交到 `main`，Render 会自动重新发布。构建变量是公开 API 地址，不包含密码或数据库连接串。
@@ -62,7 +66,7 @@ VITE_API_BASE_URL=https://YOUR-ACTUAL-API.onrender.com npm run release:export
 
 ### 免费套餐限制与备份
 
-根据 [Render 免费套餐文档](https://render.com/docs/free)，免费 PostgreSQL 创建后 30 天到期，到期后不可访问；额外 14 天宽限期后会删除数据。免费数据库没有自动备份，适合开发与预览。长期使用必须在到期前升级或迁移。
+根据 [Render 免费套餐文档](https://render.com/docs/free)，免费 PostgreSQL 创建后 30 天到期，到期后不可访问；额外 14 天宽限期后会删除数据。免费数据库没有自动备份，适合开发与预览。本次创建的数据库将在 **2026-11-10 09:55 UTC** 到期，长期使用必须在到期前升级或迁移。
 
 免费 Web Service 闲置 15 分钟后会休眠，首次重新访问可能需要约一分钟。若连接超时，页面会保留现有记录并提示重试，不宣称已保存。免费额度为整个工作区共享。
 

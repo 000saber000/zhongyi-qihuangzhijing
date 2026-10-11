@@ -83,7 +83,9 @@
 
 - [x] Request one independent whole-branch review; address significant findings with regression tests.
 - [x] Document free database expiry and export/migration steps; preserve the original artifact in Git history.
-- [ ] Push the reviewed feature branch; provision free PostgreSQL and API after local tests pass.
-- [ ] Configure actual API URL, export frontend, run build/tests and publish authorized changes to main.
+- [x] Push the reviewed feature branch; provision free PostgreSQL and API after local tests pass.
+- [x] Configure actual API URL, export frontend, run build/tests and publish authorized changes to main.
 - [ ] Verify Render deploys match published commits and are live; check API health, registration/login and two-context synchronization when network permits, explicitly reporting any blocked check.
 - [ ] Commit final deployment notes and record completed tasks and verification in the execution ledger.
+
+Deployment progress: reviewed code is on main. Free PostgreSQL dpg-db5lq0ss728c7388r170-a is available (expires 2026-11-10 09:55 UTC). API srv-db5lqh2d0e5s73ftnfa0 builds successfully, but requires DATABASE_URL from the Dashboard before startup; the connector does not expose connection strings. Frontend release targets https://qihuang-api.onrender.com.
