@@ -20,7 +20,7 @@ function savedSession():Session|null{
 }
 export function useStudy(){
  const [current,setCurrent]=useState<Session|null>(savedSession);
- const verified=useRef(!current);
+ const verified=useRef(!current),passwordChanging=useRef(false);
  const identity=useRef(current),epoch=useRef(0),revision=useRef(0),readNumber=useRef(0),pendingRef=useRef(new Set<string>());
  const [initialGuest]=useState(readGuest);const writeFailed=useRef(false);
  const [records,setRecords]=useState<Records>(()=>current?empty:initialGuest.data);
@@ -40,19 +40,19 @@ export function useStudy(){
   setStatus('error');setError(message??(cause instanceof Error?cause.message:'同步失败，请重试。'));
  },[reset]);
  const refresh=useCallback(async()=>{
-  let session=identity.current;if(!session){const snapshot=readGuest();setGuest(snapshot.data);setRecords(snapshot.data);setLoaded(!snapshot.error);setStatus(snapshot.error?'error':'local');setError(snapshot.error);return;}if(session.user.mustChangePassword||pendingRef.current.size)return;
+  let session=identity.current;if(!session){const snapshot=readGuest();setGuest(snapshot.data);setRecords(snapshot.data);setLoaded(!snapshot.error);setStatus(snapshot.error?'error':'local');setError(snapshot.error);return;}if(passwordChanging.current||session.user.mustChangePassword||pendingRef.current.size)return;
   const id=epoch.current,version=revision.current,read=++readNumber.current;
   try{
    if(!verified.current){
     const data=await api<{user:Session['user'];expiresAt:string}>('/api/auth/me',{token:session.token});
-    if(!matches(id)||revision.current!==version||read!==readNumber.current)return;
+    if(!installed.current||!matches(id)||revision.current!==version||read!==readNumber.current)return;
     session={...session,...data};verified.current=true;identity.current=session;setCurrent(session);offerImport(session);setError('');
     if(session.user.mustChangePassword){setLoaded(false);return;}
    }
    const data=await api<Records>('/api/study',{token:session.token});
-   if(!matches(id)||revision.current!==version||read!==readNumber.current||pendingRef.current.size)return;
+   if(!installed.current||!matches(id)||revision.current!==version||read!==readNumber.current||pendingRef.current.size)return;
    setRecords(data);setLoaded(true);writeFailed.current=false;setStatus('synced');setError('');
-  }catch(cause){if(matches(id)&&revision.current===version&&read===readNumber.current&&!pendingRef.current.size)failure(cause,id);}
+  }catch(cause){if(installed.current&&matches(id)&&revision.current===version&&read===readNumber.current&&!pendingRef.current.size)failure(cause,id);}
  },[failure]);
  const offerImport=(session:Session)=>{
   if(session.user.mustChangePassword){setShowImport(false);return;}
@@ -62,14 +62,7 @@ export function useStudy(){
  };
  useEffect(()=>{
   installed.current=true;
-  const session=identity.current;
-  if(session){
-   const id=epoch.current;
-   void api<{user:Session['user'];expiresAt:string}>('/api/auth/me',{token:session.token}).then(data=>{
-    if(!matches(id)||!installed.current)return;
-    const restored={...session,...data};verified.current=true;identity.current=restored;setCurrent(restored);offerImport(restored);void refresh();
-   }).catch(cause=>{if(installed.current)failure(cause,id);});
-  }
+  if(identity.current)void refresh();
   return()=>{installed.current=false;};
  },[failure,refresh]);
  useEffect(()=>{
@@ -128,7 +121,9 @@ export function useStudy(){
   finally{if(matches(id)){revision.current++;pendingRef.current.delete('import');setPending(new Set(pendingRef.current));}}
  };
  const changePassword=async(currentPassword:string,newPassword:string):Promise<boolean>=>{
-  const old=identity.current;if(!old||authBusy)return false;const id=epoch.current;setAuthBusy(true);setError('');
+  const old=identity.current;if(!old||authBusy)return false;
+  if(pendingRef.current.size){setError('请等待当前记录保存完成，再修改密码。');return false;}
+  const id=epoch.current;passwordChanging.current=true;revision.current++;readNumber.current++;setAuthBusy(true);setError('');
   try{
    const session=await api<Session>('/api/auth/password',{method:'POST',token:old.token,body:{currentPassword,newPassword}});
    if(!matches(id)){void api('/api/auth/logout',{method:'POST',token:session.token}).catch(()=>{});return false;}
@@ -136,8 +131,8 @@ export function useStudy(){
     void api('/api/auth/logout',{method:'POST',token:session.token}).catch(()=>{});
     reset('密码已修改，但浏览器无法保存登录状态，请重新登录。');return false;
    }
-   epoch.current++;revision.current++;verified.current=true;identity.current=session;setCurrent(session);pendingRef.current.clear();setPending(new Set());setLoaded(false);setStatus('loading');setError('');offerImport(session);void refresh();return true;
-  }catch(cause){failure(cause,id);return false;}finally{setAuthBusy(false);}
+   epoch.current++;revision.current++;verified.current=true;passwordChanging.current=false;identity.current=session;setCurrent(session);pendingRef.current.clear();setPending(new Set());setLoaded(false);setStatus('loading');setError('');offerImport(session);void refresh();return true;
+  }catch(cause){failure(cause,id);return false;}finally{passwordChanging.current=false;setAuthBusy(false);}
  };
  return {sessionToken:current?.token,changePassword,user:current?.user??null,bookmarks:records.bookmarks,completed:records.completed,loaded,status,error,pending,guest,showImport,authBusy,authenticate,logout,toggleBookmark,completeLesson,importGuest,refresh,openImport:()=>setShowImport(true),dismissImport:()=>setShowImport(false)};
 }
