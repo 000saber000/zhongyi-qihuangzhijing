@@ -110,3 +110,24 @@ test('returns safe 503 responses when the database is unavailable',async()=>{
   assert.equal(response.status,503); const data=await response.json() as {error:{code:string}};assert.equal(data.error.code,'UNAVAILABLE');assert.ok(!JSON.stringify(data).includes('postgres://'));
   await new Promise<void>(resolve=>s.close(()=>resolve()));await broken.end();
 });
+test('rolls back already inserted import rows when a later database write fails',async()=>{
+  const user=await register();
+  await pool.query("ALTER TABLE bookmarks ADD CONSTRAINT simulate_write_failure CHECK(knowledge_id <> 'formula-guizhi') NOT VALID");
+  try{
+    const response=await request('/api/study/import','POST',{bookmarks:['theory-yinyang','formula-guizhi'],completed:['foundation-0']},user.token);
+    assert.equal(response.status,503);
+    assert.deepEqual((await request('/api/study','GET',undefined,user.token)).data,{bookmarks:[],completed:[]});
+  }finally{await pool.query('ALTER TABLE bookmarks DROP CONSTRAINT simulate_write_failure');}
+});
+test('one-hop production proxy limit uses the nearest appended IP, not a spoofed prefix',async()=>{
+  const s=createApp(pool,[origin],{trustProxy:1}).listen(0,'127.0.0.1');
+  await new Promise<void>(resolve=>s.once('listening',resolve));
+  const url='http://127.0.0.1:'+(s.address() as {port:number}).port+'/api/auth/login';
+  try{
+    let status=0;
+    for(let i=0;i<21;i++){
+      const response=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','X-Forwarded-For':'198.51.100.'+i+', 203.0.113.1'},body:JSON.stringify({username:'nonexistent_user',password})});status=response.status;await response.json();
+    }
+    assert.equal(status,429);
+  }finally{await new Promise<void>(resolve=>s.close(()=>resolve()));}
+});

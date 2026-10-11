@@ -37,10 +37,10 @@
 
 **Interfaces:** Produces shared catalog IDs and npm run build / npm run release:export. Existing standalone artifact remains the static deployment input.
 
-- [ ] Copy matching source and licenses; preserve deployment docs and original HTML.
-- [ ] Run npm ci and npm run build; expected successful TypeScript and Vite output.
-- [ ] Check a focused existing guest browser flow; expected search/bookmark/refresh succeeds.
-- [ ] Commit restored source and the deterministic release export command.
+- [x] Copy matching source and licenses; preserve deployment docs and original HTML.
+- [x] Run npm ci and npm run build; expected successful TypeScript and Vite output.
+- [x] Check a focused existing guest browser flow; expected search/bookmark/refresh succeeds.
+- [x] Commit restored source and the deterministic release export command.
 
 ### Task 2: Database-backed API and authenticated study contracts
 
@@ -48,10 +48,10 @@
 
 **Interfaces:** createApp(pool: Pool, allowedOrigins: string[], options?) produces an Express application; migrate(pool: Pool): Promise<void>; API paths and response shapes follow the spec. Server loads IDs directly from root src/data files and catalog course IDs.
 
-- [ ] Write real PostgreSQL HTTP integration tests: register auto-login, wrong credentials, case-insensitive duplicates, hashes only, revoke/expire sessions, two-account isolation, idempotent per-item writes, valid lesson IDs, import union/atomic rejection, concurrent devices, CORS, unavailable DB, 429 limiter.
-- [ ] Run npm --prefix server test against the disposable PostgreSQL instance. Expected RED due to missing API modules.
-- [ ] Implement migrations, scrypt/password helpers, session creation/authentication and parameterized routes with bounded body parsing, CORS and rate limiting.
-- [ ] Run server typecheck and the integration suite. Expected GREEN; commit.
+- [x] Write real PostgreSQL HTTP integration tests: register auto-login, wrong credentials, case-insensitive duplicates, hashes only, revoke/expire sessions, two-account isolation, idempotent per-item writes, valid lesson IDs, import union/atomic rejection, concurrent devices, CORS, unavailable DB, 429 limiter.
+- [x] Run npm --prefix server test against the disposable PostgreSQL instance. Expected RED due to missing API modules.
+- [x] Implement migrations, scrypt/password helpers, session creation/authentication and parameterized routes with bounded body parsing, CORS and rate limiting.
+- [x] Run server typecheck and the integration suite. Expected GREEN; commit.
 
 ### Task 3: Account/session and guest/cloud study state
 
@@ -59,11 +59,11 @@
 
 **Interfaces:** useStudy() provides user, bookmarks, completed, status, error, pending IDs, authenticate(), logout(), toggleBookmark(), completeLesson(), importGuest(), refresh(), and retryable import prompt. AccountPanel renders those operations without coupling to the cosmos canvas.
 
-- [ ] Write browser assertions before code: account controls exist in study, register/login work, two browser contexts synchronize, importing is opt-in, logout restores guest records.
-- [ ] Run the new browser suite; expected RED because account controls do not exist.
-- [ ] Implement bounded-time API requests, session restoration, isolated guest storage and cloud fetching; acknowledge writes only after API success, reject stale responses using identity and generation checks.
-- [ ] Add account dialog and import controls in the existing dark reading layout; preserve source navigation, notices and cosmos.
-- [ ] Run production build and main browser account flow. Expected GREEN; commit.
+- [x] Write browser assertions before code: account controls exist in study, register/login work, two browser contexts synchronize, importing is opt-in, logout restores guest records.
+- [x] Run the new browser suite; expected RED because account controls do not exist.
+- [x] Implement bounded-time API requests, session restoration, isolated guest storage and cloud fetching; acknowledge writes only after API success, reject stale responses using identity and generation checks.
+- [x] Add account dialog and import controls in the existing dark reading layout; preserve source navigation, notices and cosmos.
+- [x] Run production build and main browser account flow. Expected GREEN; commit.
 
 ### Task 4: Failure, race and existing visual regressions
 
@@ -71,9 +71,9 @@
 
 **Interfaces:** Uses the real test API plus intercepted responses for delayed/error cases. Existing guest flows still call the same App actions.
 
-- [ ] Add assertions for 401 expiry, write failure without false progress, delayed old-account response, read/write race, import rejection, session storage failure and mobile dialog bounds.
-- [ ] Observe new tests fail for uncovered behavior, fix only demonstrated failures and rerun.
-- [ ] Run full frontend production build, real database server tests and applicable guest/account browser suites. Expected GREEN; commit verified changes.
+- [x] Add assertions for 401 expiry, write failure without false progress, delayed old-account response, read/write race, import rejection, session storage failure and mobile dialog bounds.
+- [x] Observe new tests fail for uncovered behavior, fix only demonstrated failures and rerun.
+- [x] Run full frontend production build, real database server tests and applicable guest/account browser suites. Expected GREEN; commit verified changes.
 
 ### Task 5: Review, cloud deployment and live verification
 
@@ -81,8 +81,8 @@
 
 **Interfaces:** Free Node service connects to same-region free PostgreSQL; existing static service publishes release export configured with the actual API URL. API config uses DATABASE_URL and ALLOWED_ORIGINS only through environment settings.
 
-- [ ] Request one independent whole-branch review; address significant findings with regression tests.
-- [ ] Document free database expiry and export/migration steps; preserve the original artifact in Git history.
+- [x] Request one independent whole-branch review; address significant findings with regression tests.
+- [x] Document free database expiry and export/migration steps; preserve the original artifact in Git history.
 - [ ] Push the reviewed feature branch; provision free PostgreSQL and API after local tests pass.
 - [ ] Configure actual API URL, export frontend, run build/tests and publish authorized changes to main.
 - [ ] Verify Render deploys match published commits and are live; check API health, registration/login and two-context synchronization when network permits, explicitly reporting any blocked check.

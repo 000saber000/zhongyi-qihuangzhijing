@@ -9,25 +9,29 @@ const empty:Records={bookmarks:[],completed:[]};
 const knowledgeIds=new Set(knowledge.map(k=>k.id));
 const lessonIds=new Set(courses.flatMap(c=>c.lessons.map((_,i)=>c.id+'-'+i)));
 function readArray(key:string,allowed:Set<string>):string[]{
- try{const value:unknown=JSON.parse(localStorage.getItem(key)??'null');return Array.isArray(value)?[...new Set(value.filter((id):id is string=>typeof id==='string'&&allowed.has(id)))]:[];}catch{return [];}
+ const value:unknown=JSON.parse(localStorage.getItem(key)??'null');return Array.isArray(value)?[...new Set(value.filter((id):id is string=>typeof id==='string'&&allowed.has(id)))]:[];
 }
-const readGuest=():Records=>({bookmarks:readArray('qihuang-bookmarks',knowledgeIds),completed:readArray('qihuang-completed',lessonIds)});
+function readGuest(){
+ try{return {data:{bookmarks:readArray('qihuang-bookmarks',knowledgeIds),completed:readArray('qihuang-completed',lessonIds)},error:''};}
+ catch{return {data:empty,error:'无法读取本地学习记录，请允许网站存储后重试。'};}
+}
 function savedSession():Session|null{
  try{const value=JSON.parse(sessionStorage.getItem(tokenKey)??'null');return value&&typeof value.user?.id==='string'&&typeof value.user?.username==='string'&&typeof value.expiresAt==='string'&&Number.isFinite(Date.parse(value.expiresAt))&&typeof value.token==='string'&&/^[A-Za-z0-9_-]{43}$/.test(value.token)?value:null;}catch{return null;}
 }
 export function useStudy(){
  const [current,setCurrent]=useState<Session|null>(savedSession);
  const identity=useRef(current),epoch=useRef(0),revision=useRef(0),readNumber=useRef(0),pendingRef=useRef(new Set<string>());
- const [records,setRecords]=useState<Records>(()=>current?empty:readGuest());
- const [loaded,setLoaded]=useState(!current),[status,setStatus]=useState<'local'|'loading'|'saving'|'synced'|'error'>(current?'loading':'local');
- const [error,setError]=useState(''),[pending,setPending]=useState(new Set<string>()),[showImport,setShowImport]=useState(false),[authBusy,setAuthBusy]=useState(false);
- const [guest,setGuest]=useState(readGuest);
+ const [initialGuest]=useState(readGuest);const writeFailed=useRef(false);
+ const [records,setRecords]=useState<Records>(()=>current?empty:initialGuest.data);
+ const [loaded,setLoaded]=useState(!current&&!initialGuest.error),[status,setStatus]=useState<'local'|'loading'|'saving'|'synced'|'error'>(current?'loading':initialGuest.error?'error':'local');
+ const [error,setError]=useState(current?'':initialGuest.error),[pending,setPending]=useState(new Set<string>()),[showImport,setShowImport]=useState(false),[authBusy,setAuthBusy]=useState(false);
+ const [guest,setGuest]=useState(initialGuest.data);
  const installed=useRef(false);
  const matches=(id:number)=>id===epoch.current;
  const reset=useCallback((message='')=>{
-  epoch.current++;revision.current++;identity.current=null;setCurrent(null);pendingRef.current.clear();setPending(new Set());setShowImport(false);
+  epoch.current++;revision.current++;identity.current=null;setCurrent(null);pendingRef.current.clear();writeFailed.current=false;setPending(new Set());setShowImport(false);
   try{sessionStorage.removeItem(tokenKey);}catch{/* A restricted browser may not allow storage. */}
-  const data=readGuest();setGuest(data);setRecords(data);setLoaded(true);setStatus('local');setError(message);
+  const snapshot=readGuest();setGuest(snapshot.data);setRecords(snapshot.data);setLoaded(!snapshot.error);setStatus(snapshot.error?'error':'local');setError(snapshot.error||message);
  },[]);
  const failure=useCallback((cause:unknown,id:number,message?:string)=>{
   if(!matches(id))return;
@@ -35,16 +39,16 @@ export function useStudy(){
   setStatus('error');setError(message??(cause instanceof Error?cause.message:'同步失败，请重试。'));
  },[reset]);
  const refresh=useCallback(async()=>{
-  const session=identity.current;if(!session||pendingRef.current.size)return;
+  const session=identity.current;if(!session){const snapshot=readGuest();setGuest(snapshot.data);setRecords(snapshot.data);setLoaded(!snapshot.error);setStatus(snapshot.error?'error':'local');setError(snapshot.error);return;}if(pendingRef.current.size)return;
   const id=epoch.current,version=revision.current,read=++readNumber.current;
   try{
    const data=await api<Records>('/api/study',{token:session.token});
    if(!matches(id)||revision.current!==version||read!==readNumber.current||pendingRef.current.size)return;
-   setRecords(data);setLoaded(true);setStatus('synced');setError('');
+   setRecords(data);setLoaded(true);writeFailed.current=false;setStatus('synced');setError('');
   }catch(cause){if(matches(id)&&revision.current===version&&read===readNumber.current&&!pendingRef.current.size)failure(cause,id);}
  },[failure]);
  const offerImport=(session:Session)=>{
-  const data=readGuest();setGuest(data);
+  const snapshot=readGuest();setGuest(snapshot.data);const data=snapshot.data;
   let imported=false;try{imported=localStorage.getItem('qihuang-imported-'+session.user.id)==='true';}catch{/* Still offer an explicit import. */}
   setShowImport(!imported&&(data.bookmarks.length>0||data.completed.length>0));
  };
@@ -75,7 +79,7 @@ export function useStudy(){
     void api('/api/auth/logout',{method:'POST',token:session.token}).catch(()=>{});
     throw new Error('浏览器无法保存登录状态，请允许网站存储后重试。');
    }
-   epoch.current++;revision.current++;identity.current=session;setCurrent(session);setRecords(empty);setLoaded(false);setStatus('loading');setError('');
+   epoch.current++;revision.current++;writeFailed.current=false;identity.current=session;setCurrent(session);setRecords(empty);setLoaded(false);setStatus('loading');setError('');
    pendingRef.current.clear();setPending(new Set());offerImport(session);void refresh();return true;
   }catch(cause){if(matches(id))setError(cause instanceof Error?cause.message:'登录失败，请重试。');return false;}
   finally{setAuthBusy(false);}
@@ -91,14 +95,15 @@ export function useStudy(){
  };
  const write=async(key:string,path:string,method:string,update:(data:Records)=>Records):Promise<boolean>=>{
   const session=identity.current;
+  if(!loaded||pendingRef.current.has('import'))return false;
   if(!session){saveGuest(update(records));return true;}
-  if(!loaded||pendingRef.current.has(key))return false;
-  const id=epoch.current;revision.current++;pendingRef.current.add(key);setPending(new Set(pendingRef.current));setStatus('saving');setError('');
+  if(pendingRef.current.has(key))return false;
+  const id=epoch.current;if(!pendingRef.current.size){writeFailed.current=false;setError('');}revision.current++;pendingRef.current.add(key);setPending(new Set(pendingRef.current));setStatus('saving');
   try{
    await api(path,{method,token:session.token});
    if(!matches(id))return false;
-   setRecords(update);setStatus('synced');return true;
-  }catch(cause){failure(cause,id,'保存失败，请重试。');return false;}
+   setRecords(update);setStatus(writeFailed.current?'error':'synced');return true;
+  }catch(cause){if(matches(id))writeFailed.current=true;failure(cause,id,'保存失败，请重试。');return false;}
   finally{if(matches(id)){revision.current++;pendingRef.current.delete(key);setPending(new Set(pendingRef.current));}}
  };
  const toggleBookmark=(id:string)=>write('bookmark:'+id,'/api/bookmarks/'+encodeURIComponent(id),records.bookmarks.includes(id)?'DELETE':'PUT',data=>({...data,bookmarks:data.bookmarks.includes(id)?data.bookmarks.filter(value=>value!==id):[...data.bookmarks,id]}));
@@ -107,7 +112,8 @@ export function useStudy(){
   const session=identity.current;if(!session||pendingRef.current.size)return false;
   const id=epoch.current;revision.current++;pendingRef.current.add('import');setPending(new Set(pendingRef.current));setStatus('saving');setError('');
   try{
-   const data=await api<Records>('/api/study/import',{method:'POST',token:session.token,body:readGuest()});
+   const snapshot=readGuest();if(snapshot.error)throw new Error(snapshot.error);
+   const data=await api<Records>('/api/study/import',{method:'POST',token:session.token,body:snapshot.data});
    if(!matches(id))return false;setRecords(data);setLoaded(true);setStatus('synced');setShowImport(false);
    try{localStorage.setItem('qihuang-imported-'+session.user.id,'true');}catch{setError('记录已导入，但浏览器无法记住导入选择。');}return true;
   }catch(cause){failure(cause,id);return false;}
