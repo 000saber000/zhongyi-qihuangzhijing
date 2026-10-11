@@ -1,1 +1,11 @@
 public/
+.worktrees/
+.superpowers/
+node_modules/
+dist/
+server/dist/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
