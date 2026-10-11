@@ -1,99 +1,52 @@
 # 岐黄知境 · 知识宇宙
 
-保留现有知识星海、知识库与课程阅读体验，提供用户名/密码账号、收藏与课程进度的云端同步。游客记录保存在当前浏览器，登录后由用户选择是否导入；账号间数据隔离。管理员可以管理账号、协助用户重置密码。
+> 一味本草，一颗星辰。万千医理，皆有星辰。
 
-## 线上服务
+岐黄知境是一个面向中医学习者与爱好者的知识探索网站。它将经典、理论、本草、方剂、经络与医家放进一片可以漫游的知识星海，让你从一个感兴趣的问题出发，沿着知识之间的联系，逐步建立自己的理解。
 
-- 网站：https://qihuang-zhijing.onrender.com
-- 源码：https://github.com/000saber000/zhongyi-qihuangzhijing
-- API：https://qihuang-api.onrender.com
-- 数据库：[qihuang-study](https://dashboard.render.com/d/dpg-db5lq0ss728c7388r170-a)
-- API 配置：[环境变量](https://dashboard.render.com/web/srv-db5lqh2d0e5s73ftnfa0/env-vars)
+**[进入岐黄知境 →](https://qihuang-zhijing.onrender.com)**
 
-云端 API 首次启动需要在上述环境变量页面添加 `DATABASE_URL`：复制数据库页面的 **Internal Database URL**，填入变量值后选择 Save, rebuild, and deploy。Render 连接器不返回这个连接串，因此该项需要在 Dashboard 内配置；不要把连接串提交到仓库。服务器启动时会自动建表。
+## 在星海中，发现知识的联系
 
-账号会话保存在当前标签页的 sessionStorage，刷新后可以继续使用；关闭标签页后通常需要重新登录。请妥善保存密码；忘记密码可联系管理员协助重置，当前不提供邮件找回。
+中医知识常常相互贯通：一部典籍连接一种理论，一首方剂连接几味本草，一个腧穴连接一条经脉。
 
-## 本地开发
+在岐黄知境，每个知识条目都是一颗星辰。你可以拖动旋转星海、缩放视野、点击星辰阅读导读，也可以沿着关联光束，继续探索相关知识。从《黄帝内经》出发，认识阴阳、藏象与经络；从桂枝汤出发，了解方剂、本草与经典之间的联系。
 
-需要 Node.js 24 与 PostgreSQL 16。安装前后端依赖：
+## 你可以在这里做什么
 
-```sh
-npm ci
-npm ci --prefix server
-```
+### 漫游知识宇宙
 
-终端一运行后端（示例连接使用本地开发数据库，请替换密码）：
+在三维星海中探索不同知识领域，通过分类筛选、关键词搜索或随机邂逅，找到下一颗想了解的知识星辰。
 
-```sh
-DATABASE_URL=postgres://postgres:your-password@127.0.0.1:5432/qihuang ALLOWED_ORIGINS=http://127.0.0.1:5173 PORT=3001 npm --prefix server start
-```
+### 查阅中医知识库
 
-终端二运行前端：
+知识库涵盖中医经典、基础理论、本草药物、方剂学、经络、腧穴、诊法辨证、历代医家与医案等领域。每个条目提供简介、来源说明与关联知识，方便查找和延伸阅读。
 
-```sh
-VITE_API_BASE_URL=http://127.0.0.1:3001 npm run dev
-```
+### 沿着学习路径循序而学
 
-后端启动时执行版本化数据库迁移，不清空已有账号或学习记录。浏览器打开 http://127.0.0.1:5173。
+从中医入门、经典研读和经络腧穴三条路径开始，通过导读单元认识核心概念，再回到相关条目深入理解。完成一节，就记录一小步学习进度；想重读时，也可以随时回来。
 
-## 验证
+### 留下自己的学习足迹
 
-服务端集成测试使用随机的独立 PostgreSQL schema，完成后删除该测试 schema。浏览器测试会向测试数据库注册测试账号，并重置认证限速计数，因此只能指向独立测试数据库，禁止使用线上数据库。
+把感兴趣的条目收入「我的书斋」，集中查看收藏与学习进度。游客可以直接探索，学习记录保存在当前浏览器；注册并登录后，可以将收藏和进度同步到账号，在不同设备继续学习，也可以选择导入已有的本地记录。
 
-```sh
-npm --prefix server run check
-TEST_DATABASE_URL=postgres://postgres:test-password@127.0.0.1:55432/qihuang_test npm --prefix server test
-npm run build
-TEST_DATABASE_URL=postgres://postgres:test-password@127.0.0.1:55432/qihuang_test npm test
-```
+## 从哪里开始
 
-Playwright 配置自动启动测试 API（3001）和 Vite（5173），浏览器默认使用 `/usr/bin/chromium`，可用 `CHROMIUM_PATH` 覆盖。双设备测试使用两个隔离的浏览器 context。
+1. **初次接触中医**：打开「学习路径」，从“中医入门：建立知识框架”开始。
+2. **已经有想了解的主题**：在搜索框输入“阴阳”“桂枝汤”或“黄帝内经”，进入相关条目。
+3. **想自由探索**：进入知识宇宙，点击一颗星辰，沿着关联知识继续阅读。
+4. **遇到值得重读的内容**：点击收藏，留在「我的书斋」，方便下次继续。
 
-## Render 发布与更新
+岐黄知境希望陪你慢慢读、认真想，把零散的知识连接起来，让每一步学习有所收获。
 
-现有静态站点继续发布 `qihuang-unified.html`，保持原网址和原部署命令。源码更新后必须重新导出该单文件并提交：
+## 关于内容
 
-```sh
-VITE_API_BASE_URL=https://qihuang-api.onrender.com npm run release:export
-```
+当前内容以知识简介与学习导读为主，具体文献版本和出处仍在核对与完善中。阅读经典与本草条目时，可结合相应原典、整理本和教材进一步学习。
 
-把源码和新的 `qihuang-unified.html` 一起提交到 `main`，Render 会自动重新发布。构建变量是公开 API 地址，不包含密码或数据库连接串。
+## 致谢与版权
 
-新增 Node API 的构建命令是 `npm ci --prefix server --include=dev && npm --prefix server run check`，启动命令是 `npm --prefix server start`。配置 `DATABASE_URL`、`ALLOWED_ORIGINS=https://qihuang-zhijing.onrender.com` 和 `SKIP_INSTALL_DEPS=true`。数据库与 API 应处于同一个 Render 工作区与区域，使用内部连接地址。
-
-`render.yaml` 提供可复现的服务配置。为现有资源重建 Blueprint 前，先确认已有服务映射，避免重复创建资源。数据库连接串只保存在 Render 环境设置中，不提交 GitHub。
-
-### 免费套餐限制与备份
-
-根据 [Render 免费套餐文档](https://render.com/docs/free)，免费 PostgreSQL 创建后 30 天到期，到期后不可访问；额外 14 天宽限期后会删除数据。免费数据库没有自动备份，适合开发与预览。本次创建的数据库将在 **2026-11-10 17:55（北京时间，09:55 UTC）** 到期，长期使用必须在到期前升级或迁移。
-
-免费 Web Service 闲置 15 分钟后会休眠，首次重新访问可能需要约一分钟。若连接超时，页面会保留现有记录并提示重试，不宣称已保存。免费额度为整个工作区共享。
-
-到期前使用 Render 提供的外部连接地址，通过启用 TLS 的 PostgreSQL 客户端导出：
-
-```sh
-PGSSLMODE=require pg_dump --dbname="$DATABASE_URL" --format=custom --file=qihuang-backup.dump
-```
-
-`DATABASE_URL` 应来自安全的环境变量；备份包含账号摘要与用户记录，妥善保存并避免提交到仓库。迁移到新数据库可使用 `pg_restore`，更新 API 的连接地址后重新部署。恢复时不删除原数据库，直到确认新数据库可用。
-
-## 管理账号
-
-已配置的管理员登录后，在「我的书斋」点击「账号管理」。支持用户名搜索、分页查看注册时间与学习计数、禁用/恢复账号、撤销所有会话、重置密码和删除账号。管理员账号受保护，不能在管理列表中禁用、重置或删除。
-
-重置密码和删除账号需再次输入管理员当前密码；删除还需输入目标用户名确认。删除会同时移除收藏、课程进度和登录会话，操作日志保留用户名快照。重置后页面只显示一次随机临时密码，管理员自行交给对应用户；用户登录后必须修改临时密码才能继续使用。临时密码不会写入浏览器存储或操作日志。
-
-所有登录用户均可在「我的书斋」点击「修改密码」。成功后所有旧会话失效，当前浏览器获得新会话，其他设备需重新登录。
-
-首次设置管理员：先通过网站正常注册负责人账号，再在 Render API 服务环境变量中添加 `INITIAL_ADMIN_USERNAME`，值填已注册的用户名，重新部署。启动时仅提升该已有账号；账号不存在、被禁用或已有另一管理员时启动失败，不会为日后注册的人自动授予权限。不要填写密码。角色保存在数据库，注册接口不能指定管理员角色。
-
-## 代码来源与许可证
-
-知识星海改编自 [Cohenjikan/shiyun](https://github.com/Cohenjikan/shiyun)，保留其版权声明：
+知识星海的视觉与交互改编自 [Cohenjikan/shiyun · 诗云](https://github.com/Cohenjikan/shiyun)，感谢原作者的创作与分享。
 
 Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
 
-完整条款见 [本仓库的第三方许可证](third-party/SHIYUN-LICENSE.md) 和 [上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/main/LICENSE)。参考代码使用 PolyForm Noncommercial License 1.0.0。
-
-本站的知识素材用于学习，具体文献出处仍需核对。收藏与课程完成操作不代表内容已审核。
+相关参考代码采用 PolyForm Noncommercial License 1.0.0，完整条款见 [第三方许可证](third-party/SHIYUN-LICENSE.md) 与 [上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/main/LICENSE)。
