@@ -85,7 +85,11 @@
 - [x] Document free database expiry and export/migration steps; preserve the original artifact in Git history.
 - [x] Push the reviewed feature branch; provision free PostgreSQL and API after local tests pass.
 - [x] Configure actual API URL, export frontend, run build/tests and publish authorized changes to main.
-- [ ] Verify Render deploys match published commits and are live; check API health, registration/login and two-context synchronization when network permits, explicitly reporting any blocked check.
-- [ ] Commit final deployment notes and record completed tasks and verification in the execution ledger.
+- [x] Verify Render deploys match published commits and are live; check API health, registration/login and two-context synchronization when network permits, explicitly reporting any blocked check.
+- [x] Commit final deployment notes and record completed tasks and verification in the execution ledger.
 
-Deployment progress: reviewed code is on main. Free PostgreSQL dpg-db5lq0ss728c7388r170-a is available (expires 2026-11-10 09:55 UTC). API srv-db5lqh2d0e5s73ftnfa0 builds successfully, but requires DATABASE_URL from the Dashboard before startup; the connector does not expose connection strings. Frontend release targets https://qihuang-api.onrender.com.
+Deployment complete: the frontend and API were confirmed live at release commit 96c24c2ffc1fde9a3c1001d87c891d6c88f9fcdb. The user configured DATABASE_URL directly in the Render Dashboard. API deploy dep-db5m7c7lk1mc73ag4jp0 reached Live at 2026-10-11 10:24:21 UTC; the Qihuang API listening log occurs after successful migrations and database startup queries. No credentials were copied into Git or chat.
+
+Free PostgreSQL dpg-db5lq0ss728c7388r170-a is available in Singapore and expires 2026-11-10 09:55 UTC. Frontend: https://qihuang-zhijing.onrender.com; API: https://qihuang-api.onrender.com; API service: srv-db5lqh2d0e5s73ftnfa0.
+
+Validation: production build and TypeScript checks, 10 PostgreSQL API integration tests, 22 browser tests, and the standalone release account/bookmark check passed locally. Live deployment/startup was verified through Render. Direct online health, registration/login and two-device browser checks were not performed because this execution environment's network policy blocks onrender.com. The database blocks external connections, so MCP SQL verification was also unavailable; its allowlist was not relaxed. Test those online flows from the published site.
