@@ -1,4 +1,5 @@
-public/
+public/*
+!public/assets/
 .worktrees/
 .superpowers/
 node_modules/

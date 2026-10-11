@@ -1,0 +1,2 @@
+# Release assets contain generated shader strings; review their source modules.
+public/assets/** linguist-generated=true -whitespace

@@ -8,8 +8,10 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "playwright test",
-    "demo:export": "npm run build && node scripts/export-demo.mjs",
-    "release:export": "npm run build && node scripts/export-demo.mjs qihuang-unified.html",
+    "demo:export": "npm run release:build",
+    "release:build": "npm run build && node scripts/prepare-release.mjs",
+    "release:export": "npm run release:build",
+    "test:production": "playwright test --config playwright.production.config.ts",
     "test:accounts": "playwright test tests/account*.spec.ts"
   },
   "dependencies": {
