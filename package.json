@@ -10,7 +10,7 @@
     "test": "playwright test",
     "demo:export": "npm run build && node scripts/export-demo.mjs",
     "release:export": "npm run build && node scripts/export-demo.mjs qihuang-unified.html",
-    "test:accounts": "playwright test tests/account.spec.ts"
+    "test:accounts": "playwright test tests/account*.spec.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.3",

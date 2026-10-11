@@ -6,3 +6,29 @@ services:
     buildCommand: mkdir -p public && cp qihuang-unified.html public/index.html
     staticPublishPath: public
     autoDeployTrigger: commit
+  - type: web
+    runtime: node
+    name: qihuang-api
+    branch: main
+    plan: free
+    region: singapore
+    buildCommand: npm ci --prefix server && npm --prefix server run check
+    startCommand: npm --prefix server start
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://qihuang-zhijing.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: qihuang-study
+          property: connectionString
+databases:
+  - name: qihuang-study
+    plan: free
+    region: singapore
+    postgresMajorVersion: "16"
