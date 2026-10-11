@@ -12,7 +12,7 @@ services:
     branch: main
     plan: free
     region: singapore
-    buildCommand: npm ci --prefix server && npm --prefix server run check
+    buildCommand: npm ci --prefix server --include=dev && npm --prefix server run check
     startCommand: npm --prefix server start
     healthCheckPath: /healthz
     autoDeployTrigger: commit

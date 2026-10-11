@@ -56,7 +56,7 @@ VITE_API_BASE_URL=https://YOUR-ACTUAL-API.onrender.com npm run release:export
 
 把源码和新的 `qihuang-unified.html` 一起提交到 `main`，Render 会自动重新发布。构建变量是公开 API 地址，不包含密码或数据库连接串。
 
-新增 Node API 的构建命令是 `npm ci --prefix server && npm --prefix server run check`，启动命令是 `npm --prefix server start`。配置 `DATABASE_URL`、`ALLOWED_ORIGINS=https://qihuang-zhijing.onrender.com` 和 `SKIP_INSTALL_DEPS=true`。数据库与 API 应处于同一个 Render 工作区与区域，使用内部连接地址。
+新增 Node API 的构建命令是 `npm ci --prefix server --include=dev && npm --prefix server run check`，启动命令是 `npm --prefix server start`。配置 `DATABASE_URL`、`ALLOWED_ORIGINS=https://qihuang-zhijing.onrender.com` 和 `SKIP_INSTALL_DEPS=true`。数据库与 API 应处于同一个 Render 工作区与区域，使用内部连接地址。
 
 `render.yaml` 提供可复现的服务配置。为现有资源重建 Blueprint 前，先确认已有服务映射，避免重复创建资源。数据库连接串只保存在 Render 环境设置中，不提交 GitHub。
 
