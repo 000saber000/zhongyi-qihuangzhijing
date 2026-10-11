@@ -1,0 +1,2 @@
+import {create} from 'zustand';
+export const useStore=create<{quality:'high'|'low';cinema:boolean;reading:boolean;setReading:(r:boolean)=>void;setQuality:(q:'high'|'low')=>void;setPaused:(p:boolean)=>void}>(set=>({reading:false,setReading:reading=>set({reading}),quality:window.innerWidth<700?'low':'high',cinema:window.matchMedia('(prefers-reduced-motion: reduce)').matches,setQuality:quality=>set({quality}),setPaused:cinema=>set({cinema})}));

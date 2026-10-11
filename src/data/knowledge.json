@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "theory-yinyang",
+    "type": "理",
+    "title": "阴阳",
+    "subtitle": "中医认识生命活动与变化关系的基础范畴",
+    "summary": "阴阳用于描述相互对立、相互依存并可动态转化的关系。学习时应把它理解为关系模型，而不是把事物机械分成两类。",
+    "source": "《黄帝内经》相关篇章；中医基础理论教材体系",
+    "tags": [
+      "基础理论",
+      "阴阳",
+      "整体观"
+    ],
+    "relations": [
+      "theory-five-elements",
+      "theory-zangxiang",
+      "classic-huangdi"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "theory-five-elements",
+    "type": "理",
+    "title": "五行",
+    "subtitle": "木火土金水的关系模型",
+    "summary": "五行强调生克制化等关系，用于说明事物之间的动态联系。中医学习中常与脏腑、季节、情志等知识共同理解。",
+    "source": "《尚书》《黄帝内经》及后世医家体系",
+    "tags": [
+      "基础理论",
+      "五行"
+    ],
+    "relations": [
+      "theory-yinyang",
+      "theory-zangxiang"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "theory-zangxiang",
+    "type": "理",
+    "title": "藏象",
+    "subtitle": "从功能联系理解脏腑系统",
+    "summary": "藏象学说关注脏腑功能、形体官窍、情志与环境之间的整体联系，是理解中医人体观的重要入口。",
+    "source": "《黄帝内经》；中医基础理论教材体系",
+    "tags": [
+      "脏腑",
+      "整体观",
+      "基础理论"
+    ],
+    "relations": [
+      "theory-yinyang",
+      "theory-five-elements",
+      "classic-huangdi"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "classic-huangdi",
+    "type": "经",
+    "title": "黄帝内经",
+    "subtitle": "中医理论体系的重要经典",
+    "summary": "《黄帝内经》由《素问》《灵枢》构成，对阴阳、藏象、经络、病因病机、诊法、治则等均有系统论述。",
+    "source": "《黄帝内经》通行整理本",
+    "tags": [
+      "经典",
+      "素问",
+      "灵枢"
+    ],
+    "relations": [
+      "theory-yinyang",
+      "theory-zangxiang",
+      "point-zusanli"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "classic-shanghan",
+    "type": "经",
+    "title": "伤寒论",
+    "subtitle": "辨证论治体系的重要经典",
+    "summary": "《伤寒论》以外感病证及其演变为重要内容，后世常通过六经框架学习其辨证思路与方证关系。",
+    "source": "张仲景《伤寒论》通行整理本",
+    "tags": [
+      "经典",
+      "张仲景",
+      "六经"
+    ],
+    "relations": [
+      "formula-guizhi",
+      "formula-xiaochaihu",
+      "person-zhangzhongjing"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "person-zhangzhongjing",
+    "type": "人",
+    "title": "张仲景",
+    "subtitle": "东汉末年医学家",
+    "summary": "后世尊称“医圣”，《伤寒杂病论》相关传本对中医临床辨证与方剂学影响深远。",
+    "source": "医史资料与经典整理研究",
+    "tags": [
+      "医家",
+      "伤寒论",
+      "金匮要略"
+    ],
+    "relations": [
+      "classic-shanghan",
+      "formula-guizhi",
+      "formula-xiaochaihu"
+    ],
+    "confidence": "医史资料"
+  },
+  {
+    "id": "concept-yingwei",
+    "type": "理",
+    "title": "营卫",
+    "subtitle": "理解营气、卫气及其关系的基础概念",
+    "summary": "营卫常在经典语境中成对出现。学习时可先区分二者的传统概念，再结合运行、表里与相关条文理解“营卫关系”，避免把“营卫不和”脱离具体经典语境当成单一疾病标签。",
+    "source": "《黄帝内经》《伤寒论》相关条文；中医基础理论教材体系",
+    "tags": [
+      "营卫",
+      "营气",
+      "卫气",
+      "营卫不和",
+      "伤寒论"
+    ],
+    "relations": [
+      "classic-huangdi",
+      "classic-shanghan",
+      "formula-guizhi",
+      "concept-qi-blood"
+    ],
+    "confidence": "经典/教材可追溯"
+  },
+  {
+    "id": "formula-guizhi",
+    "type": "方",
+    "title": "桂枝汤",
+    "subtitle": "《伤寒论》代表方之一",
+    "summary": "经典方剂之一。产品中默认展示其历史出处、组成关系和方证学习资料；涉及个人服用、剂量与适应证判断时不由 AI 自动决策。",
+    "source": "《伤寒论》",
+    "tags": [
+      "方剂",
+      "伤寒论",
+      "经方"
+    ],
+    "relations": [
+      "classic-shanghan",
+      "herb-guizhi",
+      "herb-baishao"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "formula-xiaochaihu",
+    "type": "方",
+    "title": "小柴胡汤",
+    "subtitle": "《伤寒论》少阳相关学习重点",
+    "summary": "经方学习中的代表条目，适合通过“条文—方剂—药物—证候—医案”链路理解，而不应脱离辨证语境机械记忆。",
+    "source": "《伤寒论》",
+    "tags": [
+      "方剂",
+      "少阳",
+      "经方"
+    ],
+    "relations": [
+      "classic-shanghan",
+      "herb-chaihu",
+      "person-zhangzhongjing"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "herb-guizhi",
+    "type": "药",
+    "title": "桂枝",
+    "subtitle": "常见中药知识条目",
+    "summary": "学习条目展示性味归经、传统功用表述、经典出处、方剂关系与现代研究索引。普通用户界面不将本草知识直接转化为自我用药指令。",
+    "source": "历代本草与现行教材整理",
+    "tags": [
+      "本草",
+      "桂枝"
+    ],
+    "relations": [
+      "formula-guizhi",
+      "classic-shanghan"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-baishao",
+    "type": "药",
+    "title": "白芍",
+    "subtitle": "常见中药知识条目",
+    "summary": "知识页重点解释其传统属性、经典使用语境、与其他药物的组合关系及来源版本。",
+    "source": "历代本草与现行教材整理",
+    "tags": [
+      "本草",
+      "白芍"
+    ],
+    "relations": [
+      "formula-guizhi"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-chaihu",
+    "type": "药",
+    "title": "柴胡",
+    "subtitle": "常见中药知识条目",
+    "summary": "作为本草实体，可关联经典、方剂、医案和现代研究。界面强调“知识来源”与“传统用法描述”之间的区分。",
+    "source": "历代本草与现行教材整理",
+    "tags": [
+      "本草",
+      "柴胡"
+    ],
+    "relations": [
+      "formula-xiaochaihu"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "meridian-stomach",
+    "type": "经络",
+    "title": "足阳明胃经",
+    "subtitle": "十二经脉之一",
+    "summary": "经络条目以循行概览、常用腧穴、经典出处和可视化路径为核心，避免将图示简化为自助治疗说明。",
+    "source": "《灵枢》及针灸学教材体系",
+    "tags": [
+      "经络",
+      "胃经",
+      "针灸"
+    ],
+    "relations": [
+      "point-zusanli",
+      "classic-huangdi",
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "point-zusanli",
+    "type": "穴",
+    "title": "足三里",
+    "subtitle": "足阳明胃经常用腧穴",
+    "summary": "腧穴知识页展示定位学习、所属经脉、经典出处与教学图示。涉及针刺操作、禁忌与治疗方案时应由专业人员处理。",
+    "source": "针灸学教材；相关经典条文",
+    "tags": [
+      "穴位",
+      "胃经",
+      "针灸"
+    ],
+    "relations": [
+      "meridian-stomach",
+      "classic-huangdi",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典"
+  },
+  {
+    "id": "method-bazheng",
+    "type": "法",
+    "title": "八纲辨证",
+    "subtitle": "阴阳、表里、寒热、虚实的辨证框架",
+    "summary": "八纲可作为初学者理解辨证的总框架。产品中通过对比卡片、案例片段和术语关系帮助建立结构化认知。",
+    "source": "中医诊断学教材体系",
+    "tags": [
+      "辨证",
+      "诊断学",
+      "八纲"
+    ],
+    "relations": [
+      "theory-yinyang"
+    ],
+    "confidence": "教材"
+  },
+  {
+    "id": "concept-qi-blood",
+    "type": "理",
+    "title": "气血津液",
+    "subtitle": "理解人体功能与物质基础的重要知识组",
+    "summary": "建议以“概念定义—生理联系—病理变化—相关脏腑”四层结构学习，并与藏象和辨证框架互相连接。",
+    "source": "中医基础理论教材体系",
+    "tags": [
+      "气",
+      "血",
+      "津液"
+    ],
+    "relations": [
+      "theory-zangxiang",
+      "method-bazheng"
+    ],
+    "confidence": "教材"
+  },
+  {
+    "id": "case-learning",
+    "type": "案",
+    "title": "医案怎么读",
+    "subtitle": "从结果记忆转向辨证过程复盘",
+    "summary": "阅读医案时先区分主诉、四诊信息、辨证、治法、方药与转归，再比较不同医家在同类问题上的推理路径。",
+    "source": "岐黄知境编辑部学习方法卡",
+    "tags": [
+      "医案",
+      "学习方法"
+    ],
+    "relations": [
+      "method-bazheng",
+      "classic-shanghan"
+    ],
+    "confidence": "编辑整理"
+  },
+  {
+    "id": "classic-jingui",
+    "type": "经",
+    "title": "金匮要略",
+    "subtitle": "杂病辨治与方证学习的重要经典",
+    "summary": "《金匮要略》是张仲景学术体系的重要组成部分，产品以篇章、方剂和知识关系作为学习入口，不把古代条文直接转换为个人诊疗建议。",
+    "source": "张仲景《金匮要略》通行整理本",
+    "tags": [
+      "经典",
+      "张仲景",
+      "方证"
+    ],
+    "relations": [
+      "person-zhangzhongjing",
+      "formula-guizhi"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "classic-shennong",
+    "type": "经",
+    "title": "神农本草经",
+    "subtitle": "早期本草学代表性经典",
+    "summary": "《神农本草经》是早期本草知识的重要文献。图鉴中的传统药性信息应区分古籍记载、后世整理与现代药学资料。",
+    "source": "《神农本草经》通行整理本",
+    "tags": [
+      "经典",
+      "本草"
+    ],
+    "relations": [
+      "herb-guizhi",
+      "herb-baishao",
+      "herb-chaihu"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "classic-nanjing",
+    "type": "经",
+    "title": "难经",
+    "subtitle": "中医基础理论与诊法文献之一",
+    "summary": "《难经》围绕脉法、经络、脏腑等问题形成问答式论述，是理解后世中医理论史的重要文献入口。",
+    "source": "《难经》通行整理本",
+    "tags": [
+      "经典",
+      "经络",
+      "诊法"
+    ],
+    "relations": [
+      "theory-zangxiang",
+      "method-four-diagnostics"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "classic-qianjin",
+    "type": "经",
+    "title": "千金方",
+    "subtitle": "唐代医学文献代表之一",
+    "summary": "《千金方》体现唐代医学知识、方药与临证经验的系统整理，适合放在古籍时间轴中理解其历史位置。",
+    "source": "孙思邈《千金方》相关通行整理本",
+    "tags": [
+      "经典",
+      "唐代",
+      "孙思邈"
+    ],
+    "relations": [
+      "person-sunsimiao"
+    ],
+    "confidence": "经典/整理本"
+  },
+  {
+    "id": "classic-bencao",
+    "type": "经",
+    "title": "本草纲目",
+    "subtitle": "明代本草学代表性著作",
+    "summary": "《本草纲目》对本草资料进行了大规模整理。数字图鉴以来源与关联关系辅助学习，不直接提供个人用药决策。",
+    "source": "李时珍《本草纲目》通行整理本",
+    "tags": [
+      "经典",
+      "本草",
+      "李时珍"
+    ],
+    "relations": [
+      "person-lishizhen",
+      "classic-shennong"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "classic-wenbing",
+    "type": "经",
+    "title": "温病条辨",
+    "subtitle": "温病学代表性著作之一",
+    "summary": "《温病条辨》以温病辨治为主题，是清代温病学知识体系的重要学习入口。",
+    "source": "吴鞠通《温病条辨》通行整理本",
+    "tags": [
+      "经典",
+      "温病"
+    ],
+    "relations": [
+      "method-weiying"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "person-sunsimiao",
+    "type": "人",
+    "title": "孙思邈",
+    "subtitle": "唐代医家",
+    "summary": "孙思邈的医学著述在中国医学史上具有重要位置，产品通过人物—典籍—时代关系进行展示。",
+    "source": "中国医学史教材；《千金方》整理资料",
+    "tags": [
+      "医家",
+      "唐代"
+    ],
+    "relations": [
+      "classic-qianjin"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "person-lishizhen",
+    "type": "人",
+    "title": "李时珍",
+    "subtitle": "明代医药学家",
+    "summary": "李时珍与《本草纲目》构成本草知识史中的重要人物—著作关系。",
+    "source": "中国医学史教材；《本草纲目》整理资料",
+    "tags": [
+      "医家",
+      "明代",
+      "本草"
+    ],
+    "relations": [
+      "classic-bencao"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "person-huatuo",
+    "type": "人",
+    "title": "华佗",
+    "subtitle": "东汉医家",
+    "summary": "华佗是中国医学史中的重要医家，相关内容在产品中以医学史与文献学习方式呈现。",
+    "source": "中国医学史教材及相关史料整理",
+    "tags": [
+      "医家",
+      "东汉"
+    ],
+    "relations": [],
+    "confidence": "医学史资料"
+  },
+  {
+    "id": "person-yetianshi",
+    "type": "人",
+    "title": "叶天士",
+    "subtitle": "清代温病学代表医家之一",
+    "summary": "叶天士在温病学发展史上具有重要影响，适合与卫气营血等知识框架关联学习。",
+    "source": "中国医学史与温病学教材",
+    "tags": [
+      "医家",
+      "温病"
+    ],
+    "relations": [
+      "method-weiying"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "theory-jingluo",
+    "type": "理",
+    "title": "经络理论",
+    "subtitle": "理解经脉与腧穴关系的基础框架",
+    "summary": "经络理论用于组织经脉、络脉与腧穴等知识。数字经络页强调空间关系与来源学习，不作为个人治疗取穴指南。",
+    "source": "《黄帝内经》相关篇章；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "基础理论"
+    ],
+    "relations": [
+      "classic-huangdi",
+      "meridian-stomach"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "concept-qi",
+    "type": "理",
+    "title": "气",
+    "subtitle": "中医基础理论中的重要概念",
+    "summary": "气在中医理论中用于描述生命活动相关的功能与运动变化。学习时应放回脏腑、气血津液等关系中理解。",
+    "source": "中医基础理论教材；《黄帝内经》相关篇章",
+    "tags": [
+      "气",
+      "基础理论"
+    ],
+    "relations": [
+      "concept-qi-blood",
+      "theory-zangxiang"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "concept-blood",
+    "type": "理",
+    "title": "血",
+    "subtitle": "气血津液体系中的重要概念",
+    "summary": "血常与气、津液、脏腑等共同构成中医基础理论的关系网络。",
+    "source": "中医基础理论教材",
+    "tags": [
+      "血",
+      "气血津液"
+    ],
+    "relations": [
+      "concept-qi-blood",
+      "concept-qi"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "concept-jinye",
+    "type": "理",
+    "title": "津液",
+    "subtitle": "体液相关理论概念",
+    "summary": "津液是中医气血津液理论中的重要组成部分，常与脏腑功能和病机知识共同学习。",
+    "source": "中医基础理论教材",
+    "tags": [
+      "津液",
+      "气血津液"
+    ],
+    "relations": [
+      "concept-qi-blood",
+      "theory-zangxiang"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "method-four-diagnostics",
+    "type": "法",
+    "title": "四诊",
+    "subtitle": "望闻问切的诊察知识框架",
+    "summary": "四诊是中医诊察信息获取的传统框架。产品用于知识学习与历史理论理解，不据此自动给用户作疾病诊断。",
+    "source": "中医诊断学教材",
+    "tags": [
+      "诊法",
+      "望闻问切"
+    ],
+    "relations": [
+      "method-bazheng",
+      "classic-nanjing"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "method-six-channel",
+    "type": "法",
+    "title": "六经辨证",
+    "subtitle": "《伤寒论》相关辨证学习框架",
+    "summary": "六经辨证是学习《伤寒论》体系的重要框架之一，应结合条文、方证与历代注释理解。",
+    "source": "《伤寒论》；中医诊断学相关教材",
+    "tags": [
+      "辨证",
+      "六经"
+    ],
+    "relations": [
+      "classic-shanghan",
+      "formula-guizhi",
+      "formula-xiaochaihu"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "method-weiying",
+    "type": "法",
+    "title": "卫气营血辨证",
+    "subtitle": "温病学常用辨证框架之一",
+    "summary": "卫气营血辨证用于温病学知识学习，适合与温病经典和医家关系共同理解。",
+    "source": "温病学教材及相关经典整理",
+    "tags": [
+      "辨证",
+      "温病"
+    ],
+    "relations": [
+      "classic-wenbing",
+      "person-yetianshi"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "method-sanjiao",
+    "type": "法",
+    "title": "三焦辨证",
+    "subtitle": "温病学知识框架之一",
+    "summary": "三焦辨证是温病学中的辨证框架之一，产品以理论史和知识关系方式展示。",
+    "source": "温病学教材",
+    "tags": [
+      "辨证",
+      "温病"
+    ],
+    "relations": [
+      "classic-wenbing"
+    ],
+    "confidence": "教材/经典可追溯"
+  },
+  {
+    "id": "formula-mahuang",
+    "type": "方",
+    "title": "麻黄汤",
+    "subtitle": "《伤寒论》代表方之一",
+    "summary": "麻黄汤作为经典方剂条目，产品展示其文献出处、组成关系和方证学习线索，不根据个人症状自动推荐服用。",
+    "source": "《伤寒论》",
+    "tags": [
+      "方剂",
+      "经方"
+    ],
+    "relations": [
+      "classic-shanghan",
+      "herb-gancao"
+    ],
+    "confidence": "经典原文"
+  },
+  {
+    "id": "formula-sijunzi",
+    "type": "方",
+    "title": "四君子汤",
+    "subtitle": "传统方剂学习条目",
+    "summary": "四君子汤在方剂学中常作为基础方剂学习。产品聚焦组成、理论关系与历史来源，不输出个体剂量。",
+    "source": "方剂学教材及历代方书整理",
+    "tags": [
+      "方剂",
+      "方剂学"
+    ],
+    "relations": [
+      "herb-renshen",
+      "herb-fuling",
+      "herb-baizhu",
+      "herb-gancao"
+    ],
+    "confidence": "教材/方书"
+  },
+  {
+    "id": "formula-liuwei",
+    "type": "方",
+    "title": "六味地黄丸",
+    "subtitle": "传统方剂学习条目",
+    "summary": "六味地黄丸是方剂学中的常见学习条目，产品展示方剂结构、历史来源和关联知识，不提供个人用药建议。",
+    "source": "方剂学教材及历代方书整理",
+    "tags": [
+      "方剂",
+      "方剂学"
+    ],
+    "relations": [
+      "concept-qi-blood"
+    ],
+    "confidence": "教材/方书"
+  },
+  {
+    "id": "formula-yinqiao",
+    "type": "方",
+    "title": "银翘散",
+    "subtitle": "温病方剂学习条目",
+    "summary": "银翘散在温病学与方剂学中常作为学习条目，可沿经典、药物和理论关系进行探索。",
+    "source": "方剂学教材；温病相关文献整理",
+    "tags": [
+      "方剂",
+      "温病"
+    ],
+    "relations": [
+      "classic-wenbing",
+      "herb-bohe"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "herb-gancao",
+    "type": "药",
+    "title": "甘草",
+    "subtitle": "本草数字图鉴 · 甘 · 平",
+    "summary": "甘草条目以传统性味“甘 · 平”、归经“心、肺、脾、胃”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "甘草"
+    ],
+    "relations": [
+      "formula-guizhi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-shengjiang",
+    "type": "药",
+    "title": "生姜",
+    "subtitle": "本草数字图鉴 · 辛 · 微温",
+    "summary": "生姜条目以传统性味“辛 · 微温”、归经“肺、脾、胃”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "生姜"
+    ],
+    "relations": [
+      "formula-guizhi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-dazao",
+    "type": "药",
+    "title": "大枣",
+    "subtitle": "本草数字图鉴 · 甘 · 温",
+    "summary": "大枣条目以传统性味“甘 · 温”、归经“脾、胃、心”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "大枣"
+    ],
+    "relations": [
+      "formula-guizhi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-renshen",
+    "type": "药",
+    "title": "人参",
+    "subtitle": "本草数字图鉴 · 甘 · 微苦 · 微温",
+    "summary": "人参条目以传统性味“甘 · 微苦 · 微温”、归经“脾、肺、心、肾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "人参"
+    ],
+    "relations": [
+      "formula-sijunzi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-huangqi",
+    "type": "药",
+    "title": "黄芪",
+    "subtitle": "本草数字图鉴 · 甘 · 微温",
+    "summary": "黄芪条目以传统性味“甘 · 微温”、归经“脾、肺”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "黄芪"
+    ],
+    "relations": [
+      "concept-qi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-huanglian",
+    "type": "药",
+    "title": "黄连",
+    "subtitle": "本草数字图鉴 · 苦 · 寒",
+    "summary": "黄连条目以传统性味“苦 · 寒”、归经“心、脾、胃、肝、胆、大肠”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "黄连"
+    ],
+    "relations": [
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-danggui",
+    "type": "药",
+    "title": "当归",
+    "subtitle": "本草数字图鉴 · 甘 · 辛 · 温",
+    "summary": "当归条目以传统性味“甘 · 辛 · 温”、归经“肝、心、脾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "当归"
+    ],
+    "relations": [
+      "concept-blood",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-chuanxiong",
+    "type": "药",
+    "title": "川芎",
+    "subtitle": "本草数字图鉴 · 辛 · 温",
+    "summary": "川芎条目以传统性味“辛 · 温”、归经“肝、胆、心包”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "川芎"
+    ],
+    "relations": [
+      "concept-blood",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-fuling",
+    "type": "药",
+    "title": "茯苓",
+    "subtitle": "本草数字图鉴 · 甘 · 淡 · 平",
+    "summary": "茯苓条目以传统性味“甘 · 淡 · 平”、归经“心、肺、脾、肾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "茯苓"
+    ],
+    "relations": [
+      "formula-sijunzi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-baizhu",
+    "type": "药",
+    "title": "白术",
+    "subtitle": "本草数字图鉴 · 苦 · 甘 · 温",
+    "summary": "白术条目以传统性味“苦 · 甘 · 温”、归经“脾、胃”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "白术"
+    ],
+    "relations": [
+      "formula-sijunzi",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-banxia",
+    "type": "药",
+    "title": "半夏",
+    "subtitle": "本草数字图鉴 · 辛 · 温",
+    "summary": "半夏条目以传统性味“辛 · 温”、归经“脾、胃、肺”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "半夏"
+    ],
+    "relations": [
+      "theory-zangxiang",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-chenpi",
+    "type": "药",
+    "title": "陈皮",
+    "subtitle": "本草数字图鉴 · 苦 · 辛 · 温",
+    "summary": "陈皮条目以传统性味“苦 · 辛 · 温”、归经“肺、脾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "陈皮"
+    ],
+    "relations": [
+      "theory-zangxiang",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-bohe",
+    "type": "药",
+    "title": "薄荷",
+    "subtitle": "本草数字图鉴 · 辛 · 凉",
+    "summary": "薄荷条目以传统性味“辛 · 凉”、归经“肺、肝”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "薄荷"
+    ],
+    "relations": [
+      "formula-yinqiao",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-juhua",
+    "type": "药",
+    "title": "菊花",
+    "subtitle": "本草数字图鉴 · 甘 · 苦 · 微寒",
+    "summary": "菊花条目以传统性味“甘 · 苦 · 微寒”、归经“肺、肝”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "菊花"
+    ],
+    "relations": [
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-gouqizi",
+    "type": "药",
+    "title": "枸杞子",
+    "subtitle": "本草数字图鉴 · 甘 · 平",
+    "summary": "枸杞子条目以传统性味“甘 · 平”、归经“肝、肾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "枸杞子"
+    ],
+    "relations": [
+      "classic-bencao",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-maidong",
+    "type": "药",
+    "title": "麦冬",
+    "subtitle": "本草数字图鉴 · 甘 · 微苦 · 微寒",
+    "summary": "麦冬条目以传统性味“甘 · 微苦 · 微寒”、归经“心、肺、胃”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "麦冬"
+    ],
+    "relations": [
+      "concept-jinye",
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "herb-wuweizi",
+    "type": "药",
+    "title": "五味子",
+    "subtitle": "本草数字图鉴 · 酸 · 甘 · 温",
+    "summary": "五味子条目以传统性味“酸 · 甘 · 温”、归经“肺、心、肾”及文献来源作为学习字段，并与相关理论或方剂建立关系；不直接转换为个人用药指令。",
+    "source": "历代本草、现行中药学教材与规范资料整理",
+    "tags": [
+      "本草",
+      "五味子"
+    ],
+    "relations": [
+      "classic-shennong"
+    ],
+    "confidence": "本草/教材"
+  },
+  {
+    "id": "meridian-lung",
+    "type": "经络",
+    "title": "手太阴肺经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手太阴肺经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手太阴肺经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-largeintestine",
+    "type": "经络",
+    "title": "手阳明大肠经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手阳明大肠经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手阳明大肠经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-spleen",
+    "type": "经络",
+    "title": "足太阴脾经",
+    "subtitle": "经络云图知识节点",
+    "summary": "足太阴脾经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "足太阴脾经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-heart",
+    "type": "经络",
+    "title": "手少阴心经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手少阴心经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手少阴心经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-smallintestine",
+    "type": "经络",
+    "title": "手太阳小肠经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手太阳小肠经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手太阳小肠经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-bladder",
+    "type": "经络",
+    "title": "足太阳膀胱经",
+    "subtitle": "经络云图知识节点",
+    "summary": "足太阳膀胱经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "足太阳膀胱经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-kidney",
+    "type": "经络",
+    "title": "足少阴肾经",
+    "subtitle": "经络云图知识节点",
+    "summary": "足少阴肾经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "足少阴肾经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-pericardium",
+    "type": "经络",
+    "title": "手厥阴心包经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手厥阴心包经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手厥阴心包经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-sanjiao",
+    "type": "经络",
+    "title": "手少阳三焦经",
+    "subtitle": "经络云图知识节点",
+    "summary": "手少阳三焦经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "手少阳三焦经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-gallbladder",
+    "type": "经络",
+    "title": "足少阳胆经",
+    "subtitle": "经络云图知识节点",
+    "summary": "足少阳胆经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "足少阳胆经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-liver",
+    "type": "经络",
+    "title": "足厥阴肝经",
+    "subtitle": "经络云图知识节点",
+    "summary": "足厥阴肝经作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "足厥阴肝经"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-du",
+    "type": "经络",
+    "title": "督脉",
+    "subtitle": "经络云图知识节点",
+    "summary": "督脉作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "督脉"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "meridian-ren",
+    "type": "经络",
+    "title": "任脉",
+    "subtitle": "经络云图知识节点",
+    "summary": "任脉作为经络知识节点，用于连接人体空间、相关腧穴与经典/教材来源。界面中的位置提示仅供学习，不构成治疗取穴指导。",
+    "source": "《灵枢·经脉》相关内容；经络腧穴学教材",
+    "tags": [
+      "经络",
+      "任脉"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "经典/教材"
+  },
+  {
+    "id": "point-baihui",
+    "type": "穴",
+    "title": "百会",
+    "subtitle": "经络云图 · 头顶部",
+    "summary": "百会在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "百会"
+    ],
+    "relations": [
+      "meridian-du",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-yintang",
+    "type": "穴",
+    "title": "印堂",
+    "subtitle": "经络云图 · 两眉之间",
+    "summary": "印堂在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "印堂"
+    ],
+    "relations": [
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-fengchi",
+    "type": "穴",
+    "title": "风池",
+    "subtitle": "经络云图 · 项后枕骨下",
+    "summary": "风池在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "风池"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-jianjing",
+    "type": "穴",
+    "title": "肩井",
+    "subtitle": "经络云图 · 肩上部",
+    "summary": "肩井在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "肩井"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-quchi",
+    "type": "穴",
+    "title": "曲池",
+    "subtitle": "经络云图 · 肘横纹外侧",
+    "summary": "曲池在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "曲池"
+    ],
+    "relations": [
+      "meridian-largeintestine",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-hegu",
+    "type": "穴",
+    "title": "合谷",
+    "subtitle": "经络云图 · 手背虎口区域",
+    "summary": "合谷在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "合谷"
+    ],
+    "relations": [
+      "meridian-largeintestine",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-neiguan",
+    "type": "穴",
+    "title": "内关",
+    "subtitle": "经络云图 · 前臂掌侧",
+    "summary": "内关在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "内关"
+    ],
+    "relations": [
+      "meridian-pericardium",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-waiguan",
+    "type": "穴",
+    "title": "外关",
+    "subtitle": "经络云图 · 前臂背侧",
+    "summary": "外关在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "外关"
+    ],
+    "relations": [
+      "meridian-sanjiao",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-shenmen",
+    "type": "穴",
+    "title": "神门",
+    "subtitle": "经络云图 · 腕横纹尺侧",
+    "summary": "神门在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "神门"
+    ],
+    "relations": [
+      "meridian-heart",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-shanzhong",
+    "type": "穴",
+    "title": "膻中",
+    "subtitle": "经络云图 · 前胸正中",
+    "summary": "膻中在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "膻中"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-zhongwan",
+    "type": "穴",
+    "title": "中脘",
+    "subtitle": "经络云图 · 上腹部正中",
+    "summary": "中脘在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "中脘"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-guanyuan",
+    "type": "穴",
+    "title": "关元",
+    "subtitle": "经络云图 · 下腹部正中",
+    "summary": "关元在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "关元"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-qihai",
+    "type": "穴",
+    "title": "气海",
+    "subtitle": "经络云图 · 下腹部正中",
+    "summary": "气海在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "气海"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-yanglingquan",
+    "type": "穴",
+    "title": "阳陵泉",
+    "subtitle": "经络云图 · 小腿外侧",
+    "summary": "阳陵泉在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "阳陵泉"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-yinlingquan",
+    "type": "穴",
+    "title": "阴陵泉",
+    "subtitle": "经络云图 · 小腿内侧",
+    "summary": "阴陵泉在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "阴陵泉"
+    ],
+    "relations": [
+      "meridian-spleen",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-sanyinjiao",
+    "type": "穴",
+    "title": "三阴交",
+    "subtitle": "经络云图 · 小腿内侧",
+    "summary": "三阴交在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "三阴交"
+    ],
+    "relations": [
+      "meridian-spleen",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-taichong",
+    "type": "穴",
+    "title": "太冲",
+    "subtitle": "经络云图 · 足背",
+    "summary": "太冲在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "太冲"
+    ],
+    "relations": [
+      "meridian-liver",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-yongquan",
+    "type": "穴",
+    "title": "涌泉",
+    "subtitle": "经络云图 · 足底前部",
+    "summary": "涌泉在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "涌泉"
+    ],
+    "relations": [
+      "meridian-kidney",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-taixi",
+    "type": "穴",
+    "title": "太溪",
+    "subtitle": "经络云图 · 踝区内侧",
+    "summary": "太溪在经络云图中用于学习人体位置、所属经脉与知识来源。产品不根据个人症状自动给出治疗取穴建议。",
+    "source": "经络腧穴学教材及相关经典整理",
+    "tags": [
+      "腧穴",
+      "太溪"
+    ],
+    "relations": [
+      "meridian-kidney",
+      "theory-jingluo"
+    ],
+    "confidence": "教材/经典整理"
+  }
+]
