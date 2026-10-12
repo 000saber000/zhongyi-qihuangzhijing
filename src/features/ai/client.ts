@@ -13,6 +13,7 @@ export async function streamChat(token:string,messages:Message[],contextId:strin
   if(type==='error')throw new Error(typeof data.message==='string'?data.message:'回答生成失败，请重试。');
   if(type==='meta'&&Array.isArray(data.sources))onEvent({type:'meta',sources:data.sources,remaining:data.remaining});
   if(type==='delta'&&typeof data.text==='string')onEvent({type:'delta',text:data.text});
+  if(type==='progress'&&data.stage==='thinking')onEvent({type:'progress',stage:'thinking'});
   if(type==='done'){completed=true;onEvent({type:'done'});}
  };
  try{

@@ -79,3 +79,15 @@ test('failed shutdown and clear retain saved state and show retryable error',asy
  await page.getByRole('button',{name:'模型设置',exact:true}).click();await page.getByRole('button',{name:'关闭 AI',exact:true}).click();await expect(page.getByText('关闭失败，请重试。',{exact:true})).toBeVisible();await expect(page.getByLabel('开启学习助手',{exact:true})).toBeChecked();await expect(page.getByRole('button',{name:'关闭 AI',exact:true})).toBeEnabled();
  page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();await expect(page.getByText('模型设置已在其他窗口更新，请重新载入。',{exact:true})).toBeVisible();await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('deepseek-chat');await expect(page.getByText('密钥已保存，不会回显。',{exact:true})).toBeVisible();await expect(page.getByText('模型配置已清空，学习助手已关闭。',{exact:true})).toHaveCount(0);
 });
+
+test('thinking progress is visible and a classified failure stops generation without logout',async({page})=>{
+ await page.addInitScript(()=>{const original=window.fetch.bind(window);window.fetch=async(input,init)=>{
+  if(String(input).endsWith('/api/ai/chat'))return new Response(new ReadableStream({start(controller){
+   const encoder=new TextEncoder();controller.enqueue(encoder.encode('event: progress\ndata: {"stage":"thinking"}\n\n'));
+   setTimeout(()=>{controller.enqueue(encoder.encode('event: error\ndata: {"code":"AI_OUTPUT_LIMIT","message":"模型已达到单次输出上限，尚未生成正文。"}\n\n'));controller.close();},1500);
+  }}),{headers:{'Content-Type':'text/event-stream'}});return original(input,init);
+ };});
+ const username=await login(page);await mockStatus(page);await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});
+ await dialog.getByLabel('向岐黄提问',{exact:true}).fill('解释阴阳');await dialog.getByLabel('发送提问',{exact:true}).click();await expect(dialog.getByText('模型正在思考，尚未开始生成正文…',{exact:true})).toBeVisible();await expect(dialog.getByRole('alert')).toHaveText('模型已达到单次输出上限，尚未生成正文。');await expect(dialog.getByLabel('停止生成',{exact:true})).toHaveCount(0);await expect(dialog.getByRole('button',{name:'重试回答',exact:true})).toBeVisible();
+ await dialog.getByLabel('关闭学习助手',{exact:true}).click();await expect(page.getByText('账号：'+username,{exact:true})).toBeVisible();
+});

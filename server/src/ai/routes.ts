@@ -4,7 +4,7 @@ import {HttpError,invalid} from '../errors';
 import {owner,loadConfig,saveConfig,stopConfig,publicConfig,decrypt,keyBytes,type AiOptions} from './config';
 import {retrieve,prompt} from './retrieval';
 import {reserve,release,usage} from './quota';
-import {callModel,streamModel,type Message} from './provider';
+import {callModel,streamModel,ProviderError,emptyAnswer,type Message} from './provider';
 function input(body:any):{messages:Message[];contextId?:string}{
  if(!body||!Array.isArray(body.messages)||body.messages.length<1||body.messages.length>8)throw invalid();
  let size=0;for(let i=0;i<body.messages.length;i++){
@@ -15,6 +15,10 @@ function input(body:any):{messages:Message[];contextId?:string}{
  return {messages:body.messages.map((m:Message)=>({role:m.role,content:m.content})),contextId:body.contextId};
 }
 function event(res:Response,type:string,data:unknown){if(!res.destroyed)res.write(`event: ${type}\ndata: ${JSON.stringify(data)}\n\n`);}
+function diagnose(stage:'chat'|'test',provider:string,error:unknown){
+ // Never log raw exceptions or upstream bodies: they may contain keys or prompts.
+ console.warn('AI model request failed',{stage,provider,code:error instanceof ProviderError?error.code:'AI_UNAVAILABLE',...(error instanceof ProviderError&&error.upstreamStatus?{upstreamStatus:error.upstreamStatus}:{})});
+}
 export function installAiRoutes(app:Express,pool:Pool,options:AiOptions={}){
  const settings={...options,encryptionKey:options.encryptionKey??process.env.AI_CONFIG_ENCRYPTION_KEY},fetcher=options.fetch??globalThis.fetch;
  const active=new Map<AbortController,number>();
@@ -45,9 +49,9 @@ export function installAiRoutes(app:Express,pool:Pool,options:AiOptions={}){
   if(limited.rows[0].attempts>10)throw new HttpError(429,'RATE_LIMITED','连接测试过于频繁，请稍后再试。');
   const config=await loadConfig(pool),apiKey=decrypt(config,settings),controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
   const close=()=>{if(!res.writableEnded)controller.abort();};res.on('close',close);
-  try{const response=await callModel(config,apiKey,[{role:'user',content:'请回答：连接成功。'}],controller.signal,fetcher,false);const data:any=await response.json();if(typeof data.choices?.[0]?.message?.content!=='string'||!data.choices[0].message.content.trim())throw new Error('No text');
+  try{const response=await callModel(config,apiKey,[{role:'user',content:'请回答：连接成功。'}],controller.signal,fetcher,false);const data:any=await response.json();if(typeof data.choices?.[0]?.message?.content!=='string'||!data.choices[0].message.content.trim())throw emptyAnswer(data.choices?.[0]?.finish_reason==='length');
    await pool.query("INSERT INTO admin_audit(actor_id,actor_username,target_id,target_username,action) VALUES($1,$2,$1,$2,'ai_connection_test')",[user.id,user.username]);res.json({ok:true});
-  }catch{throw new HttpError(502,'AI_TEST_FAILED','连接测试失败，请检查厂商、模型名称与密钥后重试。');}finally{clearTimeout(timer);res.off('close',close);}
+  }catch(error){diagnose('test',config.provider,error);if(error instanceof ProviderError)throw error;throw new HttpError(502,'AI_TEST_FAILED',controller.signal.aborted?'连接测试超时，请稍后重试。':'连接测试失败，请检查厂商、模型名称与密钥后重试。');}finally{clearTimeout(timer);res.off('close',close);}
  });
  app.get('/api/ai/status',async(_req,res)=>{
   const config=await loadConfig(pool),quota=await usage(pool,res.locals.user.id,config);
@@ -69,12 +73,13 @@ export function installAiRoutes(app:Express,pool:Pool,options:AiOptions={}){
    }
    res.setHeader('Content-Type','text/event-stream; charset=utf-8');res.setHeader('Cache-Control','no-store, no-transform');res.setHeader('X-Accel-Buffering','no');res.flushHeaders();
    event(res,'meta',{sources:entries.map(({id,title,source,confidence})=>({id,title,source,confidence})),remaining:reservation.remaining});
-   await streamModel(config,apiKey,[{role:'system',content:prompt(entries)},...messages],controller.signal,async text=>{if(res.destroyed||controller.signal.aborted)throw new Error('Disconnected');emitted=true;event(res,'delta',{text});},fetcher);
+   await streamModel(config,apiKey,[{role:'system',content:prompt(entries)},...messages],controller.signal,async text=>{if(res.destroyed||controller.signal.aborted)throw new Error('Disconnected');emitted=true;event(res,'delta',{text});},fetcher,async()=>{event(res,'progress',{stage:'thinking'});});
    event(res,'done',{ok:true});
-  }catch{
+  }catch(error){
+   if(!controller.signal.aborted)diagnose('chat',config.provider,error);
    if(!res.destroyed){
-    const message=controller.signal.reason instanceof HttpError?controller.signal.reason.message:controller.signal.aborted?'回答生成超时，请稍后重试。':'模型服务暂时不可用，请重试或联系管理员检查配置。';
-    if(res.headersSent)event(res,'error',{message});
+    const message=controller.signal.reason instanceof HttpError?controller.signal.reason.message:controller.signal.aborted?'回答生成超时，请稍后重试。':error instanceof ProviderError?error.message:'模型服务暂时不可用，请重试或联系管理员检查配置。';
+    if(res.headersSent)event(res,'error',{code:error instanceof ProviderError?error.code:'AI_UNAVAILABLE',message});
     else{try{await settle();}catch{console.error('AI quota release unavailable');}res.status(503).json({error:{code:'AI_UNAVAILABLE',message}});}
    }
   }
