@@ -14,9 +14,22 @@ export function keyBytes(value:string|undefined):Buffer|null{
 }
 export function publicConfig(config:ModelConfig,options:AiOptions){const {encryptedKey,...safe}=config;return {...safe,hasKey:Boolean(encryptedKey),encryptionReady:Boolean(keyBytes(options.encryptionKey))};}
 export function owner(user:PublicUser){return user.role==='admin'&&user.username.toLowerCase()==='aidejiasinuo';}
+function fromRow(row:any):ModelConfig{
+ return {provider:row.provider,model:row.model,enabled:row.enabled,dailyLimit:row.daily_limit,globalDailyLimit:row.global_daily_limit,maxTokens:row.max_tokens,version:row.version,encryptedKey:row.encrypted_key};
+}
 export async function loadConfig(pool:Pool):Promise<ModelConfig>{
- const {rows}=await pool.query('SELECT * FROM ai_settings WHERE id=1');const row=rows[0];
- return row?{provider:row.provider,model:row.model,enabled:row.enabled,dailyLimit:row.daily_limit,globalDailyLimit:row.global_daily_limit,maxTokens:row.max_tokens,version:row.version,encryptedKey:row.encrypted_key}:{...defaults};
+ const {rows}=await pool.query('SELECT * FROM ai_settings WHERE id=1');return rows[0]?fromRow(rows[0]):{...defaults};
+}
+export async function stopConfig(pool:Pool,version:unknown,user:PublicUser,clear=false):Promise<ModelConfig>{
+ if(!Number.isSafeInteger(version)||(version as number)<0||(version as number)>2147483646)throw invalid();
+ return transaction(pool,async db=>{
+  await db.query('INSERT INTO ai_settings(id) VALUES(1) ON CONFLICT DO NOTHING');
+  const current=(await db.query('SELECT version FROM ai_settings WHERE id=1 FOR UPDATE')).rows[0];
+  if(current.version!==version)throw new HttpError(409,'VERSION_CONFLICT','模型设置已在其他窗口更新，请重新载入。');
+  const result=await db.query("UPDATE ai_settings SET enabled=false,encrypted_key=CASE WHEN $1 THEN NULL ELSE encrypted_key END,model=CASE WHEN $1 THEN '' ELSE model END,version=version+1,updated_by=$2,updated_at=now() WHERE id=1 RETURNING *",[clear,user.id]);
+  await db.query("INSERT INTO admin_audit(actor_id,actor_username,target_id,target_username,action) VALUES($1,$2,$1,$2,'ai_config_update')",[user.id,user.username]);
+  return fromRow(result.rows[0]);
+ });
 }
 function encrypt(value:string,key:Buffer){const iv=randomBytes(12),cipher=createCipheriv('aes-256-gcm',key,iv);const bytes=Buffer.concat([cipher.update(value,'utf8'),cipher.final()]);return [iv,cipher.getAuthTag(),bytes].map(value=>value.toString('base64')).join('.');}
 export function decrypt(config:ModelConfig,options:AiOptions):string{

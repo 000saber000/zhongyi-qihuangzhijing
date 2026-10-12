@@ -59,3 +59,23 @@ test('browser accepts coalesced small stream frames over 64KB',async({page})=>{
  };});
  await login(page);await mockStatus(page);await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});await dialog.getByLabel('向岐黄提问',{exact:true}).fill('请解释');await dialog.getByLabel('发送提问',{exact:true}).click();await expect(dialog.locator('.ai-answer>p')).toHaveText('字'.repeat(2500));await expect(dialog.getByRole('button',{name:'重试回答',exact:true})).toHaveCount(0);
 });
+test('owner closes AI immediately despite empty fields or missing encryption; clear has confirmation and persists',async({page})=>{
+ await login(page,true);let state={provider:'deepseek',model:'deepseek-chat',enabled:true,dailyLimit:10,globalDailyLimit:200,maxTokens:1024,version:5,hasKey:true,encryptionReady:false};const requests:string[]=[];
+ await page.route('**/api/admin/ai',async route=>{
+  if(route.request().method()==='DELETE'){requests.push('clear');expect(route.request().postDataJSON().version).toBe(state.version);state={...state,enabled:false,hasKey:false,model:'',version:state.version+1};}
+  else if(route.request().method()==='PUT')throw new Error('Closing AI must not submit the model form');
+  await route.fulfill({json:state});
+ });
+ await page.route('**/api/admin/ai/disable',async route=>{requests.push('disable');expect(route.request().postDataJSON().version).toBe(state.version);state={...state,enabled:false,version:state.version+1};await route.fulfill({json:state});});
+ await page.getByRole('button',{name:'模型设置',exact:true}).click();await page.getByLabel('模型名称',{exact:true}).fill('');await page.getByRole('button',{name:'关闭 AI',exact:true}).click();await expect(page.getByText('学习助手已关闭，已保存的模型配置保留。',{exact:true})).toBeVisible();expect(state.hasKey).toBe(true);await expect(page.getByLabel('开启学习助手',{exact:true})).not.toBeChecked();
+ page.once('dialog',dialog=>dialog.dismiss());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();expect(requests).toEqual(['disable']);
+ page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();await expect(page.getByText('模型配置已清空，学习助手已关闭。',{exact:true})).toBeVisible();await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('');await expect(page.getByText('尚未保存密钥。',{exact:true})).toBeVisible();
+ await page.reload();await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('');await expect(page.getByRole('button',{name:'测试连接',exact:true})).toBeDisabled();expect(requests).toEqual(['disable','clear']);
+});
+test('failed shutdown and clear retain saved state and show retryable error',async({page})=>{
+ await login(page,true);const state={provider:'deepseek',model:'deepseek-chat',enabled:true,dailyLimit:10,globalDailyLimit:200,maxTokens:1024,version:5,hasKey:true,encryptionReady:true};
+ await page.route('**/api/admin/ai',route=>route.request().method()==='DELETE'?route.fulfill({status:409,json:{error:{code:'VERSION_CONFLICT',message:'模型设置已在其他窗口更新，请重新载入。'}}}):route.fulfill({json:state}));
+ await page.route('**/api/admin/ai/disable',route=>route.fulfill({status:503,json:{error:{code:'UNAVAILABLE',message:'关闭失败，请重试。'}}}));
+ await page.getByRole('button',{name:'模型设置',exact:true}).click();await page.getByRole('button',{name:'关闭 AI',exact:true}).click();await expect(page.getByText('关闭失败，请重试。',{exact:true})).toBeVisible();await expect(page.getByLabel('开启学习助手',{exact:true})).toBeChecked();await expect(page.getByRole('button',{name:'关闭 AI',exact:true})).toBeEnabled();
+ page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();await expect(page.getByText('模型设置已在其他窗口更新，请重新载入。',{exact:true})).toBeVisible();await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('deepseek-chat');await expect(page.getByText('密钥已保存，不会回显。',{exact:true})).toBeVisible();await expect(page.getByText('模型配置已清空，学习助手已关闭。',{exact:true})).toHaveCount(0);
+});
