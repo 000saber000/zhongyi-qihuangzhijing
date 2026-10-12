@@ -7,7 +7,7 @@ export const providers={deepseek:'https://api.deepseek.com/v1',qwen:'https://das
 export type Provider=keyof typeof providers;
 export type ModelConfig={provider:Provider;model:string;enabled:boolean;dailyLimit:number;globalDailyLimit:number;maxTokens:number;version:number;encryptedKey:string|null};
 export type AiOptions={encryptionKey?:string;fetch?:typeof globalThis.fetch};
-const defaults:ModelConfig={provider:'deepseek',model:'deepseek-chat',enabled:false,dailyLimit:10,globalDailyLimit:200,maxTokens:1024,version:0,encryptedKey:null};
+const defaults:ModelConfig={provider:'deepseek',model:'deepseek-flash',enabled:false,dailyLimit:10,globalDailyLimit:200,maxTokens:1024,version:0,encryptedKey:null};
 export function keyBytes(value:string|undefined):Buffer|null{
  if(!value||!/^[A-Za-z0-9+/]{43}=$/.test(value))return null;
  const key=Buffer.from(value,'base64');return key.length===32&&key.toString('base64')===value?key:null;

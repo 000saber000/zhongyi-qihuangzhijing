@@ -162,3 +162,20 @@ test('configuration read failure after quota admission returns JSON error and re
  (pool as any).query=async(...args:any[])=>{if(args[0]==='SELECT * FROM ai_settings WHERE id=1'&&++reads===2)throw new Error('private database failure');return (original as any)(...args);};
  try{const response=await fetch(base+'/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+member.token},body:JSON.stringify({messages:[{role:'user',content:'阴阳'}]})});assert.equal(response.status,503);assert.match(response.headers.get('Content-Type')??'',/application\/json/);assert.ok(!(await response.text()).includes('private database failure'));assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);assert.equal(calls.length,0);}finally{(pool as any).query=original;}
 });
+
+test('saved DeepSeek configuration reports vendor errors in chat and test, refunds and keeps settings',async()=>{
+ const saved=await configure({model:'deepseek-flash'});
+ for(const [status,code,message] of [[401,'AI_PROVIDER_AUTH','密钥'],[402,'AI_PROVIDER_BALANCE','余额'],[404,'AI_PROVIDER_MODEL','模型名称'],[429,'AI_PROVIDER_RATE_LIMIT','请求频率']] as const){
+  upstream=async()=>new Response('private vendor body '+secret,{status});
+  const result=await chat();assert.equal(result.status,200);assert.ok(result.text.includes(code));assert.ok(result.text.includes(message));assert.ok(!result.text.includes(secret));assert.ok(!result.text.includes('private vendor body'));assert.ok(!result.text.includes('event: done'));
+  const connection=await request('/api/admin/ai/test','POST',{},owner.token);assert.equal(connection.status,502);assert.equal(connection.data.error.code,code);assert.ok(!JSON.stringify(connection.data).includes(secret));
+  assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);
+ }
+ const current=await request('/api/admin/ai','GET',undefined,owner.token);assert.deepEqual(current.data,saved.data);
+});
+test('reasoning-only token limit forwards progress and error but no private thought and refunds',async()=>{
+ await configure({model:'deepseek-reasoner'});
+ upstream=async()=>new Response('data: {"choices":[{"delta":{"reasoning_content":"PRIVATE-REASONING"}}]}\n\ndata: {"choices":[{"delta":{},"finish_reason":"length"}]}\n\ndata: [DONE]\n\n');
+ const result=await chat();assert.ok(result.text.includes('event: progress'));assert.ok(result.text.includes('AI_OUTPUT_LIMIT'));assert.ok(!result.text.includes('PRIVATE-REASONING'));assert.ok(!result.text.includes('event: delta'));assert.ok(!result.text.includes('event: done'));
+ assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);
+});
