@@ -102,3 +102,63 @@ test('valid small SSE frames work when transport coalesces more than 64KB',async
  await configure({maxTokens:2048});const body=('data: {"choices":[{"delta":{"content":"字"}}]}\n\n').repeat(1600)+'data: [DONE]\n\n';upstream=async()=>new Response(body);
  const result=await chat();assert.ok(result.text.includes('event: done'));assert.equal((result.text.match(/event: delta/g)??[]).length,1600);
 });
+test('owner can disable independently of model fields and encryption, retain key, and re-enable later',async()=>{
+ const saved=await configure({dailyLimit:7});assert.equal(saved.status,200);
+ const stopped=await request('/api/admin/ai/disable','POST',{version:saved.data.version},owner.token);assert.equal(stopped.status,200);assert.equal(stopped.data.enabled,false);assert.equal(stopped.data.hasKey,true);assert.equal(stopped.data.model,'deepseek-chat');assert.equal(stopped.data.dailyLimit,7);
+ assert.equal((await chat()).status,503);assert.equal(calls.length,0);
+ const resumed=await request('/api/admin/ai','PUT',{...stopped.data,enabled:true,apiKey:''},owner.token);assert.equal(resumed.status,200);assert.equal((await chat()).status,200);
+ const other=createApp(pool,['http://localhost:5173'],{ai:{encryptionKey:'invalid'}}).listen(0,'127.0.0.1');await new Promise<void>(resolve=>other.once('listening',resolve));
+ try{const response=await fetch('http://127.0.0.1:'+(other.address() as any).port+'/api/admin/ai/disable',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+owner.token},body:JSON.stringify({version:resumed.data.version})});assert.equal(response.status,200);assert.equal((await response.json() as any).enabled,false);}finally{await new Promise<void>(resolve=>other.close(()=>resolve()));}
+});
+test('clear removes encrypted key and model, preserves quotas and usage, and prevents stale restoration',async()=>{
+ const saved=await configure({dailyLimit:7});await chat();
+ const cleared=await request('/api/admin/ai','DELETE',{version:saved.data.version},owner.token);assert.equal(cleared.status,200);assert.equal(cleared.data.enabled,false);assert.equal(cleared.data.hasKey,false);assert.equal(cleared.data.model,'');assert.equal(cleared.data.dailyLimit,7);
+ const row=(await pool.query('SELECT * FROM ai_settings')).rows[0];assert.equal(row.encrypted_key,null);assert.equal(row.model,'');assert.equal(row.version,saved.data.version+1);
+ assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,6);assert.equal((await chat()).status,503);
+ assert.equal((await request('/api/admin/ai','PUT',{...saved.data,apiKey:secret},owner.token)).status,409);
+ assert.equal((await configure()).status,200);assert.equal((await chat()).status,200);
+});
+test('disable and clear reject guests, other admins, invalid and conflicting versions',async()=>{
+ const saved=await configure();
+ for(const [path,method] of [['/api/admin/ai/disable','POST'],['/api/admin/ai','DELETE']]){
+  assert.equal((await request(path,method,{version:saved.data.version})).status,401);
+  for(const token of [member.token,otherAdmin.token])assert.equal((await request(path,method,{version:saved.data.version},token)).status,403);
+  assert.equal((await request(path,method,{version:0},owner.token)).status,409);
+  for(const version of [-1,'1',undefined])assert.equal((await request(path,method,{version},owner.token)).status,400);
+ }
+ assert.equal((await request('/api/admin/ai','GET',undefined,owner.token)).data.enabled,true);
+});
+test('disable aborts active generation before any text, refunds quota, and blocks new upstream calls',async()=>{
+ const saved=await configure();let aborted=false,entered!:()=>void;const ready=new Promise<void>(resolve=>entered=resolve);
+ upstream=async(_url,init)=>{entered();return new Promise((_resolve,reject)=>init.signal!.addEventListener('abort',()=>{aborted=true;reject(new Error('aborted'));},{once:true}));};
+ const pending=chat();await ready;const stopped=await request('/api/admin/ai/disable','POST',{version:saved.data.version},owner.token);assert.equal(stopped.status,200);const result=await pending;assert.equal(aborted,true);assert.ok(result.text.includes('学习助手已关闭'));
+ assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);assert.equal((await chat()).status,503);assert.equal(calls.length,1);
+});
+test('clear aborts active partial output and preserves already spent quota',async()=>{
+ const saved=await configure();let aborted=false;
+ upstream=async(_url,init)=>new Response(new ReadableStream({start(controller){controller.enqueue(new TextEncoder().encode('data: {"choices":[{"delta":{"content":"已生成内容"}}]}\n\n'));init.signal!.addEventListener('abort',()=>{aborted=true;controller.error(new Error('aborted'));},{once:true});}}));
+ const response=await fetch(base+'/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+member.token},body:JSON.stringify({messages:[{role:'user',content:'阴阳'}]})});const reader=response.body!.getReader();let text='';const decoder=new TextDecoder();
+ while(!text.includes('已生成内容')){const chunk=await reader.read();assert.equal(chunk.done,false);text+=decoder.decode(chunk.value);}
+ assert.equal((await request('/api/admin/ai','DELETE',{version:saved.data.version},owner.token)).status,200);
+ while(true){const chunk=await reader.read();if(chunk.done)break;text+=decoder.decode(chunk.value);}
+ assert.equal(aborted,true);assert.ok(text.includes('学习助手已关闭'));assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,9);
+});
+test('disable and clear from another API instance stop pending streams, including immediate re-enable',async()=>{
+ const other=createApp(pool,['http://localhost:5173'],{ai:{encryptionKey}}).listen(0,'127.0.0.1');await new Promise<void>(resolve=>other.once('listening',resolve));const otherUrl='http://127.0.0.1:'+(other.address() as any).port;
+ try{for(const [path,method,resume] of [['/api/admin/ai/disable','POST',false],['/api/admin/ai','DELETE',false],['/api/admin/ai/disable','POST',true]] as const){
+  const saved=await configure();let entered!:()=>void,aborted=false;const ready=new Promise<void>(resolve=>entered=resolve);
+  upstream=async(_url,init)=>{entered();return new Promise((_resolve,reject)=>init.signal!.addEventListener('abort',()=>{aborted=true;reject(new Error('aborted'));},{once:true}));};
+  const controller=new AbortController();const pending=fetch(base+'/api/ai/chat',{method:'POST',signal:controller.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+member.token},body:JSON.stringify({messages:[{role:'user',content:'阴阳'}]})}).then(response=>response.text()).catch(()=>'');
+  await ready;const response=await fetch(otherUrl+path,{method,headers:{'Content-Type':'application/json',Authorization:'Bearer '+owner.token},body:JSON.stringify({version:saved.data.version})});assert.equal(response.status,200);await response.json();
+  if(resume)assert.equal((await configure()).status,200);
+  let deadline:ReturnType<typeof setTimeout>|undefined;
+  const finished=await Promise.race([pending.then(()=>true),new Promise<boolean>(resolve=>{deadline=setTimeout(()=>resolve(false),3000);})]);clearTimeout(deadline);
+  if(!finished)controller.abort();await pending;assert.equal(finished,true,'generation must observe shutdown on the other instance');assert.equal(aborted,true);
+  assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);
+ }}finally{await new Promise<void>(resolve=>other.close(()=>resolve()));}
+});
+test('configuration read failure after quota admission returns JSON error and refunds before response',async()=>{
+ await configure();const original=pool.query.bind(pool);let reads=0;
+ (pool as any).query=async(...args:any[])=>{if(args[0]==='SELECT * FROM ai_settings WHERE id=1'&&++reads===2)throw new Error('private database failure');return (original as any)(...args);};
+ try{const response=await fetch(base+'/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+member.token},body:JSON.stringify({messages:[{role:'user',content:'阴阳'}]})});assert.equal(response.status,503);assert.match(response.headers.get('Content-Type')??'',/application\/json/);assert.ok(!(await response.text()).includes('private database failure'));assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,10);assert.equal(calls.length,0);}finally{(pool as any).query=original;}
+});
