@@ -84,8 +84,8 @@ export function useStudy(){
   }catch(cause){if(matches(id))setError(cause instanceof Error?cause.message:'登录失败，请重试。');return false;}
   finally{setAuthBusy(false);}
  };
- const logout=async()=>{
-  const session=identity.current;reset();
+ const logout=async(expectedToken?:string)=>{
+  const session=identity.current;if(expectedToken&&session?.token!==expectedToken)return;reset();
   if(session){const id=epoch.current;try{await api('/api/auth/logout',{method:'POST',token:session.token});}catch{if(matches(id))setError('已退出此浏览器，但云端会话撤销失败；该会话将在到期后失效。');}}
  };
  const saveGuest=(next:Records)=>{
