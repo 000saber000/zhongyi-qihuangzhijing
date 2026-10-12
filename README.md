@@ -52,6 +52,10 @@
 
 管理员还可以在「我的书斋 → 典籍管理」中新增和编辑典籍，保存草稿、预览，再发布到知识库。
 
+注册成员可以在每部典籍的详情页下发表评论，或通过「建议修改」提交正文、简介、出处和学习要点的修订，并附上理由或文献依据。「我的书斋 → 我的修改建议」展示审核状态与管理员说明。
+
+管理员在「典籍管理 → 修改建议审核」中比较原文与建议内容，选择采纳或拒绝。采纳只合并到草稿，预览确认后仍需手动发布；相同内容已被修改时会提示冲突，避免覆盖已有草稿。管理员也可以在典籍评论区隐藏不适当评论。
+
 ## 从哪里开始
 
 1. **初次接触中医**：打开「学习路径」，从“中医入门：建立知识框架”开始。
@@ -72,3 +76,5 @@
 Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
 
 相关参考代码采用 PolyForm Noncommercial License 1.0.0，完整条款见 [第三方许可证](third-party/SHIYUN-LICENSE.md) 与 [上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/main/LICENSE)。
+
+修改建议的文本差异展示使用 [jsdiff](https://github.com/kpdecker/jsdiff)，遵循 BSD-3-Clause，许可证见 [JSDIFF-LICENSE.txt](third-party/JSDIFF-LICENSE.txt)。

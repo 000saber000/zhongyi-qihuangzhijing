@@ -1,0 +1,11 @@
+import type {Knowledge} from '../../data/catalog';
+export type Editable=Pick<Knowledge,'summary'|'body'|'source'|'keyPoints'>;
+export type Suggestion={id:string;classicId:string;title:string;author:string;base:Partial<Editable>;changes:Partial<Editable>;reason:string;status:'pending'|'merged'|'rejected';createdAt:string;reviewedAt:string|null;reviewNote:string;mergedVersion:number|null};
+export type SuggestionPage={suggestions:Suggestion[];total:number;page:number;pageSize:number;pendingCount?:number};
+export type Comment={id:string;author:string;body:string;createdAt:string};
+export type CommentPage={comments:Comment[];total:number;page:number;pageSize:number};
+export const statusLabel={pending:'待审核',merged:'已合并草稿',rejected:'已拒绝'};
+export const fieldLabel={summary:'内容简介',body:'原文 / 正文',source:'文献出处',keyPoints:'学习要点'};
+export const displayText=(value:unknown)=>Array.isArray(value)?value.join('\n'):typeof value==='string'?value:'';
+export const contributionDate=(value:string)=>new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',dateStyle:'medium',timeStyle:'short'}).format(new Date(value));
+export const errorMessage=(error:unknown)=>error instanceof Error?error.message:'操作失败，请重试。';

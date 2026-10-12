@@ -8,6 +8,7 @@ import {publicKnowledge,adminKnowledge,publishedIds} from './knowledge';
 import {HttpError,invalid} from './errors';
 import {session,publicUser,validPassword} from './auth';
 import {installAdminRoutes} from './admin';
+import {publicComments,contributionRoutes} from './contributions';
 
 function credentials(body:unknown):{username:string;password:string}{
   if(!body || typeof body!=='object')throw invalid();
@@ -31,8 +32,10 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.vary('Origin');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type');res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE, OPTIONS');}
     if(req.method==='OPTIONS'){res.sendStatus(204);return;}next();
   });
-  app.use(express.json({limit:'256kb',strict:true}));
+  // A suggestion includes both the original and revised 50,000-character body.
+  app.use(express.json({limit:'512kb',strict:true}));
   publicKnowledge(app,pool);
+  publicComments(app,pool);
   app.get('/healthz',async(_req,res)=>{await pool.query('SELECT 1');res.json({status:'ok'});});
   const limit=async(req:Request,_res:Response,next:NextFunction)=>{
     const key=digest(req.ip??req.socket.remoteAddress??'unknown');
@@ -95,6 +98,7 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
   });
   installAdminRoutes(app,pool,limit);
   adminKnowledge(app,pool);
+  contributionRoutes(app,pool);
   app.get('/api/study',async(_req,res)=>{res.json(await study(pool,res.locals.user.id));});
   app.put('/api/bookmarks/:id',async(req,res)=>{
     if(!(await publishedIds(pool)).has(req.params.id))throw invalid();
