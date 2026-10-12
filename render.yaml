@@ -38,6 +38,8 @@ services:
       # Register the owner first; then set the existing username in the API dashboard.
       - key: INITIAL_ADMIN_USERNAME
         value: ""
+      - key: AI_CONFIG_ENCRYPTION_KEY
+        generateValue: true
       - key: DATABASE_URL
         fromDatabase:
           name: qihuang-study

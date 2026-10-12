@@ -9,6 +9,8 @@ import {HttpError,invalid} from './errors';
 import {session,publicUser,validPassword} from './auth';
 import {installAdminRoutes} from './admin';
 import {publicComments,contributionRoutes} from './contributions';
+import {installAiRoutes} from './ai/routes';
+import type {AiOptions} from './ai/config';
 
 function credentials(body:unknown):{username:string;password:string}{
   if(!body || typeof body!=='object')throw invalid();
@@ -23,7 +25,7 @@ async function study(db:Pool|PoolClient,userId:string){
   ]);
   return {bookmarks:bookmarks.rows.map(row=>row.knowledge_id as string),completed:completed.rows.map(row=>row.lesson_id as string)};
 }
-export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?:number}={}){
+export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?:number;ai?:AiOptions}={}){
   const app=express();app.disable('x-powered-by');app.set('trust proxy',options.trustProxy??false);
   app.use((req,res,next)=>{
     res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');
@@ -97,6 +99,7 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     next();
   });
   installAdminRoutes(app,pool,limit);
+  installAiRoutes(app,pool,options.ai);
   adminKnowledge(app,pool);
   contributionRoutes(app,pool);
   app.get('/api/study',async(_req,res)=>{res.json(await study(pool,res.locals.user.id));});

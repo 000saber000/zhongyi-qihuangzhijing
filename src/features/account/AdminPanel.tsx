@@ -5,7 +5,7 @@ type User={id:string;username:string;role:'user'|'admin';disabled:boolean;mustCh
 type List={users:User[];total:number;page:number;pageSize:number};
 type Audit={id:string;actorUsername:string;targetUsername:string;action:string;createdAt:string};
 type Action='disable'|'enable'|'revoke_sessions'|'reset_password'|'delete';
-const labels:Record<string,string>={bootstrap:'设置管理员',disable:'禁用账号',enable:'恢复账号',revoke_sessions:'强制退出',reset_password:'重置密码',delete:'删除账号'};
+const labels:Record<string,string>={bootstrap:'设置管理员',ai_config_update:'更新模型设置',ai_connection_test:'测试模型连接',disable:'禁用账号',enable:'恢复账号',revoke_sessions:'强制退出',reset_password:'重置密码',delete:'删除账号'};
 const confirm:Record<Action,string>={disable:'确认禁用',enable:'确认恢复',revoke_sessions:'确认强制退出',reset_password:'确认重置',delete:'确认删除'};
 const date=(value:string)=>new Date(value).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
 export default function AdminPanel({study,back}:{study:Study;back:()=>void}){
