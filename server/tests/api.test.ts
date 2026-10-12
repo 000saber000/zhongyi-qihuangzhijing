@@ -80,7 +80,7 @@ test('classic writes validate IDs, text, published relations and immutable type;
   const user=await editor(),content=classicContent('classic-versions');
   assert.equal((await request('/api/admin/classics','POST',{content},user.token)).status,201);
   assert.equal((await request('/api/admin/classics','POST',{content},user.token)).status,409);
-  for(const change of [{id:'../bad'},{type:'药'},{title:' '},{body:'x'.repeat(50001)},{relations:['does-not-exist']},{relations:['classic-versions']},{tags:[1]}]){
+  for(const change of [{id:'../bad'},{type:'全部'},{title:' '},{body:'x'.repeat(50001)},{relations:['does-not-exist']},{relations:['classic-versions']},{tags:[1]}]){
     assert.equal((await request('/api/admin/classics','POST',{content:{...classicContent('classic-invalid-'+(++serial)),...change}},user.token)).status,400);
   }
   assert.equal((await request('/api/admin/classics/classic-versions','PUT',{version:1,content:{...content,title:'新标题'}},user.token)).status,200);

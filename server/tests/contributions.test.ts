@@ -29,10 +29,10 @@ test('members comment on published classics, guests read, and administrators hid
  assert.equal((await request('/api/admin/comments/'+created.data.id,'DELETE',undefined,admin.token)).status,204);
  assert.equal((await request(path)).data.total,0);
 });
-test('rejects invalid comments, non-classics, missing and unpublished entries',async()=>{
+test('rejects invalid comments, missing and unpublished entries',async()=>{
  const admin=await account(true),member=await account(),item=await classic(admin);
  for(const body of ['', '  ', '字'.repeat(2001),7])assert.equal((await request('/api/classics/'+item.id+'/comments','POST',{body},member.token)).status,400);
- for(const id of ['theory-yinyang','classic-missing','invalid!']){assert.ok([400,404].includes((await request('/api/classics/'+id+'/comments')).status));assert.ok([400,404].includes((await request('/api/classics/'+id+'/comments','POST',{body:'心得'},member.token)).status));}
+ for(const id of ['classic-missing','invalid!']){assert.ok([400,404].includes((await request('/api/classics/'+id+'/comments')).status));assert.ok([400,404].includes((await request('/api/classics/'+id+'/comments','POST',{body:'心得'},member.token)).status));}
  await pool.query('UPDATE knowledge_entries SET published=NULL WHERE id=$1',[item.id]);assert.equal((await request('/api/classics/'+item.id+'/comments')).status,404);
 });
 test('suggestions stay private, acceptance changes draft only and publishing stays explicit',async()=>{
@@ -96,4 +96,28 @@ test('accepts a maximum-length Chinese body and its original snapshot',async()=>
  const updated=await request('/api/admin/classics/'+item.id,'PUT',{version:2,content:{...item,body:longBody}},admin.token);assert.equal(updated.status,200);
  assert.equal((await request('/api/admin/classics/'+item.id+'/publish','POST',{version:updated.data.version},admin.token)).status,200);
  const submitted=await suggest(member,{...item,body:longBody},{body:'典'+longBody.slice(1)});assert.equal(submitted.status,201);assert.equal(submitted.data.changes.body.length,50000);
+});
+test('every knowledge category supports comments, suggested revisions, draft review and manual publishing',async()=>{
+ const admin=await account(true),catalog=(await request('/api/knowledge')).data.items;
+ const types=[...new Set(catalog.map((item:any)=>item.type))];assert.equal(types.length,9);
+ for(const type of types){
+  const member=await account(),item=catalog.find((i:any)=>i.type===type),path='/api/classics/'+item.id;
+  assert.equal((await request(path+'/comments','POST',{body:'分类 '+type+' 的学习心得'},member.token)).status,201);
+  assert.equal((await request(path+'/comments')).data.comments[0].body,'分类 '+type+' 的学习心得');
+  const summary=item.summary+'\n补充核对说明。';
+  const added=await request(path+'/suggestions','POST',{base:{summary:item.summary},changes:{summary},reason:'补充文献核对'},member.token);assert.equal(added.status,201);
+  assert.equal((await request('/api/admin/suggestions/'+added.data.id+'/review','POST',{action:'merge'},admin.token)).status,200);
+  const entry=(await request('/api/admin/classics','GET',undefined,admin.token)).data.entries.find((e:any)=>e.draft.id===item.id);assert.ok(entry);assert.equal(entry.draft.summary,summary);assert.equal(entry.published.summary,item.summary);assert.equal(entry.draft.type,type);
+  assert.equal((await request('/api/admin/classics/'+item.id+'/publish','POST',{version:entry.version},admin.token)).status,200);
+  assert.equal((await request('/api/knowledge')).data.items.find((i:any)=>i.id===item.id).summary,summary);
+ }
+});
+test('administrators can create all categories while existing entry types stay immutable',async()=>{
+ const admin=await account(true),original=await classic(admin);
+ for(const type of ['理','药','方','经络','穴','法','人','案']){
+  const content={...original,id:'knowledge-added-'+(++serial),type};const created=await request('/api/admin/classics','POST',{content},admin.token);assert.equal(created.status,201);
+  assert.equal((await request('/api/admin/classics/'+content.id,'PUT',{version:1,content:{...content,summary:'管理员编辑后的简介'}},admin.token)).status,200);
+ }
+ assert.equal((await request('/api/admin/classics/'+original.id,'PUT',{version:2,content:{...original,type:'药'}},admin.token)).status,400);
+ for(const type of ['全部','未知'])assert.equal((await request('/api/admin/classics','POST',{content:{...original,id:'invalid-type-'+(++serial),type}},admin.token)).status,400);
 });

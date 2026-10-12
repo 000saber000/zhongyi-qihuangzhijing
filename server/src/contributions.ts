@@ -14,9 +14,9 @@ const id=(value:unknown)=>{if(typeof value!=='string'||!/^[a-z][a-z0-9-]{2,79}$/
 const uuid=(value:unknown)=>{if(typeof value!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value))throw invalid();return value;};
 const text=(value:unknown,max:number,required=true)=>{if(typeof value!=='string'||value.length>max||(required&&!value.trim()))throw invalid();return value.trim();};
 const value=(item:Knowledge,field:Field)=>item[field]??(field==='keyPoints'?[]:'');
-async function classic(db:Pool|PoolClient,classicId:string,lock=false){
+async function publishedKnowledge(db:Pool|PoolClient,classicId:string,lock=false){
  const result=await db.query('SELECT draft,published,version FROM knowledge_entries WHERE id=$1'+(lock?' FOR UPDATE':''),[classicId]);
- const row=result.rows[0];if(!row?.published||row.published.type!=='经')throw new HttpError(404,'NOT_FOUND','未找到已发布的典籍。');
+ const row=result.rows[0];if(!row?.published)throw new HttpError(404,'NOT_FOUND','未找到已发布的知识。');
  return row as {draft:Knowledge;published:Knowledge;version:number};
 }
 async function limit(db:PoolClient,userId:string,table:'classic_comments'|'classic_suggestions',max:number){
@@ -42,7 +42,7 @@ const selectSuggestions="SELECT s.*,k.published->>'title' AS title FROM classic_
 
 export function publicComments(app:Express,pool:Pool){
  app.get('/api/classics/:id/comments',async(req,res)=>{
-  const classicId=id(req.params.id),page=pageNumber(req.query.page),pageSize=20;await classic(pool,classicId);
+  const classicId=id(req.params.id),page=pageNumber(req.query.page),pageSize=20;await publishedKnowledge(pool,classicId);
   const [count,rows]=await Promise.all([
    pool.query('SELECT count(*)::int AS total FROM classic_comments WHERE classic_id=$1 AND hidden_at IS NULL',[classicId]),
    pool.query('SELECT id,author_username AS author,body,created_at AS "createdAt" FROM classic_comments WHERE classic_id=$1 AND hidden_at IS NULL ORDER BY created_at DESC,id LIMIT $2 OFFSET $3',[classicId,pageSize,(page-1)*pageSize])
@@ -54,7 +54,7 @@ export function contributionRoutes(app:Express,pool:Pool){
  app.post('/api/classics/:id/comments',async(req,res)=>{
   const classicId=id(req.params.id),body=text(req.body?.body,2000),actor=res.locals.user;
   const comment=await transaction(pool,async db=>{
-   await limit(db,actor.id,'classic_comments',10);await classic(db,classicId);
+   await limit(db,actor.id,'classic_comments',10);await publishedKnowledge(db,classicId);
    const result=await db.query('INSERT INTO classic_comments(id,classic_id,user_id,author_username,body) VALUES($1,$2,$3,$4,$5) RETURNING id,author_username AS author,body,created_at AS "createdAt"',[randomUUID(),classicId,actor.id,actor.username,body]);return result.rows[0];
   });res.status(201).json(comment);
  });
@@ -62,10 +62,10 @@ export function contributionRoutes(app:Express,pool:Pool){
   const classicId=id(req.params.id),reason=text(req.body?.reason,2000),changes=edits(req.body?.changes),inputBase=req.body?.base,actor=res.locals.user;
   if(!inputBase||typeof inputBase!=='object'||Array.isArray(inputBase))throw invalid();
   const created=await transaction(pool,async db=>{
-   await limit(db,actor.id,'classic_suggestions',5);const current=await classic(db,classicId,true),base:Changes={};
+   await limit(db,actor.id,'classic_suggestions',5);const current=await publishedKnowledge(db,classicId,true),base:Changes={};
    for(const field of Object.keys(changes) as Field[]){
     const old=value(current.published,field);
-    if(!isDeepStrictEqual(inputBase[field],old))throw new HttpError(409,'STALE_CONTENT','典籍已更新，请刷新正文后重新提交建议。');
+    if(!isDeepStrictEqual(inputBase[field],old))throw new HttpError(409,'STALE_CONTENT','知识已更新，请刷新正文后重新提交建议。');
     if(isDeepStrictEqual(changes[field],old))delete changes[field];else Object.assign(base,{[field]:old});
    }
    if(!Object.keys(changes).length)throw new HttpError(400,'NO_CHANGES','请修改至少一项内容，再提交建议。');
@@ -93,7 +93,7 @@ export function contributionRoutes(app:Express,pool:Pool){
    if(s.status!=='pending')throw new HttpError(409,'ALREADY_REVIEWED','这条建议已处理，请刷新列表。');
    let mergedVersion:number|null=null;
    if(action==='merge'){
-    const current=await classic(db,s.classic_id,true);
+    const current=await publishedKnowledge(db,s.classic_id,true);
     for(const field of Object.keys(s.changes) as Field[])if(!isDeepStrictEqual(value(current.draft,field),s.base[field]))throw new HttpError(409,'SUGGESTION_CONFLICT','草稿中相同内容已修改，未合并此建议。请核对最新草稿，手动调整或拒绝这条建议。');
     const next={...current.draft,...s.changes};mergedVersion=current.version+1;
     await db.query('UPDATE knowledge_entries SET draft=$2,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1',[s.classic_id,JSON.stringify(next),actor.id]);

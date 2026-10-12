@@ -34,8 +34,8 @@ export default function ClassicCommunity({item,study}:{item:Knowledge;study:Stud
   try{await api('/api/admin/comments/'+commentId,{method:'DELETE',token:study.sessionToken});if(!alive.current)return;setNotice('评论已隐藏');await load(page);}
   catch(cause){if(alive.current)setError(errorMessage(cause));}finally{if(alive.current)setBusy(false);}
  };
- return <section className="classic-community contribution-panel" aria-label="典籍讨论">
-  <div className="contribution-heading"><div><span className="section-kicker">READ · DISCUSS · CONTRIBUTE</span><h2>典籍讨论</h2><p>留下阅读心得，也可以提出有依据的内容修订。</p></div>{enabled&&<button className="outline" disabled={busy} onClick={()=>{if(form){setForm(null);setBase(null);}else{const original=snapshot(item);setBase(original);setForm({...original,keyPoints:[...original.keyPoints]});setReason('');setError('');setNotice('');}}}>{form?'收起修改建议':'建议修改'}</button>}</div>
+ return <section className="classic-community contribution-panel" aria-label="知识讨论">
+  <div className="contribution-heading"><div><span className="section-kicker">READ · DISCUSS · CONTRIBUTE</span><h2>知识讨论</h2><p>留下阅读心得，也可以提出有依据的内容修订。</p></div>{enabled&&<button className="outline" disabled={busy} onClick={()=>{if(form){setForm(null);setBase(null);}else{const original=snapshot(item);setBase(original);setForm({...original,keyPoints:[...original.keyPoints]});setReason('');setError('');setNotice('');}}}>{form?'收起修改建议':'建议修改'}</button>}</div>
   {error&&<div role="alert" className="contribution-error">{error}<button className="section-link" disabled={loading||busy} onClick={()=>void load(page)}>重新读取评论</button></div>}
   {notice&&<p role="status" className="contribution-notice">{notice}</p>}
   {!study.user?<p className="contribution-login">登录后可以评论或提交修改建议。<a href="#study">前往登录 →</a></p>:!enabled?<p>正在验证账号，验证完成后即可参与讨论。{study.user.mustChangePassword?'请先修改临时密码。':''}</p>:null}

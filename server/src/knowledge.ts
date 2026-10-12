@@ -22,7 +22,7 @@ async function content(pool:Pool,value:unknown):Promise<Knowledge>{
     return [...new Set((field as string[]).map(item=>item.trim()))];
   };
   const id=text('id',80),type=text('type',10);
-  if(!/^[a-z][a-z0-9-]{2,79}$/.test(id)||type!=='经'||!categories.some(c=>c.type===type))throw invalid();
+  if(!/^[a-z][a-z0-9-]{2,79}$/.test(id)||type==='全部'||!categories.some(c=>c.type===type))throw invalid();
   const result:Knowledge={id,type,title:text('title',120),subtitle:text('subtitle',240,false),summary:text('summary',4000),body:text('body',50000,false),source:text('source',1000),confidence:text('confidence',120),tags:list('tags',20,60),relations:list('relations',50,80),keyPoints:list('keyPoints',20,1000)};
   const allowed=await publishedIds(pool);
   if(result.relations.some(related=>related===id||!allowed.has(related)))throw new HttpError(400,'BAD_RELATION','关联知识必须是已发布条目，且不能关联自身。');
@@ -42,7 +42,7 @@ export function adminKnowledge(app:Express,pool:Pool){
     if(res.locals.user.role!=='admin')throw new HttpError(403,'ADMIN_REQUIRED','此功能仅供管理员使用。');next();
   });
   app.get('/api/admin/classics',async(_req,res)=>{
-    const result=await pool.query("SELECT * FROM knowledge_entries WHERE draft->>'type'='经' ORDER BY updated_at DESC,id");
+    const result=await pool.query("SELECT * FROM knowledge_entries ORDER BY updated_at DESC,id");
     res.json({entries:result.rows.map(entry)});
   });
   app.post('/api/admin/classics',async(req,res)=>{
@@ -55,18 +55,18 @@ export function adminKnowledge(app:Express,pool:Pool){
     const draft=await content(pool,req.body?.content),expected=version(req.body?.version);
     if(draft.id!==req.params.id)throw invalid();
     const existing=await pool.query('SELECT draft FROM knowledge_entries WHERE id=$1',[draft.id]);
-    if(!existing.rowCount)throw new HttpError(404,'NOT_FOUND','未找到这部典籍。');
-    if(existing.rows[0].draft.type!=='经')throw invalid();
+    if(!existing.rowCount)throw new HttpError(404,'NOT_FOUND','未找到这条知识。');
+    if(existing.rows[0].draft.type!==draft.type)throw invalid();
     const result=await pool.query('UPDATE knowledge_entries SET draft=$2,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1 AND version=$4 RETURNING *',[draft.id,JSON.stringify(draft),res.locals.user.id,expected]);
     if(!result.rowCount)throw new HttpError(409,'VERSION_CONFLICT','内容已在其他窗口更新，请重新载入最新版本后编辑。');
     res.json(entry(result.rows[0]));
   });
   app.post('/api/admin/classics/:id/publish',async(req,res)=>{
     const expected=version(req.body?.version);
-    const result=await pool.query("UPDATE knowledge_entries SET published=draft,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1 AND version=$2 AND draft->>'type'='经' RETURNING *",[req.params.id,expected,res.locals.user.id]);
+    const result=await pool.query("UPDATE knowledge_entries SET published=draft,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1 AND version=$2 RETURNING *",[req.params.id,expected,res.locals.user.id]);
     if(!result.rowCount){
-      const existing=await pool.query("SELECT id FROM knowledge_entries WHERE id=$1 AND draft->>'type'='经'",[req.params.id]);
-      if(!existing.rowCount)throw new HttpError(404,'NOT_FOUND','未找到这部典籍。');
+      const existing=await pool.query("SELECT id FROM knowledge_entries WHERE id=$1",[req.params.id]);
+      if(!existing.rowCount)throw new HttpError(404,'NOT_FOUND','未找到这条知识。');
       throw new HttpError(409,'VERSION_CONFLICT','内容已在其他窗口更新，请重新载入最新版本后发布。');
     }
     res.json(entry(result.rows[0]));
