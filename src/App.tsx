@@ -50,7 +50,7 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  const go=(page:string)=>{if(page==='library'){setQuery('');setCategory('全部')}location.hash=page;setMenu(false);setLesson(null)};
  const open=(id:string,trigger?:HTMLButtonElement)=>{
   if(bookInFlight.current)return;
-  const item=knowledge.find(entry=>entry.id===id),cover=trigger?.querySelector('.antique-book');
+  const item=knowledge.find(entry=>entry.id===id),cover=trigger?.querySelector('.knowledge-artwork');
   if(item&&trigger&&cover&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
    bookInFlight.current=true;setOpeningBook({item,origin:cover.getBoundingClientRect(),saved:bookmarks.includes(id)});return;
   }

@@ -22,7 +22,7 @@ export const knowledgeIllustrations:Record<string,string>={
 
 export function AntiqueBook({item,saved=false}:{item:Knowledge;saved?:boolean}){
  const illustration=knowledgeIllustrations[item.id];
- return <div className={`antique-book tone-${item.type}`} aria-hidden="true">
+ return <div className={`antique-book knowledge-artwork tone-${item.type}`} aria-hidden="true">
   <div className="book-back"/>
   <div className="book-page-block"/>
   <div className="book-paper book-endpaper">
