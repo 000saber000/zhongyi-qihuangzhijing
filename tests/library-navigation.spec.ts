@@ -21,11 +21,14 @@ test('library categories gather in the center while scrolling and still filter c
  await root.evaluate(e=>{e.scrollTop=0;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(initial!.y));
  await page.getByRole('button',{name:'学习路径',exact:true}).click();await expect(nav).toHaveCount(0);
 });
-test('desktop library uses real starfield and the two requested card illustrations',async({page})=>{
+test('desktop library uses real starfield and distinct illustrations for the requested cards',async({page})=>{
  await page.setViewportSize({width:1440,height:900});await page.goto('/#library');
- for(const name of ['阴阳','桂枝汤']){
+ const sources=[];
+ for(const name of ['阴阳','桂枝汤','医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经']){
   const art=page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration img');await expect(art).toBeVisible();await expect.poll(()=>art.evaluate(image=>(image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
+  sources.push(await art.evaluate(image=>(image as HTMLImageElement).currentSrc));
  }
+ expect(new Set(sources).size).toBe(sources.length);
  await expect(page.locator('.jade-starfield')).toBeVisible();expect(await page.locator('.jade-starfield').evaluate(e=>getComputedStyle(e).backgroundImage)).toMatch(/url\(/);
 });
 test('a focused category survives desktop-to-mobile reparenting without taking focus from search',async({page})=>{
@@ -40,9 +43,12 @@ test('mobile jade cards keep long published titles within their text area',async
  expect(await title.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);
 });
 test('mobile floating categories scroll horizontally, retain keyboard access, and do not cover search',async({page})=>{
+ const imageRequests:string[]=[];page.on('request',request=>{if(request.resourceType()==='image'&&request.url().includes('.webp'))imageRequests.push(request.url());});
  await page.setViewportSize({width:390,height:844});await page.goto('/#library');const nav=page.getByRole('navigation',{name:'知识库分类'}),root=page.locator('.cosmic-content-scroll');await expect(nav).toBeVisible();
  expect(await root.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await root.evaluate(e=>{e.scrollTop=600;});
  await expect(page.locator('.jade-starfield')).toBeHidden();await expect(page.getByRole('button',{name:'阅读 阴阳',exact:true}).locator('.card-illustration')).toBeHidden();
+ for(const name of ['医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经'])await expect(page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration')).toBeHidden();
+ expect(imageRequests).toEqual([]);
  await expect.poll(async()=>(await nav.boundingBox())!.y).toBeLessThan(190);
  await page.locator('.library-nav-slot.is-docked').waitFor();
  const box=await nav.boundingBox(),search=await page.locator('.universe-search').boundingBox();expect(box!.y).toBeGreaterThanOrEqual(search!.y+search!.height);expect(box!.x).toBeGreaterThanOrEqual(10);expect(box!.x+box!.width).toBeLessThanOrEqual(380);
