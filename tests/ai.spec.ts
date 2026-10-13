@@ -79,6 +79,23 @@ test('failed shutdown and clear retain saved state and show retryable error',asy
  await page.getByRole('button',{name:'模型设置',exact:true}).click();await page.getByRole('button',{name:'关闭 AI',exact:true}).click();await expect(page.getByText('关闭失败，请重试。',{exact:true})).toBeVisible();await expect(page.getByLabel('开启学习助手',{exact:true})).toBeChecked();await expect(page.getByRole('button',{name:'关闭 AI',exact:true})).toBeEnabled();
  page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();await expect(page.getByText('模型设置已在其他窗口更新，请重新载入。',{exact:true})).toBeVisible();await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('deepseek-chat');await expect(page.getByText('密钥已保存，不会回显。',{exact:true})).toBeVisible();await expect(page.getByText('模型配置已清空，学习助手已关闭。',{exact:true})).toHaveCount(0);
 });
+test('service button closes then enables saved configuration, with a finite busy state and normal cursor',async({page})=>{
+ await login(page,true);let state={provider:'deepseek',model:'deepseek-flash',enabled:true,dailyLimit:7,globalDailyLimit:200,maxTokens:1024,version:5,hasKey:true,encryptionReady:true};let enableCalls=0,finishEnable:()=>Promise<void>=async()=>{};
+ await page.route('**/api/admin/ai',route=>{expect(route.request().method()).toBe('GET');return route.fulfill({json:state});});
+ await page.route('**/api/admin/ai/disable',async route=>{expect(route.request().postDataJSON()).toEqual({version:5});state={...state,enabled:false,version:6};await route.fulfill({json:state});});
+ await page.route('**/api/admin/ai/enable',route=>new Promise<void>(resolve=>{enableCalls++;expect(route.request().postDataJSON()).toEqual({version:6});finishEnable=async()=>{state={...state,enabled:true,version:7};await route.fulfill({json:state});resolve();};}));
+ await page.getByRole('button',{name:'模型设置',exact:true}).click();await page.getByRole('button',{name:'关闭 AI',exact:true}).click();const enable=page.getByRole('button',{name:'一键开启 AI',exact:true});await expect(enable).toBeEnabled();await enable.hover();await expect(enable).toHaveCSS('cursor','pointer');
+ await page.getByLabel('模型名称',{exact:true}).fill('');await enable.click();const pending=page.getByRole('button',{name:'正在开启…',exact:true});await expect(pending).toBeDisabled();await expect(pending).toHaveAttribute('aria-busy','true');await expect(pending).toHaveCSS('cursor','wait');expect(enableCalls).toBe(1);await finishEnable();
+ const close=page.getByRole('button',{name:'关闭 AI',exact:true});await expect(close).toBeEnabled();await expect(close).toHaveAttribute('aria-busy','false');await expect(close).toHaveCSS('cursor','pointer');await expect(page.getByLabel('模型名称',{exact:true})).toHaveValue('deepseek-flash');await expect(page.getByLabel('开启学习助手',{exact:true})).toBeChecked();await expect(page.getByLabel('每人每日提问次数',{exact:true})).toHaveValue('7');
+ await page.reload();await expect(page.getByRole('button',{name:'关闭 AI',exact:true})).toBeEnabled();
+});
+test('failed enable stays off and can retry; missing saved key is unavailable rather than waiting',async({page})=>{
+ await login(page,true);let state={provider:'deepseek',model:'deepseek-flash',enabled:false,dailyLimit:10,globalDailyLimit:200,maxTokens:1024,version:5,hasKey:true,encryptionReady:true};let attempts=0;
+ await page.route('**/api/admin/ai',async route=>{if(route.request().method()==='DELETE')state={...state,model:'',hasKey:false,enabled:false,version:7};await route.fulfill({json:state});});
+ await page.route('**/api/admin/ai/enable',route=>{attempts++;return route.fulfill({status:503,json:{error:{code:'AI_KEY_UNAVAILABLE',message:'模型配置暂时无法读取，请联系管理员。'}}});});
+ await page.getByRole('button',{name:'模型设置',exact:true}).click();const enable=page.getByRole('button',{name:'一键开启 AI',exact:true});await enable.click();await expect(page.getByRole('alert')).toHaveText('模型配置暂时无法读取，请联系管理员。');await expect(enable).toBeEnabled();await expect(enable).toHaveCSS('cursor','pointer');await expect(page.getByLabel('开启学习助手',{exact:true})).not.toBeChecked();await enable.click();await expect(enable).toBeEnabled();expect(attempts).toBe(2);
+ page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'清空模型配置',exact:true}).click();await expect(enable).toBeDisabled();await expect(enable).toHaveCSS('cursor','not-allowed');await expect(page.getByText('请先保存模型名称和 API 密钥，再开启 AI。',{exact:true})).toBeVisible();
+});
 
 test('thinking progress is visible and a classified failure stops generation without logout',async({page})=>{
  await page.addInitScript(()=>{const original=window.fetch.bind(window);window.fetch=async(input,init)=>{

@@ -1,7 +1,7 @@
 import type {Express,Response} from 'express';
 import type {Pool} from 'pg';
 import {HttpError,invalid} from '../errors';
-import {owner,loadConfig,saveConfig,stopConfig,publicConfig,decrypt,keyBytes,type AiOptions} from './config';
+import {owner,loadConfig,saveConfig,stopConfig,startConfig,publicConfig,decrypt,keyBytes,type AiOptions} from './config';
 import {retrieve,prompt} from './retrieval';
 import {reserve,release,usage} from './quota';
 import {callModel,streamModel,ProviderError,emptyAnswer,type Message} from './provider';
@@ -42,6 +42,7 @@ export function installAiRoutes(app:Express,pool:Pool,options:AiOptions={}){
  app.get('/api/admin/ai',async(_req,res)=>res.json(publicConfig(await loadConfig(pool),settings)));
  app.put('/api/admin/ai',async(req,res)=>{const saved=await saveConfig(pool,req.body,res.locals.user,settings);if(!saved.enabled)stopActive();res.json(saved);});
  app.post('/api/admin/ai/disable',async(req,res)=>{const saved=await stopConfig(pool,req.body?.version,res.locals.user);stopActive();res.json(publicConfig(saved,settings));});
+ app.post('/api/admin/ai/enable',async(req,res)=>{const saved=await startConfig(pool,req.body?.version,res.locals.user,settings);res.json(publicConfig(saved,settings));});
  app.delete('/api/admin/ai',async(req,res)=>{const saved=await stopConfig(pool,req.body?.version,res.locals.user,true);stopActive();res.json(publicConfig(saved,settings));});
  app.post('/api/admin/ai/test',async(_req,res)=>{
   const user=res.locals.user,key='ai-test:'+user.id;
