@@ -91,17 +91,30 @@ test('browser back during the detail reveal cancels the overlay without returnin
 
 test('mobile books open within the viewport and retain bookmark controls',async({page})=>{
  await page.setViewportSize({width:390,height:844});
+ // Control real animations, including Strict Mode's replay, like the desktop
+ // check above. Software rendering must not advance past the measured frame.
+ await page.addInitScript(()=>{
+  const animate=Element.prototype.animate;
+  Element.prototype.animate=function(frames,options){
+   const animation=animate.call(this,frames,options);
+   if(this.closest('.book-opening'))animation.pause();
+   return animation;
+  };
+ });
  await page.goto('/#library');
  await page.getByRole('button',{name:'阅读 伤寒论',exact:true}).click();
  const opening=page.getByRole('dialog',{name:'正在翻开《伤寒论》'});
  await expect(opening).toBeVisible();
- await opening.locator('.book-opening-stage').evaluate(element=>{const animation=element.getAnimations()[0];animation.pause();animation.currentTime=640;});
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.currentTime=640;});
  const book=await opening.locator('.antique-book').boundingBox();
  expect(book!.x).toBeGreaterThanOrEqual(0);
  expect(book!.x+book!.width).toBeLessThanOrEqual(390);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
- await opening.locator('.book-opening-stage').evaluate(element=>element.getAnimations()[0].play());
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
  await expect(page).toHaveURL(/#knowledge\/classic-shanghan$/,{timeout:7000});
+ await expect.poll(()=>opening.evaluate(element=>element.getAnimations().length)).toBeGreaterThan(0);
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
+ await expect(opening).toHaveCount(0);
  await page.getByRole('button',{name:'收藏知识',exact:true}).click();
  await expect(page.getByRole('button',{name:'取消收藏',exact:true})).toBeVisible();
 });

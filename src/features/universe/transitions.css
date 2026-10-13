@@ -1,0 +1,10 @@
+/* Only the DOM reading surfaces animate; the existing star camera is untouched. */
+.cosmic-panel[hidden]{display:none}
+.cosmic-content-scroll[data-reading]{animation:reading-arrive .32s cubic-bezier(.22,.7,.2,1)}
+@keyframes reading-arrive{
+ from{opacity:0;transform:translateY(8px)}
+ to{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .cosmic-content-scroll[data-reading]{animation:none;scroll-behavior:auto}
+}
