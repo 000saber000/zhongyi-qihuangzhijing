@@ -77,10 +77,10 @@
 
 ## 致谢与版权
 
-知识星海的视觉与交互改编自 [Cohenjikan/shiyun · 诗云](https://github.com/Cohenjikan/shiyun)，感谢原作者的创作与分享。
+知识星海的部分渲染代码与关联光束改编自 [Cohenjikan/shiyun · 诗云](https://github.com/Cohenjikan/shiyun/tree/928c79ed554204b0033300ecd6c2529cc4e55764) 的 MIT 授权版本 `928c79e`（2026-06-27），感谢原作者的创作与分享。
 
-Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
+Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 
-相关参考代码采用 PolyForm Noncommercial License 1.0.0，完整条款见 [第三方许可证](third-party/SHIYUN-LICENSE.md) 与 [上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/main/LICENSE)。
+上述复用代码采用 MIT License，完整条款见 [第三方许可证](third-party/SHIYUN-LICENSE.md) 与 [该版本的上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/928c79ed554204b0033300ecd6c2529cc4e55764/LICENSE)；复用范围、修改及版本核验见 [来源记录](third-party/SHIYUN-SOURCE.md)。此声明针对诗云复用代码，其他代码与素材分别按各自的权利和许可处理。
 
 修改建议的文本差异展示使用 [jsdiff](https://github.com/kpdecker/jsdiff)，遵循 BSD-3-Clause，许可证见 [JSDIFF-LICENSE.txt](third-party/JSDIFF-LICENSE.txt)。

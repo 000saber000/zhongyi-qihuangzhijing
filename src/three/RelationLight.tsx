@@ -1,7 +1,9 @@
-// Centre-bundled cubic curves and travelling pulse adapted from shiyun GiftLines.tsx.
-// Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
+// Centre-bundled cubic curves and travelling pulse adapted from shiyun GiftLines.tsx
+// at MIT-licensed commit 928c79ed554204b0033300ecd6c2529cc4e55764.
+// Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 // https://github.com/Cohenjikan/shiyun
-// PolyForm Noncommercial 1.0.0: https://polyformproject.org/licenses/noncommercial/1.0.0/
+// SPDX-License-Identifier: MIT
+// MIT license: https://github.com/Cohenjikan/shiyun/blob/928c79ed554204b0033300ecd6c2529cc4e55764/LICENSE
 import {useEffect,useMemo,useRef} from 'react';
 import {useFrame} from '@react-three/fiber';
 import * as THREE from 'three';

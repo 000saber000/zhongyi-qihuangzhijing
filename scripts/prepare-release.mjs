@@ -14,6 +14,7 @@ for(const path of assets)await stat(new URL(path.slice(1),source));
 await mkdir(publish,{recursive:true});
 await rm(new URL('assets/',publish),{recursive:true,force:true});
 await cp(new URL('assets/',source),new URL('assets/',publish),{recursive:true});
+await cp(new URL('licenses/',source),new URL('licenses/',publish),{recursive:true});
 await writeFile(new URL('index.html',publish),html);
 await writeFile(new URL('../qihuang-unified.html',import.meta.url),html);
 console.log('Prepared split release in public/ with a compatible qihuang-unified.html entry.');

@@ -1,7 +1,8 @@
-// Adapted from Cohenjikan/shiyun (commit 771591fe53f1761976fc84c0f0f0beaedc402ff7).
-// Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
+// Adapted from Cohenjikan/shiyun (commit 928c79ed554204b0033300ecd6c2529cc4e55764).
+// Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 // https://github.com/Cohenjikan/shiyun
-// PolyForm Noncommercial 1.0.0: https://polyformproject.org/licenses/noncommercial/1.0.0/
+// SPDX-License-Identifier: MIT
+// MIT license: https://github.com/Cohenjikan/shiyun/blob/928c79ed554204b0033300ecd6c2529cc4e55764/LICENSE
 // Modifications: Qihuang colours, particle budgets and animation controls.
 import * as THREE from "three";
 

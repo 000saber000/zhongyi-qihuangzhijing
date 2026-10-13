@@ -145,10 +145,10 @@ TEST_DATABASE_URL=postgres://postgres:qihuang_test@127.0.0.1:55432/qihuang_test 
 
 ## 代码来源与许可证
 
-知识星海改编自 [Cohenjikan/shiyun](https://github.com/Cohenjikan/shiyun)，保留其版权声明：
+知识星海的部分渲染代码与关联光束基于 [Cohenjikan/shiyun 的 MIT 版本 `928c79e`](https://github.com/Cohenjikan/shiyun/tree/928c79ed554204b0033300ecd6c2529cc4e55764)（2026-06-27）改编，保留其版权声明：
 
-Required Notice: Copyright © 2026 Cohenjikan — 诗云 / Poetry Cloud
+Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 
-完整条款见 [本仓库的第三方许可证](../third-party/SHIYUN-LICENSE.md) 和 [上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/main/LICENSE)。参考代码使用 PolyForm Noncommercial License 1.0.0。
+上述复用代码使用 MIT License，完整条款见 [本仓库的第三方许可证](../third-party/SHIYUN-LICENSE.md) 和 [该版本的上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/928c79ed554204b0033300ecd6c2529cc4e55764/LICENSE)。来源与版本核验见 [来源记录](../third-party/SHIYUN-SOURCE.md)。网站发布时附带 `public/licenses/shiyun-MIT.txt`，标准 Vite 构建与兼容发布均保留该许可文件，效果设置中的「查看许可证」链接指向它。其他代码和素材的许可独立处理。
 
 本站的知识素材用于学习，具体文献出处仍需核对。收藏与课程完成操作不代表内容已审核。
