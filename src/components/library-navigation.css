@@ -1,0 +1,13 @@
+.library-nav-sentinel{height:1px;pointer-events:none}
+.library-nav-slot{position:sticky;top:76px;z-index:20;height:64px;display:flex;align-items:flex-start;justify-content:center;margin-bottom:5px}
+.library-navigation{display:flex;align-items:center;justify-content:safe center;gap:6px;width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;box-sizing:border-box;padding:4px 0;border:1px solid transparent;border-radius:18px;background:transparent;transition:max-width .28s ease,padding .28s ease,background-color .28s ease,border-color .28s ease,box-shadow .28s ease;border-bottom-color:#8eaa8525}
+.library-navigation::-webkit-scrollbar{display:none}
+.unified-content .library-navigation button{flex:0 0 auto;min-height:40px;padding:10px 14px;border:1px solid #96b08d23;border-radius:12px;background:#162a2ccc;color:#b0c2ae;font-size:11px;white-space:nowrap;transition:background-color .2s,border-color .2s,color .2s;cursor:pointer}
+.unified-content .library-navigation button:hover{background:#2a443bc7;border-color:#b1c89d65;color:#edf0d8}
+.unified-content .library-navigation button[aria-pressed="true"]{background:linear-gradient(130deg,#53644b,#364b40);border-color:#ccca9877;color:#f1ebc8;box-shadow:0 2px 10px #b1be8710}
+.unified-content .library-navigation button:focus-visible{outline:2px solid #d7cfa2;outline-offset:-3px}
+.is-docked .library-navigation{max-width:960px;padding:8px;border-radius:24px;background:#11282aeb;border-color:#b6c1a03d;backdrop-filter:blur(18px);box-shadow:0 12px 32px #020b1166,inset 0 1px 0 #e1e7c409}
+.is-docked .library-navigation button{background:transparent;border-color:transparent}
+.is-docked .library-navigation button[aria-pressed="true"]{border-color:#ccca9877;background:linear-gradient(130deg,#53644b,#364b40)}
+@media(max-width:700px){.library-nav-slot{top:74px;height:64px}.library-navigation{justify-content:flex-start}.unified-content .library-navigation button{min-height:40px;padding:10px 13px}.is-docked .library-navigation{border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.library-navigation,.unified-content .library-navigation button{transition:none}}

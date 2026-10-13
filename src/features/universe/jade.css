@@ -1,0 +1,27 @@
+/* Jade surfaces share the cosmos palette while keeping each page's layout. */
+.universe{--jade-radius:20px;--jade-border:#a3b89a30;--jade-surface:linear-gradient(145deg,#19332de8,#102329f5);--jade-shadow:0 12px 30px #020c1229,inset 0 1px 0 #e6e7c307}
+.unified-content :is(.knowledge-card,.course-card,.reading-panel,.related-panel,.account-card,.ai-settings-card,.admin-list,.admin-workspace,.contribution-panel,.learning-note),.unified-content .study-stats>div{border-radius:var(--jade-radius);border-color:var(--jade-border);background:var(--jade-surface);box-shadow:var(--jade-shadow)}
+.unified-content .knowledge-grid{gap:22px}
+.unified-content .knowledge-card{transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;background:linear-gradient(150deg,#15312de8,#10252aef)}
+.unified-content .knowledge-card:hover{background:linear-gradient(150deg,#1d3a32f0,#142c2eef);border-color:#c3c69961;box-shadow:0 16px 36px #020b1247,inset 0 1px 0 #e8e5bf0d;transform:translateY(-4px)}
+.unified-content .knowledge-card:focus-visible{outline:2px solid #d8cd9e;outline-offset:4px}
+.unified-content .card-art{height:132px;background:radial-gradient(ellipse at 82% 38%,#6c93723b,transparent 68%),linear-gradient(125deg,#23473999,#142c2e80);border-bottom-color:#bdc3981c}
+.unified-content .tone-经 .card-art{background:radial-gradient(ellipse at 82% 38%,#b4a76a2d,transparent 68%),linear-gradient(125deg,#3b432b9c,#192d2a80)}
+.unified-content .tone-药 .card-art{background:radial-gradient(ellipse at 82% 38%,#73a87140,transparent 68%),linear-gradient(125deg,#1f4c3b9c,#15322f80)}
+.unified-content .tone-方 .card-art{background:radial-gradient(ellipse at 82% 38%,#c09a7328,transparent 68%),linear-gradient(125deg,#493c3299,#23302c80)}
+.unified-content .card-art .art-orbit{border-color:#c8cba333;box-shadow:inset 0 0 28px #acc19408}
+.unified-content .card-copy{padding:21px 22px 24px}
+.unified-content .card-copy p{font-size:12px;line-height:1.9;color:#a8bba9;overflow-wrap:anywhere}
+.unified-content .card-copy h3{font-size:23px;line-height:1.5;color:#e5e6ce;overflow-wrap:anywhere}
+.unified-content .card-copy h3 svg{flex:0 0 auto}
+.unified-content .card-tags{gap:7px}
+.unified-content .card-tags span{border-radius:999px;font-size:9px;padding:5px 9px;background:#bfd0a109;border-color:#adbe9630;color:#b6c6a3;max-width:100%;overflow-wrap:anywhere}
+.unified-content .course-card.gold{background:linear-gradient(145deg,#39412eed,#15292bf5)}
+.unified-content .course-card.rose{background:linear-gradient(145deg,#3b3539ed,#13282cf5)}
+.unified-content :is(.course-symbol,.source-box,.suggestion-form,.contribution-login,.empty){border-radius:16px}
+.unified-content :is(.primary,.outline,.ai-explain){border-radius:11px}
+.unified-content .pill{border-radius:999px}
+.universe :is(.cosmic-panel,.cosmic-settings,.cosmic-search-results){border-radius:var(--jade-radius);border-color:var(--jade-border);box-shadow:var(--jade-shadow)}
+.universe .lesson-modal{border-radius:24px}
+@media(max-width:700px){.universe{--jade-radius:18px}.unified-content .knowledge-grid{gap:14px}.unified-content .card-copy{padding:16px 14px 18px}.unified-content .card-copy h3{font-size:20px}.unified-content .card-copy p{font-size:11px}.unified-content .card-art{height:112px}.unified-content .card-tags span{font-size:8px;padding:4px 7px}}
+@media(prefers-reduced-motion:reduce){.unified-content .knowledge-card{transition:none}.unified-content .knowledge-card:hover{transform:none}}
