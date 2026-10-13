@@ -2,7 +2,11 @@ import {ApiError} from '../../lib/api';
 import type {ChatEvent,Message} from './types';
 export async function streamChat(token:string,messages:Message[],contextId:string|undefined,signal:AbortSignal,onEvent:(event:ChatEvent)=>void){
  const base=(import.meta.env.VITE_API_BASE_URL??'').replace(/\/$/,'');if(!base)throw new Error('云端服务尚未配置。');
- const response=await fetch(base+'/api/ai/chat',{method:'POST',signal:AbortSignal.any([signal,AbortSignal.timeout(110000)]),headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({messages,contextId})});
+ const controller=new AbortController(),cancel=()=>controller.abort();let timedOut=false;
+ if(signal.aborted)cancel();else signal.addEventListener('abort',cancel,{once:true});
+ const timeout=setTimeout(()=>{timedOut=true;cancel();},110000);
+ try{
+ const response=await fetch(base+'/api/ai/chat',{method:'POST',signal:controller.signal,headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({messages,contextId})});
  if(!response.ok){const data=await response.json().catch(()=>null);throw new ApiError(response.status,data?.error?.code??'AI_FAILED',data?.error?.message??'学习助手暂时不可用，请重试。');}
  if(!response.headers.get('Content-Type')?.includes('text/event-stream'))throw new Error('回答格式错误，请重试。');
  const reader=response.body?.getReader();if(!reader)throw new Error('无法读取回答，请重试。');
@@ -24,4 +28,8 @@ export async function streamChat(token:string,messages:Message[],contextId:strin
   }
   if(!completed)throw new Error('回答连接中断，请重试。');
  }finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
+ }catch(error){
+  if(timedOut&&!signal.aborted)throw new Error('回答连接超时，请稍后重试。');
+  throw error;
+ }finally{clearTimeout(timeout);signal.removeEventListener('abort',cancel);}
 }

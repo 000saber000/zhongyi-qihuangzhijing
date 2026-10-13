@@ -13,6 +13,34 @@ async function login(page:Page,owner=false){
 }
 async function mockStatus(page:Page){await page.route('**/api/ai/status',route=>route.fulfill({json:{enabled:true,remaining:10,dailyLimit:10,globalAvailable:true,resetTimezone:'Asia/Shanghai'}}));}
 const frame=(type:string,data:unknown)=>`event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
+test('mobile browsers without AbortSignal timeout and any can receive a reply',async({page})=>{
+ await page.addInitScript(()=>{for(const method of ['timeout','any'])Object.defineProperty(AbortSignal,method,{value:undefined,configurable:true});});
+ await login(page);await mockStatus(page);
+ await page.route('**/api/ai/chat',route=>route.fulfill({contentType:'text/event-stream',body:frame('meta',{remaining:9,sources:[]})+frame('delta',{text:'你好，可以一起学习中医。'})+frame('done',{ok:true})}));
+ await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});
+ await dialog.getByLabel('向岐黄提问',{exact:true}).fill('你好');await dialog.getByLabel('发送提问',{exact:true}).click();
+ await expect(dialog.locator('.ai-answer>p')).toHaveText('你好，可以一起学习中医。');
+ await expect(dialog.getByRole('alert')).toHaveCount(0);await expect(dialog.getByLabel('向岐黄提问',{exact:true})).toBeEnabled();
+});
+test('mobile chat times out a stalled response body without AbortSignal static helpers',async({page})=>{
+ await page.addInitScript(()=>{
+  for(const method of ['timeout','any'])Object.defineProperty(AbortSignal,method,{value:undefined,configurable:true});
+  const original=window.fetch.bind(window);window.fetch=async(input,init)=>{
+   if(String(input).endsWith('/api/ai/chat'))return new Response(new ReadableStream({start(controller){
+    controller.enqueue(new TextEncoder().encode('event: delta\ndata: {"text":"已收到部分内容"}\n\n'));
+    init?.signal?.addEventListener('abort',()=>controller.error(new DOMException('Aborted','AbortError')),{once:true});
+   }}),{headers:{'Content-Type':'text/event-stream'}});
+   return original(input,init);
+  };
+ });
+ await login(page);await mockStatus(page);await page.clock.install();
+ await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});
+ await dialog.getByLabel('向岐黄提问',{exact:true}).fill('请解释阴阳');await dialog.getByLabel('发送提问',{exact:true}).click();
+ await expect(dialog.locator('.ai-answer>p')).toHaveText('已收到部分内容');
+ await page.clock.fastForward(110001);
+ await expect(dialog.getByRole('alert')).toHaveText('回答连接超时，请稍后重试。');
+ await expect(dialog.getByLabel('向岐黄提问',{exact:true})).toBeEnabled();await expect(dialog.getByLabel('停止生成',{exact:true})).toHaveCount(0);
+});
 test('guest can open assistant, must log in and can close using Escape',async({page})=>{
  await page.goto('/#library');await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});await expect(dialog).toBeVisible();await expect(dialog.getByText('登录后，与岐黄一起学习。')).toBeVisible();await dialog.getByRole('button',{name:'前往登录'}).click();await expect(dialog).toHaveCount(0);await expect(page.getByRole('button',{name:'注册 / 登录',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'问岐黄',exact:true}).click();await page.keyboard.press('Escape');await expect(dialog).toHaveCount(0);
@@ -40,6 +68,7 @@ test('upstream error stops loading, offers retry; logout clears prior conversati
  await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});await dialog.getByLabel('向岐黄提问',{exact:true}).fill('只属于这个账号的问题');await dialog.getByLabel('发送提问',{exact:true}).click();await expect(dialog.getByText('模型暂时不可用',{exact:true})).toBeVisible();failed=false;await dialog.getByRole('button',{name:'重试回答',exact:true}).click();await expect(dialog.getByText('恢复后的回答',{exact:true})).toBeVisible();await dialog.getByLabel('关闭学习助手',{exact:true}).click();await page.getByRole('button',{name:'退出登录',exact:true}).click();await page.getByRole('button',{name:'问岐黄',exact:true}).click();await expect(dialog.getByText('只属于这个账号的问题',{exact:true})).toHaveCount(0);
 });
 test('stopping an in-flight request leaves composer usable and ignores late answer',async({page})=>{
+ await page.addInitScript(()=>{for(const method of ['timeout','any'])Object.defineProperty(AbortSignal,method,{value:undefined,configurable:true});});
  await login(page);await mockStatus(page);let finish:()=>Promise<void>=async()=>{};
  await page.route('**/api/ai/chat',route=>new Promise<void>(resolve=>{finish=async()=>{await route.fulfill({contentType:'text/event-stream',body:frame('delta',{text:'不应出现的迟到回答'})+frame('done',{ok:true})}).catch(()=>{});resolve();};}));
  await page.getByRole('button',{name:'问岐黄',exact:true}).click();const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});await expect(dialog.getByLabel('向岐黄提问',{exact:true})).toBeFocused();await dialog.getByLabel('向岐黄提问',{exact:true}).fill('请解释阴阳');await dialog.getByLabel('发送提问',{exact:true}).click();await expect(dialog.getByLabel('停止生成',{exact:true})).toBeVisible();await dialog.getByLabel('停止生成',{exact:true}).click();await expect(dialog.getByText('已停止生成。',{exact:true})).toBeVisible();await expect(dialog.getByLabel('向岐黄提问',{exact:true})).toBeEnabled();await finish();await expect(dialog.getByText('不应出现的迟到回答',{exact:true})).toHaveCount(0);
