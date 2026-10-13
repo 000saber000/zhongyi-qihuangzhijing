@@ -25,16 +25,16 @@ test('desktop library uses real starfield and distinct illustrations for the req
  await page.setViewportSize({width:1440,height:900});await page.goto('/#library');
  const sources=[];
  for(const name of ['阴阳','桂枝汤','医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经']){
-  const art=page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration img');await expect(art).toBeVisible();await expect.poll(()=>art.evaluate(image=>(image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
+  const art=page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration img');await art.scrollIntoViewIfNeeded();await expect(art).toBeVisible();await expect.poll(()=>art.evaluate(image=>(image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
   sources.push(await art.evaluate(image=>(image as HTMLImageElement).currentSrc));
  }
  expect(new Set(sources).size).toBe(sources.length);
  await expect(page.locator('.jade-starfield')).toBeVisible();expect(await page.locator('.jade-starfield').evaluate(e=>getComputedStyle(e).backgroundImage)).toMatch(/url\(/);
 });
-test('a focused category survives desktop-to-mobile reparenting without taking focus from search',async({page})=>{
+test('a focused category survives desktop-to-mobile resizing without taking focus from search',async({page})=>{
  await page.setViewportSize({width:1440,height:900});await page.goto('/#library');await page.locator('.cosmic-content-scroll').evaluate(e=>{e.scrollTo({top:650,behavior:'instant'});});await page.locator('.universe.has-library-header-nav').waitFor();await page.waitForTimeout(800);
  const last=page.getByRole('navigation',{name:'知识库分类'}).getByRole('button',{name:'医案研读',exact:true});await last.focus();await expect(last).toBeFocused();
- await page.setViewportSize({width:390,height:844});await page.locator('.library-header-nav').waitFor({state:'detached'});await expect(page.locator('.library-nav-slot')).toHaveClass(/is-docked/);await expect(last).toBeFocused();await page.keyboard.press('Enter');await expect(last).toHaveAttribute('aria-pressed','true');
+ await page.setViewportSize({width:390,height:844});await expect(page.locator('.library-header-nav')).toBeVisible();await expect(page.locator('.library-nav-slot')).toHaveClass(/is-docked/);await expect(last).toBeFocused();await page.keyboard.press('Enter');await expect(last).toHaveAttribute('aria-pressed','true');
  const search=page.getByRole('textbox',{name:'搜索知识'});await search.focus();await page.setViewportSize({width:1440,height:900});await expect(search).toBeFocused();
 });
 test('mobile jade cards keep long published titles within their text area',async({page})=>{
@@ -42,16 +42,14 @@ test('mobile jade cards keep long published titles within their text area',async
  const title=page.locator('.library-grid .card-copy h3').first();await expect(title).toContainText('CaseStudy');
  expect(await title.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);
 });
-test('mobile floating categories scroll horizontally, retain keyboard access, and do not cover search',async({page})=>{
- const imageRequests:string[]=[];page.on('request',request=>{if(request.resourceType()==='image'&&request.url().includes('.webp'))imageRequests.push(request.url());});
+test('mobile floating categories stay in the header with artwork and clear access to search',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/#library');const nav=page.getByRole('navigation',{name:'知识库分类'}),root=page.locator('.cosmic-content-scroll');await expect(nav).toBeVisible();
  expect(await root.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await root.evaluate(e=>{e.scrollTop=600;});
- await expect(page.locator('.jade-starfield')).toBeHidden();await expect(page.getByRole('button',{name:'阅读 阴阳',exact:true}).locator('.card-illustration')).toBeHidden();
- for(const name of ['医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经'])await expect(page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration')).toBeHidden();
- expect(imageRequests).toEqual([]);
+ await expect(page.locator('.jade-starfield')).toBeVisible();
+ for(const name of ['阴阳','桂枝汤','医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经'])await expect(page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration')).toBeVisible();
  await expect.poll(async()=>(await nav.boundingBox())!.y).toBeLessThan(190);
  await page.locator('.library-nav-slot.is-docked').waitFor();
- const box=await nav.boundingBox(),search=await page.locator('.universe-search').boundingBox();expect(box!.y).toBeGreaterThanOrEqual(search!.y+search!.height);expect(box!.x).toBeGreaterThanOrEqual(10);expect(box!.x+box!.width).toBeLessThanOrEqual(380);
+ const box=await nav.boundingBox(),search=await page.locator('.universe-search').boundingBox(),header=await page.locator('.universe-header').boundingBox();expect(box!.y).toBeGreaterThanOrEqual(header!.y);expect(box!.y+box!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(box!.y+box!.height).toBeLessThanOrEqual(search!.y);expect(box!.x).toBeGreaterThanOrEqual(10);expect(box!.x+box!.width).toBeLessThanOrEqual(380);
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-mobile-docked.png'});
  const last=nav.getByRole('button',{name:'医案研读',exact:true});await last.focus();await page.keyboard.press('Enter');await expect(last).toHaveAttribute('aria-pressed','true');await expect(last).toBeInViewport();await expect(page.locator('.library-grid .knowledge-card').first()).toHaveClass(/tone-案/);
  expect(await root.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);

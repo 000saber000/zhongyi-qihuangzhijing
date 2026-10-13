@@ -119,6 +119,6 @@ test('browser back closes an open lesson',async({page})=>{
  await page.goto('/#library');await page.getByRole('button',{name:'学习路径',exact:true}).click();
  await page.getByRole('button',{name:'开始学习 中医入门：建立知识框架',exact:true}).click();
  await expect(page.getByRole('dialog')).toBeVisible();await page.goBack();
- await expect(page.getByRole('heading',{name:'让知识，有迹可循。',exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'知识库',exact:true})).toBeVisible();
  await expect(page.getByRole('dialog')).toHaveCount(0);
 });
