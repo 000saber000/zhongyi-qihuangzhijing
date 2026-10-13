@@ -1,0 +1,131 @@
+/* Chinese thread binding is on the right; the cover opens toward the right. */
+.antique-book {
+ --book-cloth:#25463d;
+ --book-cloth-dark:#132d29;
+ position:relative;
+ width:100%;
+ aspect-ratio:3/4;
+ transform-style:preserve-3d;
+ font-family:var(--serif,'Noto Serif SC',serif);
+ isolation:isolate;
+}
+.antique-book.tone-案 {--book-cloth:#3f4940;--book-cloth-dark:#24332e}
+.book-back,.book-page-block,.book-front,.book-paper {position:absolute;inset:0;border-radius:2px 5px 5px 2px}
+.book-back {inset:3px -7px -7px 3px;background:var(--book-cloth-dark);box-shadow:4px 14px 22px #0006}
+.book-page-block {inset:5px -5px -5px 5px;background:repeating-linear-gradient(0deg,#b4a17c 0 1px,#e6d5ad 1px 3px,#d1bd95 3px 4px);border:1px solid #9e8a63;box-shadow:inset -3px 0 3px #65543155}
+.book-front {transform-origin:right center;transform-style:preserve-3d;z-index:5;box-shadow:-2px 2px 6px #0004}
+.book-cover-outside,.book-cover-inside {position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.book-cover-outside {
+ overflow:hidden;
+ border:1px solid #8d96734d;
+ border-radius:2px 4px 4px 2px;
+ background:
+  repeating-linear-gradient(0deg,#e5ddba05 0 1px,transparent 1px 4px),
+  repeating-linear-gradient(90deg,#00000009 0 1px,transparent 1px 3px),
+  radial-gradient(ellipse at 25% 10%,#a5ba801c,transparent 65%),
+  linear-gradient(100deg,var(--book-cloth),var(--book-cloth-dark));
+ box-shadow:inset -15px 0 18px #02171040,inset 0 0 0 2px #bac09a09;
+}
+.book-frame {position:absolute;inset:12px 27px 13px 11px;border:1px solid #d3c48a40;box-shadow:inset 0 0 0 3px #c4b88405}
+.book-title-slip {
+ position:absolute;top:24px;left:24px;
+ display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+ width:48px;height:57%;padding:13px 6px 10px;
+ background:linear-gradient(100deg,#cbb991,#f0dfb7 22%,#e4d1a6 75%,#bca880);
+ border:1px solid #ac966c;outline:1px solid #e1cda182;outline-offset:3px;
+ color:#273b30;box-shadow:2px 2px 5px #0003;
+}
+.book-title-slip>span {writing-mode:vertical-rl;text-orientation:mixed;font-size:24px;line-height:1.3;letter-spacing:5px;max-height:calc(100% - 22px);max-width:100%;overflow:hidden;overflow-wrap:anywhere}
+.book-title-slip small {font-size:8px;letter-spacing:2px;white-space:nowrap;color:#6f6b4e}
+.book-cover-category {position:absolute;right:37px;top:28px;writing-mode:vertical-rl;font-size:8px;letter-spacing:3px;color:#c4c099b0}
+.book-cover-seal {position:absolute;left:28px;bottom:47px;writing-mode:vertical-rl;border:1px solid #b99668a8;padding:6px 4px;color:#d1b17a;font-size:11px;letter-spacing:3px}
+.book-cover-edition {position:absolute;bottom:23px;left:27px;right:36px;text-align:right;color:#d0c99a99;font-size:8px;letter-spacing:2px}
+.book-binding {position:absolute;right:5px;top:10px;bottom:10px;width:17px;display:flex;flex-direction:column;justify-content:space-around;z-index:6;border-left:1px solid #e8d6a728;pointer-events:none}
+.book-binding i {position:relative;display:block;height:23px;border-top:2px solid #d4c49b;border-bottom:2px solid #bdae84;border-radius:0 6px 6px 0;transform:rotate(-8deg);box-shadow:0 2px 2px #03130c77}
+.book-binding i:before {content:'';position:absolute;left:0;top:-4px;width:3px;height:3px;background:#091f19;border-radius:50%;box-shadow:0 22px 0 #091f19}
+.book-binding i:after {content:'';position:absolute;left:0;top:9px;right:-2px;height:1px;background:#e0cc99;transform:rotate(25deg);box-shadow:0 1px 1px #0007}
+.book-saved {position:absolute;right:32px;bottom:21px;color:#e3cf92}
+.book-paper {
+ overflow:hidden;
+ border:1px solid #bba57c;
+ background:repeating-linear-gradient(0deg,#9d805e06 0 1px,transparent 1px 5px),linear-gradient(100deg,#ceba91,#f2e4c5 13%,#ebdcbb 86%,#bda77e);
+ color:#64513b;
+}
+.book-endpaper {inset:4px 4px 4px 5px;z-index:1}
+.book-turning-page {inset:4px 4px 4px 5px;z-index:3;transform-origin:right center;backface-visibility:hidden;box-shadow:-2px 0 8px #69523424}
+.book-turning-page-1 {z-index:2}
+.book-cover-inside {transform:rotateY(180deg);z-index:1;background:linear-gradient(90deg,#b7a17a,#e8d8b2 9%,#ecddbb 94%,#c9b68d)}
+.book-inner-frame {position:absolute;inset:18px;border:1px solid #9e805750;box-shadow:inset 0 0 0 4px #bda37912}
+.book-inner-title {position:absolute;left:50%;top:20%;transform:translateX(-50%);writing-mode:vertical-rl;font-size:27px;letter-spacing:8px;max-height:55%;overflow:hidden}
+.book-inner-note {position:absolute;bottom:18%;left:0;right:0;text-align:center;font-size:9px;letter-spacing:3px;color:#8a7251}
+.book-inner-seal {position:absolute;bottom:9%;left:50%;transform:translateX(-50%);border:1px solid #975c43;color:#975c43;font-size:14px;padding:3px}
+.book-paper-heading {position:absolute;right:22px;top:25px;writing-mode:vertical-rl;font-size:21px;letter-spacing:5px;max-height:65%;overflow:hidden}
+.book-paper-copy {position:absolute;inset:27px 58px 32px 24px;margin:0;writing-mode:vertical-rl;font-size:12px;line-height:2.4;letter-spacing:3px;text-align:justify;overflow:hidden;border-top:1px solid #ac8e6240;border-bottom:1px solid #ac8e6240;padding:10px 0}
+.book-paper-imprint {position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:8px;letter-spacing:3px;color:#967b57}
+
+/* Keep the supporting description below the physical volume. */
+.knowledge-card.antique-card,.unified-content .knowledge-card.antique-card {
+ background:transparent;border:1px solid transparent;border-radius:4px;box-shadow:none;
+ overflow:visible;padding:12px 6px 0;align-items:center;
+}
+.knowledge-card.antique-card:hover,.unified-content .knowledge-card.antique-card:hover {background:transparent;border-color:transparent;box-shadow:none;transform:translateY(-5px)}
+.knowledge-card.antique-card:focus-visible,.unified-content .knowledge-card.antique-card:focus-visible {outline:2px solid #d8cd9e;outline-offset:5px}
+.knowledge-card.antique-card .book-art,.unified-content .knowledge-card.antique-card .book-art {
+ background:transparent;border:0;height:auto;overflow:visible;width:calc(100% - 28px);max-width:238px;
+ margin:0 7px 14px 0;flex-shrink:0;
+}
+.knowledge-card.antique-card .card-copy,.unified-content .knowledge-card.antique-card .card-copy {padding:16px 12px 20px}
+.unified-content .knowledge-card.antique-card .card-copy h3 {font-size:21px;margin:8px 0}
+.antique-card .card-tags {margin-top:10px}
+.book-art .antique-book {transition:filter .25s ease}
+.antique-card:hover .antique-book {filter:brightness(1.1)}
+.antique-book .book-cover-art {display:none}
+@media(min-width:701px) {
+ .antique-book .book-cover-art.card-illustration {display:block;position:absolute;width:49%;height:auto;aspect-ratio:1;left:auto;right:33px;top:auto;bottom:55px;opacity:.83;filter:sepia(.12)}
+ .antique-book .book-cover-art img {display:block;width:100%;height:100%;object-fit:contain}
+}
+@media(max-width:700px) {
+ .knowledge-card.antique-card,.unified-content .knowledge-card.antique-card {padding:5px 0 0}
+ .knowledge-card.antique-card .book-art,.unified-content .knowledge-card.antique-card .book-art {width:calc(100% - 12px);margin:0 7px 10px 0}
+ .antique-card .book-title-slip {left:16px;top:18px;width:36px;height:62%;padding:9px 4px}
+ .antique-card .book-title-slip>span {font-size:19px;letter-spacing:3px}
+ .antique-card .book-title-slip small {font-size:6px;letter-spacing:1px}
+ .antique-card .book-cover-category {right:31px;top:22px;font-size:6px;letter-spacing:2px}
+ .antique-card .book-cover-seal {left:auto;right:35px;bottom:47px;font-size:13px;padding:8px 5px}
+ .antique-card .book-cover-edition {left:17px;right:30px;bottom:22px;font-size:6px;letter-spacing:1px}
+ .antique-card .book-frame {inset:9px 24px 10px 9px}
+ .antique-card .book-binding {right:4px;width:14px}
+ .antique-card .book-binding i {height:17px}
+ .antique-card .book-binding i:before {box-shadow:0 16px 0 #091f19}
+ .antique-card .book-binding i:after {top:6px}
+ .knowledge-card.antique-card .card-copy,.unified-content .knowledge-card.antique-card .card-copy {padding:13px 5px 17px}
+ .unified-content .knowledge-card.antique-card .card-copy h3 {font-size:18px;letter-spacing:0}
+ .antique-card .book-saved {right:28px;bottom:20px}
+ .unified-content .antique-book .book-cover-art.card-illustration {display:block;left:auto;right:25px;top:auto;bottom:38px;width:44%;height:auto;aspect-ratio:1;transform:none;opacity:.83}
+ .antique-book .book-cover-art img {display:block;width:100%;height:100%;object-fit:contain}
+}
+
+.book-opening {
+ position:fixed;inset:0;width:100%;max-width:none;height:100%;height:100dvh;max-height:none;margin:0;padding:0;
+ border:0;overflow:hidden;box-sizing:border-box;color:#d9c9a1;background:#030c0ee0;
+ font-family:var(--serif,'Noto Serif SC',serif);
+}
+.book-opening[open] {display:flex;align-items:center;justify-content:center}
+.book-opening::backdrop {background:transparent}
+.book-opening-stage {position:relative;flex-shrink:0;perspective:1600px;transform-origin:center;will-change:transform;isolation:isolate}
+.book-opening-stage .antique-book {height:100%;aspect-ratio:auto}
+.book-opening-stage .book-front,.book-opening-stage .book-turning-page {will-change:transform}
+.book-opening-close {position:absolute;z-index:10;right:28px;top:25px;width:44px;height:44px;display:grid;place-items:center;color:#cfbf9e;border:1px solid #c9b68d40;background:#162b28;border-radius:50%;cursor:pointer}
+.book-opening-close:hover {background:#2b4339}
+.book-opening-close:focus-visible {outline:2px solid #e3cf9e;outline-offset:4px}
+.book-opening-caption {position:absolute;left:24px;right:24px;bottom:35px;text-align:center;margin:0;font-size:17px;line-height:1.8;letter-spacing:5px;pointer-events:none}
+.book-opening-caption span {display:block;font-size:10px;letter-spacing:3px;color:#b5b098;margin-top:8px}
+.detail-header h1[tabindex="-1"]:focus {outline:none}
+@media(max-width:700px) {
+ .book-opening-close {right:18px;top:18px}
+ .book-opening-caption {bottom:32px;font-size:15px;letter-spacing:3px}
+}
+@media(prefers-reduced-motion:reduce) {
+ .knowledge-card.antique-card,.book-art .antique-book {transition:none}
+ .knowledge-card.antique-card:hover,.unified-content .knowledge-card.antique-card:hover {transform:none}
+}
