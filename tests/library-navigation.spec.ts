@@ -11,8 +11,8 @@ test('library categories gather in the center while scrolling and still filter c
  const initial=await nav.boundingBox();await root.evaluate(e=>{e.scrollTop=650;});
  await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBeLessThan(Math.round(initial!.y));
  await expect.poll(async()=>(await nav.boundingBox())!.width).toBeLessThan(initial!.width);
- const floated=await nav.boundingBox(),scroll=await root.boundingBox(),search=await page.locator('.universe-search').boundingBox();
- expect(floated!.y).toBeGreaterThanOrEqual(search!.y+search!.height);expect(floated!.y).toBeGreaterThan(scroll!.y);expect(Math.abs(floated!.x+floated!.width/2-720)).toBeLessThan(3);
+ const floated=await nav.boundingBox(),header=await page.locator('.universe-header').boundingBox(),siteNav=await page.locator('.universe-nav').boundingBox();
+ expect(floated!.y).toBeGreaterThanOrEqual(header!.y);expect(floated!.y+floated!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(floated!.y+floated!.height).toBeLessThanOrEqual(siteNav!.y);expect(Math.abs(floated!.x+floated!.width/2-720)).toBeLessThan(3);
  expect(floated!.width).toBeLessThan(initial!.width);
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-desktop-docked.png'});
  await root.evaluate(e=>{e.scrollTop=950;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(floated!.y));
@@ -20,6 +20,19 @@ test('library categories gather in the center while scrolling and still filter c
  await expect(page.locator('.library-grid .knowledge-card').first()).toHaveClass(/tone-药/);
  await root.evaluate(e=>{e.scrollTop=0;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(initial!.y));
  await page.getByRole('button',{name:'学习路径',exact:true}).click();await expect(nav).toHaveCount(0);
+});
+test('desktop library uses real starfield and the two requested card illustrations',async({page})=>{
+ await page.setViewportSize({width:1440,height:900});await page.goto('/#library');
+ for(const name of ['阴阳','桂枝汤']){
+  const art=page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration img');await expect(art).toBeVisible();await expect.poll(()=>art.evaluate(image=>(image as HTMLImageElement).naturalWidth)).toBeGreaterThan(100);
+ }
+ await expect(page.locator('.jade-starfield')).toBeVisible();expect(await page.locator('.jade-starfield').evaluate(e=>getComputedStyle(e).backgroundImage)).toMatch(/url\(/);
+});
+test('a focused category survives desktop-to-mobile reparenting without taking focus from search',async({page})=>{
+ await page.setViewportSize({width:1440,height:900});await page.goto('/#library');await page.locator('.cosmic-content-scroll').evaluate(e=>{e.scrollTo({top:650,behavior:'instant'});});await page.locator('.universe.has-library-header-nav').waitFor();await page.waitForTimeout(800);
+ const last=page.getByRole('navigation',{name:'知识库分类'}).getByRole('button',{name:'医案研读',exact:true});await last.focus();await expect(last).toBeFocused();
+ await page.setViewportSize({width:390,height:844});await page.locator('.library-header-nav').waitFor({state:'detached'});await expect(page.locator('.library-nav-slot')).toHaveClass(/is-docked/);await expect(last).toBeFocused();await page.keyboard.press('Enter');await expect(last).toHaveAttribute('aria-pressed','true');
+ const search=page.getByRole('textbox',{name:'搜索知识'});await search.focus();await page.setViewportSize({width:1440,height:900});await expect(search).toBeFocused();
 });
 test('mobile jade cards keep long published titles within their text area',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.route('**/api/knowledge',route=>route.fulfill({json:{items:[{...catalog[0],title:'CaseStudy'+('179181967657').repeat(8)}]}}));await page.goto('/#library');
@@ -29,6 +42,7 @@ test('mobile jade cards keep long published titles within their text area',async
 test('mobile floating categories scroll horizontally, retain keyboard access, and do not cover search',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/#library');const nav=page.getByRole('navigation',{name:'知识库分类'}),root=page.locator('.cosmic-content-scroll');await expect(nav).toBeVisible();
  expect(await root.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await root.evaluate(e=>{e.scrollTop=600;});
+ await expect(page.locator('.jade-starfield')).toBeHidden();await expect(page.getByRole('button',{name:'阅读 阴阳',exact:true}).locator('.card-illustration')).toBeHidden();
  await expect.poll(async()=>(await nav.boundingBox())!.y).toBeLessThan(190);
  await page.locator('.library-nav-slot.is-docked').waitFor();
  const box=await nav.boundingBox(),search=await page.locator('.universe-search').boundingBox();expect(box!.y).toBeGreaterThanOrEqual(search!.y+search!.height);expect(box!.x).toBeGreaterThanOrEqual(10);expect(box!.x+box!.width).toBeLessThanOrEqual(380);
