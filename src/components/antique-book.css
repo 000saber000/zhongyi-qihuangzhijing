@@ -115,6 +115,7 @@
 .book-opening-stage {position:relative;flex-shrink:0;perspective:1600px;transform-origin:center;will-change:transform;isolation:isolate}
 .book-opening-stage .antique-book {height:100%;aspect-ratio:auto}
 .book-opening-stage .book-front,.book-opening-stage .book-turning-page {will-change:transform}
+.book-opening-paper-veil {position:absolute;inset:4px 4px 4px 5px;z-index:8;opacity:0;background:linear-gradient(145deg,#19332d,#102329);pointer-events:none;will-change:opacity}
 .book-opening-close {position:absolute;z-index:10;right:28px;top:25px;width:44px;height:44px;display:grid;place-items:center;color:#cfbf9e;border:1px solid #c9b68d40;background:#162b28;border-radius:50%;cursor:pointer}
 .book-opening-close:hover {background:#2b4339}
 .book-opening-close:focus-visible {outline:2px solid #e3cf9e;outline-offset:4px}

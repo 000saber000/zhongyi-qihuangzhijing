@@ -6,7 +6,16 @@ test.beforeEach(async({page})=>{
  await page.route('**/api/knowledge',route=>route.fulfill({json:{items:catalog}}));
 });
 
-test('a classic enlarges and opens before entering its own detail page',async({page})=>{
+test('a classic opens while enlarging, fills the viewport and reveals its detail beneath the transition',async({page})=>{
+ // Pause real browser animations as they are created so every handoff can be inspected.
+ await page.addInitScript(()=>{
+  const animate=Element.prototype.animate;
+  Element.prototype.animate=function(keyframes,options){
+   const animation=animate.call(this,keyframes,options);
+   if(this.closest('.book-opening'))animation.pause();
+   return animation;
+  };
+ });
  await page.setViewportSize({width:1440,height:900});
  await page.goto('/#library');
  const card=page.getByRole('button',{name:'阅读 黄帝内经',exact:true});
@@ -16,16 +25,25 @@ test('a classic enlarges and opens before entering its own detail page',async({p
  const opening=page.getByRole('dialog',{name:'正在翻开《黄帝内经》'});
  await expect(opening).toBeVisible();
  await expect(page).toHaveURL(/#library$/);
- await expect.poll(async()=>((await opening.locator('.antique-book').boundingBox())?.width??0)).toBeGreaterThan(original!.width+20);
- // Freeze the actual cover midway: reading must wait for its animation to finish.
- await page.waitForFunction(()=>document.querySelector('.book-opening .book-front')?.getAnimations().some(animation=>animation.playState==='running'));
- await opening.locator('.book-front').evaluate(element=>{const animation=element.getAnimations()[0];animation.pause();animation.currentTime=900;});
- await page.waitForTimeout(500);
+ await expect.poll(()=>opening.locator('.book-front').evaluate(element=>element.getAnimations().length)).toBeGreaterThan(0);
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.currentTime=800;});
+ const enlarged=await opening.locator('.antique-book').boundingBox();
+ expect(enlarged!.width).toBeGreaterThan(original!.width+20);
+ expect(await opening.locator('.book-front').evaluate(element=>getComputedStyle(element).transform)).not.toBe('matrix(1, 0, 0, 1, 0, 0)');
  await expect(page).toHaveURL(/#library$/);
- await opening.locator('.book-front').evaluate(element=>element.getAnimations()[0].play());
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true})){const timing=animation.effect!.getTiming();animation.currentTime=Number(timing.delay)+Number(timing.duration)-1;}});
+ const paper=await opening.locator('.book-endpaper').boundingBox();
+ expect(paper!.x).toBeLessThanOrEqual(0);expect(paper!.y).toBeLessThanOrEqual(0);
+ expect(paper!.x+paper!.width).toBeGreaterThanOrEqual(1440);expect(paper!.y+paper!.height).toBeGreaterThanOrEqual(900);
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
  await expect(page).toHaveURL(/#knowledge\/classic-huangdi$/,{timeout:7000});
+ await expect(opening).toBeVisible();
+ await expect(page.locator('.detail-header h1')).toHaveText('黄帝内经');
+ await expect.poll(()=>opening.evaluate(element=>element.getAnimations().length)).toBeGreaterThan(0);
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
  await expect(page.getByRole('heading',{name:'黄帝内经',exact:true})).toBeVisible();
  await expect(opening).toHaveCount(0);
+ await expect(page.locator('.detail-header h1')).toBeFocused();
 });
 
 test('Escape cancels opening and restores focus without a delayed redirect',async({page})=>{
@@ -48,6 +66,27 @@ test('leaving the library cancels the pending book navigation',async({page})=>{
  await expect(page.getByRole('dialog')).toHaveCount(0);
  await page.waitForTimeout(3200);
  await expect(page).toHaveURL(/#courses$/);
+});
+
+test('browser back during the detail reveal cancels the overlay without returning to the detail',async({page})=>{
+ await page.addInitScript(()=>{
+  const animate=Element.prototype.animate;
+  Element.prototype.animate=function(keyframes,options){
+   const animation=animate.call(this,keyframes,options);
+   if(this.closest('.book-opening'))animation.pause();
+   return animation;
+  };
+ });
+ await page.goto('/#library');
+ await page.getByRole('button',{name:'阅读 金匮要略',exact:true}).click();
+ const opening=page.getByRole('dialog');await expect(opening).toBeVisible();
+ await opening.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
+ await expect(page).toHaveURL(/#knowledge\/classic-jingui$/);
+ await expect(opening).toBeVisible();
+ await page.goBack();
+ await expect(opening).toHaveCount(0);
+ await page.waitForTimeout(800);
+ await expect(page).toHaveURL(/#library$/);
 });
 
 test('mobile books open within the viewport and retain bookmark controls',async({page})=>{

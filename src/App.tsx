@@ -1,4 +1,4 @@
-import {useCallback,useEffect,useRef,useState} from 'react';
+import {useCallback,useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {ArrowRight,ArrowUpRight,BookOpen,Bookmark,Check,ChevronRight,Compass,GraduationCap,Home,Leaf,Library,Menu,Network,Search,Sprout,Sparkles,X} from 'lucide-react';
 import KnowledgeCard from './components/KnowledgeCard';
 import BookOpening,{type BookSelection} from './components/BookOpening';
@@ -25,8 +25,11 @@ export default function App(){
  const [libraryHeaderDocked,setLibraryHeaderDocked]=useState(false);
  const [openingBook,setOpeningBook]=useState<BookSelection|null>(null);
  const bookInFlight=useRef(false),focusAfterBook=useRef(false);
- const cancelBook=useCallback(()=>{bookInFlight.current=false;setOpeningBook(null);},[]);
- useEffect(()=>{cancelBook();if(focusAfterBook.current&&route.startsWith('knowledge/')){document.querySelector<HTMLElement>('.detail-header h1')?.focus();focusAfterBook.current=false;}},[route,cancelBook]);
+ const revealedBookRoute=useRef<string|null>(null),bookRevealReady=useRef<(()=>void)|null>(null);
+ const cancelBook=useCallback(()=>{bookInFlight.current=false;revealedBookRoute.current=null;focusAfterBook.current=false;bookRevealReady.current?.();bookRevealReady.current=null;setOpeningBook(null);},[]);
+ useLayoutEffect(()=>{if(route===revealedBookRoute.current){bookRevealReady.current?.();bookRevealReady.current=null;}},[route]);
+ useEffect(()=>{if(route!==revealedBookRoute.current)cancelBook();},[route,cancelBook]);
+ useEffect(()=>{if(!openingBook&&focusAfterBook.current&&route.startsWith('knowledge/')){document.querySelector<HTMLElement>('.detail-header h1')?.focus();focusAfterBook.current=false;}},[route,openingBook]);
  const [chatOpen,setChatOpen]=useState(false),[chatContext,setChatContext]=useState<Knowledge|null>(null);
  const explain=(item:Knowledge)=>{setChatContext(item);setChatOpen(true);};
 
@@ -53,7 +56,8 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
   }
   location.hash=`knowledge/${id}`;
  };
- const finishBook=()=>{const id=openingBook?.item.id;cancelBook();if(id){focusAfterBook.current=true;location.hash=`knowledge/${id}`;}};
+ const revealBook=()=>new Promise<void>(resolve=>{const id=openingBook?.item.id;if(!id){resolve();return;}const target=`knowledge/${id}`;revealedBookRoute.current=target;if(route===target){resolve();return;}bookRevealReady.current=resolve;location.hash=target;});
+ const finishBook=()=>{cancelBook();focusAfterBook.current=true;};
  const search=(e:React.FormEvent)=>{e.preventDefault();setCategory('全部');location.hash='library';};
  const active=route.startsWith('knowledge/')?'library':route;
  const detail=route.startsWith('knowledge/')?knowledge.find(k=>k.id===route.slice(10)):null;
@@ -78,6 +82,6 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  </div>}
  {lesson&&<div className="modal-overlay" onClick={()=>setLesson(null)}><section className="lesson-modal" role="dialog" aria-modal="true" aria-labelledby="lesson-title" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setLesson(null)} aria-label="关闭学习单元"><X size={20}/></button><span className="section-kicker">{lesson.course.title}</span><div className="lesson-tabs">{lesson.course.lessons.map((name,i)=><button key={name} className={i===lesson.index?'current':''} aria-label={`第${i+1}节 ${name}`} onClick={()=>setLesson({...lesson,index:i})}>{completed.includes(`${lesson.course.id}-${i}`)?<Check size={14}/>:i+1}</button>)}</div><h2 id="lesson-title">{lesson.course.lessons[lesson.index]}</h2><p>{knowledge.find(k=>k.id===lesson.course.ids[lesson.index])?.summary||'沿着相关知识的关联，逐步建立理解。'}</p><button className="ai-explain" onClick={()=>{const item=knowledge.find(k=>k.id===lesson.course.ids[lesson.index]);if(item){setLesson(null);explain(item);}}}><Sparkles size={15}/>请 AI 讲解</button><h4>本节学习要点</h4>{(keyPoints[lesson.course.ids[lesson.index]]||['理解概念在经典和教材中的语境。','阅读相关知识，辨析概念之间的联系。']).map(p=><p className="lesson-point" key={p}><Leaf size={15}/>{p}</p>)}<button className="section-link" onClick={()=>{open(lesson.course.ids[lesson.index]);setLesson(null)}}>阅读相关知识 <ArrowUpRight size={16}/></button><div className="lesson-actions"><span>{lesson.course.lessons.filter((_,i)=>completed.includes(`${lesson.course.id}-${i}`)).length} / 5 单元已完成</span><button className="primary" aria-label="完成本节学习" disabled={!study.loaded||study.pending.has('import')||study.pending.has('lesson:'+lesson.course.id+'-'+lesson.index)} onClick={async()=>{const id=lesson.course.id+'-'+lesson.index;if(await study.completeLesson(id))setToast('学习足迹已记录')}}><Check size={16}/>{completed.includes(`${lesson.course.id}-${lesson.index}`)?'本节已完成':'完成本节学习'}</button></div></section></div>}
  {toast&&<div role="status" className="toast"><Check size={16}/>{toast}</div>}
- </Universe>{openingBook&&<BookOpening selection={openingBook} onFinish={finishBook} onCancel={cancelBook}/>} {isCosmos&&content.error&&<div className="content-sync cosmic-sync">{content.error}<button className="outline" disabled={content.loading} onClick={()=>void content.refresh()}>重试同步内容</button></div>}{study.user&&(passwordOpen||study.user.mustChangePassword)&&<PasswordDialog key={study.user.id} study={study} close={()=>setPasswordOpen(false)}/>} {study.error&&<div role="alert" className="toast">{study.error}</div>} {<button className="ai-launcher" aria-hidden={chatOpen} tabIndex={chatOpen?-1:0} aria-label="问岐黄" onClick={()=>setChatOpen(true)}><Sparkles size={17}/>问岐黄</button>}<ChatPanel key={(study.user?.id??'guest')+study.sessionToken} study={study} open={chatOpen} context={chatContext} onClose={()=>setChatOpen(false)} onClearContext={()=>setChatContext(null)} onNavigate={go}/></>
+ </Universe>{openingBook&&<BookOpening selection={openingBook} onReveal={revealBook} onFinish={finishBook} onCancel={cancelBook}/>} {isCosmos&&content.error&&<div className="content-sync cosmic-sync">{content.error}<button className="outline" disabled={content.loading} onClick={()=>void content.refresh()}>重试同步内容</button></div>}{study.user&&(passwordOpen||study.user.mustChangePassword)&&<PasswordDialog key={study.user.id} study={study} close={()=>setPasswordOpen(false)}/>} {study.error&&<div role="alert" className="toast">{study.error}</div>} {<button className="ai-launcher" aria-hidden={chatOpen} tabIndex={chatOpen?-1:0} aria-label="问岐黄" onClick={()=>setChatOpen(true)}><Sparkles size={17}/>问岐黄</button>}<ChatPanel key={(study.user?.id??'guest')+study.sessionToken} study={study} open={chatOpen} context={chatContext} onClose={()=>setChatOpen(false)} onClearContext={()=>setChatContext(null)} onNavigate={go}/></>
 }
 function PageTitle({kicker,title,description}:{kicker:string;title:string;description:string}){return <div className="page-title"><span className="section-kicker">{kicker}</span><h1>{title}</h1><p>{description}</p></div>}
