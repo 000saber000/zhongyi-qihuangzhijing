@@ -110,6 +110,28 @@ test('owner can disable independently of model fields and encryption, retain key
  const other=createApp(pool,['http://localhost:5173'],{ai:{encryptionKey:'invalid'}}).listen(0,'127.0.0.1');await new Promise<void>(resolve=>other.once('listening',resolve));
  try{const response=await fetch('http://127.0.0.1:'+(other.address() as any).port+'/api/admin/ai/disable',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+owner.token},body:JSON.stringify({version:resumed.data.version})});assert.equal(response.status,200);assert.equal((await response.json() as any).enabled,false);}finally{await new Promise<void>(resolve=>other.close(()=>resolve()));}
 });
+test('one-click enable restores saved settings without spending quota or calling the vendor',async()=>{
+ const saved=await configure({dailyLimit:7});await chat();
+ const stopped=await request('/api/admin/ai/disable','POST',{version:saved.data.version},owner.token);
+ const before=(await pool.query('SELECT * FROM ai_settings')).rows[0];calls=[];
+ const enabled=await request('/api/admin/ai/enable','POST',{version:stopped.data.version},owner.token);
+ assert.equal(enabled.status,200);assert.equal(enabled.data.enabled,true);assert.equal(enabled.data.version,stopped.data.version+1);assert.equal(enabled.data.hasKey,true);
+ const after=(await pool.query('SELECT * FROM ai_settings')).rows[0];
+ for(const field of ['provider','model','encrypted_key','daily_limit','global_daily_limit','max_tokens'])assert.equal(after[field],before[field]);
+ assert.equal(calls.length,0);assert.equal((await request('/api/ai/status','GET',undefined,member.token)).data.remaining,6);assert.equal((await chat()).status,200);
+});
+test('one-click enable enforces owner, version and valid saved configuration',async()=>{
+ assert.equal((await request('/api/admin/ai/enable','POST',{version:0})).status,401);
+ for(const token of [member.token,otherAdmin.token])assert.equal((await request('/api/admin/ai/enable','POST',{version:0},token)).status,403);
+ const saved=await configure();const stopped=await request('/api/admin/ai/disable','POST',{version:saved.data.version},owner.token);
+ assert.equal((await request('/api/admin/ai/enable','POST',{version:saved.data.version},owner.token)).status,409);
+ for(const version of [-1,'1',undefined])assert.equal((await request('/api/admin/ai/enable','POST',{version},owner.token)).status,400);
+ const other=createApp(pool,['http://localhost:5173'],{ai:{encryptionKey:'invalid'}}).listen(0,'127.0.0.1');await new Promise<void>(resolve=>other.once('listening',resolve));
+ try{const response=await fetch('http://127.0.0.1:'+(other.address() as any).port+'/api/admin/ai/enable',{method:'POST',headers:{Authorization:'Bearer '+owner.token,'Content-Type':'application/json'},body:JSON.stringify({version:stopped.data.version})});assert.equal(response.status,503);}finally{await new Promise<void>(resolve=>other.close(()=>resolve()));}
+ assert.equal((await request('/api/admin/ai','GET',undefined,owner.token)).data.enabled,false);
+ const cleared=await request('/api/admin/ai','DELETE',{version:stopped.data.version},owner.token);assert.equal((await request('/api/admin/ai/enable','POST',{version:cleared.data.version},owner.token)).status,400);
+ assert.equal((await request('/api/admin/ai','GET',undefined,owner.token)).data.enabled,false);assert.equal(calls.length,0);
+});
 test('clear removes encrypted key and model, preserves quotas and usage, and prevents stale restoration',async()=>{
  const saved=await configure({dailyLimit:7});await chat();
  const cleared=await request('/api/admin/ai','DELETE',{version:saved.data.version},owner.token);assert.equal(cleared.status,200);assert.equal(cleared.data.enabled,false);assert.equal(cleared.data.hasKey,false);assert.equal(cleared.data.model,'');assert.equal(cleared.data.dailyLimit,7);

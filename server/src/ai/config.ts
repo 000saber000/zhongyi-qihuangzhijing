@@ -31,6 +31,19 @@ export async function stopConfig(pool:Pool,version:unknown,user:PublicUser,clear
   return fromRow(result.rows[0]);
  });
 }
+export async function startConfig(pool:Pool,version:unknown,user:PublicUser,options:AiOptions):Promise<ModelConfig>{
+ if(!Number.isSafeInteger(version)||(version as number)<0||(version as number)>2147483646)throw invalid();
+ return transaction(pool,async db=>{
+  await db.query('INSERT INTO ai_settings(id) VALUES(1) ON CONFLICT DO NOTHING');
+  const current=fromRow((await db.query('SELECT * FROM ai_settings WHERE id=1 FOR UPDATE')).rows[0]);
+  if(current.version!==version)throw new HttpError(409,'VERSION_CONFLICT','模型设置已在其他窗口更新，请重新载入。');
+  if(!current.encryptedKey||!/^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,119}$/.test(current.model))throw new HttpError(400,'AI_NOT_READY','请先保存模型名称和 API 密钥，再开启 AI。');
+  decrypt(current,options);
+  const result=await db.query('UPDATE ai_settings SET enabled=true,version=version+1,updated_by=$1,updated_at=now() WHERE id=1 RETURNING *',[user.id]);
+  await db.query("INSERT INTO admin_audit(actor_id,actor_username,target_id,target_username,action) VALUES($1,$2,$1,$2,'ai_config_update')",[user.id,user.username]);
+  return fromRow(result.rows[0]);
+ });
+}
 function encrypt(value:string,key:Buffer){const iv=randomBytes(12),cipher=createCipheriv('aes-256-gcm',key,iv);const bytes=Buffer.concat([cipher.update(value,'utf8'),cipher.final()]);return [iv,cipher.getAuthTag(),bytes].map(value=>value.toString('base64')).join('.');}
 export function decrypt(config:ModelConfig,options:AiOptions):string{
  const key=keyBytes(options.encryptionKey);if(!key||!config.encryptedKey)throw new HttpError(503,'AI_NOT_READY','学习助手尚未配置完成。');
