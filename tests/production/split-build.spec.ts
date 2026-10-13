@@ -34,7 +34,7 @@ test('navigation is available while the three-dimensional scene downloads',async
   await expect(page.locator('.universe-loading')).toBeVisible();
   await downloading;
   await page.getByRole('button',{name:'知识库',exact:true}).click();
-  await expect(page.getByRole('heading',{name:'让知识，有迹可循。',exact:true})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'知识库',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'学习路径',exact:true}).click();
   await expect(page.getByRole('heading',{name:'循序而学，自成体系。',exact:true})).toBeVisible();
   release();
@@ -51,7 +51,7 @@ test('a failed scene download keeps the knowledge library usable',async({page})=
  await page.goto('/');
  await expect(page.getByRole('heading',{name:'当前设备无法显示三维星系',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'打开知识库',exact:true}).click();
- await expect(page.getByRole('heading',{name:'让知识，有迹可循。',exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'知识库',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'阅读 黄帝内经',exact:true}).click();
  await expect(page.getByRole('heading',{name:'黄帝内经',exact:true})).toBeVisible();
 });
