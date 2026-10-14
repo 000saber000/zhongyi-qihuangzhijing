@@ -1,28 +1,29 @@
 import {useId} from 'react';
 import type {Knowledge} from '../data/catalog';
-import yinYang from '../assets/jade/yin-yang.webp';
-import physicians from '../assets/jade/physician-portraits.webp';
+import {KnowledgeImage} from './KnowledgeImage';
+import {knowledgeImages} from '../data/knowledge-images';
 import './knowledge-symbols.css';
 
 export type SymbolKind='theory'|'acupoint'|'diagnosis'|'physician';
 const elements=['木','火','土','金','水'];
 function JadeDisc({id}:{id:string}){
- const gradient=useId().replace(/:/g,'');
+ const gradient=useId().replace(/:/g,''),yinClip=`${gradient}-yin`,yangClip=`${gradient}-yang`;
  return <div className="jade-disc">
   <svg viewBox="0 0 260 260" fill="none">
-   <defs><linearGradient id={gradient} x1="55" y1="48" x2="201" y2="211" gradientUnits="userSpaceOnUse"><stop stopColor="#f0dfac"/><stop offset=".48" stopColor="#b7ba88"/><stop offset="1" stopColor="#687f61"/></linearGradient></defs>
+   <defs><linearGradient id={gradient} x1="55" y1="48" x2="201" y2="211" gradientUnits="userSpaceOnUse"><stop stopColor="#f0dfac"/><stop offset=".48" stopColor="#b7ba88"/><stop offset="1" stopColor="#687f61"/></linearGradient><clipPath id={yinClip} clipPathUnits="objectBoundingBox"><path d="M.5 0A.5 .5 0 0 0 .5 1A.25 .25 0 0 0 .5 .5A.25 .25 0 0 1 .5 0Z"/></clipPath><clipPath id={yangClip} clipPathUnits="objectBoundingBox"><path d="M.5 0A.5 .5 0 0 1 .5 1A.25 .25 0 0 0 .5 .5A.25 .25 0 0 1 .5 0Z"/></clipPath></defs>
    <g className="jade-orbit" stroke="#cbb77c" strokeWidth=".8">
     <circle cx="130" cy="130" r="114" opacity=".32"/><circle cx="130" cy="130" r="103" strokeDasharray="2 8" opacity=".5"/>
     {Array.from({length:40},(_,index)=><path key={index} d="M130 16V23" transform={`rotate(${index*9} 130 130)`} opacity={index%5===0?.75:.3}/>)}
     {elements.map((label,index)=>{const angle=(index*72-90)*Math.PI/180,x=130+Math.cos(angle)*100,y=130+Math.sin(angle)*100;return <g key={label}><circle cx={x} cy={y} r="13" fill="#1a3730"/><text x={x} y={y+4} textAnchor="middle" fill="#d9c594" stroke="none" fontSize="12">{label}</text></g>;})}
     {id==='theory-five-elements'&&<path d="M130 30L189 211L35 99L225 99L71 211Z" opacity=".35"/>}
    </g>
-   <g className="jade-halves">
+   {!knowledgeImages[id]&&<g className="jade-halves">
     <g className="jade-yin"><path d="M130 51A79 79 0 0 0 130 209A39.5 39.5 0 0 0 130 130A39.5 39.5 0 0 1 130 51Z" fill="#173c32" stroke="#d5c491" strokeWidth="1.2"/><circle cx="130" cy="169.5" r="9" fill={`url(#${gradient})`}/><path d="M88 76Q53 124 83 174" stroke="#769879" opacity=".45"/></g>
     <g className="jade-yang"><path d="M130 51A79 79 0 0 1 130 209A39.5 39.5 0 0 0 130 130A39.5 39.5 0 0 1 130 51Z" fill={`url(#${gradient})`} stroke="#dac899" strokeWidth="1.2"/><circle cx="130" cy="90.5" r="9" fill="#173b32"/><path d="M161 74Q202 110 185 165" stroke="#f4e5b6" opacity=".5"/></g>
-   </g>
+   </g>}
    <circle cx="130" cy="130" r="80" stroke="#dfce9b" opacity=".5"/>
   </svg>
+  {knowledgeImages[id]&&<div className="jade-halves jade-image-circle"><div className="jade-yin" style={{clipPath:`url(#${yinClip})`}}><KnowledgeImage id={id} className="jade-half-picture"/></div><div className="jade-yang" style={{clipPath:`url(#${yangClip})`}}><KnowledgeImage id={id} secondary className="jade-half-picture"/></div></div>}
  </div>;
 }
 
@@ -30,16 +31,16 @@ type PointRegion='head'|'neck'|'arm'|'hand'|'chest'|'abdomen'|'leg'|'foot';
 type PointProfile={region:PointRegion;point:[number,number]};
 // Decorative local silhouettes and landmarks; article content remains the knowledge source.
 const pointProfiles:Record<string,PointProfile>={
- 'point-zusanli':{region:'leg',point:[156,168]},'point-baihui':{region:'head',point:[139,55]},
- 'point-yintang':{region:'head',point:[139,135]},'point-fengchi':{region:'neck',point:[159,143]},
- 'point-jianjing':{region:'neck',point:[189,181]},'point-quchi':{region:'arm',point:[147,137]},
- 'point-hegu':{region:'hand',point:[128,176]},'point-neiguan':{region:'arm',point:[125,232]},
- 'point-waiguan':{region:'arm',point:[150,218]},'point-shenmen':{region:'arm',point:[155,265]},
- 'point-shanzhong':{region:'chest',point:[139,151]},'point-zhongwan':{region:'abdomen',point:[139,143]},
- 'point-guanyuan':{region:'abdomen',point:[139,222]},'point-qihai':{region:'abdomen',point:[139,205]},
- 'point-yanglingquan':{region:'leg',point:[174,125]},'point-yinlingquan':{region:'leg',point:[119,135]},
- 'point-sanyinjiao':{region:'leg',point:[112,255]},'point-taichong':{region:'foot',point:[145,134]},
- 'point-yongquan':{region:'foot',point:[141,190]},'point-taixi':{region:'foot',point:[111,148]}
+ 'point-zusanli':{region:'leg',point:[156,203]},'point-baihui':{region:'head',point:[130,86]},
+ 'point-yintang':{region:'head',point:[130,252]},'point-fengchi':{region:'neck',point:[161,231]},
+ 'point-jianjing':{region:'neck',point:[181,150]},'point-quchi':{region:'arm',point:[123,218]},
+ 'point-hegu':{region:'hand',point:[88,175]},'point-neiguan':{region:'arm',point:[122,156]},
+ 'point-waiguan':{region:'arm',point:[133,151]},'point-shenmen':{region:'arm',point:[167,207]},
+ 'point-shanzhong':{region:'chest',point:[130,158]},'point-zhongwan':{region:'abdomen',point:[131,158]},
+ 'point-guanyuan':{region:'abdomen',point:[130,227]},'point-qihai':{region:'abdomen',point:[136,174]},
+ 'point-yanglingquan':{region:'leg',point:[170,142]},'point-yinlingquan':{region:'leg',point:[109,186]},
+ 'point-sanyinjiao':{region:'leg',point:[156,115]},'point-taichong':{region:'foot',point:[120,203]},
+ 'point-yongquan':{region:'foot',point:[125,162]},'point-taixi':{region:'foot',point:[166,184]}
 };
 const localSilhouettes:Record<PointRegion,string[]>={
  head:['M139 55C94 53 77 89 81 140L89 166Q106 201 139 211Q175 201 190 166L196 140C201 88 180 53 139 55Z','M104 91Q139 72 175 91M95 134Q108 125 121 134M157 134Q171 125 184 134M139 141L135 163L145 167M117 185Q139 194 160 185M109 199L107 228L75 243L52 285M169 199L172 228L208 243L228 285'],
@@ -56,7 +57,8 @@ function AcupointMap({id}:{id:string}){
  return <svg className="acupoint-map" viewBox="0 0 260 350" fill="none">
   <defs><radialGradient id={gradient}><stop stopColor="#f6dea2" stopOpacity=".75"/><stop offset="1" stopColor="#dfc284" stopOpacity="0"/></radialGradient></defs>
   <g stroke="#c3b783" opacity=".2" strokeWidth=".65"><circle cx={x} cy={y} r="77" strokeDasharray="2 7"/><ellipse cx={x} cy={y} rx="100" ry="38" transform={`rotate(-27 ${x} ${y})`}/><path d="M30 283L66 256L106 277L177 259L222 284M33 71L68 92L190 75L222 53"/></g>
-  <g stroke="#acc6ae" strokeWidth="1.25" strokeLinecap="round" opacity=".63">{localSilhouettes[profile.region].map((path,index)=><path key={index} d={path} opacity={index?.65:1}/>)}</g>
+  {knowledgeImages[id]&&<KnowledgeImage id={id} className="acupoint-illustration"/>}
+  <g opacity={knowledgeImages[id]?0:.55} stroke="#acc6ae" strokeWidth="1.25" strokeLinecap="round">{localSilhouettes[profile.region].map((path,index)=><path key={index} d={path} opacity={index?.65:1}/>)}</g>
   <g fill="#d7c88d" opacity=".45">{[[30,283],[66,256],[106,277],[177,259],[222,284],[33,71],[68,92],[190,75],[222,53]].map(([cx,cy],index)=><circle key={index} cx={cx} cy={cy} r={index%3===0?2:1.5}/>)}</g>
   <circle className="acupoint-glow" cx={x} cy={y} r="27" fill={`url(#${gradient})`}/>
   <g className="acupoint-ripple" stroke="#edcf91" strokeWidth=".9" opacity=".5"><circle cx={x} cy={y} r="15"/><circle cx={x} cy={y} r="24" opacity=".35"/></g>
@@ -73,28 +75,24 @@ function DiagnosisMark({index}:{index:number}){
   {index===3&&<><path d="M9 46H24L32 35L39 61L48 19L58 52L67 41H81"/><path d="M14 72H76" opacity=".4"/></>}
  </svg>;
 }
-function DiagnosisSheets(){
+function DiagnosisSheets({id}:{id:string}){
  return <div className="diagnosis-fan">
-  {['望','闻','问','切'].map((label,index)=><div key={label} className={`diagnosis-leaf diagnosis-leaf-${index}`}><span>{label}</span><DiagnosisMark index={index}/><i/></div>)}
+  {['望','闻','问','切'].map((label,index)=><div key={label} className={`diagnosis-leaf diagnosis-leaf-${index}`}><span>{label}</span>{index===3&&knowledgeImages[id]?<KnowledgeImage id={id} className="diagnosis-illustration"/>:<DiagnosisMark index={index}/>}<i/></div>)}
   <div className="diagnosis-complete"><div>{['望','闻','问','切'].map((label,index)=><span key={label}><DiagnosisMark index={index}/><small>{label}</small></span>)}</div><i/><i/><i/></div>
  </div>;
 }
-const portraitCells:Record<string,[number,number]>={
- 'person-zhangzhongjing':[0,0],'person-sunsimiao':[50,0],'person-lishizhen':[100,0],
- 'person-huatuo':[0,100],'person-yetianshi':[50,100]
-};
 function PhysicianPortrait({item}:{item:Knowledge}){
- const cell=portraitCells[item.id]??[100,100];
- return <><div className="physician-portrait"><span className="physician-halo"/><span className="physician-sprite" style={{backgroundImage:`url(${physicians})`,backgroundPosition:`${cell[0]}% ${cell[1]}%`}}/></div><span className="physician-name-seal">{(item.title.length<4?item.title+'印':item.title).slice(0,4).split('').map((char,index)=><span key={index}>{char}</span>)}</span><span className="physician-ink"/></>;
+
+ return <><div className="physician-portrait"><span className="physician-halo"/><KnowledgeImage id={item.id} className="physician-sprite"/></div><span className="physician-name-seal">{(item.title.length<4?item.title+'印':item.title).slice(0,4).split('').map((char,index)=><span key={index}>{char}</span>)}</span><span className="physician-ink"/></>;
 }
 
 export function KnowledgeSymbol({kind,item}:{kind:SymbolKind;item:Knowledge}){
  return <>
   <span className="knowledge-sheet-frame"/>
   <span className="knowledge-title-slip"><span>{item.title}</span><small>{{theory:'理象藏笺',acupoint:'腧穴星图',diagnosis:'四诊合笺',physician:'名家印谱'}[kind]}</small></span>
-  {kind==='theory'&&<><JadeDisc id={item.id}/>{item.id==='theory-yinyang'&&<picture className="card-illustration theory-medallion"><img src={yinYang} width={116} height={116} loading="lazy" decoding="async" alt=""/></picture>}</>}
+  {kind==='theory'&&<JadeDisc id={item.id}/>}
   {kind==='acupoint'&&<AcupointMap id={item.id}/>}
-  {kind==='diagnosis'&&<><DiagnosisSheets/><span className="diagnosis-legend">望 · 闻 · 问 · 切</span></>}
+  {kind==='diagnosis'&&<><DiagnosisSheets id={item.id}/><span className="diagnosis-legend">望 · 闻 · 问 · 切</span></>}
   {kind==='physician'&&<PhysicianPortrait item={item}/>}
   {kind!=='physician'&&<span className="knowledge-sheet-seal">{{theory:'理',acupoint:'穴',diagnosis:'诊',physician:'人'}[kind]}</span>}
   <span className="knowledge-sheet-imprint">{{theory:'阴阳相依 · 观物知理',acupoint:'一穴一星 · 循位而学',diagnosis:'四诊相参 · 合笺知证',physician:'名家留印 · 阅人知学'}[kind]}</span>

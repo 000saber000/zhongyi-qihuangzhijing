@@ -69,3 +69,9 @@
  .knowledge-card.themed-card,.unified-content .knowledge-card.themed-card {transition:none}
  .knowledge-card.themed-card:hover,.unified-content .knowledge-card.themed-card:hover {transform:none}
 }
+.knowledge-image {display:block;width:100%;height:100%;overflow:hidden}
+.knowledge-image img {display:block;width:100%;height:100%;object-fit:contain}
+.specimen-plant>.botanical-sprite {inset:0;left:0;top:0;width:100%;height:100%;aspect-ratio:auto;transform:none}
+.formula-plant>.knowledge-image.card-illustration,.unified-content .formula-plant>.knowledge-image.card-illustration {position:static;width:100%;height:100%;transform:none;opacity:1}
+.formula-plant>.knowledge-image svg {width:100%;height:100%}
+.meridian-illustration,.acupoint-illustration {opacity:.86}
