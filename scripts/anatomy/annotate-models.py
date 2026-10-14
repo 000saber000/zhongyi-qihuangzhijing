@@ -47,6 +47,7 @@ for variant,m in manifest.items():
    # Raise markers by 2.5mm from the actual export surface to prevent z-fighting.
    if normal.dot(blender(direction))<0:normal=-normal
    position+=normal*.0025
+   if code in ['SP9','SP6']:direction=Vector((-sign*.38,.08,.92)).normalized()
    anchors.append(dict(knowledgeId=d['knowledgeId'],modelId=m['id'],side=side,modelSha256=m['sha256'],position=yup(position),outwardNormal=yup(normal),viewDirection=list(direction),viewDistance=distance,review=dict(source=d['review']['source'],section=f'{code}；独立 {variant} 模型表面投影自查，非临床定位核验',checkedAt='2026-10-15')))
 (root/'src/features/meridians/anchors.json').write_text(json.dumps(anchors,ensure_ascii=False,indent=2)+'\n')
 models=[{k:m[k] for k in ['id','variant','sha256','sourceFile','previewFiles']} for m in manifest.values()]
