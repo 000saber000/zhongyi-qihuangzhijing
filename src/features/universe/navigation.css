@@ -37,7 +37,7 @@
  .has-library-header-nav .cosmic-nav-dot{top:5px;right:6px;width:2px;height:2px}
 }
 @media(max-width:700px){
- .universe .universe-nav.cosmic-navigation{position:absolute;top:60px;left:20px;right:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;height:34px;margin:0}
+ .universe .universe-nav.cosmic-navigation{position:absolute;top:60px;left:20px;right:20px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;height:34px;margin:0}
  .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:0;min-height:34px;height:34px;padding:0 6px;gap:4px;font-size:9px;letter-spacing:.2px}
  .cosmic-nav-icon{width:14px;height:14px}
  .cosmic-nav-dot{top:5px;right:5px;width:2px;height:2px}

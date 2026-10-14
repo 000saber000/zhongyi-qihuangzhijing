@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'./tests',testMatch:'meridians.spec.ts',testIgnore:'**/production/**',timeout:45000,workers:1,use:{baseURL:'http://127.0.0.1:5183',headless:true,launchOptions:{executablePath:'/usr/bin/chromium',args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']}},webServer:{command:'npm run dev -- --port 5183',url:'http://127.0.0.1:5183',reuseExistingServer:false},reporter:'list'});
