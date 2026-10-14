@@ -10,7 +10,7 @@
 
 **Spec:** [2026-10-15-meridian-body-design.md](../specs/2026-10-15-meridian-body-design.md)
 
-**Status:** 用户已明确要求直接实施，采用当前助手直接执行方式；不再重复询问计划或执行方式。模型形态按已确认青玉参考进行多角度自查，交付后可依据用户反馈调整。
+**Status:** 实现及验证已完成，按当前授权交付分支，尚未合入线上。实际执行记录与验证结果见 [验收报告](../../meridian-validation.md)。下列步骤保留实施前计划；其中模型确认暂停已由用户“直接干活”指令覆盖，未经核验的经脉线路未虚构或交付。
 
 ## Global Constraints
 
@@ -20,9 +20,9 @@
 - 左右名称以人体自身为准，列表和面板同步注明。
 - 两版统一世界坐标约定：米制、Y 向上、人体正面朝 +Z；左右按人体自身定义。
 - 设计预算为每版 GLB 不超过 4 MB、主体不超过约 5 万三角面。
-- 约 0.7–1 秒内靠近目标；实施时固定默认时长为 900 毫秒。
+- 约 0.7–1 秒内靠近目标；实施时固定默认时长为 850 毫秒。
 - 用户启用减少动态效果时改为直接定位。
-- 模型形态先交付男女各一组正面、侧面、背面预览。用户验收后再开始穴位标注。
+- 男女各一组正面、侧面、背面真实预览已生成；按直接实施授权多角度自查后冻结模型与标注。
 - 首版人体材质不依赖 Bloom 和多层后处理；手机 DPR 上限 1.5。
 - 人体页专属 AI 功能和学习测验属于后续扩展，不加入首版。
 - 不创建第二套知识库或账户，不修改现有用户数据，不自动发布后台草稿。
@@ -134,7 +134,7 @@ type DisplayedAcupoint = {definition: AcupointDefinition; knowledge: Knowledge};
 
 **Interfaces:** `isAnchorVisible(cameraPosition: Vec3, anchor: AcupointAnchor, firstBodyHitDistance: number | null): boolean`；`planCameraTransition(start: CameraPose, anchor: AcupointAnchor, bodyBounds: BodyBounds, viewport: Viewport, reducedMotion: boolean): CameraTransition`。`CameraPose` 包含 `position` 与 `target`；`CameraTransition` 固定 `durationMs` 并提供 `sample(t: number): CameraPose`，`t` 在 `[0,1]` 内。
 
-- [ ] **Step 1: 写失败测试。** 正面与背面点投影重合时，身体先被射线命中则背面点不可选；中线只渲染一个标记；缺失锚点不回退。相机测试后颈、手掌内侧和脚底的预设方向，900 毫秒动画终点、减少动态时 0 毫秒、手动打断和后一次选择取代前一次选择。
+- [ ] **Step 1: 写失败测试。** 正面与背面点投影重合时，身体先被射线命中则背面点不可选；中线只渲染一个标记；缺失锚点不回退。相机测试后颈、手掌内侧和脚底的预设方向，850 毫秒动画终点、减少动态时 0 毫秒、手动打断和后一次选择取代前一次选择。
 - [ ] **Step 2: 运行相应单元测试，确认先失败。** 再运行浏览器的代表点命中用例，确认未实现的交互不能被列表状态伪装为通过。
 - [ ] **Step 3: 实现命中与镜头接口。** 光点有放大的命中区域，但先做朝向与身体射线遮挡判断。镜头转向沿人体外侧安全路径绕行，再沿已核验观察方向接近目标；不能直线穿过躯干。通过场景实际可用尺寸构图，不按整个窗口尺寸假定面板透明。
 - [ ] **Step 4: 接入相机与控制。** 自动运动期间逐帧 `invalidate`，结束即停止；OrbitControls `onStart` 取消自动运动。正 / 背 / 左右侧面保留选择；「回到全身」清除选择。选中点显示暖金环，标签只显示悬停 / 选中项。
