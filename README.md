@@ -84,3 +84,5 @@ Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 上述复用代码采用 MIT License，完整条款见 [第三方许可证](third-party/SHIYUN-LICENSE.md) 与 [该版本的上游 LICENSE](https://github.com/Cohenjikan/shiyun/blob/928c79ed554204b0033300ecd6c2529cc4e55764/LICENSE)；复用范围、修改及版本核验见 [来源记录](third-party/SHIYUN-SOURCE.md)。此声明针对诗云复用代码，其他代码与素材分别按各自的权利和许可处理。
 
 修改建议的文本差异展示使用 [jsdiff](https://github.com/kpdecker/jsdiff)，遵循 BSD-3-Clause，许可证见 [JSDIFF-LICENSE.txt](third-party/JSDIFF-LICENSE.txt)。
+
+学习路径的固定选课按钮柔光使用 [React Bits SpotlightCard](https://github.com/DavidHDev/react-bits/tree/496968c4117e21278f13917201b7d615bc5e7450)（Copyright © 2026 David Haz），遵循 MIT + Commons Clause，完整条款与来源见 [许可证](third-party/REACT-BITS-LICENSE.md) 和 [来源记录](third-party/REACT-BITS-SOURCE.md)。三维古籍使用 Three.js 实体网格建模封面、纸页和订线，生成的布面图像仅用作材质；题签文字绘入三维材质纹理。

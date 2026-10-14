@@ -40,12 +40,13 @@ test('resume first unfinished lesson after out-of-order completion',async({page}
  await page.getByRole('button',{name:'完成本节学习',exact:true}).click();
  await page.getByRole('button',{name:'关闭学习单元',exact:true}).click();
  await course.click();
+ await page.getByRole('dialog',{name:'阴阳不是二分法',exact:true}).waitFor();
  await expect(page.getByRole('dialog').getByRole('heading',{name:'阴阳不是二分法',exact:true})).toBeVisible();
 });
 test('immersive universe renders particles and selects searchable knowledge',async({page})=>{
  await page.goto('/');
  await expect(page.getByRole('heading',{name:'万千医理，皆有星辰。',exact:true})).toBeVisible();
- await expect(page.locator('canvas')).toBeVisible();
+ await expect(page.locator('.universe-stage canvas')).toBeVisible();
  await expect(page.getByText('知识星系已点亮', {exact:true})).toBeVisible();
  const search=page.getByPlaceholder('搜索经典、本草、方剂与知识…');
  await search.fill('桂枝汤');await search.press('Enter');
@@ -84,19 +85,19 @@ test('focused star remains centered while the galaxy rotates',async({page})=>{
 });
 test('all sections keep the same cosmos shell and canvas',async({page})=>{
  await page.goto('/');await page.locator('.universe-stage[data-ready="true"]').waitFor();
- await page.locator('canvas').evaluate(c=>c.setAttribute('data-persist-check','same-canvas'));
+ await page.locator('.universe-stage canvas').evaluate(c=>c.setAttribute('data-persist-check','same-canvas'));
  await page.getByRole('button',{name:'暂停粒子动画',exact:true}).click();
  for(const section of ['知识库','学习路径','我的书斋']){
   await page.getByRole('button',{name:section,exact:true}).click();
   await expect(page.locator('.universe-header')).toBeVisible();
   await expect(page.locator('.universe')).toHaveClass(/content-mode/);
-  await expect(page.locator('canvas')).toHaveAttribute('data-persist-check','same-canvas');
+  await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-persist-check','same-canvas');
   await expect(page.getByRole('button',{name:section,exact:true})).toHaveAttribute('aria-current','page');
-  expect(await page.locator('.course-card,.knowledge-card,.empty').first().evaluate(e=>getComputedStyle(e).backgroundColor)).not.toBe('rgb(251, 250, 246)');
+  expect(await page.locator('.course-choice-glow,.knowledge-card,.empty').first().evaluate(e=>getComputedStyle(e).backgroundColor)).not.toBe('rgb(251, 250, 246)');
  }
  await page.getByRole('button',{name:'知识图谱',exact:true}).click();
  await expect(page.getByRole('heading',{name:'万千医理，皆有星辰。'})).toBeVisible();
- await expect(page.locator('canvas')).toHaveAttribute('data-persist-check','same-canvas');
+ await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-persist-check','same-canvas');
  await expect(page.getByRole('button',{name:'播放粒子动画',exact:true})).toBeVisible();
 });
 test('mobile content search and detail retain layout and shell',async({page})=>{
@@ -118,7 +119,8 @@ test('mobile content search and detail retain layout and shell',async({page})=>{
 test('browser back closes an open lesson',async({page})=>{
  await page.goto('/#library');await page.getByRole('button',{name:'学习路径',exact:true}).click();
  await page.getByRole('button',{name:'开始学习 中医入门：建立知识框架',exact:true}).click();
- await expect(page.getByRole('dialog')).toBeVisible();await page.goBack();
+ await page.getByRole('dialog',{name:'阴阳不是二分法',exact:true}).waitFor();
+ await expect(page.getByRole('dialog',{name:'阴阳不是二分法',exact:true})).toBeVisible();await page.goBack();
  await expect(page.getByRole('heading',{name:'知识库',exact:true})).toBeVisible();
  await expect(page.getByRole('dialog')).toHaveCount(0);
 });

@@ -56,9 +56,9 @@ test('navigation is available while the three-dimensional scene downloads',async
   await expect(page.getByRole('heading',{name:'循序而学，自成体系。',exact:true})).toBeVisible();
   release();
   await page.locator('.universe-stage[data-ready="true"]').waitFor();
-  await page.locator('canvas').evaluate(canvas=>canvas.setAttribute('data-persist-check','same-canvas'));
+  await page.locator('.universe-stage canvas').evaluate(canvas=>canvas.setAttribute('data-persist-check','same-canvas'));
   await page.getByRole('button',{name:'我的书斋',exact:true}).click();
-  await expect(page.locator('canvas')).toHaveAttribute('data-persist-check','same-canvas');
+  await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-persist-check','same-canvas');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  }finally{release();}
 });

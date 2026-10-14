@@ -52,6 +52,8 @@ Playwright 配置自动启动测试 API（3001）和 Vite（5173），浏览器�
 
 ## Render 发布与更新
 
+学习路径的三本古籍由 `src/features/courses/CourseOrbit.tsx` 管理，`CourseScene.tsx` 懒加载独立 Three.js 场景，以透视相机、光照、实体网格、分层纸页和曲线订线展示真正三维的线装书。它们沿三维轨道慢速公转，悬停柔光并微微倾斜；键盘聚焦、阅读中、离屏、后台标签页均暂停。中央小星云是独立三维粒子对象，主页星海的相机和时钟不受影响。课程 Canvas 始终保留在同一个原生 dialog 容器中；打开时将容器切为全屏模态，移动实体书并向外旋转封面铰链，避免创建第三个 WebGL 上下文及反复迁移画布节点。取消和路由变化会恢复或释放场景。随后展示原有课程导读，关闭时恢复焦点。下方三条课程的节点与进度条读取既有学习记录，固定选课按钮柔光使用 React Bits SpotlightCard。系统“减少动态效果”停止公转并直接进入导读；三维不可用时仍可使用固定选课按钮。相关检查见 `tests/course-orbit.spec.ts`，主页画布的回归定位 `.universe-stage canvas`，以区别独立的课程场景。
+
 星海知识面板的转场由 `src/features/universe/KnowledgePanel.tsx` 管理：打开时轻微滑入并淡入，切换星星时面板保持原位、内部内容先淡出再淡入，关闭时淡出后隐藏。连续选择会取消旧动画，旧内容退出期间禁用其中的操作；收藏、关联知识及 AI 讲解沿用现有回调。`transitions.css` 为独立知识阅读页提供短暂淡入，保留知识库已有的典籍翻书效果。系统开启“减少动态效果”时直接切换。三维相机、星星点击、拖动、缩放、重置及返回页面的逻辑均沿用原实现。
 
 前端使用 React / TypeScript 模块维护，Vite 将 HTML、CSS 和 JavaScript 构建成独立文件。三维 Canvas 和场景通过动态导入加载，页面导航无需等待星海脚本下载完毕。
@@ -146,6 +148,8 @@ TEST_DATABASE_URL=postgres://postgres:qihuang_test@127.0.0.1:55432/qihuang_test 
 沿用上方的管理员配置，无须设置另一套账号或密码。第三版迁移导入现有知识和导读，只执行一次，不覆盖后台编辑内容。数据库备份需要包含 `knowledge_entries`。
 
 ## 代码来源与许可证
+
+固定选课按钮柔光使用 React Bits 的 SpotlightCard（版本 `496968c`，Copyright © 2026 David Haz），许可为 MIT + Commons Clause；[完整条款](../third-party/REACT-BITS-LICENSE.md) 与 [来源记录](../third-party/REACT-BITS-SOURCE.md) 随仓库保留，标准构建与兼容发布均包含 `licenses/react-bits.txt`。
 
 知识星海的部分渲染代码与关联光束基于 [Cohenjikan/shiyun 的 MIT 版本 `928c79e`](https://github.com/Cohenjikan/shiyun/tree/928c79ed554204b0033300ecd6c2529cc4e55764)（2026-06-27）改编，保留其版权声明：
 

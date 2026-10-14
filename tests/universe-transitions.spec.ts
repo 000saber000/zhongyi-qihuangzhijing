@@ -21,7 +21,7 @@ test('switching stars fades content within the same panel and keeps the canvas',
  const panel=page.getByRole('complementary',{name:'知识详情'});
  await expect(panel.getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
  await panel.evaluate(element=>Promise.all(element.getAnimations({subtree:true}).map(animation=>animation.finished)));
- await page.locator('canvas').evaluate(element=>{element.dataset.testInstance='original';});
+ await page.locator('.universe-stage canvas').evaluate(element=>{element.dataset.testInstance='original';});
  const position=await panel.boundingBox();
  const content=panel.locator('.panel-content');
  await pauseNextAnimation(content);
@@ -32,7 +32,7 @@ test('switching stars fades content within the same panel and keeps the canvas',
  expect(await panel.boundingBox()).toMatchObject({x:position!.x,y:position!.y,width:position!.width});
  await finishAnimation(content);
  await expect(panel.getByRole('heading',{name:'桂枝',exact:true})).toBeVisible();
- await expect(page.locator('canvas')).toHaveAttribute('data-test-instance','original');
+ await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-test-instance','original');
  await panel.getByRole('button',{name:'收藏知识',exact:true}).click();
  await expect(panel.getByRole('button',{name:'取消收藏',exact:true})).toBeVisible();
 });
@@ -76,14 +76,14 @@ test('mobile deep reading and browser back retain the universe and selected know
  await page.setViewportSize({width:390,height:844});
  await page.goto('/#universe/formula-guizhi');
  await expect(page.getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
- await page.locator('canvas').evaluate(element=>{element.dataset.testInstance='original';});
+ await page.locator('.universe-stage canvas').evaluate(element=>{element.dataset.testInstance='original';});
  await page.getByRole('button',{name:'深入研读',exact:true}).click();
  await expect(page).toHaveURL(/#knowledge\/formula-guizhi$/);
  await expect(page.locator('.detail-header').getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
  expect(await page.locator('.cosmic-content-scroll').evaluate(element=>element.scrollWidth<=element.clientWidth)).toBe(true);
- await expect(page.locator('canvas')).toHaveAttribute('data-test-instance','original');
+ await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-test-instance','original');
  await page.goBack();
  await expect(page).toHaveURL(/#universe\/formula-guizhi$/);
  await expect(page.getByRole('complementary',{name:'知识详情'}).getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
- await expect(page.locator('canvas')).toHaveAttribute('data-test-instance','original');
+ await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-test-instance','original');
 });
