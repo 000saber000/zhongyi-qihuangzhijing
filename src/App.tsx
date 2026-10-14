@@ -22,6 +22,7 @@ import ClassicCommunity from './features/contributions/ClassicCommunity';
 import MySuggestions from './features/contributions/MySuggestions';
 import {categories,categoryLabel,knowledge,highlights,keyPoints,courses,Course} from './data/catalog';
 import './features/universe/jade.css';
+import MeridianEntry from './features/meridians/MeridianEntry';
 const nav=[{id:'home',label:'学习首页',icon:Home},{id:'library',label:'知识库',icon:Library},{id:'graph',label:'知识图谱',icon:Network},{id:'courses',label:'学习路径',icon:GraduationCap},{id:'study',label:'我的书斋',icon:Bookmark}];
 export default function App(){
  const [route,setRoute]=useState(location.hash.slice(1)||'home');const [query,setQuery]=useState('');const [category,setCategory]=useState('全部');
@@ -91,8 +92,9 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  const totalCompleted=completed.filter(id=>courses.some(c=>c.lessons.some((_,i)=>`${c.id}-${i}`===id))).length;
 
  const isCosmos=route==='home'||route==='graph'||route.startsWith('universe/');
- return <><Universe pendingBookmarks={study.pending} studyReady={study.loaded&&!study.pending.has('import')} onExplain={explain} initialId={route.startsWith('universe/')?route.slice(9):null} bookmarks={bookmarks} onToggle={toggle} onNavigate={go} contentMode={!isCosmos} libraryHeaderDocked={libraryHeaderDocked} activePage={isCosmos?'home':active} contentKey={route} queryValue={query} onQueryChange={setQuery} onQuerySubmit={search}>
- {!isCosmos&&<div className="page-content unified-content">
+ return <><Universe pendingBookmarks={study.pending} studyReady={study.loaded&&!study.pending.has('import')} onExplain={explain} initialId={route.startsWith('universe/')?route.slice(9):null} bookmarks={bookmarks} onToggle={toggle} onNavigate={go} sceneMode={route==='meridians'?'body':'cosmos'} contentMode={!isCosmos} libraryHeaderDocked={libraryHeaderDocked} activePage={isCosmos?'home':active} contentKey={route} queryValue={query} onQueryChange={setQuery} onQuerySubmit={search}>
+ {route==='meridians'&&<MeridianEntry knowledge={knowledge} bookmarks={bookmarks} pendingBookmarks={study.pending} studyReady={study.loaded&&!study.pending.has('import')} onToggleBookmark={toggle} onOpenKnowledge={open}/>}
+ {!isCosmos&&route!=='meridians'&&<div className="page-content unified-content">
  {content.error&&<div className="content-sync">{content.error}<button className="outline" disabled={content.loading} onClick={()=>void content.refresh()}>重试同步内容</button></div>}
  {route==='classics'&&(editorIdentity.current?<>{!editorAuthorized&&<><div className="admin-error">登录状态或管理权限已变化，未保存内容已保留。请重新登录管理员账号后继续。</div><AccountPanel study={study} onManageAccounts={()=>go('admin')} onChangePassword={()=>setPasswordOpen(true)}/></>}<ClassicsAdmin key={editorIdentity.current.userId} token={editorIdentity.current.token} authorized={editorAuthorized} onPublished={content.refresh} onDirtyChange={onAdminDirty}/></>:<div className="empty"><BookOpen size={32}/><h2>知识管理</h2><p>{study.user?'此功能仅供管理员使用。':'请先登录管理员账号。'}</p><button className="primary" onClick={()=>go('study')}>前往我的书斋</button></div>)}
 
