@@ -9,7 +9,11 @@ test.beforeEach(async({page})=>{
 for(const entry of [
  {name:'桂枝',id:'herb-guizhi',kind:'herb'},
  {name:'桂枝汤',id:'formula-guizhi',kind:'formula'},
- {name:'足阳明胃经',id:'meridian-stomach',kind:'meridian'}
+ {name:'足阳明胃经',id:'meridian-stomach',kind:'meridian'},
+ {name:'阴阳',id:'theory-yinyang',kind:'theory'},
+ {name:'足三里',id:'point-zusanli',kind:'acupoint'},
+ {name:'八纲辨证',id:'method-bazheng',kind:'diagnosis'},
+ {name:'张仲景',id:'person-zhangzhongjing',kind:'physician'}
 ])test(`${entry.kind} has its own short transition and opens the correct article`,async({page})=>{
  await page.addInitScript(()=>{
   const animate=Element.prototype.animate;
@@ -19,8 +23,20 @@ for(const entry of [
  const card=page.getByRole('button',{name:`阅读 ${entry.name}`,exact:true});await card.click();
  const transition=page.getByRole('dialog',{name:`正在打开《${entry.name}》`});
  await expect(transition).toBeVisible();await expect(page).toHaveURL(/#library$/);
+ await expect(transition).toHaveAttribute('data-kind',entry.kind);
  const animations=await transition.evaluate(element=>element.getAnimations({subtree:true}).map(animation=>{const timing=animation.effect!.getTiming();return Number(timing.delay)+Number(timing.duration);}));
  expect(animations.length).toBeGreaterThan(1);expect(Math.max(...animations)).toBeLessThanOrEqual(1250);
+ const distinctive:Record<string,string>={theory:'.jade-halves',acupoint:'.acupoint-ripple',diagnosis:'.diagnosis-leaf-0',physician:'.physician-name-seal'};
+ if(distinctive[entry.kind]){
+  const motif=transition.locator(distinctive[entry.kind]);
+  const initial=await motif.evaluate(element=>getComputedStyle(element).transform);
+  await transition.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.currentTime=350;});
+  expect(await motif.evaluate(element=>getComputedStyle(element).transform)).not.toBe(initial);
+  await transition.evaluate(element=>{for(const animation of element.getAnimations({subtree:true})){const timing=animation.effect!.getTiming();animation.currentTime=Number(timing.delay)+Number(timing.duration)-1;}});
+  const sheet=await transition.locator('.knowledge-artwork').boundingBox(),viewport=page.viewportSize()!;
+  expect(sheet!.x).toBeLessThanOrEqual(0);expect(sheet!.y).toBeLessThanOrEqual(0);
+  expect(sheet!.x+sheet!.width).toBeGreaterThanOrEqual(viewport.width);expect(sheet!.y+sheet!.height).toBeGreaterThanOrEqual(viewport.height);
+ }
  await transition.evaluate(element=>{for(const animation of element.getAnimations({subtree:true}))animation.finish();});
  await expect(page).toHaveURL(new RegExp(`#knowledge/${entry.id}$`));
  await expect(transition).toBeVisible();await expect(page.locator('.detail-header h1')).toHaveText(entry.name);
@@ -48,7 +64,7 @@ test('the classic retains concurrent opening and zoom with a shorter total durat
 
 test('mobile themed entries fit the viewport and reduced motion enters immediately',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/#library');
- for(const name of ['桂枝','桂枝汤','足阳明胃经']){
+ for(const name of ['桂枝','桂枝汤','足阳明胃经','阴阳','足三里','八纲辨证','张仲景']){
   const card=page.getByRole('button',{name:`阅读 ${name}`,exact:true});await card.scrollIntoViewIfNeeded();
   const bounds=await card.boundingBox();expect(bounds!.x).toBeGreaterThanOrEqual(0);expect(bounds!.x+bounds!.width).toBeLessThanOrEqual(390);
   await card.click();await expect(page.locator('.detail-header h1')).toHaveText(name);await expect(page.getByRole('dialog')).toHaveCount(0);
@@ -57,8 +73,8 @@ test('mobile themed entries fit the viewport and reduced motion enters immediate
  expect(await page.locator('.cosmic-content-scroll').evaluate(element=>element.scrollWidth<=element.clientWidth)).toBe(true);
 });
 
-test('Escape cancels a themed entry without a late redirect',async({page})=>{
- await page.goto('/#library');const card=page.getByRole('button',{name:'阅读 桂枝',exact:true});await card.focus();await page.keyboard.press('Enter');
- await expect(page.getByRole('dialog',{name:'正在打开《桂枝》'})).toBeVisible();await page.keyboard.press('Escape');
+test('Escape cancels a physician stamp without a late redirect',async({page})=>{
+ await page.goto('/#library');const card=page.getByRole('button',{name:'阅读 张仲景',exact:true});await card.focus();await page.keyboard.press('Enter');
+ await expect(page.getByRole('dialog',{name:'正在打开《张仲景》'})).toBeVisible();await page.keyboard.press('Escape');
  await expect(page.getByRole('dialog')).toHaveCount(0);await expect(card).toBeFocused();await page.waitForTimeout(1600);await expect(page).toHaveURL(/#library$/);
 });

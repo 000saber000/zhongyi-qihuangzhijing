@@ -4,13 +4,18 @@ import type {Knowledge} from '../data/catalog';
 import {AntiqueBook,knowledgeIllustrations} from './AntiqueBook';
 import botanicalAtlas from '../assets/jade/botanical-specimens.webp';
 import './knowledge-artwork.css';
+import {KnowledgeSymbol,type SymbolKind} from './KnowledgeSymbols';
 
-export type EntryKind='book'|'herb'|'formula'|'meridian';
+export type EntryKind='book'|'herb'|'formula'|'meridian'|SymbolKind;
 export function getEntryKind(item:Knowledge):EntryKind|null{
  if(item.type==='经'||item.type==='案')return 'book';
  if(item.type==='药')return 'herb';
  if(item.type==='方')return 'formula';
  if(item.type==='经络')return 'meridian';
+ if(item.type==='理')return 'theory';
+ if(item.type==='穴')return 'acupoint';
+ if(item.type==='法')return 'diagnosis';
+ if(item.type==='人')return 'physician';
  return null;
 }
 const specimens:Record<string,[number,number]>={
@@ -82,10 +87,11 @@ export function KnowledgeArtwork({item,saved=false}:{item:Knowledge;saved?:boole
  if(!kind)return null;
  const illustration=knowledgeIllustrations[item.id];
  const herb=item.relations.find(id=>id.startsWith('herb-'))??item.id;
- return <div className={`knowledge-artwork ${kind==='herb'?'specimen-sheet':kind==='formula'?'formula-folio':'meridian-sheet'}`} data-kind={kind} aria-hidden="true">
+ return <div className={`knowledge-artwork ${kind==='herb'?'specimen-sheet':kind==='formula'?'formula-folio':`${kind}-sheet`}`} data-kind={kind} aria-hidden="true">
   {kind==='herb'&&<><span className="knowledge-sheet-frame"/><TitleSlip item={item} caption="本草藏笺"/><div className="specimen-plant"><PlantSpecimen id={item.id}/></div><svg className="specimen-veins" viewBox="0 0 240 320" fill="none"><path d="M105 260Q151 180 173 88M133 204L199 184M153 157L118 121"/><path d="M101 260Q62 264 43 283M101 260Q117 275 155 283"/></svg><span className="knowledge-sheet-seal">本草</span><span className="knowledge-sheet-imprint">采形录色 · 循本而学</span></>}
   {kind==='formula'&&<><div className="formula-left"><span className="knowledge-sheet-frame"/><TitleSlip item={item} caption="岐黄方笺"/><span className="knowledge-sheet-seal">方</span></div><div className="formula-right"><span className="knowledge-sheet-frame"/><svg className="formula-links" viewBox="0 0 240 320" fill="none"><ellipse cx="146" cy="177" rx="72" ry="87" stroke="#c9b67e" strokeWidth="1"/>{[0,1,2,3,4].map(index=><circle key={index} cx={146+Math.sin(index*1.25)*72} cy={177+Math.cos(index*1.25)*87} r="3.5" fill="#d7bc78"/>)}<path d="M103 113Q174 156 184 210M108 233Q148 164 198 154" stroke="#c5b27b" strokeWidth=".7"/></svg><div className="formula-plant"><PlantSpecimen id={herb}/></div>{illustration&&<picture className="card-illustration formula-medallion"><img src={illustration} width={116} height={116} loading="lazy" decoding="async" alt=""/></picture>}</div><span className="formula-fold"/><span className="knowledge-sheet-imprint">展笺读方 · 连药识义</span></>}
   {kind==='meridian'&&<><span className="knowledge-sheet-frame"/><TitleSlip item={item} caption="循脉知境"/><MeridianDrawing id={item.id}/><span className="knowledge-sheet-seal">络</span><span className="knowledge-sheet-imprint">金线循行 · 知识相连</span></>}
+  {(kind==='theory'||kind==='acupoint'||kind==='diagnosis'||kind==='physician')&&<KnowledgeSymbol kind={kind} item={item}/>}
   {saved&&<Bookmark className="knowledge-artwork-saved" size={16} fill="currentColor"/>}
  </div>;
 }

@@ -1,0 +1,60 @@
+.theory-sheet,.acupoint-sheet,.diagnosis-sheet,.physician-sheet {border:1px solid #aeb08465;border-radius:2px;background:repeating-linear-gradient(0deg,#d8d6a205 0 1px,transparent 1px 4px),radial-gradient(ellipse at 75% 35%,#54674435,transparent 65%),linear-gradient(140deg,#244237,#122c2b);box-shadow:4px 6px 0 -2px #a5a88170,8px 15px 25px #0005}
+.theory-sheet {background:radial-gradient(ellipse at 70% 45%,#62794c3b,transparent 65%),linear-gradient(140deg,#254336,#122d2b)}
+.jade-disc {position:absolute;width:78%;aspect-ratio:1;right:-3%;top:18%;filter:drop-shadow(2px 7px 8px #0005)}
+.jade-disc svg {display:block;width:100%;height:100%;overflow:visible}
+.jade-yin,.jade-yang,.jade-halves,.jade-orbit {transform-box:view-box;transform-origin:130px 130px}
+.theory-sheet .theory-medallion.card-illustration,.unified-content .theory-sheet .theory-medallion.card-illustration {position:absolute;display:block;left:auto;top:auto;right:25px;bottom:43px;width:52px;height:52px;transform:none;opacity:.75}
+.theory-medallion img {display:block;width:100%;height:100%;object-fit:contain}
+.acupoint-sheet {background:radial-gradient(ellipse at 65% 45%,#42605a50,transparent 70%),linear-gradient(140deg,#233e35,#102b2d)}
+.acupoint-map {position:absolute;right:0;top:15px;width:77%;height:calc(100% - 37px);overflow:visible}
+.acupoint-ripple {transform-box:fill-box;transform-origin:center}
+.acupoint-focus {filter:drop-shadow(0 0 3px #e8d092)}
+.diagnosis-sheet {perspective:900px}
+.diagnosis-sheet .knowledge-title-slip {height:66%}
+.diagnosis-fan {position:absolute;right:18%;top:28%;width:60%;height:48%;perspective:600px}
+.diagnosis-leaf,.diagnosis-complete {position:absolute;left:18%;top:0;width:68%;height:100%;border:1px solid #bfa97d;background:repeating-linear-gradient(0deg,#85714d07 0 1px,transparent 1px 4px),linear-gradient(120deg,#e0d0a2,#bcae80);box-shadow:0 5px 8px #0004;transform-origin:50% 92%;color:#3e5340}
+.diagnosis-leaf {display:flex;flex-direction:column;align-items:center;padding:14px 8px}
+.diagnosis-leaf-0 {transform:translateX(-12%) rotate(-18deg);background:#a4ad82}
+.diagnosis-leaf-1 {transform:translateX(-4%) rotate(-6deg);background:#bbc094}
+.diagnosis-leaf-2 {transform:translateX(4%) rotate(6deg);background:#d1c69c}
+.diagnosis-leaf-3 {transform:translateX(12%) rotate(18deg)}
+.diagnosis-leaf>span {font-size:20px;border-bottom:1px solid #63745560;padding-bottom:7px;width:100%;text-align:center}
+.diagnosis-leaf svg {width:80%;margin-top:10px}
+.diagnosis-leaf i {display:block;margin-top:auto;width:75%;height:9px;border-top:1px solid #67785a50;border-bottom:1px solid #67785a30}
+.diagnosis-complete {opacity:0;pointer-events:none;padding:16px 12px}
+.diagnosis-complete>div {display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:16px}
+.diagnosis-complete span {display:flex;flex-direction:column;align-items:center}
+.diagnosis-complete svg {width:100%}
+.diagnosis-complete small {font-size:9px}
+.diagnosis-complete>i {display:block;height:12px;border-bottom:1px solid #66755940}
+.diagnosis-legend {position:absolute;right:22px;bottom:45px;color:#cfbd8e;font-size:9px;letter-spacing:2px}
+.physician-sheet {background:radial-gradient(ellipse at 70% 48%,#6d725634,transparent 62%),linear-gradient(140deg,#2a4235,#132b29)}
+.physician-sheet .knowledge-title-slip {height:53%}
+.physician-portrait {position:absolute;right:-3%;top:11%;width:78%;aspect-ratio:1;isolation:isolate}
+.physician-halo {position:absolute;inset:8%;border:1px solid #c5b57650;border-radius:50%;box-shadow:0 0 0 6px #c8b27606,inset 0 0 30px #d1c28d10}
+.physician-halo::after {content:'';position:absolute;inset:-8%;border:1px solid #c8b88520;border-radius:50%;border-left-color:transparent;border-right-color:transparent;transform:rotate(-30deg)}
+.physician-sprite {position:absolute;inset:0;display:block;background-size:300% 200%;background-repeat:no-repeat;filter:sepia(.12)}
+.physician-name-seal {position:absolute;right:34px;bottom:43px;width:48px;height:48px;padding:4px;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;color:#e2c591;border:2px solid #b0926577;outline:1px solid #d2b17860;outline-offset:3px;background:#79634740;font-size:16px;line-height:1;transform:rotate(-6deg);z-index:4}
+.physician-name-seal>span {display:grid;place-items:center}
+.physician-ink {position:absolute;inset:0;z-index:5;background:radial-gradient(ellipse at 76% 77%,#c8b16c75,#697c4c30 40%,transparent 69%);opacity:0;pointer-events:none;transform-origin:76% 77%}
+.book-opening-stage .jade-yin,.book-opening-stage .jade-yang,.book-opening-stage .diagnosis-leaf,.book-opening-stage .physician-ink {will-change:transform}
+@media(max-width:700px) {
+ .jade-disc {width:79%;right:-3%;top:19%}
+ .theory-sheet .theory-medallion.card-illustration,.unified-content .theory-sheet .theory-medallion.card-illustration {width:33px;height:33px;right:15px;bottom:32px}
+ .acupoint-map {top:8px;height:calc(100% - 24px);width:78%}
+ .diagnosis-fan {right:21%;top:26%;height:50%;width:60%}
+ .diagnosis-leaf {padding:9px 5px}
+ .diagnosis-leaf>span {font-size:16px;padding-bottom:5px}
+ .diagnosis-leaf svg {margin-top:6px}
+ .diagnosis-leaf i {height:6px}
+ .diagnosis-legend {right:12px;bottom:25px;font-size:7px;letter-spacing:1px}
+ .diagnosis-complete {padding:9px 8px}
+ .diagnosis-complete>div {gap:4px;margin-bottom:8px}
+ .diagnosis-complete small {font-size:7px}
+ .diagnosis-complete>i {height:8px}
+ .physician-portrait {top:14%;width:77%;right:-3%}
+ .physician-name-seal {right:21px;bottom:23px;width:32px;height:32px;font-size:12px;padding:2px;outline-offset:2px;border-width:1px}
+ .diagnosis-sheet .knowledge-title-slip>span {font-size:14.5px;letter-spacing:1.5px}
+ .diagnosis-sheet .knowledge-title-slip {height:68%}
+ .diagnosis-sheet .knowledge-sheet-seal {bottom:22px}
+}
