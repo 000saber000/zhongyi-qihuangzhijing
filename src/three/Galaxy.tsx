@@ -46,9 +46,7 @@ const cMid = new THREE.Color("#e9efe7");
 const cArm = new THREE.Color("#8bdacb"); // blue-white young arm stars (~9000 K, less saturated)
 const cHII = new THREE.Color("#d49b79"); // pink HII regions
 
-export function Galaxy() {
-  const quality = useStore((s) => s.quality);
-  const built = useMemo(() => {
+export function createGalaxy(quality: "high" | "low", {pointScale=1,farStars=true}: {pointScale?:number;farStars?:boolean}={}) {
     const hi = quality === "high";
     // FUSION: the bright DISCRETE points should read as the (clickable) poets, not decoration.
     // So the backdrop is mostly diffuse haze + a soft core; few discrete decoration "stars" (and
@@ -150,7 +148,7 @@ export function Galaxy() {
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
-      uniforms: { uSize: { value: 8.0 } },
+      uniforms: { uSize: { value: 8.0 * pointScale } },
       // The whole spiral spins as a rigid pattern via the object's rotation.y (see useFrame),
       // shared with the poet layer + 赠诗 arcs — no in-shader spin, so all layers wind the SAME
       // way and turn in lockstep.
@@ -196,7 +194,7 @@ export function Galaxy() {
     grp.add(halo);
 
     // faint far star dome
-    {
+    if (farStars) {
       const n = 5200;
       const dp = new Float32Array(n * 3);
       const dc = new Float32Array(n * 3);
@@ -234,7 +232,11 @@ export function Galaxy() {
     }
 
     return { grp, points };
-  }, [quality]);
+}
+
+export function Galaxy() {
+  const quality = useStore((s) => s.quality);
+  const built = useMemo(() => createGalaxy(quality), [quality]);
 
   // dispose the previous galaxy's geometries/materials when quality rebuilds it
   useEffect(() => {

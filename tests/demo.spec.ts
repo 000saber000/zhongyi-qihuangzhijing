@@ -54,6 +54,7 @@ test('immersive universe renders particles and selects searchable knowledge',asy
  await expect(page.getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
  await expect(page.getByText('关联星辰', {exact:true})).toBeVisible();
  await page.getByRole('button',{name:'关联知识 桂枝',exact:true}).click();
+ await page.getByRole('heading',{name:'桂枝',exact:true}).waitFor();
  await expect(page.getByRole('heading',{name:'桂枝',exact:true})).toBeVisible();
 });
 test('particle motion can be paused and quality switched',async({page})=>{

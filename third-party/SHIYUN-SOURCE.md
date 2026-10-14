@@ -18,7 +18,7 @@
 | `src/three/disc.ts` | `src/three/disc.ts` | 保留柔和光点纹理实现；补充来源和许可说明 |
 | `src/three/RelationLight.tsx` | `src/three/GiftLines.tsx` | 将诗人赠诗关系改为中医知识关系，改写曲线生成、筛选、颜色及动画控制 |
 
-`KnowledgeClouds.tsx` 的知识星团分层设计受到诗云诗人及诗歌云结构的启发。
+`KnowledgeClouds.tsx` 的知识星团分层设计受到诗云诗人及诗歌云结构的启发。学习路径的 `src/features/courses/courseNebula.ts` 复用上述主页星云、知识星团和关联光线的生成函数，以独立三维实例缩放展示；继续保留相同来源和许可，不另引入上游版本。
 
 ## 版本核验
 

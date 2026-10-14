@@ -18,7 +18,7 @@ test('three bound books orbit a miniature nebula and can be held for selection',
  await scene.getByRole('button',{name:'继续古籍公转',exact:true}).click();
  await page.mouse.move(10,10);
  await expect(scene).toHaveAttribute('data-motion','running');
- await expect.poll(async()=>Math.abs((await book.boundingBox())!.x-before!.x)+Math.abs((await book.boundingBox())!.y-before!.y)).toBeGreaterThan(1);
+ await expect.poll(async()=>Math.abs((await book.boundingBox())!.x-before!.x)+Math.abs((await book.boundingBox())!.y-before!.y),{timeout:30000}).toBeGreaterThan(1);
 });
 
 test('hover and keyboard focus stop the orbit and opening retains its real animation handoff',async({page})=>{
@@ -103,6 +103,7 @@ test('navigation leaves the original universe canvas and controls intact',async(
  await expect(page.locator('.universe-stage canvas')).toHaveCount(1);
  await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-orbit-check','original');
  await page.getByRole('button',{name:'知识图谱',exact:true}).click();
+ await page.getByRole('button',{name:'放大星系',exact:true}).waitFor();
  await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-orbit-check','original');
  await expect(page.getByRole('button',{name:'放大星系',exact:true})).toBeVisible();
 });

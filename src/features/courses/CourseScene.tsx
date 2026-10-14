@@ -4,27 +4,10 @@ import {courses} from '../../data/catalog';
 import coverImage from '../../assets/jade/course-cloth.webp';
 import {createCourseBook,type CourseBookModel} from './bookModel';
 import type {CourseSelection,CourseVisualRef} from './sceneTypes';
+import {createCourseNebula} from './courseNebula';
 
 type Props={paused:boolean;reduced:boolean;highlight:string|null;books:MutableRefObject<(HTMLButtonElement|null)[]>;visual:CourseVisualRef;onReady:()=>void;onError:()=>void};
 const angles=[140,-100,20].map(degrees=>degrees*Math.PI/180);
-function nebula(){
- const geometry=new THREE.BufferGeometry(),count=6400;
- const positions=new Float32Array(count*3),colors=new Float32Array(count*3),sizes=new Float32Array(count),alphas=new Float32Array(count);
- let seed=381;const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
- for(let i=0;i<count;i++){
-  const core=i>4900,radius=core?-Math.log(1-rand()*.997)*.12:Math.pow(rand(),.8)*2.2;
-  const theta=core?rand()*Math.PI*2:Math.floor(rand()*4)*Math.PI/2+radius/2.2*5.8+(rand()+rand()+rand()-1.5)*.45;
-  positions[i*3]=Math.cos(theta)*radius+(rand()-.5)*.11;positions[i*3+1]=(rand()-.5)*.16;positions[i*3+2]=Math.sin(theta)*radius;
-  const color=new THREE.Color(core?'#ffe5aa':radius<.8?'#d8eee0':i%13===0?'#deba80':'#6eb8a0');
-  colors.set([color.r,color.g,color.b],i*3);sizes[i]=core?.55+rand()*.4:i%11===0?.08:.17+rand()*.17;alphas[i]=core?.075:i%11===0?.8:.1;
- }
- geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));geometry.setAttribute('size',new THREE.BufferAttribute(sizes,1));geometry.setAttribute('alpha',new THREE.BufferAttribute(alphas,1));
- const material=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,vertexColors:true,toneMapped:false,
-  vertexShader:'attribute float size; attribute float alpha; varying vec3 vColor; varying float vAlpha; void main(){vColor=color;vAlpha=alpha;vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=clamp(size*230.0/-mv.z,1.0,48.0);gl_Position=projectionMatrix*mv;}',
-  fragmentShader:'varying vec3 vColor; varying float vAlpha; void main(){vec2 p=gl_PointCoord*2.0-1.0;float a=exp(-dot(p,p)*4.5)*vAlpha;if(a<.002)discard;gl_FragColor=vec4(vColor,a);}'
- });
- const points=new THREE.Points(geometry,material);points.position.y=-.55;points.name='miniature-tcm-nebula';return points;
-}
 export default function CourseScene(props:Props){
  const host=useRef<HTMLDivElement>(null),latest=useRef(props);latest.current=props;
  const wake=useRef<()=>void>(()=>{});
@@ -41,7 +24,7 @@ export default function CourseScene(props:Props){
   const shell=document.createElement('dialog');shell.className='course-canvas-shell';shell.setAttribute('role','presentation');shell.open=true;shell.append(canvas);slot.append(shell);
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(40,1,.1,100);
   const volumes:CourseBookModel[]=[],glowLevels=[0,0,0];
-  const cloud=nebula();scene.add(cloud);
+  const nebula=createCourseNebula(()=>request()),cloud=nebula.root;scene.add(cloud);
   const ringGeometry=new THREE.BufferGeometry().setFromPoints(Array.from({length:180},(_,i)=>{const angle=i/180*Math.PI*2;return new THREE.Vector3(Math.cos(angle)*3.2,-.7,Math.sin(angle)*3.2);}));
   const ringMaterial=new THREE.LineBasicMaterial({color:'#aeae7b',transparent:true,opacity:.13});const ring=new THREE.LineLoop(ringGeometry,ringMaterial);scene.add(ring);
   scene.add(new THREE.HemisphereLight('#e3eddf','#18312a',2.4));
@@ -63,7 +46,7 @@ export default function CourseScene(props:Props){
     camera.fov=40;radius=width<600?2.15:3.2;
     const distance=Math.max(11.8,(radius*2+2)/(2*Math.tan(THREE.MathUtils.degToRad(20))*camera.aspect)+radius*.65);
     camera.position.set(0,distance*.38,distance*.925);camera.lookAt(0,.4,0);
-    ring.scale.set(radius/3.2,1,radius/3.2);cloud.scale.setScalar(width<600?.78:1);
+    ring.scale.set(radius/3.2,1,radius/3.2);nebula.resize(width<600);
    }
    camera.updateProjectionMatrix();request();
   };
@@ -86,7 +69,7 @@ export default function CourseScene(props:Props){
     book.cover.rotation.y=hinge*Math.PI*.965;book.setOpacity(1);book.setGlow(.15);settling=true;
    }else{
     if(!state.paused)phase+=delta*Math.PI*2/120;
-    cloud.rotation.y=phase*.55;
+    nebula.update(state.paused?0:delta,phase*.55);
     volumes.forEach((book,index)=>{
      const angle=phase+angles[index];book.root.position.set(Math.cos(angle)*radius,.72+Math.sin(angle*2)*.08,Math.sin(angle)*radius);
      const tilt=tilts[index],tiltX=pointer.id===courses[index].id?pointer.x:0,tiltY=pointer.id===courses[index].id?pointer.y:0;
@@ -147,7 +130,7 @@ export default function CourseScene(props:Props){
   return()=>{
    disposed=true;cancelAnimationFrame(frame);opening?.clock.cancel();observer.disconnect();wake.current=()=>{};latest.current.visual.current=null;
    canvas.removeEventListener('webglcontextlost',lost);shell.close();shell.remove();volumes.forEach(book=>book.dispose());
-   cloud.geometry.dispose();(cloud.material as THREE.Material).dispose();ringGeometry.dispose();ringMaterial.dispose();floorGeometry.dispose();floorMaterial.dispose();key.shadow.map?.dispose();renderer.dispose();renderer.forceContextLoss();
+   nebula.dispose();ringGeometry.dispose();ringMaterial.dispose();floorGeometry.dispose();floorMaterial.dispose();key.shadow.map?.dispose();renderer.dispose();renderer.forceContextLoss();
   };
  },[]);
  return <div className="course-3d-slot" ref={host}/>;
