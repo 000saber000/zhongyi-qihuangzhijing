@@ -1,8 +1,8 @@
-import {useId} from 'react';
 import {Bookmark} from 'lucide-react';
 import type {Knowledge} from '../data/catalog';
 import {AntiqueBook} from './AntiqueBook';
 import {KnowledgeImage} from './KnowledgeImage';
+import {MeridianDrawing} from './MeridianDrawing';
 import {knowledgeImages} from '../data/knowledge-images';
 import './knowledge-artwork.css';
 import {KnowledgeSymbol,type SymbolKind} from './KnowledgeSymbols';
@@ -37,41 +37,6 @@ function BotanicalDrawing({id}:{id:string}){
 }
 function PlantSpecimen({id}:{id:string}){
  return knowledgeImages[id]?<KnowledgeImage id={id} className="botanical-sprite"/>:<BotanicalDrawing id={id}/>;
-}
-
-type MeridianProfile={path:string;focus:[number,number]};
-const meridians:Record<string,MeridianProfile>={
- 'meridian-stomach':{path:'M138 48Q151 64 146 89L157 118L152 174Q159 212 153 242L160 303',focus:[155,243]},
- 'meridian-lung':{path:'M127 93Q151 82 169 99L186 139L207 188L219 222',focus:[195,160]},
- 'meridian-largeintestine':{path:'M217 220L198 168L181 121Q177 92 150 80L143 53',focus:[181,121]},
- 'meridian-spleen':{path:'M107 307L98 245L111 191L116 142Q112 111 133 104',focus:[105,216]},
- 'meridian-heart':{path:'M139 101Q169 104 177 127L191 173L209 219',focus:[190,173]},
- 'meridian-smallintestine':{path:'M207 219L188 168L173 120Q161 99 145 83L147 54',focus:[175,126]},
- 'meridian-bladder':{path:'M141 44Q146 62 143 89L142 162L159 218L169 302',focus:[151,198]},
- 'meridian-kidney':{path:'M115 303L104 241L113 181L119 129L128 102',focus:[111,219]},
- 'meridian-pericardium':{path:'M130 100L162 108L179 142L198 186L213 222',focus:[182,149]},
- 'meridian-sanjiao':{path:'M211 220L197 176L179 134L164 100L145 71',focus:[190,156]},
- 'meridian-gallbladder':{path:'M148 48L155 79L172 104L160 149L168 193L173 246L175 305',focus:[167,200]},
- 'meridian-liver':{path:'M113 307L107 246L119 186L122 144Q145 133 145 102',focus:[116,200]},
- 'meridian-du':{path:'M131 306L131 235L132 177L131 123L132 79L131 32',focus:[132,151]},
- 'meridian-ren':{path:'M129 183L129 153L130 121L129 93L129 69',focus:[130,122]}
-};
-function MeridianDrawing({id}:{id:string}){
- const glow=useId().replace(/:/g,''),profile=meridians[id]??meridians['meridian-ren'];
- return <svg className="meridian-drawing" viewBox="0 0 260 350" fill="none" aria-hidden="true">
-  <defs><radialGradient id={glow}><stop stopColor="#f4df9a" stopOpacity=".55"/><stop offset="1" stopColor="#d6bd72" stopOpacity="0"/></radialGradient></defs>
-  {knowledgeImages[id]&&<KnowledgeImage id={id} className="meridian-illustration"/>}
-  <g opacity={knowledgeImages[id]?0:.55} stroke="#9fc0a4" strokeWidth="1.15">
-   <ellipse cx="131" cy="37" rx="17" ry="23"/><path d="M119 57L118 71Q106 73 88 80Q78 91 72 116L61 156L44 198L43 220Q50 230 55 218L61 201L82 158L95 119L101 161L96 192L94 235L103 296L97 313L108 317L119 306L126 231L131 202L137 231L147 306L158 317L169 313L161 297L169 235L165 192L160 161L166 120L179 158L200 201L206 220Q212 230 219 221L216 198L199 156L188 116Q183 91 174 80Q155 73 144 71L143 57"/>
-   <path d="M104 91Q120 83 131 91Q143 83 157 91M106 113Q116 107 126 119M136 119Q147 107 156 113M111 130Q131 142 153 130M111 149Q132 159 153 149M112 171Q131 179 151 171M115 189Q130 196 147 189M130 62L131 197M121 44Q131 50 141 44" opacity=".5"/>
-  </g>
-  <g stroke="#ccbd80" strokeWidth=".65" opacity=".22"><ellipse cx="132" cy="164" rx="108" ry="139"/><ellipse cx="132" cy="169" rx="119" ry="41" transform="rotate(-23 132 169)"/><path d="M23 278Q123 238 240 278"/></g>
-  <path className="meridian-route-base" d={profile.path} stroke="#b6a26f" strokeWidth="1.1" opacity=".3"/>
-  <path className="meridian-route" d={profile.path} stroke="#edcf80" strokeWidth="2.1" strokeLinecap="round"/>
-  <circle className="meridian-pulse" cx={profile.focus[0]} cy={profile.focus[1]} r="25" fill={`url(#${glow})`}/>
-  <circle className="meridian-focus" cx={profile.focus[0]} cy={profile.focus[1]} r="4.5" fill="#f5e5a4" stroke="#f5dfa3" strokeWidth="1.5"/>
-  <circle cx="131" cy="97" r="2" fill="#dbc181"/><circle cx="143" cy="176" r="2" fill="#dbc181"/><circle cx="107" cy="246" r="2" fill="#dbc181"/>
- </svg>;
 }
 
 function TitleSlip({item,caption}:{item:Knowledge;caption:string}){

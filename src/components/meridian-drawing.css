@@ -1,0 +1,7 @@
+.meridian-drawing {overflow:visible}
+.meridian-drawing .meridian-illustration {opacity:1}
+.meridian-material {pointer-events:none}
+.meridian-drawing .meridian-focus {filter:none}
+.meridian-sweep {will-change:stroke-dashoffset,opacity}
+
+.meridian-drawing .meridian-route {filter:none}
