@@ -1,0 +1,66 @@
+.course-orbit{position:relative;margin:-8px 0 18px;color:#d6d5b3}
+.course-orbit-toolbar{display:flex;align-items:center;justify-content:space-between;padding:0 8px;font-size:10px;letter-spacing:3px;color:#8ea797}
+.course-orbit-toolbar button{display:flex;gap:8px;align-items:center;border:1px solid #9dac7d36;border-radius:30px;padding:8px 13px;font-size:10px;letter-spacing:0;background:#10231f80}
+.course-orbit-toolbar button:disabled{opacity:.65;cursor:default}
+.course-orbit-scene{position:relative;height:clamp(560px,68vh,700px);margin-bottom:55px;isolation:isolate}
+.course-3d-slot{position:absolute;inset:0}
+.course-canvas-shell{position:absolute;inset:0;margin:0;padding:0;width:100%;height:100%;max-width:none;max-height:none;border:0;background:transparent;overflow:visible;pointer-events:none}
+.course-canvas-shell.course-opening{position:fixed;pointer-events:auto}
+.course-3d-slot canvas{display:block;width:100%;height:100%;outline:none}
+.course-3d-status{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center;font:13px/2 var(--serif);letter-spacing:2px;color:#b3c2a0}
+.course-nebula-label{position:absolute;left:50%;top:68%;transform:translateX(-50%);font:11px var(--serif);letter-spacing:3px;color:#aabcaa;pointer-events:none}
+.unified-content .orbit-book{position:absolute;visibility:hidden;padding:0;border:0;border-radius:2px;background:transparent;color:inherit;transition:none;transform:none;outline-offset:10px;touch-action:manipulation;text-align:center}
+.unified-content .orbit-book:hover{background:transparent;transform:none}
+.orbit-book:focus-visible{outline:1px solid #c9d59b80;box-shadow:0 0 20px #cbd9b515}
+.course-orbit-caption{opacity:0;transition:opacity .2s;position:absolute;top:100%;left:50%;width:max(100%,170px);transform:translateX(-50%);margin-top:18px;text-shadow:0 2px 9px #00140e;pointer-events:none}
+.orbit-book:hover .course-orbit-caption,.orbit-book:focus-visible .course-orbit-caption{opacity:1}
+.course-volume-number{font:8px system-ui,sans-serif;letter-spacing:3px;color:#9eb199}
+.course-orbit-caption h3{font:22px var(--serif);font-weight:400;letter-spacing:3px;color:#e3dbb8;margin:8px 0 12px}
+.course-orbit-nodes{display:flex;justify-content:center;align-items:center;margin:9px 0 10px}
+.course-orbit-nodes>span{display:flex;align-items:center}
+.course-orbit-nodes>span+span:before{content:'';width:15px;height:1px;background:#9eae7938;transition:background .5s}
+.course-orbit-nodes i{font-style:normal;display:grid;place-items:center;width:17px;height:17px;border:1px solid #93ad765b;border-radius:50%;font-size:8px;color:#94b292;background:#102922}
+.course-orbit-nodes .done i{background:#aecb7840;border-color:#c9d493;color:#ecedbb;box-shadow:0 0 12px #b8d18b30;animation:course-node-light .7s ease-out}
+.course-orbit-nodes .done:before{background:#c6d69299}
+.course-orbit-count{font:9px system-ui,sans-serif;color:#aeb998;letter-spacing:.5px}
+.course-orbit-progress{height:2px;width:75%;margin:12px auto 0;background:#9ab17b1c;overflow:hidden;border-radius:2px}
+.course-orbit-progress i{display:block;height:100%;background:#c4d39c;box-shadow:0 0 9px #b4d98590;transition:width .65s ease}
+.course-orbit-navigation{position:relative;z-index:25;display:flex;justify-content:center;gap:15px;margin:5px 0 0}
+.course-choice-glow.spotlight-card{padding:0 12px 12px;text-align:center;border:1px solid #b2b48e3d;border-radius:8px;background:#112920b3}
+.course-orbit-navigation button{display:flex;align-items:center;gap:12px;padding:12px 8px;font:12px var(--serif);letter-spacing:2px}
+.course-orbit-navigation button>span{font-size:20px;color:#d1c995}
+.course-orbit-navigation button:hover,.course-orbit-navigation button:focus-visible{background:#264332b3;color:#d9dfbb}
+.course-orbit-hint{text-align:center;font:10px/2 system-ui,sans-serif;color:#849d8b;letter-spacing:1px;margin:16px 0 0}
+.course-opening{position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-height:none;max-width:none;margin:0;padding:0;border:0;overflow:hidden;background:#06100fe8;backdrop-filter:blur(12px);color:#d3c4a1}
+.course-opening::backdrop{background:transparent}
+.course-opening-stage{position:absolute;inset:0}
+.course-opening-close{position:absolute;z-index:2;right:25px;top:23px;width:42px;height:42px;display:grid;place-items:center;border:1px solid #bbbd8355;border-radius:50%;color:#d9d3aa;background:#17322a}
+.course-opening-caption{position:absolute;z-index:2;left:20px;right:20px;bottom:32px;text-align:center;font:19px var(--serif);letter-spacing:4px;pointer-events:none}
+.course-opening-caption span{display:block;margin-top:10px;font:10px system-ui,sans-serif;letter-spacing:2px;color:#9cb097}
+.universe .course-lesson-modal{animation:course-lesson-arrive .2s ease-out}
+@keyframes course-node-light{from{box-shadow:0 0 0 #b8d18b00}50%{box-shadow:0 0 18px #b8d18b80}to{box-shadow:0 0 12px #b8d18b30}}
+@keyframes course-lesson-arrive{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .course-orbit{margin-top:0}
+ .course-orbit-toolbar{font-size:8px;letter-spacing:1px;padding:0}
+ .course-orbit-toolbar button{font-size:8px;padding:7px 10px}
+ .course-orbit-scene{height:520px;margin-bottom:40px}
+ .course-nebula-label{display:none}
+ .course-orbit-caption{margin-top:11px;width:max(100%,115px)}
+ .course-orbit-caption h3{font-size:16px;letter-spacing:1px;margin:6px 0 8px}
+ .course-volume-number{font-size:7px;letter-spacing:1px}
+ .course-orbit-nodes i{width:13px;height:13px;font-size:6px}
+ .course-orbit-nodes>span+span:before{width:8px}
+ .course-orbit-count{font-size:8px}
+ .course-orbit-navigation{gap:6px;flex-wrap:wrap}
+ .course-choice-glow.spotlight-card{padding:0 5px 10px}
+ .course-orbit-navigation button{font-size:10px;gap:6px;padding:9px 8px;letter-spacing:0}
+ .course-orbit-navigation button>span{font-size:15px}
+ .course-orbit-navigation button svg{width:11px}
+ .course-orbit-hint{font-size:9px;letter-spacing:0}
+ .course-opening-close{right:16px;top:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ .course-orbit-nodes .done i,.universe .course-lesson-modal{animation:none}
+ .course-orbit-progress i{transition:none}
+}

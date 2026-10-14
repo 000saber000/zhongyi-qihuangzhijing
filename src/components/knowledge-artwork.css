@@ -1,0 +1,77 @@
+.knowledge-artwork {position:relative;width:100%;aspect-ratio:3/4;font-family:var(--serif,serif);transform-style:preserve-3d}
+.specimen-sheet,.meridian-sheet {border:1px solid #aeb08465;border-radius:2px;background:repeating-linear-gradient(0deg,#d8d6a205 0 1px,transparent 1px 4px),radial-gradient(ellipse at 70% 35%,#536c432b,transparent 70%),linear-gradient(140deg,#234338,#122e2c);box-shadow:4px 6px 0 -2px #a5a88170,8px 15px 25px #0005}
+.knowledge-sheet-frame {position:absolute;inset:11px;border:1px solid #cfbd7b50;box-shadow:inset 0 0 0 3px #c9b56e09;pointer-events:none}
+.knowledge-title-slip {position:absolute;left:19px;top:22px;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:space-between;width:43px;height:58%;padding:12px 5px 10px;color:#293d31;background:linear-gradient(100deg,#cbb68a,#ecddb5 24%,#ded0a5);border:1px solid #ab9768;outline:1px solid #dec58e66;outline-offset:3px;box-shadow:2px 2px 6px #0003}
+.knowledge-title-slip>span {writing-mode:vertical-rl;font-family:var(--serif,serif);font-size:23px;letter-spacing:4px;line-height:1.35;max-height:calc(100% - 19px);max-width:100%;overflow:hidden;overflow-wrap:anywhere}
+.knowledge-title-slip small {font-size:7px;letter-spacing:1px;white-space:nowrap;color:#797250}
+.knowledge-sheet-seal {position:absolute;z-index:4;left:23px;bottom:41px;writing-mode:vertical-rl;padding:5px 4px;border:1px solid #b6946880;font-size:10px;color:#d3b37b;letter-spacing:2px}
+.knowledge-sheet-imprint {position:absolute;z-index:4;left:18px;right:18px;bottom:20px;text-align:right;font-size:7px;color:#c5bd88a6;letter-spacing:2px}
+.knowledge-artwork-saved {position:absolute;right:17px;top:19px;color:#e5d19a;z-index:5}
+.specimen-plant {position:absolute;right:5px;bottom:40px;width:76%;height:78%}
+.botanical-sprite {position:absolute;left:-10%;top:50%;width:120%;aspect-ratio:1;transform:translateY(-50%);background-repeat:no-repeat;background-size:300% 200%}
+.botanical-drawing {position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible}
+.specimen-veins {position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.specimen-veins path {stroke:#d6bc7f;stroke-width:.85;opacity:.32;stroke-linecap:round}
+.formula-folio {perspective:800px}
+.formula-left,.formula-right {position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;border:1px solid #c0b48080;background:repeating-linear-gradient(0deg,#e4dcaa05 0 1px,transparent 1px 4px),linear-gradient(145deg,#28483b,#15372e);box-shadow:0 12px 19px #0004}
+.formula-left {left:0;transform-origin:right center;transform:rotateY(-26deg);border-radius:2px 0 0 2px}
+.formula-right {right:0;transform-origin:left center;transform:rotateY(26deg);border-radius:0 2px 2px 0;background:linear-gradient(115deg,#15352d,#2a4738)}
+.formula-left .knowledge-title-slip {left:16px;width:43px;height:62%;top:23px}
+.formula-left .knowledge-sheet-seal {left:21px;bottom:33px;color:#cda186;border-color:#b7806599}
+.formula-fold {position:absolute;left:calc(50% - 2px);top:0;bottom:0;width:4px;background:linear-gradient(90deg,#071f1dcc,#bca36555,#071f1dcc);pointer-events:none}
+.formula-plant {position:absolute;inset:30px -12px 43px -19px;pointer-events:none}
+.formula-links {position:absolute;inset:0;left:-48%;width:165%;height:100%;opacity:.65;pointer-events:none}
+.formula-folio .formula-medallion.card-illustration,.unified-content .formula-folio .formula-medallion.card-illustration {display:block;position:absolute;left:auto;right:7px;top:auto;bottom:31px;width:65px;height:65px;transform:none;opacity:.92}
+.formula-medallion img {width:100%;height:100%;display:block;object-fit:contain}
+.formula-folio>.knowledge-sheet-imprint {left:53%;right:15px;bottom:15px;font-size:6px;letter-spacing:1px}
+.meridian-sheet {background:radial-gradient(ellipse at 68% 40%,#48655044,transparent 67%),linear-gradient(140deg,#213b33,#102b2c)}
+.meridian-drawing {position:absolute;right:3px;top:13px;width:76%;height:calc(100% - 31px);overflow:visible}
+.meridian-pulse {transform-box:fill-box;transform-origin:center}
+.meridian-route {filter:drop-shadow(0 0 2px #d9c37d66)}
+.meridian-sheet .knowledge-title-slip>span {font-size:21px;letter-spacing:3px}
+.meridian-sheet .knowledge-title-slip {height:67%}
+.meridian-sheet .knowledge-sheet-seal {left:24px;bottom:34px}
+
+.knowledge-card.themed-card,.unified-content .knowledge-card.themed-card {overflow:visible;background:transparent;border:1px solid transparent;border-radius:4px;box-shadow:none;align-items:center;padding:12px 6px 0}
+.knowledge-card.themed-card:hover,.unified-content .knowledge-card.themed-card:hover {background:transparent;border-color:transparent;box-shadow:none;transform:translateY(-4px)}
+.knowledge-card.themed-card:focus-visible,.unified-content .knowledge-card.themed-card:focus-visible {outline:2px solid #d8cd9e;outline-offset:5px}
+.knowledge-card.themed-card .themed-art,.unified-content .knowledge-card.themed-card .themed-art {overflow:visible;background:transparent;border:0;height:auto;width:calc(100% - 28px);max-width:238px;margin:0 7px 14px 0;flex-shrink:0}
+.knowledge-card.themed-card .card-copy,.unified-content .knowledge-card.themed-card .card-copy {padding:16px 12px 20px}
+.unified-content .knowledge-card.themed-card .card-copy h3 {font-size:21px;margin:8px 0}
+.themed-card .card-tags {margin-top:10px}
+.book-opening-stage>.knowledge-artwork {height:100%;aspect-ratio:auto}
+.book-opening-stage .specimen-plant,.book-opening-stage .formula-left,.book-opening-stage .formula-right {will-change:transform}
+.book-opening[data-kind]:not([data-kind="book"]) .book-opening-paper-veil {inset:0}
+
+@media(max-width:700px) {
+ .knowledge-card.themed-card,.unified-content .knowledge-card.themed-card {padding:5px 0 0}
+ .knowledge-card.themed-card .themed-art,.unified-content .knowledge-card.themed-card .themed-art {width:calc(100% - 12px);margin:0 7px 10px 0}
+ .knowledge-title-slip {left:14px;top:17px;width:34px;padding:9px 4px;height:61%}
+ .knowledge-title-slip>span {font-size:18px;letter-spacing:3px}
+ .knowledge-title-slip small {font-size:6px;letter-spacing:.5px}
+ .knowledge-sheet-frame {inset:8px}
+ .knowledge-sheet-seal {left:18px;bottom:34px;font-size:8px}
+ .knowledge-sheet-imprint {left:12px;right:13px;bottom:16px;font-size:6px;letter-spacing:1px}
+ .specimen-plant {right:0;bottom:29px;width:76%;height:78%}
+ .formula-left .knowledge-title-slip {left:11px;width:32px;top:18px;padding:8px 4px}
+ .formula-left .knowledge-sheet-seal {left:14px;bottom:25px}
+ .formula-plant {inset:24px -6px 32px -10px}
+ .formula-folio .formula-medallion.card-illustration,.unified-content .formula-folio .formula-medallion.card-illustration {width:43px;height:43px;right:4px;bottom:23px}
+ .formula-folio>.knowledge-sheet-imprint {right:9px;bottom:13px;font-size:5px}
+ .meridian-sheet .knowledge-title-slip>span {font-size:16px;letter-spacing:2px}
+ .meridian-sheet .knowledge-title-slip {height:69%}
+ .meridian-sheet .knowledge-sheet-seal {left:18px;bottom:29px}
+ .meridian-drawing {top:8px;right:0;height:calc(100% - 20px);width:77%}
+ .knowledge-card.themed-card .card-copy,.unified-content .knowledge-card.themed-card .card-copy {padding:13px 5px 17px}
+ .unified-content .knowledge-card.themed-card .card-copy h3 {font-size:18px;letter-spacing:0}
+}
+@media(prefers-reduced-motion:reduce) {
+ .knowledge-card.themed-card,.unified-content .knowledge-card.themed-card {transition:none}
+ .knowledge-card.themed-card:hover,.unified-content .knowledge-card.themed-card:hover {transform:none}
+}
+.knowledge-image {display:block;width:100%;height:100%;overflow:hidden}
+.knowledge-image img {display:block;width:100%;height:100%;object-fit:contain}
+.specimen-plant>.botanical-sprite {inset:0;left:0;top:0;width:100%;height:100%;aspect-ratio:auto;transform:none}
+.formula-plant>.knowledge-image.card-illustration,.unified-content .formula-plant>.knowledge-image.card-illustration {position:static;width:100%;height:100%;transform:none;opacity:1}
+.formula-plant>.knowledge-image svg {width:100%;height:100%}
+.meridian-illustration,.acupoint-illustration {opacity:.86}

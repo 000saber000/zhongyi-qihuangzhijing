@@ -47,7 +47,7 @@ test('mobile floating categories stay in the header with artwork and clear acces
  expect(await root.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await root.evaluate(e=>{e.scrollTop=600;});
  await expect(page.locator('.jade-starfield')).toBeVisible();
  for(const name of ['阴阳','桂枝汤','医案怎么读','本草纲目','黄帝内经','金匮要略','难经','千金方','伤寒论','神农本草经'])await expect(page.getByRole('button',{name:'阅读 '+name,exact:true}).locator('.card-illustration')).toBeVisible();
- await expect.poll(async()=>(await nav.boundingBox())!.y).toBeLessThan(190);
+ await expect.poll(async()=>(await nav.boundingBox())?.y??Number.POSITIVE_INFINITY).toBeLessThan(190);
  await page.locator('.library-nav-slot.is-docked').waitFor();
  const box=await nav.boundingBox(),search=await page.locator('.universe-search').boundingBox(),header=await page.locator('.universe-header').boundingBox();expect(box!.y).toBeGreaterThanOrEqual(header!.y);expect(box!.y+box!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(box!.y+box!.height).toBeLessThanOrEqual(search!.y);expect(box!.x).toBeGreaterThanOrEqual(10);expect(box!.x+box!.width).toBeLessThanOrEqual(380);
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-mobile-docked.png'});

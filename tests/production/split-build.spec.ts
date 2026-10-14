@@ -6,6 +6,23 @@ test.beforeEach(async({page})=>{
  await page.route('**/api/knowledge',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({items})}));
 });
 
+test('built mobile chat receives a reply without AbortSignal static helpers',async({page})=>{
+ const session={user:{id:'release-chat-user',username:'ReleaseLearner',role:'user',mustChangePassword:false},token:'t'.repeat(43),expiresAt:new Date(Date.now()+3600000).toISOString()};
+ await page.addInitScript(session=>{
+  sessionStorage.setItem('qihuang-session',JSON.stringify(session));
+  for(const method of ['timeout','any'])Object.defineProperty(AbortSignal,method,{value:undefined,configurable:true});
+ },session);
+ await page.route('**/api/auth/me',route=>route.fulfill({json:{user:session.user,expiresAt:session.expiresAt}}));
+ await page.route('**/api/study',route=>route.fulfill({json:{bookmarks:[],completed:[]}}));
+ await page.route('**/api/ai/status',route=>route.fulfill({json:{enabled:true,remaining:10,dailyLimit:10,globalAvailable:true,resetTimezone:'Asia/Shanghai'}}));
+ await page.route('**/api/ai/chat',route=>route.fulfill({contentType:'text/event-stream',body:'event: delta\ndata: {"text":"手机版可以正常收到回答。"}\n\nevent: done\ndata: {"ok":true}\n\n'}));
+ await page.goto('/#library');await page.getByRole('button',{name:'问岐黄',exact:true}).click();
+ const dialog=page.getByRole('dialog',{name:'岐黄学习助手'});
+ await dialog.getByLabel('向岐黄提问',{exact:true}).fill('你好');await dialog.getByLabel('发送提问',{exact:true}).click();
+ await expect(dialog.locator('.ai-answer>p')).toHaveText('手机版可以正常收到回答。');await expect(dialog.getByRole('alert')).toHaveCount(0);
+ await expect(dialog.getByLabel('向岐黄提问',{exact:true})).toBeEnabled();
+});
+
 test('production serves separate scripts and styles and preserves guest learning',async({page,request})=>{
  const response=await request.get('/');const html=await response.text();
  expect(html.length).toBeLessThan(5000);
@@ -39,9 +56,9 @@ test('navigation is available while the three-dimensional scene downloads',async
   await expect(page.getByRole('heading',{name:'循序而学，自成体系。',exact:true})).toBeVisible();
   release();
   await page.locator('.universe-stage[data-ready="true"]').waitFor();
-  await page.locator('canvas').evaluate(canvas=>canvas.setAttribute('data-persist-check','same-canvas'));
+  await page.locator('.universe-stage canvas').evaluate(canvas=>canvas.setAttribute('data-persist-check','same-canvas'));
   await page.getByRole('button',{name:'我的书斋',exact:true}).click();
-  await expect(page.locator('canvas')).toHaveAttribute('data-persist-check','same-canvas');
+  await expect(page.locator('.universe-stage canvas')).toHaveAttribute('data-persist-check','same-canvas');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  }finally{release();}
 });

@@ -1,0 +1,54 @@
+.universe .universe-nav.cosmic-navigation{gap:9px;height:44px;margin-right:24px}
+.universe .universe-nav.cosmic-navigation button.cosmic-nav-link{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;min-width:116px;height:44px;padding:0 15px;isolation:isolate;overflow:hidden;border:0;border-radius:2px;background:#0b191d65;color:#9eb3a8;font:11px var(--serif);letter-spacing:1.4px;white-space:nowrap;transition:background-color .25s,color .25s,box-shadow .25s}
+.cosmic-nav-link::before{content:'';position:absolute;inset:-20px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,#c2d49626,transparent 65%);opacity:0;transition:opacity .3s}
+.universe .universe-nav.cosmic-navigation button.cosmic-nav-link::after{content:none}
+.cosmic-nav-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:currentColor;stroke-width:1;overflow:visible}
+.cosmic-nav-frame path{vector-effect:non-scaling-stroke}
+.cosmic-nav-track{opacity:.22}
+.cosmic-nav-trace{opacity:0;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s cubic-bezier(.22,.61,.36,1),opacity .25s}
+.cosmic-nav-icon{flex:0 0 auto;width:24px;height:24px;opacity:.82;transition:transform .3s,color .3s,opacity .3s}
+.cosmic-nav-label{position:relative}
+.cosmic-nav-dot{position:absolute;top:8px;right:8px;width:3px;height:3px;border-radius:50%;background:#e2d4a1;box-shadow:0 0 8px #e2d4a170;opacity:0;transition:opacity .25s}
+.universe .universe-nav.cosmic-navigation button.cosmic-nav-link:is(:hover,:focus-visible,.current){color:#e1d4af;background:#19312970;box-shadow:inset 0 0 18px #bed19008}
+.cosmic-nav-link:is(:hover,:focus-visible,.current)::before{opacity:1}
+.cosmic-nav-link:is(:hover,:focus-visible,.current) .cosmic-nav-trace{stroke-dashoffset:0;opacity:.8}
+.cosmic-nav-link:is(:hover,:focus-visible) .cosmic-nav-icon{transform:translateY(-1px) rotate(-4deg);opacity:1}
+.cosmic-nav-link.current .cosmic-nav-icon{opacity:1}
+.cosmic-nav-link.current .cosmic-nav-dot{opacity:1}
+.universe .universe-nav.cosmic-navigation button.cosmic-nav-link:focus-visible{outline:2px solid #d7cfa2;outline-offset:3px}
+.universe .universe-nav.cosmic-navigation button.cosmic-nav-link:active{color:#f4e9be;background:#35453599;transition-duration:.08s;box-shadow:inset 0 0 24px #dbe6ba20}
+.cosmic-nav-link:active .cosmic-nav-icon{transform:scale(.94)}
+@media(max-width:1100px){
+ .universe .universe-nav.cosmic-navigation{gap:6px;margin-right:10px}
+ .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:100px;padding:0 10px;gap:7px;font-size:10px;letter-spacing:1px}
+ .cosmic-nav-icon{width:20px;height:20px}
+}
+@media(min-width:701px) and (max-width:950px){
+ .universe .universe-header{padding-inline:24px;gap:12px}
+ .universe .universe-brand small{display:none}
+ .universe .universe-top-actions{gap:12px}
+ .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:92px;padding:0 8px;gap:6px}
+ .cosmic-nav-icon{width:18px;height:18px}
+}
+@media(min-width:701px){
+ .universe.has-library-header-nav .universe-nav.cosmic-navigation{top:72px;right:50px;height:24px;gap:6px;margin:0}
+ .universe.has-library-header-nav .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:96px;height:24px;padding:0 9px;gap:6px;font-size:9px}
+ .has-library-header-nav .cosmic-nav-icon{width:15px;height:15px}
+ .has-library-header-nav .cosmic-nav-dot{top:5px;right:6px;width:2px;height:2px}
+}
+@media(max-width:700px){
+ .universe .universe-nav.cosmic-navigation{position:absolute;top:60px;left:20px;right:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;height:34px;margin:0}
+ .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:0;min-height:34px;height:34px;padding:0 6px;gap:4px;font-size:9px;letter-spacing:.2px}
+ .cosmic-nav-icon{width:14px;height:14px}
+ .cosmic-nav-dot{top:5px;right:5px;width:2px;height:2px}
+ .universe.has-library-header-nav .universe-nav.cosmic-navigation{top:116px;height:30px}
+ .universe.has-library-header-nav .universe-nav.cosmic-navigation button.cosmic-nav-link{min-height:30px;height:30px}
+}
+@media(max-width:360px){
+ .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{padding:0 4px;gap:3px;font-size:8.5px}
+ .cosmic-nav-icon{width:12px;height:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .universe .universe-nav.cosmic-navigation button.cosmic-nav-link,.cosmic-nav-link::before,.cosmic-nav-trace,.cosmic-nav-icon,.cosmic-nav-dot{transition:none}
+ .cosmic-nav-link:is(:hover,:focus-visible) .cosmic-nav-icon,.cosmic-nav-link:active .cosmic-nav-icon{transform:none}
+}
