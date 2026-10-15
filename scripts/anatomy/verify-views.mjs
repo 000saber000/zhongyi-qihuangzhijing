@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {Vector3,Raycaster} from 'three';
+import {cameraPose} from '../../src/features/meridians/camera.ts';
 
 const aspects=process.argv.slice(2).map(Number);
 if(!aspects.length)aspects.push(1.2,.72,.45);
@@ -25,11 +26,10 @@ for(const variant of ['male','female']){
   const blocked=[];
   const relevant=anchors.filter(anchor=>anchor.modelId===manifest[variant].id);
   for(const anchor of relevant){
-   // Matches cameraPose()'s current narrow-viewport distance adjustment.
-   const distance=anchor.viewDistance*Math.max(1,.72/Math.max(.15,aspect));
    const position=new Vector3(...anchor.position);
    const direction=new Vector3(...anchor.viewDirection).normalize();
-   const camera=position.clone().addScaledVector(direction,distance);
+   const pose=cameraPose(anchor,aspect,manifest[variant].height);
+   const camera=new Vector3(...pose.position),distance=camera.distanceTo(position);
    const ray=new Raycaster(camera,position.clone().sub(camera).normalize());
    const hits=ray.intersectObjects(meshes,false);
    const normalDot=new Vector3(...anchor.outwardNormal).dot(direction);
