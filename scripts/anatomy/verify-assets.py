@@ -31,7 +31,7 @@ def inspect_glb(path):
 def verify_folder(folder):
  folder=Path(folder);results={}
  for variant in ['male','female']:
-  p=folder/f'adult-{variant}-v1.glb';results[variant]=inspect_glb(p)
+  p=folder/f'adult-{variant}-v2.glb';results[variant]=inspect_glb(p)
   if not 1.4<results[variant]['height']<2.1:raise ValueError(f'{variant}: incorrect metre/Y-up convention')
   if abs(results[variant]['min'][1])>.02:raise ValueError(f'{variant}: feet are not at origin')
   for view in ['front','side','back']:

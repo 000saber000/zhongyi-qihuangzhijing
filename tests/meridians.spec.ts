@@ -2,6 +2,7 @@ import {test,expect as baseExpect} from '@playwright/test';
 const expect=baseExpect.configure({timeout:15000});
 import {readFile} from 'node:fs/promises';
 import {Vector3,PerspectiveCamera} from 'three';
+import {fullBodyPose} from '../src/features/meridians/camera';
 test('independent page loads one canvas, keeps side on model switch and shares bookmarks',async({page})=>{
  await page.goto('/#meridians');
  await expect(page.getByRole('heading',{name:'经络云图',exact:true})).toBeVisible();
@@ -30,10 +31,16 @@ test('actual visible point is clickable and a rear point is occluded until camer
  const anchors=JSON.parse(await readFile(new URL('../src/features/meridians/anchors.json',import.meta.url),'utf8'));
  const bounds=(await page.locator('canvas').boundingBox())!;
  // Same public full-body preset, projected through a real perspective camera.
- const camera=new PerspectiveCamera(45,bounds.width/bounds.height,.01,30);camera.position.set(0,.89,Math.max(2.5,1.78/(2*Math.tan(Math.PI/8))*1.22,1.12/(2*Math.tan(Math.PI/8)*(bounds.width/bounds.height))*1.2));camera.lookAt(0,.89,0);camera.updateMatrixWorld();
- const xy=(id:string)=>{const a=anchors.find((a:any)=>a.modelId==='adult-male-v1'&&a.knowledgeId===id&&(a.side==='left'||a.side==='midline'));const p=new Vector3(...a.position as [number,number,number]).project(camera);return {x:bounds.x+(p.x+1)*bounds.width/2,y:bounds.y+(1-p.y)*bounds.height/2};};
+ const camera=new PerspectiveCamera(45,bounds.width/bounds.height,.01,30);const pose=fullBodyPose('front',bounds.width/bounds.height);camera.position.fromArray(pose.position);camera.lookAt(...pose.target);camera.updateMatrixWorld();
+ const xy=(id:string)=>{const a=anchors.find((a:any)=>a.modelId==='adult-male-v2'&&a.knowledgeId===id&&(a.side==='left'||a.side==='midline'));const p=new Vector3(...a.position as [number,number,number]).project(camera);return {x:bounds.x+(p.x+1)*bounds.width/2,y:bounds.y+(1-p.y)*bounds.height/2};};
  await page.mouse.click(xy('point-fengchi').x,xy('point-fengchi').y);
  await expect(page.getByTestId('point-panel')).not.toContainText('GB20 / ACUPOINT');
+ await page.mouse.move(xy('point-shanzhong').x,xy('point-shanzhong').y);
+ await expect(page.getByRole('tooltip')).toContainText('膻中');
+ await expect(page.getByRole('tooltip')).toContainText('CV17');
+ await expect(page.getByTestId('point-panel')).not.toContainText('CV17 / ACUPOINT');
+ await page.mouse.move(bounds.x+10,bounds.y+10);
+ await expect(page.getByRole('tooltip')).toHaveCount(0);
  await page.mouse.click(xy('point-shanzhong').x,xy('point-shanzhong').y);
  await expect(page.getByTestId('point-panel')).toContainText('膻中');await expect(scene).toHaveAttribute('data-focus','point-shanzhong:midline');
  await page.getByRole('button',{name:'选择 风池 GB20'}).click();await expect(scene).toHaveAttribute('data-focus','point-fengchi:left');
@@ -108,4 +115,49 @@ test('mobile search, filter, bottom panel and static fallback remain usable',asy
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.getByRole('button',{name:'女性人体',exact:true}).click();
  await expect(page.getByTestId('body-preview')).toHaveAttribute('alt',/女性/);
+});
+
+test('transparency and independent internal layers survive model and point changes',async({page})=>{
+ await page.goto('/#meridians');
+ const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-status','ready');
+ const toggle=page.getByRole('switch',{name:'人体透视'});
+ await expect(toggle).not.toBeChecked();
+ await expect(page.getByRole('slider',{name:'人体透明度'})).toHaveCount(0);
+ await toggle.click();await expect(toggle).toBeChecked();
+ const organs=page.getByRole('checkbox',{name:'内脏'}),meridians=page.getByRole('checkbox',{name:'经脉'});
+ await expect(organs).toBeChecked();await expect(meridians).toBeChecked();
+ const opacity=page.getByRole('slider',{name:'人体透明度'});await expect(opacity).toHaveValue('25');
+ await opacity.fill('40');await expect(opacity).toHaveValue('40');
+ await organs.uncheck();await expect(organs).not.toBeChecked();
+ await page.getByRole('button',{name:'女性人体',exact:true}).click();await expect(scene).toHaveAttribute('data-variant','female');await expect(scene).toHaveAttribute('data-status','ready');
+ await expect(toggle).toBeChecked();await expect(organs).not.toBeChecked();await expect(opacity).toHaveValue('40');
+ await page.getByRole('button',{name:'选择 内关 PC6'}).click();await expect(scene).toHaveAttribute('data-focus','point-neiguan:left');
+ await expect(toggle).toBeChecked();await meridians.uncheck();await organs.check();
+ await toggle.click();await expect(opacity).toHaveCount(0);await expect(page.getByTestId('point-panel')).toContainText('内关');
+ await toggle.click();await expect(organs).toBeChecked();await expect(meridians).not.toBeChecked();
+});
+
+test('an internal-layer download failure preserves the body and can be retried independently',async({page})=>{
+ let fail=true;
+ await page.route('**/*viscera*.glb*',async route=>{const url=new URL(route.request().url());if(url.searchParams.has('import')||url.searchParams.has('url'))return route.continue();if(fail){fail=false;return route.abort();}return route.continue();});
+ await page.goto('/#meridians');await expect(page.getByTestId('body-scene')).toHaveAttribute('data-status','ready');
+ await page.getByRole('switch',{name:'人体透视'}).click();
+ await expect(page.getByRole('alert')).toContainText('内脏层暂未加载');
+ await expect(page.getByTestId('body-scene')).toHaveAttribute('data-status','ready');await expect(page.locator('canvas')).toHaveCount(1);
+ await page.getByRole('checkbox',{name:'内脏'}).uncheck();
+ await Promise.all([page.waitForResponse(r=>r.url().includes('viscera')&&r.url().includes('.glb')&&!r.url().includes('import')&&!r.url().includes('?url')&&r.ok()),page.getByRole('checkbox',{name:'内脏'}).check()]);
+ await expect(page.getByRole('alert')).toHaveCount(0);
+ await page.getByRole('button',{name:'选择 百会 GV20'}).click();await expect(page.getByTestId('body-scene')).toHaveAttribute('data-focus','point-baihui:midline');
+});
+
+test('a short mobile screen can read knowledge while xray layers remain available',async({page})=>{
+ await page.setViewportSize({width:375,height:667});await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/#meridians');
+ await expect(page.getByTestId('body-scene')).toHaveAttribute('data-status','ready');
+ await page.getByRole('switch',{name:'人体透视'}).click();
+ await page.getByRole('button',{name:'展开穴位目录'}).click();await page.getByRole('button',{name:'选择 内关 PC6'}).click();
+ await page.getByRole('button',{name:'展开穴位介绍'}).click();
+ const content=page.locator('.point-panel-content');await expect(content).toBeVisible();
+ expect(await content.evaluate(e=>e.clientHeight)).toBeGreaterThanOrEqual(80);
+ await page.getByRole('button',{name:'阅读完整穴位知识'}).scrollIntoViewIfNeeded();await expect(page.getByRole('button',{name:'阅读完整穴位知识'})).toBeInViewport();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
