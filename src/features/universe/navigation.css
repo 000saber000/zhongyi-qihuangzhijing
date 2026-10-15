@@ -6,9 +6,9 @@
 .cosmic-nav-link::before{content:'';position:absolute;inset:-20px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,#c2d49626,transparent 65%);opacity:0;transition:opacity .3s}
 .universe :is(.cosmic-navigation,.detail-page) button.cosmic-nav-link::after{content:none}
 .cosmic-nav-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;fill:none;stroke:currentColor;stroke-width:1;overflow:visible}
-.cosmic-nav-frame path{vector-effect:non-scaling-stroke}
-.cosmic-nav-track{opacity:.22}
+.cosmic-nav-track{vector-effect:non-scaling-stroke;opacity:.22}
 .cosmic-nav-trace{opacity:0;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s cubic-bezier(.22,.61,.36,1),opacity .25s}
+.detail-back-link .cosmic-nav-trace{stroke-width:.6}
 .cosmic-nav-icon{flex:0 0 auto;width:24px;height:24px;opacity:.82;transition:transform .3s,color .3s,opacity .3s}
 .cosmic-nav-label{position:relative}
 .cosmic-nav-dot{position:absolute;top:8px;right:8px;width:3px;height:3px;border-radius:50%;background:#e2d4a1;box-shadow:0 0 8px #e2d4a170;opacity:0;transition:opacity .25s}
