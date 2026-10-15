@@ -138,5 +138,6 @@ for variant,m in manifest.items():
    all_surface_errors.append(distance)
  quality[variant]={'paths':sum(p['variant']==variant for p in result),'max_surface_offset':max(all_surface_errors),'samples':len(all_surface_errors)}
 (root/'src/features/meridians/paths.json').write_text(json.dumps(result,separators=(',',':'))+'\n')
-(root/'.superpowers/lux3d/path-quality.json').write_text(json.dumps(quality,indent=2))
+quality_path=root/'.superpowers/anatomy/path-quality.json';quality_path.parent.mkdir(parents=True,exist_ok=True)
+quality_path.write_text(json.dumps(quality,indent=2))
 print('PATHS_COMPLETE',json.dumps(quality),flush=True)

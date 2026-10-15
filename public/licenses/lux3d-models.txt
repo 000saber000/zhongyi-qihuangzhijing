@@ -16,3 +16,12 @@ The original project MIT license and separately attributed dependencies remain
 as documented in the project. Historical MPFB assets retain their CC0 notices.
 The separate organ layer and meridian curves are project-authored teaching
 illustrations, not clinically validated anatomical reconstructions.
+
+The v4 male and female models are the separate GLB files supplied by the
+project owner on 2026-10-15. Their source files are recorded in
+src/assets/anatomy/models.manifest.json. Local Blender processing corrects
+orientation and scale and reduces each mesh for web display while retaining
+the supplied texture. The GLBs contain tripo-prefixed mesh and material names,
+but no separate source-service license document was supplied. They remain
+attributed as user-provided assets; this notice does not claim CC0 or MIT
+coverage for those model files.

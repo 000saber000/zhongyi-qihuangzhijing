@@ -1,9 +1,9 @@
 [
   {
-    "id": "adult-male-v3",
+    "id": "adult-male-v4",
     "variant": "male",
-    "sha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
-    "sourceFile": "adult-male-v3.glb",
+    "sha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "sourceFile": "adult-male-v4.glb",
     "previewFiles": {
       "front": "male-front.png",
       "side": "male-side.png",
@@ -11,10 +11,10 @@
     }
   },
   {
-    "id": "adult-female-v3",
+    "id": "adult-female-v4",
     "variant": "female",
-    "sha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
-    "sourceFile": "adult-female-v3.glb",
+    "sha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "sourceFile": "adult-female-v4.glb",
     "previewFiles": {
       "front": "female-front.png",
       "side": "female-side.png",

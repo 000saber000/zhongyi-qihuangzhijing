@@ -1,11 +1,11 @@
 {
   "male": {
-    "id": "adult-male-v3",
+    "id": "adult-male-v4",
     "variant": "male",
-    "sourceFile": "adult-male-v3.glb",
-    "sha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
-    "sourceSha256": "b0b14861f73782f590a0a48a578a097fb705c99240189939e9fd67710daddc25",
-    "source": "User-provided Aholo Lux3D export; no third-party CC0 claim",
+    "sourceFile": "adult-male-v4.glb",
+    "sha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "sourceSha256": "e424fa36daf8f2d4c1fa8d1a093aa9c05431b5cc1b50fa66ee251589f326aca6",
+    "source": "User-provided GLB export (绿色人形3d模型.glb); no source license file was included",
     "previewFiles": {
       "front": "male-front.png",
       "side": "male-side.png",
@@ -31,7 +31,7 @@
       "joint-l-shoulder": [
         0.205,
         1.377,
-        0.0
+        0
       ],
       "joint-l-elbow": [
         0.278,
@@ -81,7 +81,7 @@
       "joint-r-shoulder": [
         -0.205,
         1.377,
-        0.0
+        0
       ],
       "joint-r-elbow": [
         -0.278,
@@ -129,15 +129,23 @@
         0.13
       ]
     },
-    "landmarkMethod": "Per-model visual teaching landmarks; not clinical validation"
+    "landmarkMethod": "Per-model visual teaching landmarks; not clinical validation",
+    "modelProcessing": {
+      "sourceFilename": "绿色人形3d模型.glb",
+      "sourceTriangles": 1924943,
+      "optimizedTriangles": 298366,
+      "normalizedHeightMeters": 1.7800228595733643,
+      "forwardCorrectionDegrees": -90,
+      "meshReduction": "Blender 4.3.2 collapse decimation; embedded base-color texture and UVs retained"
+    }
   },
   "female": {
-    "id": "adult-female-v3",
+    "id": "adult-female-v4",
     "variant": "female",
-    "sourceFile": "adult-female-v3.glb",
-    "sha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
-    "sourceSha256": "5541df79d745bd6455d6fefa4809568e29b93a02db739c3f54696f0a1f969ea0",
-    "source": "User-provided Aholo Lux3D export; no third-party CC0 claim",
+    "sourceFile": "adult-female-v4.glb",
+    "sha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "sourceSha256": "9a7822de7df91b333ec7e5eeab06e61f82793ec5a7666c8039619f0359928e73",
+    "source": "User-provided GLB export (3d人类模型.glb); no source license file was included",
     "previewFiles": {
       "front": "female-front.png",
       "side": "female-side.png",
@@ -163,7 +171,7 @@
       "joint-l-shoulder": [
         0.1862359550561798,
         1.3151123595505618,
-        0.0
+        0
       ],
       "joint-l-elbow": [
         0.224438202247191,
@@ -213,7 +221,7 @@
       "joint-r-shoulder": [
         -0.1862359550561798,
         1.3151123595505618,
-        0.0
+        0
       ],
       "joint-r-elbow": [
         -0.224438202247191,
@@ -261,6 +269,14 @@
         0.12415730337078652
       ]
     },
-    "landmarkMethod": "Per-model visual teaching landmarks; not clinical validation"
+    "landmarkMethod": "Per-model visual teaching landmarks; not clinical validation",
+    "modelProcessing": {
+      "sourceFilename": "3d人类模型.glb",
+      "sourceTriangles": 1958974,
+      "optimizedTriangles": 303640,
+      "normalizedHeightMeters": 1.7000415325164795,
+      "forwardCorrectionDegrees": -90,
+      "meshReduction": "Blender 4.3.2 collapse decimation; embedded base-color texture and UVs retained"
+    }
   }
 }
