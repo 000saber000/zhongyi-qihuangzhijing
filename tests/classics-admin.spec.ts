@@ -28,7 +28,9 @@ async function fillClassic(page:Page,id:string){
  await page.getByLabel('知识编号',{exact:true}).fill(id);
  await page.getByLabel('知识名称',{exact:true}).fill('测试新增知识');
  await page.getByLabel('内容简介',{exact:true}).fill('新增的典籍简介');
- await page.getByLabel('原文 / 正文',{exact:true}).fill('第一段正文。\n第二段正文。');
+ await page.getByRole('button',{name:'添加章节',exact:true}).click();
+ await page.getByLabel('章节标题',{exact:true}).fill('第一篇');
+ await page.getByLabel('章节正文',{exact:true}).fill('第一段正文。\n第二段正文。');
  await page.getByLabel('文献出处',{exact:true}).fill('测试整理本·第一篇');
  await page.getByLabel('学习要点（每行一条）',{exact:true}).fill('先读正文');
 }
@@ -54,8 +56,9 @@ test('admin creates a private draft, previews, publishes, and readers can search
   expect((await catalogResponse.json()).items.some((item:any)=>item.id===id&&item.title===title)).toBe(true);
   await reader.getByLabel('搜索知识',{exact:true}).fill(title);await reader.getByLabel('搜索知识',{exact:true}).press('Enter');
   await reader.getByRole('button',{name:'阅读 '+title,exact:true}).click();
-  await expect(reader.getByText('第一段正文。\n第二段正文。')).toBeVisible();
   await expect(reader.getByText('先读正文',{exact:true})).toBeVisible();
+  await reader.getByRole('button',{name:'开始阅读',exact:true}).click();
+  await expect(reader.getByText('第一段正文。\n第二段正文。')).toBeVisible();
   await reader.getByRole('button',{name:'收藏知识',exact:true}).click();
   await reader.reload();
   await expect(reader.getByRole('button',{name:'取消收藏',exact:true})).toBeVisible();

@@ -1,14 +1,16 @@
 import {useEffect,useRef,useState} from 'react';
 import {BookOpen,Plus,Save,Send,Eye,ArrowLeft} from 'lucide-react';
 import {knowledge,categories,categoryLabel,type Knowledge} from '../../data/catalog';
+import {chaptersFrom,BOOK_BODY_LIMIT} from '../../data/chapters';
+import ChapterEditor from '../../components/ChapterEditor';
 import {api,ApiError} from '../../lib/api';
 import SuggestionReview from '../contributions/SuggestionReview';
 import './admin.css';
 
 type Entry={draft:Knowledge;published:Knowledge|null;version:number;updatedAt:string};
-type Form=Knowledge & {body:string;keyPoints:string[]};
-const blank=():Form=>({id:'',type:'经',title:'',subtitle:'',summary:'',body:'',source:'',tags:[],relations:[],confidence:'待核对',keyPoints:[]});
-const formFrom=(item:Knowledge):Form=>({...item,body:item.body??'',keyPoints:item.keyPoints??[]});
+type Form=Knowledge & {body:string;chapters:NonNullable<Knowledge['chapters']>;keyPoints:string[]};
+const blank=():Form=>({id:'',type:'经',title:'',subtitle:'',summary:'',body:'',chapters:[],source:'',tags:[],relations:[],confidence:'待核对',keyPoints:[]});
+const formFrom=(item:Knowledge):Form=>({...item,body:item.body??'',chapters:chaptersFrom(item),keyPoints:item.keyPoints??[]});
 const message=(cause:unknown)=>cause instanceof Error?cause.message:'操作失败，请重试。';
 export default function ClassicsAdmin({token,authorized=true,onPublished,onDirtyChange}:{token:string;authorized?:boolean;onPublished:()=>Promise<void>;onDirtyChange:(dirty:boolean)=>void}){
  const [entries,setEntries]=useState<Entry[]>([]),[current,setCurrent]=useState<Entry|null>(null),[form,setForm]=useState<Form|null>(null);
@@ -37,7 +39,10 @@ export default function ClassicsAdmin({token,authorized=true,onPublished,onDirty
  const updateEntry=(entry:Entry)=>setEntries(previous=>[entry,...previous.filter(item=>item.draft.id!==entry.draft.id)]);
  const fail=(cause:unknown)=>{setError(message(cause));setConflict(cause instanceof ApiError&&cause.code==='VERSION_CONFLICT');};
  const save=async()=>{
-  if(!form||blocked||!authorized)return;setBusy(true);setError('');setNotice('');const edit=editNumber.current;
+  if(!form||blocked||!authorized)return;
+  if(form.chapters.some(chapter=>!chapter.title.trim())){setError('请为每一章填写章节标题。');return;}
+  if(form.chapters.reduce((sum,chapter)=>sum+chapter.body.length,0)>BOOK_BODY_LIMIT){setError('全书正文超过字符上限，请精简后保存。');return;}
+  setBusy(true);setError('');setNotice('');const edit=editNumber.current;
   try{
    const entry=await api<Entry>('/api/admin/classics'+(current?'/'+encodeURIComponent(current.draft.id):''),{method:current?'PUT':'POST',token,body:{content:{...form,tags:form.tags.map(tag=>tag.trim()).filter(Boolean),keyPoints:form.keyPoints.map(point=>point.trim()).filter(Boolean)},...(current?{version:current.version}:{})}});
    if(!active.current||edit!==editNumber.current)return;
@@ -65,12 +70,12 @@ export default function ClassicsAdmin({token,authorized=true,onPublished,onDirty
   <div className="admin-layout"><aside className="admin-list" aria-label="知识列表"><h2>我的知识目录 <small>{entries.length}</small></h2>{loading?<p>正在读取知识…</p>:entries.map(entry=><button key={entry.draft.id} className={current?.draft.id===entry.draft.id?'chosen':''} onClick={()=>choose(entry)} disabled={blocked||!authorized}><BookOpen size={15}/><span>{entry.draft.title}<small>{categoryLabel(entry.draft.type)} · {!entry.published?'未发布草稿':JSON.stringify(entry.draft)===JSON.stringify(entry.published)?'已发布':'有未发布修改'}</small></span></button>)}</aside>
    <div className="admin-workspace">{!form?<div className="admin-empty"><BookOpen size={32}/><h2>选择一条知识，开始编辑。</h2><p>也可以点击“新增知识”录入新的内容。</p></div>:<>
     <div className="admin-toolbar"><span>{current?`版本 ${current.version} · ${current.published?'已发布':'草稿'}`:'新知识'}{dirty?' · 尚未保存':''}</span><button className="outline" type="button" disabled={blocked} onClick={()=>setPreview(!preview)}><Eye size={15}/>{preview?'返回编辑':'预览内容'}</button></div>
-    {preview?<section className="admin-preview" aria-label="知识预览"><span className="pill">草稿预览</span><h2>{form.title||'未填写名称'}</h2><p>{form.subtitle}</p><p>{form.summary}</p>{form.body&&<><h3>原文 / 正文</h3><p className="classic-body">{form.body}</p></>}{form.keyPoints.length>0&&<><h3>学习要点</h3><ul>{form.keyPoints.map((point,i)=><li key={i}>{point}</li>)}</ul></>}<h3>文献出处</h3><p>{form.source}</p><button className="section-link" onClick={()=>setPreview(false)}><ArrowLeft size={15}/>返回编辑</button></section>:<form id="classic-form" className="admin-form" onSubmit={event=>{event.preventDefault();void save();}}>
+    {preview?<section className="admin-preview" aria-label="知识预览"><span className="pill">草稿预览</span><h2>{form.title||'未填写名称'}</h2><p>{form.subtitle}</p><p>{form.summary}</p>{form.chapters.length>0&&<section className="chapter-preview" aria-label="章节预览"><h3>章节目录 · {form.chapters.length} 章</h3>{form.chapters.map((chapter,index)=><details key={index} open><summary>第 {index+1} 章 · {chapter.title||'未命名章节'}</summary><p className="classic-body">{chapter.body||'本章正文尚未录入。'}</p></details>)}</section>}{form.keyPoints.length>0&&<><h3>学习要点</h3><ul>{form.keyPoints.map((point,i)=><li key={i}>{point}</li>)}</ul></>}<h3>文献出处</h3><p>{form.source}</p><button className="section-link" onClick={()=>setPreview(false)}><ArrowLeft size={15}/>返回编辑</button></section>:<form id="classic-form" className="admin-form" onSubmit={event=>{event.preventDefault();void save();}}>
      <fieldset disabled={blocked}><div className="admin-fields"><label>知识编号<input aria-label="知识编号" aria-describedby="classic-id-help" required pattern="[a-z][a-z0-9-]{2,79}" maxLength={80} disabled={!!current} value={form.id} placeholder="例如 classic-suwen" onChange={e=>change('id',e.target.value)}/><small id="classic-id-help">字母、数字、短横线；创建后不修改。</small></label><label>知识名称<input required maxLength={120} value={form.title} onChange={e=>change('title',e.target.value)}/></label></div>
      <label>知识分类<select aria-label="知识分类" disabled={!!current} value={form.type} onChange={e=>change('type',e.target.value)}>{categories.filter(c=>c.type!=='全部').map(c=><option key={c.type} value={c.type}>{c.label}</option>)}</select></label>
      <label>副标题<input maxLength={240} value={form.subtitle} onChange={e=>change('subtitle',e.target.value)}/></label>
      <label>内容简介<textarea aria-label="内容简介" required maxLength={4000} rows={4} value={form.summary} onChange={e=>change('summary',e.target.value)}/></label>
-     <label>原文 / 正文<textarea aria-label="原文 / 正文" aria-describedby="classic-body-count" maxLength={50000} rows={12} value={form.body} placeholder="粘贴知识原文或整理后的正文，保留段落换行。" onChange={e=>change('body',e.target.value)}/><small id="classic-body-count">{form.body.length} / 50000 字符</small></label>
+     <ChapterEditor value={form.chapters} onChange={chapters=>change('chapters',chapters)}/>
      <label>文献出处<textarea required maxLength={1000} rows={2} value={form.source} placeholder="书名、版本、篇章及页码" onChange={e=>change('source',e.target.value)}/></label>
      <div className="admin-fields"><label>标签（用逗号分隔）<input value={form.tags.join('，')} onChange={e=>change('tags',e.target.value.split(/[,，]/))}/></label><label>来源核对说明<input required maxLength={120} value={form.confidence} onChange={e=>change('confidence',e.target.value)}/></label></div>
      <label>学习要点（每行一条）<textarea rows={4} value={form.keyPoints.join('\n')} onChange={e=>change('keyPoints',e.target.value.split('\n'))}/></label>

@@ -34,11 +34,11 @@ test('member comments and suggests; admin merges draft and manually publishes; m
   const review=reviewer.getByRole('region',{name:'修改建议审核'});await review.getByRole('button',{name:'审核建议 '+item.title,exact:true}).click();
   await expect(review.getByText('据校订本第一篇修改。',{exact:true})).toBeVisible();await expect(review.locator('ins')).toContainText('校订');
   await review.getByLabel('处理说明（选填）').fill('已核对，采纳到草稿。');await review.getByRole('button',{name:'采纳并合并草稿',exact:true}).click();await expect(review.getByRole('status')).toContainText('尚未发布');
-  await reviewer.getByRole('complementary',{name:'知识列表'}).getByRole('button',{name:new RegExp(item.title)}).click();await expect(reviewer.getByLabel('原文 / 正文',{exact:true})).toHaveValue('校订正文第一段。\n原文第二段。');
+  await reviewer.getByRole('complementary',{name:'知识列表'}).getByRole('button',{name:new RegExp(item.title)}).click();await expect(reviewer.getByLabel('章节正文',{exact:true})).toHaveValue('校订正文第一段。\n原文第二段。');
   const before=await request.get(api+'/api/knowledge');expect((await before.json()).items.find((i:any)=>i.id===item.id).body).toBe(item.body);
   await reviewer.getByRole('button',{name:'发布知识',exact:true}).click();await expect(reviewer.getByRole('status').filter({hasText:'知识已发布'})).toBeVisible();
   await page.reload();await expect(mine.getByText('已合并草稿',{exact:true})).toBeVisible();await expect(mine.getByText('管理员说明：已核对，采纳到草稿。',{exact:true})).toBeVisible();
-  await page.goto('/#knowledge/'+item.id);await expect(page.getByRole('region',{name:'知识正文'}).getByText('校订正文第一段。\n原文第二段。',{exact:true})).toBeVisible();
+  await page.goto('/#knowledge/'+item.id);await page.getByRole('button',{name:'开始阅读',exact:true}).click();await expect(page.getByRole('region',{name:'知识正文'}).getByText('校订正文第一段。\n原文第二段。',{exact:true})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  }finally{await context.close();}
 });
@@ -70,9 +70,9 @@ test('draft editing and selection are disabled throughout suggestion acceptance'
  const review=page.getByRole('region',{name:'修改建议审核'});await review.getByRole('button',{name:'审核建议 '+item.title,exact:true}).click();
  let release!:()=>void;const held=new Promise<void>(resolve=>release=resolve);let started!:()=>void;const barrier=new Promise<void>(resolve=>started=resolve);
  await page.route('**/api/admin/suggestions/*/review',async route=>{started();await held;await route.continue();});
- try{await review.getByRole('button',{name:'采纳并合并草稿',exact:true}).click();await barrier;await expect(page.getByLabel('原文 / 正文',{exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'新增知识',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'发布知识',exact:true})).toBeDisabled();}
+ try{await review.getByRole('button',{name:'采纳并合并草稿',exact:true}).click();await barrier;await expect(page.getByLabel('章节正文',{exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'新增知识',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'发布知识',exact:true})).toBeDisabled();}
  finally{release();}
- await expect(review.getByRole('status')).toContainText('尚未发布');await expect(page.getByLabel('原文 / 正文',{exact:true})).toBeEnabled();await expect(page.getByLabel('原文 / 正文',{exact:true})).toHaveValue('合并后的正文');
+ await expect(review.getByRole('status')).toContainText('尚未发布');await expect(page.getByLabel('章节正文',{exact:true})).toBeEnabled();await expect(page.getByLabel('章节正文',{exact:true})).toHaveValue('合并后的正文');
 });
 test('hiding the final comment on page two returns to the remaining comments',async({page,request})=>{
  const admin=await account(request,true),member=await account(request),item=await classic(request,admin),pool=new Pool({connectionString:process.env.TEST_DATABASE_URL||'postgres://postgres:qihuang_test@127.0.0.1:55432/qihuang_test'});

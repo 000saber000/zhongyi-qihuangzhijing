@@ -1,11 +1,12 @@
 import {useEffect,useRef,useState} from 'react';
 import type {Knowledge} from '../../data/catalog';
+import ChapterEditor from '../../components/ChapterEditor';
 import type {Study} from '../account/AccountPanel';
 import {api} from '../../lib/api';
 import {type CommentPage,type Editable,contributionDate,errorMessage} from './types';
 import './contributions.css';
 
-const snapshot=(item:Knowledge)=>({summary:item.summary,body:item.body??'',source:item.source,keyPoints:[...(item.keyPoints??[])]});
+const snapshot=(item:Knowledge)=>({summary:item.summary,body:item.body??'',chapters:item.chapters??[],source:item.source,keyPoints:[...(item.keyPoints??[])]});
 export default function ClassicCommunity({item,study}:{item:Knowledge;study:Study}){
  const [data,setData]=useState<CommentPage|null>(null),[page,setPage]=useState(1),[loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[comment,setComment]=useState('');
  const [form,setForm]=useState<ReturnType<typeof snapshot>|null>(null),[base,setBase]=useState<Editable|null>(null),[reason,setReason]=useState('');
@@ -25,7 +26,7 @@ export default function ClassicCommunity({item,study}:{item:Knowledge;study:Stud
  const submit=async()=>{
   if(!enabled||busy||!form||!base)return;setBusy(true);setError('');setNotice('');
   const normalized={...form,keyPoints:form.keyPoints.map(point=>point.trim()).filter(Boolean)};
-  const changes:Partial<Editable>={};for(const field of ['summary','body','source','keyPoints'] as const)if(JSON.stringify(normalized[field])!==JSON.stringify(base[field]))Object.assign(changes,{[field]:normalized[field]});
+  const changes:Partial<Editable>={};for(const field of ['summary','body','chapters','source','keyPoints'] as const)if(JSON.stringify(normalized[field])!==JSON.stringify(base[field]))Object.assign(changes,{[field]:normalized[field]});
   try{await api(`/api/classics/${item.id}/suggestions`,{method:'POST',token:study.sessionToken,body:{base,changes,reason}});if(!alive.current)return;setForm(null);setBase(null);setReason('');setNotice('修改建议已提交，等待管理员审核。处理结果可在我的书斋查看。');}
   catch(cause){if(alive.current)setError(errorMessage(cause));}finally{if(alive.current)setBusy(false);}
  };
@@ -41,7 +42,7 @@ export default function ClassicCommunity({item,study}:{item:Knowledge;study:Stud
   {!study.user?<p className="contribution-login">登录后可以评论或提交修改建议。<a href="#study">前往登录 →</a></p>:!enabled?<p>正在验证账号，验证完成后即可参与讨论。{study.user.mustChangePassword?'请先修改临时密码。':''}</p>:null}
   {form&&<form className="contribution-form suggestion-form" aria-label="修改建议" onSubmit={event=>{event.preventDefault();void submit();}}><h3>提出修改建议</h3><p>修改内容不会立即生效，管理员采纳后将先合并到草稿。</p><fieldset disabled={busy||!enabled}>
    <label>建议简介<textarea aria-label="建议简介" required maxLength={4000} rows={3} value={form.summary} onChange={e=>setForm({...form,summary:e.target.value})}/></label>
-   <label>建议正文<textarea aria-label="建议正文" maxLength={50000} rows={9} value={form.body} onChange={e=>setForm({...form,body:e.target.value})}/></label>
+   {item.chapters!==undefined?<ChapterEditor value={form.chapters} onChange={chapters=>setForm({...form,chapters})}/>:<label>建议正文<textarea aria-label="建议正文" maxLength={50000} rows={9} value={form.body} onChange={e=>setForm({...form,body:e.target.value})}/></label>}
    <label>建议出处<textarea aria-label="建议出处" required maxLength={1000} rows={2} value={form.source} onChange={e=>setForm({...form,source:e.target.value})}/></label>
    <label>建议学习要点（每行一条）<textarea aria-label="建议学习要点（每行一条）" rows={3} value={form.keyPoints.join('\n')} onChange={e=>setForm({...form,keyPoints:e.target.value.split('\n')})}/></label>
    <label>修改理由 / 文献依据<textarea aria-label="修改理由 / 文献依据" required maxLength={2000} rows={3} value={reason} onChange={e=>setReason(e.target.value)} placeholder="说明修改原因，以及书名、版本、篇章或页码。"/></label>
