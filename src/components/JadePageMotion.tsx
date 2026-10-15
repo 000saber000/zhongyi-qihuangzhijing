@@ -13,7 +13,7 @@ export default function JadePageMotion({children}:{children:ReactNode}){
   if(!scroller)return;
   const media=gsap.matchMedia();
   media.add('(prefers-reduced-motion: no-preference)',()=>{
-   const targets=scope.current?.querySelectorAll<HTMLElement>('[data-jade-reveal],.account-card,.study-stats > div,.section-head,.learning-note,.course-orbit-navigation > .spotlight-card');
+   const targets=scope.current?.querySelectorAll<HTMLElement>('.study-resume-content,.account-card,.study-stats > div,.section-head,.knowledge-grid > .knowledge-card');
    targets?.forEach(target=>gsap.from(target,{
     y:16,autoAlpha:0,duration:.56,ease:'power2.out',
     scrollTrigger:{trigger:target,scroller,start:'top 96%',toggleActions:'play none none none',once:true}

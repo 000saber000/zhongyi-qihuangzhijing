@@ -88,7 +88,7 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  const search=(e:React.FormEvent)=>{e.preventDefault();setCategory('全部');location.hash='library';};
  const active=route.startsWith('knowledge/')?'library':route;
  const detail=route.startsWith('knowledge/')?knowledge.find(k=>k.id===route.slice(10)):null;
- const filtered=knowledge.filter(k=>(category==='全部'||k.type===category)&&`${k.title} ${k.subtitle} ${k.summary} ${k.tags.join(' ')}`.toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>{const rank=(item:Knowledge)=>{const index=highlights.indexOf(item.id);return index<0?highlights.length:index};return rank(a)-rank(b)});
+ const filtered=knowledge.filter(k=>(category==='全部'||k.type===category)&&`${k.title} ${k.subtitle} ${k.summary} ${k.tags.join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()));
  const toggle=(id:string)=>{void study.toggleBookmark(id);};
  const totalCompleted=completed.filter(id=>courses.some(c=>c.lessons.some((_,i)=>`${c.id}-${i}`===id))).length;
  const resumeCourse=courses.find(course=>course.lessons.some((_,i)=>!completed.includes(`${course.id}-${i}`)));
@@ -115,4 +115,4 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  {toast&&<div role="status" className="toast"><Check size={16}/>{toast}</div>}
  </Universe>{route==='courses'&&openingCourse&&<CourseOpening visual={courseVisual} selection={openingCourse} onReveal={revealCourse} onFinish={()=>{courseInFlight.current=false;setOpeningCourse(null);}} onCancel={cancelCourse}/>} {openingBook&&<BookOpening selection={openingBook} onReveal={revealBook} onFinish={finishBook} onCancel={cancelBook}/>} {isCosmos&&content.error&&<div className="content-sync cosmic-sync">{content.error}<button className="outline" disabled={content.loading} onClick={()=>void content.refresh()}>重试同步内容</button></div>}{study.user&&(passwordOpen||study.user.mustChangePassword)&&<PasswordDialog key={study.user.id} study={study} close={()=>setPasswordOpen(false)}/>} {study.error&&<div role="alert" className="toast">{study.error}</div>} {<button className="ai-launcher" aria-hidden={chatOpen} tabIndex={chatOpen?-1:0} aria-label="问岐黄" onClick={()=>setChatOpen(true)}><Sparkles size={17}/>问岐黄</button>}<ChatPanel key={(study.user?.id??'guest')+study.sessionToken} study={study} open={chatOpen} context={chatContext} onClose={()=>setChatOpen(false)} onClearContext={()=>setChatContext(null)} onNavigate={go}/></>
 }
-function PageTitle({kicker,title,description}:{kicker:string;title:string;description:string}){return <div className="page-title" data-jade-reveal><span className="section-kicker">{kicker}</span><h1>{title}</h1><p>{description}</p></div>}
+function PageTitle({kicker,title,description}:{kicker:string;title:string;description:string}){return <div className="page-title"><span className="section-kicker">{kicker}</span><h1>{title}</h1><p>{description}</p></div>}
