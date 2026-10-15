@@ -34,7 +34,8 @@ export function createApp(pool:Pool,allowedOrigins:string[],options:{trustProxy?
     if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.vary('Origin');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type');res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE, OPTIONS');}
     if(req.method==='OPTIONS'){res.sendStatus(204);return;}next();
   });
-  // A suggestion includes both the original and revised 50,000-character body.
+  // Chapter suggestions include both the original and revised book contents.
+  app.use(['/api/admin/classics','/api/classics/:id/suggestions'],express.json({limit:'16mb',strict:true}));
   app.use(express.json({limit:'512kb',strict:true}));
   publicKnowledge(app,pool);
   publicComments(app,pool);

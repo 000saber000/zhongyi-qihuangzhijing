@@ -2,6 +2,7 @@ import type {Express} from 'express';
 import type {Pool} from 'pg';
 import {categories,type Knowledge} from '../../src/data/catalog';
 import {HttpError,invalid} from './errors';
+import {chapterContent} from './chapters';
 
 const entry=(row:any)=>({draft:row.draft as Knowledge,published:row.published as Knowledge|null,version:row.version as number,updatedAt:new Date(row.updated_at).toISOString()});
 export async function publishedIds(pool:Pool){
@@ -24,6 +25,7 @@ async function content(pool:Pool,value:unknown):Promise<Knowledge>{
   const id=text('id',80),type=text('type',10);
   if(!/^[a-z][a-z0-9-]{2,79}$/.test(id)||type==='全部'||!categories.some(c=>c.type===type))throw invalid();
   const result:Knowledge={id,type,title:text('title',120),subtitle:text('subtitle',240,false),summary:text('summary',4000),body:text('body',50000,false),source:text('source',1000),confidence:text('confidence',120),tags:list('tags',20,60),relations:list('relations',50,80),keyPoints:list('keyPoints',20,1000)};
+  if(input.chapters!==undefined)result.chapters=chapterContent(input.chapters);
   const allowed=await publishedIds(pool);
   if(result.relations.some(related=>related===id||!allowed.has(related)))throw new HttpError(400,'BAD_RELATION','关联知识必须是已发布条目，且不能关联自身。');
   return result;
@@ -57,6 +59,7 @@ export function adminKnowledge(app:Express,pool:Pool){
     const existing=await pool.query('SELECT draft FROM knowledge_entries WHERE id=$1',[draft.id]);
     if(!existing.rowCount)throw new HttpError(404,'NOT_FOUND','未找到这条知识。');
     if(existing.rows[0].draft.type!==draft.type)throw invalid();
+    if(draft.chapters===undefined&&existing.rows[0].draft.chapters!==undefined)draft.chapters=existing.rows[0].draft.chapters;
     const result=await pool.query('UPDATE knowledge_entries SET draft=$2,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1 AND version=$4 RETURNING *',[draft.id,JSON.stringify(draft),res.locals.user.id,expected]);
     if(!result.rowCount)throw new HttpError(409,'VERSION_CONFLICT','内容已在其他窗口更新，请重新载入最新版本后编辑。');
     res.json(entry(result.rows[0]));

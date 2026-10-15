@@ -5,15 +5,16 @@ import type {Pool,PoolClient} from 'pg';
 import type {Knowledge} from '../../src/data/catalog';
 import {transaction} from './db';
 import {HttpError,invalid} from './errors';
+import {chapterContent} from './chapters';
 
-const fields=['summary','body','source','keyPoints'] as const;
+const fields=['summary','body','chapters','source','keyPoints'] as const;
 type Field=typeof fields[number];
 type Changes=Partial<Pick<Knowledge,Field>>;
 const pageNumber=(value:unknown)=>{if(value===undefined)return 1;if(typeof value!=='string'||!/^[1-9]\d{0,5}$/.test(value))throw invalid();return Number(value);};
 const id=(value:unknown)=>{if(typeof value!=='string'||!/^[a-z][a-z0-9-]{2,79}$/.test(value))throw invalid();return value;};
 const uuid=(value:unknown)=>{if(typeof value!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value))throw invalid();return value;};
 const text=(value:unknown,max:number,required=true)=>{if(typeof value!=='string'||value.length>max||(required&&!value.trim()))throw invalid();return value.trim();};
-const value=(item:Knowledge,field:Field)=>item[field]??(field==='keyPoints'?[]:'');
+const value=(item:Knowledge,field:Field)=>item[field]??(field==='keyPoints'||field==='chapters'?[]:'');
 async function publishedKnowledge(db:Pool|PoolClient,classicId:string,lock=false){
  const result=await db.query('SELECT draft,published,version FROM knowledge_entries WHERE id=$1'+(lock?' FOR UPDATE':''),[classicId]);
  const row=result.rows[0];if(!row?.published)throw new HttpError(404,'NOT_FOUND','未找到已发布的知识。');
@@ -33,7 +34,8 @@ function edits(input:unknown):Changes{
   if(key==='keyPoints'){
    const points=data[key];if(!Array.isArray(points)||points.length>20)throw invalid();
    changes.keyPoints=points.map(point=>text(point,1000));
-  }else changes[key]=text(data[key],key==='body'?50000:key==='summary'?4000:1000,key!=='body');
+  }else if(key==='chapters')changes.chapters=chapterContent(data[key]);
+  else changes[key]=text(data[key],key==='body'?50000:key==='summary'?4000:1000,key!=='body');
  }
  return changes;
 }
@@ -63,6 +65,7 @@ export function contributionRoutes(app:Express,pool:Pool){
   if(!inputBase||typeof inputBase!=='object'||Array.isArray(inputBase))throw invalid();
   const created=await transaction(pool,async db=>{
    await limit(db,actor.id,'classic_suggestions',5);const current=await publishedKnowledge(db,classicId,true),base:Changes={};
+   if('body' in changes&&current.published.chapters!==undefined)throw new HttpError(409,'STALE_CONTENT','该知识已按章节编排，请刷新后编辑章节正文。');
    for(const field of Object.keys(changes) as Field[]){
     const old=value(current.published,field);
     if(!isDeepStrictEqual(inputBase[field],old))throw new HttpError(409,'STALE_CONTENT','知识已更新，请刷新正文后重新提交建议。');
@@ -94,6 +97,7 @@ export function contributionRoutes(app:Express,pool:Pool){
    let mergedVersion:number|null=null;
    if(action==='merge'){
     const current=await publishedKnowledge(db,s.classic_id,true);
+    if('body' in s.changes&&current.draft.chapters!==undefined)throw new HttpError(409,'SUGGESTION_CONFLICT','草稿已按章节编排，请将这条旧版正文建议手动整理到对应章节。');
     for(const field of Object.keys(s.changes) as Field[])if(!isDeepStrictEqual(value(current.draft,field),s.base[field]))throw new HttpError(409,'SUGGESTION_CONFLICT','草稿中相同内容已修改，未合并此建议。请核对最新草稿，手动调整或拒绝这条建议。');
     const next={...current.draft,...s.changes};mergedVersion=current.version+1;
     await db.query('UPDATE knowledge_entries SET draft=$2,version=version+1,updated_by=$3,updated_at=now() WHERE id=$1',[s.classic_id,JSON.stringify(next),actor.id]);
