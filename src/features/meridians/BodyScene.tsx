@@ -50,7 +50,8 @@ function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers
  const activeAnchor=selection?anchors.find(a=>a.knowledgeId===selection.knowledgeId&&a.side===selection.side)??null:null;
  useEffect(()=>{
   if(!object||!controls.current)return;
-  const target=activeAnchor&&cameraMode==='point'?cameraPose(activeAnchor,size.width/size.height):fullBodyPose(view,size.width/size.height,loaded?.variant==='female'?1.70:1.78);
+  const height=loaded?.variant==='female'?1.70:1.78;
+  const target=activeAnchor&&cameraMode==='point'?cameraPose(activeAnchor,size.width/size.height,height):fullBodyPose(view,size.width/size.height,height);
   const from:CameraPose={position:camera.position.toArray() as [number,number,number],target:controls.current.target.toArray() as [number,number,number]};
   const key=selection&&cameraMode==='point'?selection.knowledgeId+':'+selection.side:'full:'+view;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.fromArray(target.position);controls.current.target.fromArray(target.target);controls.current.update();onSettled(key);flight.current=null;}

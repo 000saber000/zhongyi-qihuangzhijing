@@ -3,6 +3,24 @@ const expect=baseExpect.configure({timeout:15000});
 import {readFile} from 'node:fs/promises';
 import {Vector3,PerspectiveCamera} from 'three';
 import {fullBodyPose} from '../src/features/meridians/camera';
+test('model viewer uses the space below navigation on desktop and compact phones',async({page})=>{
+ const items=JSON.parse(await readFile(new URL('../src/data/knowledge.json',import.meta.url),'utf8'));
+ await page.route('**/api/knowledge',route=>route.fulfill({json:{items}}));
+ for(const viewport of [{width:1440,height:900},{width:1280,height:720},{width:390,height:844},{width:320,height:640}]){
+  await page.setViewportSize(viewport);await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto('/#meridians');await expect(page.getByTestId('body-scene')).toHaveAttribute('data-focus','full:front');
+  const scene=(await page.getByTestId('body-scene').boundingBox())!,frame=(await page.locator('.meridian-page').boundingBox())!;
+  expect(scene.y-frame.y,'page title should leave the middle column free').toBeLessThan(viewport.width>760?25:65);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await expect(page.getByRole('button',{name:'女性人体',exact:true})).toBeInViewport({ratio:1});
+  await expect(page.getByRole('switch',{name:'人体透视'})).toBeInViewport({ratio:1});
+  if(viewport.width<761)await page.getByRole('button',{name:'展开穴位目录'}).click();
+  await page.getByRole('button',{name:'选择 膻中 CV17',exact:true}).click();
+  await expect(page.getByTestId('body-scene')).toHaveAttribute('data-focus','point-shanzhong:midline');
+  if(viewport.width<761)await page.getByRole('button',{name:'取消穴位选择'}).click();
+  else await page.getByRole('button',{name:'回到人体全景'}).click();
+ }
+});
 test('independent page loads one canvas, keeps side on model switch and shares bookmarks',async({page})=>{
  await page.goto('/#meridians');
  await expect(page.getByRole('heading',{name:'经络云图',exact:true})).toBeVisible();

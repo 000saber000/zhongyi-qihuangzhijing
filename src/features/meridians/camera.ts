@@ -6,8 +6,13 @@ export function fullBodyPose(view:View,aspect:number,height=1.78):CameraPose{
  const direction:Vec3=view==='back'?[0,0,-1]:view==='left'?[1,0,0]:view==='right'?[-1,0,0]:[0,0,1];
  const target:Vec3=[0,height*.5,0];return {target,position:[direction[0]*radius,target[1],direction[2]*radius]};
 }
-export function cameraPose(anchor:AcupointAnchor,aspect:number):CameraPose{
- const length=Math.hypot(...anchor.viewDirection),distance=anchor.viewDistance*Math.max(1,.72/Math.max(.15,aspect));
+export function cameraPose(anchor:AcupointAnchor,aspect:number,height=1.78):CameraPose{
+ const length=Math.hypot(...anchor.viewDirection),relativeHeight=anchor.position[1]/height;
+ // Chest/neck views need room above the selected point for the whole head.
+ // Keep the original sightline to the anchor so the body cannot occlude it.
+ const headroom=relativeHeight>=.68&&relativeHeight<.89&&Math.abs(anchor.viewDirection[1]/length)<.4
+  ? (height+.025-anchor.position[1])/(Math.tan(Math.PI/8)*.88):0;
+ const distance=Math.max(headroom,anchor.viewDistance*Math.max(1,.72/Math.max(.15,aspect)));
  return {target:anchor.position,position:anchor.position.map((p,i)=>p+anchor.viewDirection[i]/length*distance) as unknown as Vec3};
 }
 const spherical=(pose:CameraPose)=>{const [x,y,z]=pose.position.map((v,i)=>v-pose.target[i]),r=Math.hypot(x,y,z);return {r,phi:Math.acos(Math.max(-1,Math.min(1,y/r))),theta:Math.atan2(x,z)};};
