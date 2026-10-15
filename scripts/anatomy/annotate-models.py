@@ -32,7 +32,7 @@ for variant,m in manifest.items():
    elif code=='LI4':seed=j[f'joint-{letter}-hand-2'].lerp(j[f'joint-{letter}-finger-2-1'],.55);direction=Vector((0,1,-.5));ray_offset=.12;distance=.33
    elif code.startswith('CV'):
     # The mannequins have no clinical landmarks; trunk ratios define a teaching schematic.
-    ratios={'CV17':.737,'CV12':.655,'CV6':.555,'CV4':.52};seed=Vector((0,height*ratios[code],0));distance=.68
+    ratios={'CV17':.737,'CV12':.655,'CV8':.59,'CV6':.555,'CV4':.52,'CV22':.833};seed=Vector((0,height*ratios[code],0));distance=.68
    elif code=='ST36':seed=knee.lerp(ankle,3/16)+Vector((sign*.024*unit,0,.015*unit));ray_offset=.12;distance=.52
    elif code=='GB34':seed=knee+Vector((sign*.027*unit,-.055*unit,0));direction=Vector((sign*.8,0,.5));ray_offset=.12;distance=.5
    elif code=='SP9':seed=knee+Vector((-sign*.015*unit,-.025*unit,0));direction=Vector((-sign,0,.15));ray_offset=.10;distance=.48
@@ -40,7 +40,51 @@ for variant,m in manifest.items():
    elif code=='LR3':seed=ankle.lerp(j[f'joint-{letter}-toe-1-1'].lerp(j[f'joint-{letter}-toe-2-1'],.5),.65);direction=Vector((0,1,.2));ray_offset=.12;distance=.38
    elif code=='KI1':seed=foot+Vector((0,0,.015*unit));direction=Vector((0,-1,.15));ray_offset=.12;distance=.38
    elif code=='KI3':seed=ankle+Vector((0,0,-.025*unit));direction=Vector((-sign,0,-.1));ray_offset=.10;distance=.38
+   elif code=='LU1':seed=Vector((sign*.14*unit,1.39*unit,0));distance=.7
+   elif code in ['LU5','HT3','PC3']:
+    offset={'LU5':.01,'HT3':-.023,'PC3':-.005}[code]
+    seed=elbow+Vector((sign*offset*unit,0,0));ray_offset=.12;distance=.46
+   elif code in ['LU7','LU9','HT5','PC7','TE4']:
+    ratio={'LU7':1.5/12,'LU9':0,'HT5':1/12,'PC7':0,'TE4':0}[code]
+    offset={'LU7':-.012,'LU9':-.012,'HT5':.008,'PC7':0,'TE4':0}[code]
+    seed=wrist.lerp(elbow,ratio)+Vector((sign*offset*unit,0,0))
+    direction=Vector((0,0,-1 if code=='TE4' else 1));ray_offset=.12;distance=.38
+   elif code=='LI10':seed=elbow.lerp(wrist,2/12);direction=Vector((sign*.7,0,.6));ray_offset=.12;distance=.48
+   elif code in ['LI15','TE14']:
+    seed=shoulder+Vector((sign*.012*unit,.025*unit,0));direction=Vector((sign*.45,.1,1 if code=='LI15' else -1));ray_offset=.16;distance=.6
+   elif code=='LI20':seed=j['joint-head']+Vector((sign*.025*unit,.015*unit,0));ray_offset=.2;distance=.44
+   elif code=='ST25':seed=Vector((sign*.055*unit,height*.59,0));distance=.7
+   elif code=='ST35':seed=knee+Vector((sign*.016*unit,-.01*unit,.015*unit));ray_offset=.12;distance=.48
+   elif code=='ST40':seed=ankle.lerp(knee,.5)+Vector((sign*.035*unit,0,0));direction=Vector((sign*.3,0,1));ray_offset=.12;distance=.5
+   elif code in ['ST44','GB41']:
+    a=j[f'joint-{letter}-toe-2-1'] if code=='ST44' else (j[f'joint-{letter}-toe-2-1']+Vector((sign*.035*unit,0,-.015*unit)))
+    seed=a+Vector((0,.005*unit,-.015*unit));direction=Vector((0,1,.2));ray_offset=.12;distance=.36
+   elif code=='SP3':seed=foot+Vector((-sign*.03*unit,0,.035*unit));direction=Vector((-sign*.7,.6,0));ray_offset=.10;distance=.4
+   elif code=='SP10':seed=knee+Vector((-sign*.03*unit,.08*unit,0));ray_offset=.14;distance=.52
+   elif code in ['SI3','PC8']:
+    seed=j[f'joint-{letter}-hand-2']+Vector((sign*.02*unit if code=='SI3' else 0,-.01*unit,0))
+    direction=Vector((sign*.6,0,-.4)) if code=='SI3' else Vector((0,0,1));ray_offset=.12;distance=.36
+   elif code=='SI9':seed=shoulder+Vector((-sign*.025*unit,-.055*unit,0));direction=Vector((0,0,-1));ray_offset=.2;distance=.6
+   elif code=='SI11':seed=Vector((sign*.115*unit,1.335*unit,0));direction=Vector((0,0,-1));distance=.65
+   elif code=='BL10':seed=j['joint-neck']+Vector((sign*.028*unit,.02*unit,0));direction=Vector((0,0,-1));distance=.55
+   elif code in ['BL13','BL20','BL23']:
+    y={'BL13':1.395,'BL20':1.19,'BL23':1.105}[code]
+    seed=Vector((sign*.04*unit,y*unit,0));direction=Vector((0,0,-1));distance=.7
+   elif code=='BL40':seed=knee;direction=Vector((0,0,-1));ray_offset=.12;distance=.52
+   elif code=='BL57':seed=knee.lerp(ankle,.55);direction=Vector((0,0,-1));ray_offset=.14;distance=.5
+   elif code in ['BL60','KI7','GB39']:
+    seed=ankle.lerp(knee,{'BL60':0,'KI7':2/13,'GB39':3/16}[code])+Vector((0,0,-.025*unit if code!='GB39' else 0))
+    direction=Vector((sign if code in ['BL60','GB39'] else -sign,0,0));ray_offset=.11;distance=.4
+   elif code=='GB30':seed=Vector((sign*.14*unit,.93*unit,0));direction=Vector((sign*.75,0,-.65));distance=.65
+   elif code=='LR8':seed=knee+Vector((-sign*.025*unit,.01*unit,-.015*unit));direction=Vector((-sign,0,-.3));ray_offset=.12;distance=.5
+   elif code=='LR14':seed=Vector((sign*.10*unit,1.265*unit,0));distance=.75
+   elif code in ['GV4','GV14']:
+    seed=Vector((0,{'GV4':1.105,'GV14':1.49}[code]*unit,0));direction=Vector((0,0,-1));distance=.7
    else:raise ValueError(code)
+   # Imported wrist/chest surfaces can lie outside the old 12cm ray origin.
+   # Start outside the local front/back cross section to avoid exiting through
+   # its opposite surface and flipping an inward normal onto a buried marker.
+   if d.get('detailLevel')=='detail' and abs(direction.z)>.4:ray_offset=max(ray_offset,.35)
    direction.normalize();origin=blender(seed+direction*ray_offset);ray=blender(-direction)
    position,normal,idx,length=tree.ray_cast(origin,ray,ray_offset*2)
    local_projection=False
@@ -69,7 +113,7 @@ for variant,m in manifest.items():
     if outward.dot(candidate)<.15:continue
     blocking=tree.ray_cast(position+blender(candidate)*2,blender(-candidate),1.9995)[0]
     if blocking is None:direction=candidate;break
-   else:raise ValueError(f'No unobstructed view {variant} {code} {side}')
+   else:raise ValueError(f'No unobstructed view {variant} {code} {side}: pos={yup(position)}, normal={yup(normal)}, seed={list(seed)}')
    anchors.append(dict(knowledgeId=d['knowledgeId'],modelId=m['id'],side=side,modelSha256=m['sha256'],position=yup(position),outwardNormal=yup(normal),viewDirection=list(direction),viewDistance=distance,review=dict(source=d['review']['source'],section=f'{code}；独立 {variant} 模型表面投影自查，非临床定位核验',checkedAt='2026-10-15')))
 (root/'src/features/meridians/anchors.json').write_text(json.dumps(anchors,ensure_ascii=False,indent=2)+'\n')
 models=[{k:m[k] for k in ['id','variant','sha256','sourceFile','previewFiles']} for m in manifest.values()]

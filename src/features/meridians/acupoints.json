@@ -292,5 +292,641 @@
       "section": "标准位置条目 / location；中文学习摘要，非操作指导",
       "checkedAt": "2026-10-15"
     }
+  },
+  {
+    "knowledgeId": "point-zhongfu",
+    "referenceCode": "LU1",
+    "meridianId": "meridian-lung",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "前胸壁外上方，第一肋间隙处，前正中线旁开六骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LU/LU1",
+      "section": "LU1 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-chize",
+    "referenceCode": "LU5",
+    "meridianId": "meridian-lung",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肘前区，肘横纹上，肱二头肌腱桡侧的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LU/LU5",
+      "section": "LU5 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-lieque",
+    "referenceCode": "LU7",
+    "meridianId": "meridian-lung",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "前臂桡侧，腕掌侧远端横纹上一点五骨度分寸，肱桡肌腱与拇长展肌腱之间。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LU/LU7",
+      "section": "LU7 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-taiyuan",
+    "referenceCode": "LU9",
+    "meridianId": "meridian-lung",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "腕前外侧，桡骨茎突与舟骨之间，拇长展肌腱尺侧的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LU/LU9",
+      "section": "LU9 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-shousanli",
+    "referenceCode": "LI10",
+    "meridianId": "meridian-largeintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "前臂后外侧，阳溪与曲池连线上，肘横纹下二骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LI/LI10",
+      "section": "LI10 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-jianyu",
+    "referenceCode": "LI15",
+    "meridianId": "meridian-largeintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肩峰端前缘与肱骨大结节之间，三角肌上部中央，肩外展时肩峰前下方凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LI/LI15",
+      "section": "LI15 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-yingxiang",
+    "referenceCode": "LI20",
+    "meridianId": "meridian-largeintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "面部，鼻翼外缘中点旁，鼻唇沟中。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LI/LI20",
+      "section": "LI20 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-tianshu",
+    "referenceCode": "ST25",
+    "meridianId": "meridian-stomach",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "腹部，脐中央旁开二骨度分寸，左右各一穴。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/ST/ST25",
+      "section": "ST25 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-dubi",
+    "referenceCode": "ST35",
+    "meridianId": "meridian-stomach",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "膝前区，髌韧带外侧的凹陷处，屈膝时更易辨认。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/ST/ST35",
+      "section": "ST35 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-fenglong",
+    "referenceCode": "ST40",
+    "meridianId": "meridian-stomach",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "小腿前外侧，外踝尖上八骨度分寸，胫骨前肌外缘。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/ST/ST40",
+      "section": "ST40 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-neiting",
+    "referenceCode": "ST44",
+    "meridianId": "meridian-stomach",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "足背，第二、第三趾间，趾蹼缘后方赤白肉际处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/ST/ST44",
+      "section": "ST44 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-taibai",
+    "referenceCode": "SP3",
+    "meridianId": "meridian-spleen",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "足内侧，第一跖趾关节近端，赤白肉际处的凹陷中。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/SP/SP3",
+      "section": "SP3 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-xuehai",
+    "referenceCode": "SP10",
+    "meridianId": "meridian-spleen",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "股前区，髌底内侧端上二骨度分寸，股内侧肌隆起处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/SP/SP10",
+      "section": "SP10 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-shaohai",
+    "referenceCode": "HT3",
+    "meridianId": "meridian-heart",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肘前内侧，肘横纹内侧端与肱骨内上髁连线的中点处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/HT/HT3",
+      "section": "HT3 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-tongli",
+    "referenceCode": "HT5",
+    "meridianId": "meridian-heart",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "前臂前内侧，腕掌侧远端横纹上一骨度分寸，尺侧腕屈肌腱桡侧缘。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/HT/HT5",
+      "section": "HT5 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-houxi",
+    "referenceCode": "SI3",
+    "meridianId": "meridian-smallintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "手内侧，第五掌指关节尺侧近端，赤白肉际处的凹陷中。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/SI/SI3",
+      "section": "SI3 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-jianzhen",
+    "referenceCode": "SI9",
+    "meridianId": "meridian-smallintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肩后区，肩关节后下方，腋后纹头直上一骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/SI/SI9",
+      "section": "SI9 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-tianzong",
+    "referenceCode": "SI11",
+    "meridianId": "meridian-smallintestine",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肩胛区，肩胛冈中点与肩胛骨下角连线的上三分之一与下三分之二交点凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/SI/SI11",
+      "section": "SI11 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-tianzhu",
+    "referenceCode": "BL10",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "颈后区，第二颈椎棘突上缘同高，斜方肌外缘的凹陷中。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL10",
+      "section": "BL10 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-feishu",
+    "referenceCode": "BL13",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "背部，第三胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL13",
+      "section": "BL13 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-pishu",
+    "referenceCode": "BL20",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "背部，第十一胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL20",
+      "section": "BL20 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-shenshu",
+    "referenceCode": "BL23",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "腰部，第二腰椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL23",
+      "section": "BL23 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-weizhong",
+    "referenceCode": "BL40",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "膝后区，腘横纹中点。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL40",
+      "section": "BL40 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-chengshan",
+    "referenceCode": "BL57",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "小腿后区，腓肠肌两肌腹与肌腱交角处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL57",
+      "section": "BL57 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-kunlun",
+    "referenceCode": "BL60",
+    "meridianId": "meridian-bladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "踝后外侧，外踝尖与跟腱之间的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/BL/BL60",
+      "section": "BL60 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-fuliu",
+    "referenceCode": "KI7",
+    "meridianId": "meridian-kidney",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "小腿后内侧，内踝尖上二骨度分寸，跟腱前缘。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/KI/KI7",
+      "section": "KI7 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-quze",
+    "referenceCode": "PC3",
+    "meridianId": "meridian-pericardium",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肘前区，肘横纹上，肱二头肌腱尺侧缘的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/PC/PC3",
+      "section": "PC3 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-daling",
+    "referenceCode": "PC7",
+    "meridianId": "meridian-pericardium",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "腕前区，腕掌侧远端横纹上，掌长肌腱与桡侧腕屈肌腱之间。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/PC/PC7",
+      "section": "PC7 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-laogong",
+    "referenceCode": "PC8",
+    "meridianId": "meridian-pericardium",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "手掌心，第二、第三掌骨之间，偏于第三掌骨桡侧。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/PC/PC8",
+      "section": "PC8 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-yangchi",
+    "referenceCode": "TE4",
+    "meridianId": "meridian-sanjiao",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "腕后区，腕背侧远端横纹上，指伸肌腱尺侧缘的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/TE/TE4",
+      "section": "TE4 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-jianliao",
+    "referenceCode": "TE14",
+    "meridianId": "meridian-sanjiao",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "肩部，肩峰角与肱骨大结节之间，肩外展时肩峰后下方凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/TE/TE14",
+      "section": "TE14 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-huantiao",
+    "referenceCode": "GB30",
+    "meridianId": "meridian-gallbladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "臀部，股骨大转子最凸点与骶管裂孔连线的外三分之一与内三分之二交点处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/GB/GB30",
+      "section": "GB30 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-xuanzhong",
+    "referenceCode": "GB39",
+    "meridianId": "meridian-gallbladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "小腿外侧，外踝尖上三骨度分寸，腓骨前缘。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/GB/GB39",
+      "section": "GB39 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-zulinqi",
+    "referenceCode": "GB41",
+    "meridianId": "meridian-gallbladder",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "足背，第四、第五跖骨底结合部前方，小趾伸肌腱外侧的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/GB/GB41",
+      "section": "GB41 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-ququan",
+    "referenceCode": "LR8",
+    "meridianId": "meridian-liver",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "膝内侧，腘横纹内侧端，半腱肌与半膜肌肌腱内侧前缘的凹陷处。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LR/LR8",
+      "section": "LR8 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-qimen",
+    "referenceCode": "LR14",
+    "meridianId": "meridian-liver",
+    "sides": [
+      "left",
+      "right"
+    ],
+    "locationText": "胸部，第六肋间隙，前正中线旁开四骨度分寸。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/LR/LR14",
+      "section": "LR14 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-shenque",
+    "referenceCode": "CV8",
+    "meridianId": "meridian-ren",
+    "sides": [
+      "midline"
+    ],
+    "locationText": "腹部，脐中央，前正中线上。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/CV/CV8",
+      "section": "CV8 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-tiantu",
+    "referenceCode": "CV22",
+    "meridianId": "meridian-ren",
+    "sides": [
+      "midline"
+    ],
+    "locationText": "颈前区，胸骨上窝中央，前正中线上。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/CV/CV22",
+      "section": "CV22 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-mingmen",
+    "referenceCode": "GV4",
+    "meridianId": "meridian-du",
+    "sides": [
+      "midline"
+    ],
+    "locationText": "腰部，第二腰椎棘突下凹陷中，后正中线上。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/GV/GV4",
+      "section": "GV4 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
+  },
+  {
+    "knowledgeId": "point-dazhui",
+    "referenceCode": "GV14",
+    "meridianId": "meridian-du",
+    "sides": [
+      "midline"
+    ],
+    "locationText": "颈后区，第七颈椎棘突下凹陷中，后正中线上。",
+    "detailLevel": "detail",
+    "review": {
+      "source": "https://www.kmcric.com/database/acupoint/GV/GV14",
+      "section": "GV14 标准位置学习摘要；三维模型为体表区域示意，非临床定位",
+      "checkedAt": "2026-10-15"
+    }
   }
 ]

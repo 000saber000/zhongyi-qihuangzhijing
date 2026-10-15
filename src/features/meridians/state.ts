@@ -15,3 +15,14 @@ export function visiblePoints(definitions:readonly AcupointDefinition[],knowledg
  const items=new Map(knowledge.map(k=>[k.id,k])),q=query.trim().toLowerCase();
  return definitions.flatMap(definition=>{const k=items.get(definition.knowledgeId);return k&&(meridian==='all'||(definition.meridianId??'extra')===meridian)&&`${k.title} ${k.subtitle} ${k.tags.join(' ')} ${definition.referenceCode}`.toLowerCase().includes(q)?[{definition,knowledge:k}]:[];});
 }
+// Overview points stay visible; the expanded set is revealed near the camera or
+// by an explicit selection/filter. Hidden groups do not receive pointer events.
+export function markerIsVisible(detail:boolean,distance:number,emphasized:boolean):boolean{
+ return !detail||emphasized||distance<=.95;
+}
+// undefined means no selection; null means a selected extra point with no single meridian.
+export function networkMeridians(filter:string,selectedMeridian:string|null|undefined):string[]{
+ if(selectedMeridian!==undefined)return selectedMeridian?[selectedMeridian]:[];
+ if(filter!=='all')return filter==='extra'?[]:[filter];
+ return ['meridian-ren','meridian-du','meridian-lung','meridian-stomach'];
+}

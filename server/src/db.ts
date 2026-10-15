@@ -8,13 +8,13 @@ export async function migrate(pool: Pool): Promise<void> {
     await client.query('BEGIN');
     await client.query('SELECT pg_advisory_xact_lock(7348012)');
     await client.query('CREATE TABLE IF NOT EXISTS schema_migrations (version integer PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())');
-    for(const [version,file] of [[1,'001-accounts.sql'],[2,'002-administration.sql'],[3,'003-knowledge.sql'],[4,'004-contributions.sql'],[5,'005-ai.sql']] as const){
+    for(const [version,file] of [[1,'001-accounts.sql'],[2,'002-administration.sql'],[3,'003-knowledge.sql'],[4,'004-contributions.sql'],[5,'005-ai.sql'],[6,'006-acupoint-expansion.sql']] as const){
       const applied=await client.query('SELECT version FROM schema_migrations WHERE version=$1',[version]);
       if(!applied.rowCount){
         await client.query(await readFile(new URL('../migrations/'+file,import.meta.url),'utf8'));
         if(version===3){
           for(const item of seedKnowledge){
-            const content={...item,body:'',keyPoints:seedKeyPoints[item.id]??[]};
+            const content={...item,body:item.body??'',keyPoints:item.keyPoints??seedKeyPoints[item.id]??[]};
             await client.query('INSERT INTO knowledge_entries(id,draft,published) VALUES($1,$2,$2)',[item.id,JSON.stringify(content)]);
           }
         }
