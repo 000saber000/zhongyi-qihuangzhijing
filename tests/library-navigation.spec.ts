@@ -12,7 +12,7 @@ test('library categories gather in the center while scrolling and still filter c
  await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBeLessThan(Math.round(initial!.y));
  await expect.poll(async()=>(await nav.boundingBox())!.width).toBeLessThan(initial!.width);
  const floated=await nav.boundingBox(),header=await page.locator('.universe-header').boundingBox(),siteNav=await page.locator('.universe-nav').boundingBox();
- expect(floated!.y).toBeGreaterThanOrEqual(header!.y);expect(floated!.y+floated!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(floated!.y+floated!.height).toBeLessThanOrEqual(siteNav!.y);expect(Math.abs(floated!.x+floated!.width/2-720)).toBeLessThan(3);
+ expect(floated!.y).toBeGreaterThanOrEqual(header!.y);expect(floated!.y+floated!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(floated!.y).toBeGreaterThanOrEqual(siteNav!.y+siteNav!.height);expect(Math.abs(floated!.x+floated!.width/2-720)).toBeLessThan(3);
  expect(floated!.width).toBeLessThan(initial!.width);
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-desktop-docked.png'});
  await root.evaluate(e=>{e.scrollTop=950;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(floated!.y));

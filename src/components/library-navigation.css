@@ -13,25 +13,26 @@
 @media(prefers-reduced-motion:reduce){.library-navigation,:is(.unified-content,.library-header-anchor) .library-navigation button{transition:none}}
 
  .library-nav-slot.is-in-header{pointer-events:none}
- .library-header-anchor{display:block;position:absolute;top:12px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 470px));pointer-events:none}
+ .library-header-anchor{display:block;position:absolute;top:104px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 100px));pointer-events:none}
  .library-header-nav{pointer-events:auto}
  .library-header-nav .library-navigation{animation:header-categories-arrive .25s ease-out}
+/* Categories dock below the shared main menu; they never displace it. */
 @media(min-width:701px){
- .has-library-header-nav .universe-brand b{font-size:20px;letter-spacing:2px}
- .has-library-header-nav .universe-brand b>span,.has-library-header-nav .universe-brand small{display:none}
- .has-library-header-nav .universe-top-actions{margin-left:auto}
- .has-library-header-nav .universe-nav{position:absolute;right:50px;top:77px;height:auto;margin:0;gap:22px}
- .has-library-header-nav .universe-nav button{padding:0;font-size:9px}
+ .universe.has-library-header-nav .universe-header{height:164px}
+ .universe.has-library-header-nav.content-mode .universe-search{top:176px}
+ .universe.has-library-header-nav .cosmic-content-scroll{top:232px}
+}
+@media(min-width:951px){
+ .universe.has-library-header-nav .universe-brand{align-self:flex-start;margin-top:26px}
+ .universe.has-library-header-nav .universe-top-actions{align-self:flex-start;margin-top:35px}
 }
 @keyframes header-categories-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.library-header-nav .library-navigation{animation:none}}
 @media(max-width:700px){
- .library-header-anchor{top:58px;left:20px;transform:none;width:calc(100% - 40px)}
+ .library-header-anchor{top:102px;left:20px;transform:none;width:calc(100% - 40px)}
  .library-header-nav .library-navigation{padding:4px;border-radius:18px}
  .library-header-nav .library-navigation button{min-height:36px;padding:8px 13px}
  .universe.has-library-header-nav .universe-header{height:148px}
- .universe.has-library-header-nav .universe-nav{top:116px;gap:20px}
- .universe.has-library-header-nav .universe-nav button{min-height:24px;font-size:9px}
  .universe.has-library-header-nav.content-mode .universe-search{top:164px}
  .universe.has-library-header-nav .cosmic-content-scroll{top:222px}
 }

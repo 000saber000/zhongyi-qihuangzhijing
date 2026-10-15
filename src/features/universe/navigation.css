@@ -1,4 +1,7 @@
-.universe .universe-nav.cosmic-navigation{gap:9px;height:44px;margin-right:24px}
+/* Anchor the shared menu to the header, independent of page tools and content. */
+.universe .universe-nav.cosmic-navigation{position:absolute;top:27px;right:180px;gap:9px;height:44px;margin:0}
+.universe .universe-top-actions{margin-left:auto}
+@media(max-width:1250px){.universe .universe-brand b>span{display:none}}
 .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;min-width:116px;height:44px;padding:0 15px;isolation:isolate;overflow:hidden;border:0;border-radius:2px;background:#0b191d65;color:#9eb3a8;font:11px var(--serif);letter-spacing:1.4px;white-space:nowrap;transition:background-color .25s,color .25s,box-shadow .25s}
 .cosmic-nav-link::before{content:'';position:absolute;inset:-20px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,#c2d49626,transparent 65%);opacity:0;transition:opacity .3s}
 .universe .universe-nav.cosmic-navigation button.cosmic-nav-link::after{content:none}
@@ -19,31 +22,24 @@
 .universe .universe-nav.cosmic-navigation button.cosmic-nav-link:active{color:#f4e9be;background:#35453599;transition-duration:.08s;box-shadow:inset 0 0 24px #dbe6ba20}
 .cosmic-nav-link:active .cosmic-nav-icon{transform:scale(.94)}
 @media(max-width:1100px){
- .universe .universe-nav.cosmic-navigation{gap:6px;margin-right:10px}
+ .universe .universe-nav.cosmic-navigation{right:136px;gap:6px}
  .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:100px;padding:0 10px;gap:7px;font-size:10px;letter-spacing:1px}
  .cosmic-nav-icon{width:20px;height:20px}
 }
 @media(min-width:701px) and (max-width:950px){
- .universe .universe-header{padding-inline:24px;gap:12px}
+ .universe .universe-header{height:100px;padding:8px 24px 0;align-items:flex-start;gap:12px}
  .universe .universe-brand small{display:none}
- .universe .universe-top-actions{gap:12px}
+ .universe .universe-top-actions{position:absolute;right:24px;top:20px;gap:12px}
  .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:92px;padding:0 8px;gap:6px}
  .cosmic-nav-icon{width:18px;height:18px}
 }
-@media(min-width:701px){
- .universe.has-library-header-nav .universe-nav.cosmic-navigation{top:72px;right:50px;height:24px;gap:6px;margin:0}
- .universe.has-library-header-nav .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:96px;height:24px;padding:0 9px;gap:6px;font-size:9px}
- .has-library-header-nav .cosmic-nav-icon{width:15px;height:15px}
- .has-library-header-nav .cosmic-nav-dot{top:5px;right:6px;width:2px;height:2px}
-}
-@media(max-width:700px){
- .universe .universe-nav.cosmic-navigation{position:absolute;top:60px;left:20px;right:20px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;height:34px;margin:0}
+@media(max-width:950px){
+ .universe .universe-nav.cosmic-navigation{position:absolute;top:60px;left:24px;right:24px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;height:34px;margin:0}
  .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{min-width:0;min-height:34px;height:34px;padding:0 6px;gap:4px;font-size:9px;letter-spacing:.2px}
  .cosmic-nav-icon{width:14px;height:14px}
  .cosmic-nav-dot{top:5px;right:5px;width:2px;height:2px}
- .universe.has-library-header-nav .universe-nav.cosmic-navigation{top:116px;height:30px}
- .universe.has-library-header-nav .universe-nav.cosmic-navigation button.cosmic-nav-link{min-height:30px;height:30px}
 }
+@media(max-width:700px){.universe .universe-nav.cosmic-navigation{left:20px;right:20px}}
 @media(max-width:360px){
  .universe .universe-nav.cosmic-navigation button.cosmic-nav-link{padding:0 4px;gap:3px;font-size:8.5px}
  .cosmic-nav-icon{width:12px;height:12px}
