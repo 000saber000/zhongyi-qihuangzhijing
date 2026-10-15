@@ -41,7 +41,7 @@ export default function CourseOrbit({completed,activeCourse,onStart,visual}:Prop
   if(origin)onStart(course,origin,fallback??origin);
  };
  const focus=(course:Course,element:HTMLElement)=>{if(element.matches(':focus-visible'))setFocused(course.id);};
- return <section className="course-orbit" aria-label="古籍环绕学习路径" data-motion={paused?'paused':'running'}>
+ return <section className="course-orbit" aria-label="古籍环绕学习路径" data-motion={paused?'paused':'running'} data-jade-reveal>
   <div className="course-orbit-toolbar"><span>三卷医理 · 一片星海</span><button type="button" disabled={reduced} onClick={()=>{setHeld(!held);setFocused(null);}} aria-label={held?'继续古籍公转':'暂停古籍公转'}>{held?<Play size={13}/>:<Pause size={13}/>}<span>{reduced?'静阅模式':held?'继续公转':'暂停公转'}</span></button></div>
   <div className="course-orbit-scene" ref={scene}>
    {!failed&&<Suspense fallback={<div className="course-3d-status">正在展开三卷医理…</div>}><CourseScene paused={paused} reduced={reduced} highlight={hovered??focused} books={books} visual={visual} onReady={()=>setReady(true)} onError={()=>{setFailed(true);setReady(false);}}/></Suspense>}
