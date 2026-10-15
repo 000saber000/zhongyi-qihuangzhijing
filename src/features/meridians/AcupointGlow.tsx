@@ -1,7 +1,7 @@
 import {useEffect,useMemo,useRef} from 'react';
 import {Billboard,Html} from '@react-three/drei';
 import {useFrame,type ThreeEvent} from '@react-three/fiber';
-import {AdditiveBlending,BufferGeometry,Float32BufferAttribute,CanvasTexture,Group,Sprite} from 'three';
+import {AdditiveBlending,BufferGeometry,Float32BufferAttribute,CanvasTexture,Group,Sprite,Vector3} from 'three';
 import type {AcupointAnchor} from './types';
 export function makeGlowTexture(){
  const canvas=document.createElement('canvas');canvas.width=canvas.height=64;
@@ -11,11 +11,12 @@ export function makeGlowTexture(){
 }
 type Props={anchor:AcupointAnchor;texture:CanvasTexture;index:number;selected:boolean;hovered:boolean;name:string;code:string;onEnter:(e:ThreeEvent<PointerEvent>)=>void;onLeave:()=>void;onChoose:(e:ThreeEvent<MouseEvent>)=>void};
 export default function AcupointGlow({anchor,texture,index,selected,hovered,name,code,onEnter,onLeave,onChoose}:Props){
- const halo=useRef<Sprite>(null),dust=useRef<Group>(null),color=index%4===0?'#9debed':'#f5d187';
+ const marker=useRef<Group>(null),halo=useRef<Sprite>(null),dust=useRef<Group>(null),color=index%4===0?'#9debed':'#f5d187';
+ const position=useMemo(()=>new Vector3(...anchor.position),[anchor.position]);
  const particles=useMemo(()=>{const positions=Array.from({length:7},(_,i)=>{const angle=i*2.399+index,r=.017+(i%3)*.004;return [Math.cos(angle)*r,Math.sin(angle)*r,.002*(i%3)];}).flat();return new BufferGeometry().setAttribute('position',new Float32BufferAttribute(positions,3));},[index]);
  useEffect(()=>()=>particles.dispose(),[particles]);
- useFrame(({clock})=>{if(halo.current){const r=((hovered||selected) ? .095 : .072)*(1+.08*Math.sin(clock.elapsedTime*1.7+index));halo.current.scale.set(r,r,1);}if(dust.current)dust.current.rotation.z=clock.elapsedTime*.12+index;});
- return <group position={anchor.position}>
+ useFrame(({clock,camera})=>{marker.current?.scale.setScalar(Math.max(.28,Math.min(1,camera.position.distanceTo(position)/1.3)));if(halo.current){const r=((hovered||selected) ? .095 : .072)*(1+.08*Math.sin(clock.elapsedTime*1.7+index));halo.current.scale.set(r,r,1);}if(dust.current)dust.current.rotation.z=clock.elapsedTime*.12+index;});
+ return <group ref={marker} position={anchor.position}>
   <mesh onPointerOver={onEnter} onPointerOut={onLeave} onClick={onChoose}><sphereGeometry args={[.023,10,8]}/><meshBasicMaterial transparent opacity={0} depthWrite={false}/></mesh>
   <mesh onPointerOver={onEnter} onPointerOut={onLeave} onClick={onChoose}><sphereGeometry args={[(selected||hovered) ? .009 : .0068,12,8]}/><meshBasicMaterial color={selected||hovered?'#fff4d0':color} toneMapped={false}/></mesh>
   <sprite ref={halo} scale={[.072,.072,1]} raycast={()=>null}><spriteMaterial map={texture} color={color} transparent opacity={hovered||selected?1:.8} blending={AdditiveBlending} depthWrite={false} toneMapped={false}/></sprite>

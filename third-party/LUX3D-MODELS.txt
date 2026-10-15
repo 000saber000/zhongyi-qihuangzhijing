@@ -1,0 +1,18 @@
+Qihuang Meridian Atlas - user-supplied model provenance
+
+The adult male and female v3 body meshes and diffuse textures were supplied by
+the project owner in lux3d_model_exports.zip and result.zip on 2026-10-15,
+as exports generated using Aholo Lux3D from this project's reference images.
+
+Local processing preserves source geometry, binds the supplied diffuse image,
+normalizes scale/orientation, and prepares embedded-texture GLB files.
+Original upload digests are recorded in src/assets/anatomy/models.manifest.json.
+
+These uploads are not MakeHuman/MPFB assets and are not claimed to have a CC0
+license. This provenance notice does not grant a new license or certify the
+owner's Aholo account terms or competition eligibility.
+
+The original project MIT license and separately attributed dependencies remain
+as documented in the project. Historical MPFB assets retain their CC0 notices.
+The separate organ layer and meridian curves are project-authored teaching
+illustrations, not clinically validated anatomical reconstructions.

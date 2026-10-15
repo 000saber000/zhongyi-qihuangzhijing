@@ -24,26 +24,26 @@
 ### Task 1: Prepare the paired assets and geometry records
 **Files:** scripts/anatomy/prepare-lux3d.py; annotate-models.py; build-paths.py; verify-assets.py; src/assets/anatomy/*; anchors.json; paths.json; models.json; third-party/BODY-MODEL-SOURCE.md.
 **Interfaces:** Export v3 manifest with source digest, actual file digest, dimensions and per-model teaching landmarks; export annotations using existing types.
-- [ ] Add asset tests that fail for missing v3 models, missing embedded detailed texture, invalid budgets or misplaced paths.
-- [ ] Run tests to confirm expected failure.
-- [ ] Bind source diffuse, normalize and export full-detail GLBs with real model fallback renders.
-- [ ] Reproject anchors and primary/secondary routes onto each actual mesh; verify all known same-meridian points are represented.
-- [ ] Run asset tests, registry tests and every anchor sightline; commit.
+- [x] Add asset tests that fail for missing v3 models, missing embedded detailed texture, invalid budgets or misplaced paths.
+- [x] Run tests to confirm expected failure.
+- [x] Bind source diffuse, normalize and export full-detail GLBs with real model fallback renders.
+- [x] Reproject anchors and primary/secondary routes onto each actual mesh; verify all known same-meridian points are represented.
+- [x] Run asset tests, registry tests and every anchor sightline; commit.
 
 ### Task 2: Render detailed surface and xray meridians
 **Files:** BodyScene.tsx; MeridianNetwork.tsx; AnatomyLayers.tsx; MeridianPage.tsx; assets.ts; types.ts; tests/meridians.spec.ts; model-material.ts and tests.
 **Interfaces:** Existing BodyScene props plus active meridian; reusable texture-preserving material builder; path metadata includes primary/secondary role.
-- [ ] Add failing material tests asserting supplied texture and UV maps survive material construction; add browser coverage for body/route version and global meridian toggle.
-- [ ] Run to confirm expected failures.
-- [ ] Preserve textured jade and clothing in body materials; render batched main/fine curves, halos and traveling particles in both modes; coordinate highlight with selected meridian.
-- [ ] Keep organ controls and fit organs to new trunk; correct provenance footer and provide persistent global meridian control.
-- [ ] Run unit/build checks and actual desktop/mobile browser checks; inspect screenshots and correct visual problems; commit.
+- [x] Add failing material tests asserting supplied texture and UV maps survive material construction; add browser coverage for body/route version and global meridian toggle.
+- [x] Run to confirm expected failures.
+- [x] Preserve textured jade and clothing in body materials; render batched main/fine curves, halos and traveling particles in both modes; coordinate highlight with selected meridian.
+- [x] Keep organ controls and fit organs to new trunk; correct provenance footer and provide persistent global meridian control.
+- [x] Run unit/build checks and actual desktop/mobile browser checks; inspect screenshots and correct visual problems; commit.
 
 ### Task 3: Verify and publish
 **Files:** tests/production/meridians.spec.ts; docs/meridian-lux3d-validation.md; docs/images/*; release files.
 **Interfaces:** Existing main auto-deploy for srv-db5l3pvlk1mc73acpjpg and srv-db5lqh2d0e5s73ftnfa0.
-- [ ] Run focused meridian/navigation/mobile tests, production tests in both outputs, and geometry/resource checks.
-- [ ] Inspect male/female surface, wrist detail, back and xray screenshots; document actual limitations.
-- [ ] Obtain fresh whole-branch code review, resolve important issues and repeat affected checks.
+- [x] Run focused meridian/navigation/mobile tests, production tests in both outputs, and geometry/resource checks.
+- [x] Inspect male/female surface, wrist detail, back and xray screenshots; document actual limitations.
+- [x] Obtain fresh whole-branch code review, resolve important issues and repeat affected checks.
 - [ ] Build release outputs, commit and push branch, create/attach PR, merge after checks.
 - [ ] Verify Render live commit and logs; report URL and any real limitations.
