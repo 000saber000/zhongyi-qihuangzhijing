@@ -11,7 +11,9 @@ model, 220 total. The existing 68 anchors are preserved byte-for-byte as records
 - Automatic density preserves the original overview points. The additional points
   appear within 0.95 m of the camera, or when selected, explicitly requested with
   **全部穴位**, or included by a meridian filter. Hidden details cannot be hovered
-  or clicked. Search by name/code narrows the directory; the meridian filter also
+  or clicked. Their hit meshes also skip raycasting, preventing a stale hover
+  record when a stationary pointer is over a detail that is later revealed.
+  Search by name/code narrows the directory; the meridian filter also
   filters the model markers.
 - Surface mode still shows floating point glows without meridian lines.
 - Xray starts with Ren, Du, Lung, and Stomach as a limited preview. Selecting a
