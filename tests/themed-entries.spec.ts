@@ -68,7 +68,7 @@ test('mobile themed entries fit the viewport and reduced motion enters immediate
   const card=page.getByRole('button',{name:`阅读 ${name}`,exact:true});await card.scrollIntoViewIfNeeded();
   const bounds=await card.boundingBox();expect(bounds!.x).toBeGreaterThanOrEqual(0);expect(bounds!.x+bounds!.width).toBeLessThanOrEqual(390);
   await card.click();await expect(page.locator('.detail-header h1')).toHaveText(name);await expect(page.getByRole('dialog')).toHaveCount(0);
-  await page.getByRole('button',{name:'← 返回知识库',exact:true}).click();
+  await page.getByRole('button',{name:'返回知识库',exact:true}).click();
  }
  expect(await page.locator('.cosmic-content-scroll').evaluate(element=>element.scrollWidth<=element.clientWidth)).toBe(true);
 });

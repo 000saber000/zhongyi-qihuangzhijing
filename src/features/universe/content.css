@@ -13,3 +13,4 @@
 .unified-content .results-info{padding:8px 0}
 .unified-content .library-grid{position:relative;isolation:isolate}
 .unified-content .library-grid::before{content:'';position:absolute;z-index:3;top:0;left:0;right:0;height:56px;pointer-events:none;background:linear-gradient(180deg,rgba(8,21,27,.78),rgba(8,21,27,.36) 44%,transparent 100%)}
+.universe .detail-page>button.cosmic-nav-link.detail-back-link{min-width:260px;min-height:64px;height:64px;margin:0 0 18px;padding:0 24px;font-size:18px;letter-spacing:1.2px}.detail-back-link .cosmic-nav-icon{width:24px;height:24px}

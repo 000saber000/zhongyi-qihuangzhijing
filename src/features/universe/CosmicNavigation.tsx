@@ -18,9 +18,12 @@ function NavigationGlyph({page}:{page:Page}){
  </svg>;
 }
 const frame='M9 1H127L135 9V33L127 41H9L1 33V9Z';
-export default function CosmicNavigation({activePage,onHome,onNavigate}:{activePage:string;onHome:()=>void;onNavigate:(page:string)=>void}){
- return <nav className="universe-nav cosmic-navigation" aria-label="主导航">{entries.map(entry=><button type="button" key={entry.id} className={`cosmic-nav-link${activePage===entry.id?' current':''}`} aria-label={entry.accessibleName} aria-current={activePage===entry.id?'page':undefined} onClick={()=>entry.id==='home'?onHome():onNavigate(entry.id)}>
+export function CosmicNavButton({page,label,onClick,current=false,accessibleName=label,className=''}:{page:Page;label:string;onClick:()=>void;current?:boolean;accessibleName?:string;className?:string}){
+ return <button type="button" className={`cosmic-nav-link${current?' current':''}${className?' '+className:''}`} aria-label={accessibleName} aria-current={current?'page':undefined} onClick={onClick}>
   <svg className="cosmic-nav-frame" viewBox="0 0 136 42" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path className="cosmic-nav-track" d={frame}/><path className="cosmic-nav-trace" d={frame} pathLength="1"/></svg>
-  <NavigationGlyph page={entry.id}/><span className="cosmic-nav-label">{entry.label}</span><i className="cosmic-nav-dot" aria-hidden="true"/>
- </button>)}</nav>;
+  <NavigationGlyph page={page}/><span className="cosmic-nav-label">{label}</span><i className="cosmic-nav-dot" aria-hidden="true"/>
+ </button>;
+}
+export default function CosmicNavigation({activePage,onHome,onNavigate}:{activePage:string;onHome:()=>void;onNavigate:(page:string)=>void}){
+ return <nav className="universe-nav cosmic-navigation" aria-label="主导航">{entries.map(entry=><CosmicNavButton key={entry.id} page={entry.id} label={entry.label} accessibleName={entry.accessibleName} current={activePage===entry.id} onClick={()=>entry.id==='home'?onHome():onNavigate(entry.id)}/>)}</nav>;
 }
