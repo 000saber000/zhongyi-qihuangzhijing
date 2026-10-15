@@ -9,5 +9,5 @@ export const anchors=anchorData as unknown as AcupointAnchor[];
 export const models=modelData as BodyModel[];
 export const paths=pathData as unknown as (MeridianPath&{variant:ModelVariant;color:string;segment:number})[];
 export const registryProblems=validateRegistry(models,definitions,anchors,paths);
-export const meridianColors:Record<string,string>={'meridian-stomach':'#ddb973','meridian-du':'#e2c997',extra:'#e9e1c2','meridian-gallbladder':'#83ceb0','meridian-largeintestine':'#e9ad85','meridian-pericardium':'#d3a3bc','meridian-sanjiao':'#9bbbe5','meridian-heart':'#e7a2a5','meridian-ren':'#e8cf9c','meridian-spleen':'#ccb676','meridian-liver':'#9dcca0','meridian-kidney':'#9cbdcc'};
+export const meridianColors:Record<string,string>={'meridian-lung':'#c2d4a1','meridian-smallintestine':'#dba884','meridian-bladder':'#96b9de','meridian-stomach':'#ddb973','meridian-du':'#e2c997',extra:'#e9e1c2','meridian-gallbladder':'#83ceb0','meridian-largeintestine':'#e9ad85','meridian-pericardium':'#d3a3bc','meridian-sanjiao':'#9bbbe5','meridian-heart':'#e7a2a5','meridian-ren':'#e8cf9c','meridian-spleen':'#ccb676','meridian-liver':'#9dcca0','meridian-kidney':'#9cbdcc'};
 export const colorFor=(id:string|null)=>meridianColors[id??'extra']??'#e2c997';

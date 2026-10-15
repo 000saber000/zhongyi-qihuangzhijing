@@ -1498,5 +1498,965 @@
       "theory-jingluo"
     ],
     "confidence": "教材/经典整理"
+  },
+  {
+    "id": "point-zhongfu",
+    "type": "穴",
+    "title": "中府",
+    "subtitle": "LU1 · 手太阴肺经腧穴",
+    "summary": "肺经的胸部腧穴。辨认胸廓与上肢交界，是理解肺经体表分布的起点。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LU1 位置条目",
+    "tags": [
+      "穴位",
+      "手太阴肺经",
+      "LU1"
+    ],
+    "relations": [
+      "meridian-lung",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "中府（LU1）属于手太阴肺经。\n\n定位线索：前胸壁外上方，第一肋间隙处，前正中线旁开六骨度分寸。\n\n肺经的胸部腧穴。辨认胸廓与上肢交界，是理解肺经体表分布的起点。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LU/LU1",
+    "keyPoints": [
+      "前胸壁外上方，第一肋间隙处，前正中线旁开六骨度分寸。",
+      "肺经的胸部腧穴。辨认胸廓与上肢交界，是理解肺经体表分布的起点。"
+    ]
+  },
+  {
+    "id": "point-chize",
+    "type": "穴",
+    "title": "尺泽",
+    "subtitle": "LU5 · 手太阴肺经腧穴",
+    "summary": "肺经合穴。可与肘横纹尺侧的少海、中央附近的曲泽作位置比较。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LU5 位置条目",
+    "tags": [
+      "穴位",
+      "手太阴肺经",
+      "LU5"
+    ],
+    "relations": [
+      "meridian-lung",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "尺泽（LU5）属于手太阴肺经。\n\n定位线索：肘前区，肘横纹上，肱二头肌腱桡侧的凹陷处。\n\n肺经合穴。可与肘横纹尺侧的少海、中央附近的曲泽作位置比较。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LU/LU5",
+    "keyPoints": [
+      "肘前区，肘横纹上，肱二头肌腱桡侧的凹陷处。",
+      "肺经合穴。可与肘横纹尺侧的少海、中央附近的曲泽作位置比较。"
+    ]
+  },
+  {
+    "id": "point-lieque",
+    "type": "穴",
+    "title": "列缺",
+    "subtitle": "LU7 · 手太阴肺经腧穴",
+    "summary": "肺经络穴，也是八脉交会穴之一。学习时区分前臂桡侧与正中掌侧的位置。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LU7 位置条目",
+    "tags": [
+      "穴位",
+      "手太阴肺经",
+      "LU7"
+    ],
+    "relations": [
+      "meridian-lung",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "列缺（LU7）属于手太阴肺经。\n\n定位线索：前臂桡侧，腕掌侧远端横纹上一点五骨度分寸，肱桡肌腱与拇长展肌腱之间。\n\n肺经络穴，也是八脉交会穴之一。学习时区分前臂桡侧与正中掌侧的位置。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LU/LU7",
+    "keyPoints": [
+      "前臂桡侧，腕掌侧远端横纹上一点五骨度分寸，肱桡肌腱与拇长展肌腱之间。",
+      "肺经络穴，也是八脉交会穴之一。学习时区分前臂桡侧与正中掌侧的位置。"
+    ]
+  },
+  {
+    "id": "point-taiyuan",
+    "type": "穴",
+    "title": "太渊",
+    "subtitle": "LU9 · 手太阴肺经腧穴",
+    "summary": "肺经原穴、输穴。与神门、大陵并看，可以理解腕部不同经脉的分区。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LU9 位置条目",
+    "tags": [
+      "穴位",
+      "手太阴肺经",
+      "LU9"
+    ],
+    "relations": [
+      "meridian-lung",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "太渊（LU9）属于手太阴肺经。\n\n定位线索：腕前外侧，桡骨茎突与舟骨之间，拇长展肌腱尺侧的凹陷处。\n\n肺经原穴、输穴。与神门、大陵并看，可以理解腕部不同经脉的分区。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LU/LU9",
+    "keyPoints": [
+      "腕前外侧，桡骨茎突与舟骨之间，拇长展肌腱尺侧的凹陷处。",
+      "肺经原穴、输穴。与神门、大陵并看，可以理解腕部不同经脉的分区。"
+    ]
+  },
+  {
+    "id": "point-shousanli",
+    "type": "穴",
+    "title": "手三里",
+    "subtitle": "LI10 · 手阳明大肠经腧穴",
+    "summary": "大肠经前臂部腧穴。名称中的“手”有助于与胃经的足三里区别。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LI10 位置条目",
+    "tags": [
+      "穴位",
+      "手阳明大肠经",
+      "LI10"
+    ],
+    "relations": [
+      "meridian-largeintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "手三里（LI10）属于手阳明大肠经。\n\n定位线索：前臂后外侧，阳溪与曲池连线上，肘横纹下二骨度分寸。\n\n大肠经前臂部腧穴。名称中的“手”有助于与胃经的足三里区别。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LI/LI10",
+    "keyPoints": [
+      "前臂后外侧，阳溪与曲池连线上，肘横纹下二骨度分寸。",
+      "大肠经前臂部腧穴。名称中的“手”有助于与胃经的足三里区别。"
+    ]
+  },
+  {
+    "id": "point-jianyu",
+    "type": "穴",
+    "title": "肩髃",
+    "subtitle": "LI15 · 手阳明大肠经腧穴",
+    "summary": "大肠经肩部腧穴。可与肩髎比较，认识肩峰前后两个不同的凹陷。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LI15 位置条目",
+    "tags": [
+      "穴位",
+      "手阳明大肠经",
+      "LI15"
+    ],
+    "relations": [
+      "meridian-largeintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "肩髃（LI15）属于手阳明大肠经。\n\n定位线索：肩峰端前缘与肱骨大结节之间，三角肌上部中央，肩外展时肩峰前下方凹陷处。\n\n大肠经肩部腧穴。可与肩髎比较，认识肩峰前后两个不同的凹陷。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LI/LI15",
+    "keyPoints": [
+      "肩峰端前缘与肱骨大结节之间，三角肌上部中央，肩外展时肩峰前下方凹陷处。",
+      "大肠经肩部腧穴。可与肩髎比较，认识肩峰前后两个不同的凹陷。"
+    ]
+  },
+  {
+    "id": "point-yingxiang",
+    "type": "穴",
+    "title": "迎香",
+    "subtitle": "LI20 · 手阳明大肠经腧穴",
+    "summary": "大肠经面部腧穴。学习时联系大肠经从手走头的体表循行。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LI20 位置条目",
+    "tags": [
+      "穴位",
+      "手阳明大肠经",
+      "LI20"
+    ],
+    "relations": [
+      "meridian-largeintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "迎香（LI20）属于手阳明大肠经。\n\n定位线索：面部，鼻翼外缘中点旁，鼻唇沟中。\n\n大肠经面部腧穴。学习时联系大肠经从手走头的体表循行。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LI/LI20",
+    "keyPoints": [
+      "面部，鼻翼外缘中点旁，鼻唇沟中。",
+      "大肠经面部腧穴。学习时联系大肠经从手走头的体表循行。"
+    ]
+  },
+  {
+    "id": "point-tianshu",
+    "type": "穴",
+    "title": "天枢",
+    "subtitle": "ST25 · 足阳明胃经腧穴",
+    "summary": "胃经腹部腧穴。与正中的神阙对照，建立腹部横向骨度分寸的概念。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC ST25 位置条目",
+    "tags": [
+      "穴位",
+      "足阳明胃经",
+      "ST25"
+    ],
+    "relations": [
+      "meridian-stomach",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "天枢（ST25）属于足阳明胃经。\n\n定位线索：腹部，脐中央旁开二骨度分寸，左右各一穴。\n\n胃经腹部腧穴。与正中的神阙对照，建立腹部横向骨度分寸的概念。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/ST/ST25",
+    "keyPoints": [
+      "腹部，脐中央旁开二骨度分寸，左右各一穴。",
+      "胃经腹部腧穴。与正中的神阙对照，建立腹部横向骨度分寸的概念。"
+    ]
+  },
+  {
+    "id": "point-dubi",
+    "type": "穴",
+    "title": "犊鼻",
+    "subtitle": "ST35 · 足阳明胃经腧穴",
+    "summary": "胃经膝部腧穴。模型保持伸膝姿势，实际定位需要结合屈膝体表标志。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC ST35 位置条目",
+    "tags": [
+      "穴位",
+      "足阳明胃经",
+      "ST35"
+    ],
+    "relations": [
+      "meridian-stomach",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "犊鼻（ST35）属于足阳明胃经。\n\n定位线索：膝前区，髌韧带外侧的凹陷处，屈膝时更易辨认。\n\n胃经膝部腧穴。模型保持伸膝姿势，实际定位需要结合屈膝体表标志。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/ST/ST35",
+    "keyPoints": [
+      "膝前区，髌韧带外侧的凹陷处，屈膝时更易辨认。",
+      "胃经膝部腧穴。模型保持伸膝姿势，实际定位需要结合屈膝体表标志。"
+    ]
+  },
+  {
+    "id": "point-fenglong",
+    "type": "穴",
+    "title": "丰隆",
+    "subtitle": "ST40 · 足阳明胃经腧穴",
+    "summary": "胃经络穴。可与足三里比较，认识同一经脉在小腿上的纵向分布。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC ST40 位置条目",
+    "tags": [
+      "穴位",
+      "足阳明胃经",
+      "ST40"
+    ],
+    "relations": [
+      "meridian-stomach",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "丰隆（ST40）属于足阳明胃经。\n\n定位线索：小腿前外侧，外踝尖上八骨度分寸，胫骨前肌外缘。\n\n胃经络穴。可与足三里比较，认识同一经脉在小腿上的纵向分布。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/ST/ST40",
+    "keyPoints": [
+      "小腿前外侧，外踝尖上八骨度分寸，胫骨前肌外缘。",
+      "胃经络穴。可与足三里比较，认识同一经脉在小腿上的纵向分布。"
+    ]
+  },
+  {
+    "id": "point-neiting",
+    "type": "穴",
+    "title": "内庭",
+    "subtitle": "ST44 · 足阳明胃经腧穴",
+    "summary": "胃经荥穴。观察足趾间隙时，应以人体自身趾序辨认第二、第三趾。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC ST44 位置条目",
+    "tags": [
+      "穴位",
+      "足阳明胃经",
+      "ST44"
+    ],
+    "relations": [
+      "meridian-stomach",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "内庭（ST44）属于足阳明胃经。\n\n定位线索：足背，第二、第三趾间，趾蹼缘后方赤白肉际处。\n\n胃经荥穴。观察足趾间隙时，应以人体自身趾序辨认第二、第三趾。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/ST/ST44",
+    "keyPoints": [
+      "足背，第二、第三趾间，趾蹼缘后方赤白肉际处。",
+      "胃经荥穴。观察足趾间隙时，应以人体自身趾序辨认第二、第三趾。"
+    ]
+  },
+  {
+    "id": "point-taibai",
+    "type": "穴",
+    "title": "太白",
+    "subtitle": "SP3 · 足太阴脾经腧穴",
+    "summary": "脾经原穴、输穴。它位于足内缘，与足背第一、第二跖骨间的太冲位置不同。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC SP3 位置条目",
+    "tags": [
+      "穴位",
+      "足太阴脾经",
+      "SP3"
+    ],
+    "relations": [
+      "meridian-spleen",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "太白（SP3）属于足太阴脾经。\n\n定位线索：足内侧，第一跖趾关节近端，赤白肉际处的凹陷中。\n\n脾经原穴、输穴。它位于足内缘，与足背第一、第二跖骨间的太冲位置不同。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/SP/SP3",
+    "keyPoints": [
+      "足内侧，第一跖趾关节近端，赤白肉际处的凹陷中。",
+      "脾经原穴、输穴。它位于足内缘，与足背第一、第二跖骨间的太冲位置不同。"
+    ]
+  },
+  {
+    "id": "point-xuehai",
+    "type": "穴",
+    "title": "血海",
+    "subtitle": "SP10 · 足太阴脾经腧穴",
+    "summary": "脾经大腿部腧穴。可结合股内侧肌的形态理解，不把它误放到膝关节内侧。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC SP10 位置条目",
+    "tags": [
+      "穴位",
+      "足太阴脾经",
+      "SP10"
+    ],
+    "relations": [
+      "meridian-spleen",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "血海（SP10）属于足太阴脾经。\n\n定位线索：股前区，髌底内侧端上二骨度分寸，股内侧肌隆起处。\n\n脾经大腿部腧穴。可结合股内侧肌的形态理解，不把它误放到膝关节内侧。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/SP/SP10",
+    "keyPoints": [
+      "股前区，髌底内侧端上二骨度分寸，股内侧肌隆起处。",
+      "脾经大腿部腧穴。可结合股内侧肌的形态理解，不把它误放到膝关节内侧。"
+    ]
+  },
+  {
+    "id": "point-shaohai",
+    "type": "穴",
+    "title": "少海",
+    "subtitle": "HT3 · 手少阴心经腧穴",
+    "summary": "心经合穴。比较少海与尺泽，有助于辨认心经和肺经在肘部的内外分布。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC HT3 位置条目",
+    "tags": [
+      "穴位",
+      "手少阴心经",
+      "HT3"
+    ],
+    "relations": [
+      "meridian-heart",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "少海（HT3）属于手少阴心经。\n\n定位线索：肘前内侧，肘横纹内侧端与肱骨内上髁连线的中点处。\n\n心经合穴。比较少海与尺泽，有助于辨认心经和肺经在肘部的内外分布。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/HT/HT3",
+    "keyPoints": [
+      "肘前内侧，肘横纹内侧端与肱骨内上髁连线的中点处。",
+      "心经合穴。比较少海与尺泽，有助于辨认心经和肺经在肘部的内外分布。"
+    ]
+  },
+  {
+    "id": "point-tongli",
+    "type": "穴",
+    "title": "通里",
+    "subtitle": "HT5 · 手少阴心经腧穴",
+    "summary": "心经络穴。与腕横纹处的神门相邻，可沿前臂尺侧观察二者的关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC HT5 位置条目",
+    "tags": [
+      "穴位",
+      "手少阴心经",
+      "HT5"
+    ],
+    "relations": [
+      "meridian-heart",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "通里（HT5）属于手少阴心经。\n\n定位线索：前臂前内侧，腕掌侧远端横纹上一骨度分寸，尺侧腕屈肌腱桡侧缘。\n\n心经络穴。与腕横纹处的神门相邻，可沿前臂尺侧观察二者的关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/HT/HT5",
+    "keyPoints": [
+      "前臂前内侧，腕掌侧远端横纹上一骨度分寸，尺侧腕屈肌腱桡侧缘。",
+      "心经络穴。与腕横纹处的神门相邻，可沿前臂尺侧观察二者的关系。"
+    ]
+  },
+  {
+    "id": "point-houxi",
+    "type": "穴",
+    "title": "后溪",
+    "subtitle": "SI3 · 手太阳小肠经腧穴",
+    "summary": "小肠经输穴，也是八脉交会穴之一。它靠近小指侧，区别于拇指侧的合谷。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC SI3 位置条目",
+    "tags": [
+      "穴位",
+      "手太阳小肠经",
+      "SI3"
+    ],
+    "relations": [
+      "meridian-smallintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "后溪（SI3）属于手太阳小肠经。\n\n定位线索：手内侧，第五掌指关节尺侧近端，赤白肉际处的凹陷中。\n\n小肠经输穴，也是八脉交会穴之一。它靠近小指侧，区别于拇指侧的合谷。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/SI/SI3",
+    "keyPoints": [
+      "手内侧，第五掌指关节尺侧近端，赤白肉际处的凹陷中。",
+      "小肠经输穴，也是八脉交会穴之一。它靠近小指侧，区别于拇指侧的合谷。"
+    ]
+  },
+  {
+    "id": "point-jianzhen",
+    "type": "穴",
+    "title": "肩贞",
+    "subtitle": "SI9 · 手太阳小肠经腧穴",
+    "summary": "小肠经肩后部腧穴。观察时需转到人体背面，辨认腋后纹与肩关节的关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC SI9 位置条目",
+    "tags": [
+      "穴位",
+      "手太阳小肠经",
+      "SI9"
+    ],
+    "relations": [
+      "meridian-smallintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "肩贞（SI9）属于手太阳小肠经。\n\n定位线索：肩后区，肩关节后下方，腋后纹头直上一骨度分寸。\n\n小肠经肩后部腧穴。观察时需转到人体背面，辨认腋后纹与肩关节的关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/SI/SI9",
+    "keyPoints": [
+      "肩后区，肩关节后下方，腋后纹头直上一骨度分寸。",
+      "小肠经肩后部腧穴。观察时需转到人体背面，辨认腋后纹与肩关节的关系。"
+    ]
+  },
+  {
+    "id": "point-tianzong",
+    "type": "穴",
+    "title": "天宗",
+    "subtitle": "SI11 · 手太阳小肠经腧穴",
+    "summary": "小肠经肩胛部腧穴。先辨认肩胛冈和下角，再理解它位于冈下窝的区域。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC SI11 位置条目",
+    "tags": [
+      "穴位",
+      "手太阳小肠经",
+      "SI11"
+    ],
+    "relations": [
+      "meridian-smallintestine",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "天宗（SI11）属于手太阳小肠经。\n\n定位线索：肩胛区，肩胛冈中点与肩胛骨下角连线的上三分之一与下三分之二交点凹陷处。\n\n小肠经肩胛部腧穴。先辨认肩胛冈和下角，再理解它位于冈下窝的区域。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/SI/SI11",
+    "keyPoints": [
+      "肩胛区，肩胛冈中点与肩胛骨下角连线的上三分之一与下三分之二交点凹陷处。",
+      "小肠经肩胛部腧穴。先辨认肩胛冈和下角，再理解它位于冈下窝的区域。"
+    ]
+  },
+  {
+    "id": "point-tianzhu",
+    "type": "穴",
+    "title": "天柱",
+    "subtitle": "BL10 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经颈后部腧穴。它与更靠近枕骨外侧的风池位置不同。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL10 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL10"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "天柱（BL10）属于足太阳膀胱经。\n\n定位线索：颈后区，第二颈椎棘突上缘同高，斜方肌外缘的凹陷中。\n\n膀胱经颈后部腧穴。它与更靠近枕骨外侧的风池位置不同。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL10",
+    "keyPoints": [
+      "颈后区，第二颈椎棘突上缘同高，斜方肌外缘的凹陷中。",
+      "膀胱经颈后部腧穴。它与更靠近枕骨外侧的风池位置不同。"
+    ]
+  },
+  {
+    "id": "point-feishu",
+    "type": "穴",
+    "title": "肺俞",
+    "subtitle": "BL13 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经背俞穴之一。名称关联传统藏象知识，位置学习以胸椎序数和旁开距离为线索。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL13 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL13"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "肺俞（BL13）属于足太阳膀胱经。\n\n定位线索：背部，第三胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。\n\n膀胱经背俞穴之一。名称关联传统藏象知识，位置学习以胸椎序数和旁开距离为线索。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL13",
+    "keyPoints": [
+      "背部，第三胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+      "膀胱经背俞穴之一。名称关联传统藏象知识，位置学习以胸椎序数和旁开距离为线索。"
+    ]
+  },
+  {
+    "id": "point-pishu",
+    "type": "穴",
+    "title": "脾俞",
+    "subtitle": "BL20 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经背俞穴之一。可与肺俞、肾俞对照，建立背部由上到下的位置关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL20 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL20"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "脾俞（BL20）属于足太阳膀胱经。\n\n定位线索：背部，第十一胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。\n\n膀胱经背俞穴之一。可与肺俞、肾俞对照，建立背部由上到下的位置关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL20",
+    "keyPoints": [
+      "背部，第十一胸椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+      "膀胱经背俞穴之一。可与肺俞、肾俞对照，建立背部由上到下的位置关系。"
+    ]
+  },
+  {
+    "id": "point-shenshu",
+    "type": "穴",
+    "title": "肾俞",
+    "subtitle": "BL23 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经背俞穴之一。它与同高后正中线上的命门相互参照。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL23 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL23"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "肾俞（BL23）属于足太阳膀胱经。\n\n定位线索：腰部，第二腰椎棘突下缘同高，后正中线旁开一点五骨度分寸。\n\n膀胱经背俞穴之一。它与同高后正中线上的命门相互参照。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL23",
+    "keyPoints": [
+      "腰部，第二腰椎棘突下缘同高，后正中线旁开一点五骨度分寸。",
+      "膀胱经背俞穴之一。它与同高后正中线上的命门相互参照。"
+    ]
+  },
+  {
+    "id": "point-weizhong",
+    "type": "穴",
+    "title": "委中",
+    "subtitle": "BL40 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经合穴。转到背面可观察膝后区；模型不展示深部神经血管定位。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL40 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL40"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "委中（BL40）属于足太阳膀胱经。\n\n定位线索：膝后区，腘横纹中点。\n\n膀胱经合穴。转到背面可观察膝后区；模型不展示深部神经血管定位。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL40",
+    "keyPoints": [
+      "膝后区，腘横纹中点。",
+      "膀胱经合穴。转到背面可观察膝后区；模型不展示深部神经血管定位。"
+    ]
+  },
+  {
+    "id": "point-chengshan",
+    "type": "穴",
+    "title": "承山",
+    "subtitle": "BL57 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经小腿后部腧穴。学习时关注腓肠肌由肌腹向肌腱过渡的形态。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL57 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL57"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "承山（BL57）属于足太阳膀胱经。\n\n定位线索：小腿后区，腓肠肌两肌腹与肌腱交角处。\n\n膀胱经小腿后部腧穴。学习时关注腓肠肌由肌腹向肌腱过渡的形态。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL57",
+    "keyPoints": [
+      "小腿后区，腓肠肌两肌腹与肌腱交角处。",
+      "膀胱经小腿后部腧穴。学习时关注腓肠肌由肌腹向肌腱过渡的形态。"
+    ]
+  },
+  {
+    "id": "point-kunlun",
+    "type": "穴",
+    "title": "昆仑",
+    "subtitle": "BL60 · 足太阳膀胱经腧穴",
+    "summary": "膀胱经经穴。可与内踝后方的太溪对照，避免把内外踝的位置混淆。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC BL60 位置条目",
+    "tags": [
+      "穴位",
+      "足太阳膀胱经",
+      "BL60"
+    ],
+    "relations": [
+      "meridian-bladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "昆仑（BL60）属于足太阳膀胱经。\n\n定位线索：踝后外侧，外踝尖与跟腱之间的凹陷处。\n\n膀胱经经穴。可与内踝后方的太溪对照，避免把内外踝的位置混淆。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/BL/BL60",
+    "keyPoints": [
+      "踝后外侧，外踝尖与跟腱之间的凹陷处。",
+      "膀胱经经穴。可与内踝后方的太溪对照，避免把内外踝的位置混淆。"
+    ]
+  },
+  {
+    "id": "point-fuliu",
+    "type": "穴",
+    "title": "复溜",
+    "subtitle": "KI7 · 足少阴肾经腧穴",
+    "summary": "肾经经穴。可沿太溪向上比较，注意其定位线索涉及跟腱前缘。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC KI7 位置条目",
+    "tags": [
+      "穴位",
+      "足少阴肾经",
+      "KI7"
+    ],
+    "relations": [
+      "meridian-kidney",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "复溜（KI7）属于足少阴肾经。\n\n定位线索：小腿后内侧，内踝尖上二骨度分寸，跟腱前缘。\n\n肾经经穴。可沿太溪向上比较，注意其定位线索涉及跟腱前缘。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/KI/KI7",
+    "keyPoints": [
+      "小腿后内侧，内踝尖上二骨度分寸，跟腱前缘。",
+      "肾经经穴。可沿太溪向上比较，注意其定位线索涉及跟腱前缘。"
+    ]
+  },
+  {
+    "id": "point-quze",
+    "type": "穴",
+    "title": "曲泽",
+    "subtitle": "PC3 · 手厥阴心包经腧穴",
+    "summary": "心包经合穴。与肌腱桡侧的尺泽对照，可理解肘前腧穴的相对关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC PC3 位置条目",
+    "tags": [
+      "穴位",
+      "手厥阴心包经",
+      "PC3"
+    ],
+    "relations": [
+      "meridian-pericardium",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "曲泽（PC3）属于手厥阴心包经。\n\n定位线索：肘前区，肘横纹上，肱二头肌腱尺侧缘的凹陷处。\n\n心包经合穴。与肌腱桡侧的尺泽对照，可理解肘前腧穴的相对关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/PC/PC3",
+    "keyPoints": [
+      "肘前区，肘横纹上，肱二头肌腱尺侧缘的凹陷处。",
+      "心包经合穴。与肌腱桡侧的尺泽对照，可理解肘前腧穴的相对关系。"
+    ]
+  },
+  {
+    "id": "point-daling",
+    "type": "穴",
+    "title": "大陵",
+    "subtitle": "PC7 · 手厥阴心包经腧穴",
+    "summary": "心包经原穴、输穴。与内关沿前臂掌侧中部相连，是比较腕与前臂定位的线索。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC PC7 位置条目",
+    "tags": [
+      "穴位",
+      "手厥阴心包经",
+      "PC7"
+    ],
+    "relations": [
+      "meridian-pericardium",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "大陵（PC7）属于手厥阴心包经。\n\n定位线索：腕前区，腕掌侧远端横纹上，掌长肌腱与桡侧腕屈肌腱之间。\n\n心包经原穴、输穴。与内关沿前臂掌侧中部相连，是比较腕与前臂定位的线索。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/PC/PC7",
+    "keyPoints": [
+      "腕前区，腕掌侧远端横纹上，掌长肌腱与桡侧腕屈肌腱之间。",
+      "心包经原穴、输穴。与内关沿前臂掌侧中部相连，是比较腕与前臂定位的线索。"
+    ]
+  },
+  {
+    "id": "point-laogong",
+    "type": "穴",
+    "title": "劳宫",
+    "subtitle": "PC8 · 手厥阴心包经腧穴",
+    "summary": "心包经荥穴。学习时把掌骨关系作为定位线索，避免仅凭手掌外形估计。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC PC8 位置条目",
+    "tags": [
+      "穴位",
+      "手厥阴心包经",
+      "PC8"
+    ],
+    "relations": [
+      "meridian-pericardium",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "劳宫（PC8）属于手厥阴心包经。\n\n定位线索：手掌心，第二、第三掌骨之间，偏于第三掌骨桡侧。\n\n心包经荥穴。学习时把掌骨关系作为定位线索，避免仅凭手掌外形估计。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/PC/PC8",
+    "keyPoints": [
+      "手掌心，第二、第三掌骨之间，偏于第三掌骨桡侧。",
+      "心包经荥穴。学习时把掌骨关系作为定位线索，避免仅凭手掌外形估计。"
+    ]
+  },
+  {
+    "id": "point-yangchi",
+    "type": "穴",
+    "title": "阳池",
+    "subtitle": "TE4 · 手少阳三焦经腧穴",
+    "summary": "三焦经原穴。位于腕背侧，可与腕掌侧的大陵作前后对照。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC TE4 位置条目",
+    "tags": [
+      "穴位",
+      "手少阳三焦经",
+      "TE4"
+    ],
+    "relations": [
+      "meridian-sanjiao",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "阳池（TE4）属于手少阳三焦经。\n\n定位线索：腕后区，腕背侧远端横纹上，指伸肌腱尺侧缘的凹陷处。\n\n三焦经原穴。位于腕背侧，可与腕掌侧的大陵作前后对照。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/TE/TE4",
+    "keyPoints": [
+      "腕后区，腕背侧远端横纹上，指伸肌腱尺侧缘的凹陷处。",
+      "三焦经原穴。位于腕背侧，可与腕掌侧的大陵作前后对照。"
+    ]
+  },
+  {
+    "id": "point-jianliao",
+    "type": "穴",
+    "title": "肩髎",
+    "subtitle": "TE14 · 手少阳三焦经腧穴",
+    "summary": "三焦经肩部腧穴。可与肩髃比较，辨认肩峰后下方与前下方的差别。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC TE14 位置条目",
+    "tags": [
+      "穴位",
+      "手少阳三焦经",
+      "TE14"
+    ],
+    "relations": [
+      "meridian-sanjiao",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "肩髎（TE14）属于手少阳三焦经。\n\n定位线索：肩部，肩峰角与肱骨大结节之间，肩外展时肩峰后下方凹陷处。\n\n三焦经肩部腧穴。可与肩髃比较，辨认肩峰后下方与前下方的差别。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/TE/TE14",
+    "keyPoints": [
+      "肩部，肩峰角与肱骨大结节之间，肩外展时肩峰后下方凹陷处。",
+      "三焦经肩部腧穴。可与肩髃比较，辨认肩峰后下方与前下方的差别。"
+    ]
+  },
+  {
+    "id": "point-huantiao",
+    "type": "穴",
+    "title": "环跳",
+    "subtitle": "GB30 · 足少阳胆经腧穴",
+    "summary": "胆经臀部腧穴。学习时需要从侧后方观察骨性标志之间的空间关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC GB30 位置条目",
+    "tags": [
+      "穴位",
+      "足少阳胆经",
+      "GB30"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "环跳（GB30）属于足少阳胆经。\n\n定位线索：臀部，股骨大转子最凸点与骶管裂孔连线的外三分之一与内三分之二交点处。\n\n胆经臀部腧穴。学习时需要从侧后方观察骨性标志之间的空间关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/GB/GB30",
+    "keyPoints": [
+      "臀部，股骨大转子最凸点与骶管裂孔连线的外三分之一与内三分之二交点处。",
+      "胆经臀部腧穴。学习时需要从侧后方观察骨性标志之间的空间关系。"
+    ]
+  },
+  {
+    "id": "point-xuanzhong",
+    "type": "穴",
+    "title": "悬钟",
+    "subtitle": "GB39 · 足少阳胆经腧穴",
+    "summary": "胆经小腿部腧穴，又称绝骨。与小腿内侧的三阴交可作内外位置对照。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC GB39 位置条目",
+    "tags": [
+      "穴位",
+      "足少阳胆经",
+      "GB39"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "悬钟（GB39）属于足少阳胆经。\n\n定位线索：小腿外侧，外踝尖上三骨度分寸，腓骨前缘。\n\n胆经小腿部腧穴，又称绝骨。与小腿内侧的三阴交可作内外位置对照。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/GB/GB39",
+    "keyPoints": [
+      "小腿外侧，外踝尖上三骨度分寸，腓骨前缘。",
+      "胆经小腿部腧穴，又称绝骨。与小腿内侧的三阴交可作内外位置对照。"
+    ]
+  },
+  {
+    "id": "point-zulinqi",
+    "type": "穴",
+    "title": "足临泣",
+    "subtitle": "GB41 · 足少阳胆经腧穴",
+    "summary": "胆经输穴，也是八脉交会穴之一。名称中的“足”用于与头临泣区分。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC GB41 位置条目",
+    "tags": [
+      "穴位",
+      "足少阳胆经",
+      "GB41"
+    ],
+    "relations": [
+      "meridian-gallbladder",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "足临泣（GB41）属于足少阳胆经。\n\n定位线索：足背，第四、第五跖骨底结合部前方，小趾伸肌腱外侧的凹陷处。\n\n胆经输穴，也是八脉交会穴之一。名称中的“足”用于与头临泣区分。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/GB/GB41",
+    "keyPoints": [
+      "足背，第四、第五跖骨底结合部前方，小趾伸肌腱外侧的凹陷处。",
+      "胆经输穴，也是八脉交会穴之一。名称中的“足”用于与头临泣区分。"
+    ]
+  },
+  {
+    "id": "point-ququan",
+    "type": "穴",
+    "title": "曲泉",
+    "subtitle": "LR8 · 足厥阴肝经腧穴",
+    "summary": "肝经合穴。它位于膝内侧偏后区域，区别于小腿内侧的阴陵泉。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LR8 位置条目",
+    "tags": [
+      "穴位",
+      "足厥阴肝经",
+      "LR8"
+    ],
+    "relations": [
+      "meridian-liver",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "曲泉（LR8）属于足厥阴肝经。\n\n定位线索：膝内侧，腘横纹内侧端，半腱肌与半膜肌肌腱内侧前缘的凹陷处。\n\n肝经合穴。它位于膝内侧偏后区域，区别于小腿内侧的阴陵泉。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LR/LR8",
+    "keyPoints": [
+      "膝内侧，腘横纹内侧端，半腱肌与半膜肌肌腱内侧前缘的凹陷处。",
+      "肝经合穴。它位于膝内侧偏后区域，区别于小腿内侧的阴陵泉。"
+    ]
+  },
+  {
+    "id": "point-qimen",
+    "type": "穴",
+    "title": "期门",
+    "subtitle": "LR14 · 足厥阴肝经腧穴",
+    "summary": "肝经胸部腧穴。应以肋间隙和正中线为线索，不能单凭乳房外形定位。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC LR14 位置条目",
+    "tags": [
+      "穴位",
+      "足厥阴肝经",
+      "LR14"
+    ],
+    "relations": [
+      "meridian-liver",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "期门（LR14）属于足厥阴肝经。\n\n定位线索：胸部，第六肋间隙，前正中线旁开四骨度分寸。\n\n肝经胸部腧穴。应以肋间隙和正中线为线索，不能单凭乳房外形定位。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/LR/LR14",
+    "keyPoints": [
+      "胸部，第六肋间隙，前正中线旁开四骨度分寸。",
+      "肝经胸部腧穴。应以肋间隙和正中线为线索，不能单凭乳房外形定位。"
+    ]
+  },
+  {
+    "id": "point-shenque",
+    "type": "穴",
+    "title": "神阙",
+    "subtitle": "CV8 · 任脉腧穴",
+    "summary": "任脉腹部腧穴。脐中央是腹部骨度分寸的重要参照，可联系中脘、气海和关元学习。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC CV8 位置条目",
+    "tags": [
+      "穴位",
+      "任脉",
+      "CV8"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "神阙（CV8）属于任脉。\n\n定位线索：腹部，脐中央，前正中线上。\n\n任脉腹部腧穴。脐中央是腹部骨度分寸的重要参照，可联系中脘、气海和关元学习。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/CV/CV8",
+    "keyPoints": [
+      "腹部，脐中央，前正中线上。",
+      "任脉腹部腧穴。脐中央是腹部骨度分寸的重要参照，可联系中脘、气海和关元学习。"
+    ]
+  },
+  {
+    "id": "point-tiantu",
+    "type": "穴",
+    "title": "天突",
+    "subtitle": "CV22 · 任脉腧穴",
+    "summary": "任脉颈前部腧穴。通过胸骨上窝这一体表标志认识颈与胸的交界。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC CV22 位置条目",
+    "tags": [
+      "穴位",
+      "任脉",
+      "CV22"
+    ],
+    "relations": [
+      "meridian-ren",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "天突（CV22）属于任脉。\n\n定位线索：颈前区，胸骨上窝中央，前正中线上。\n\n任脉颈前部腧穴。通过胸骨上窝这一体表标志认识颈与胸的交界。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/CV/CV22",
+    "keyPoints": [
+      "颈前区，胸骨上窝中央，前正中线上。",
+      "任脉颈前部腧穴。通过胸骨上窝这一体表标志认识颈与胸的交界。"
+    ]
+  },
+  {
+    "id": "point-mingmen",
+    "type": "穴",
+    "title": "命门",
+    "subtitle": "GV4 · 督脉腧穴",
+    "summary": "督脉腰部腧穴。可与两侧的肾俞比较，认识背部正中线与旁开腧穴的关系。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC GV4 位置条目",
+    "tags": [
+      "穴位",
+      "督脉",
+      "GV4"
+    ],
+    "relations": [
+      "meridian-du",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "命门（GV4）属于督脉。\n\n定位线索：腰部，第二腰椎棘突下凹陷中，后正中线上。\n\n督脉腰部腧穴。可与两侧的肾俞比较，认识背部正中线与旁开腧穴的关系。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/GV/GV4",
+    "keyPoints": [
+      "腰部，第二腰椎棘突下凹陷中，后正中线上。",
+      "督脉腰部腧穴。可与两侧的肾俞比较，认识背部正中线与旁开腧穴的关系。"
+    ]
+  },
+  {
+    "id": "point-dazhui",
+    "type": "穴",
+    "title": "大椎",
+    "subtitle": "GV14 · 督脉腧穴",
+    "summary": "督脉颈背交界处腧穴。椎体序数需结合体表标志辨认，三维模型仅作区域示意。",
+    "source": "WHO 西太平洋地区标准腧穴定位（2008）；KMCRIC GV14 位置条目",
+    "tags": [
+      "穴位",
+      "督脉",
+      "GV14"
+    ],
+    "relations": [
+      "meridian-du",
+      "theory-jingluo",
+      "classic-huangdi"
+    ],
+    "confidence": "标准定位/学习摘要",
+    "body": "大椎（GV14）属于督脉。\n\n定位线索：颈后区，第七颈椎棘突下凹陷中，后正中线上。\n\n督脉颈背交界处腧穴。椎体序数需结合体表标志辨认，三维模型仅作区域示意。\n\n骨度分寸是按身体比例划分的定位单位。三维位置用于空间学习，具体定位应结合体表标志与标准资料。\n\n位置参考：https://www.kmcric.com/database/acupoint/GV/GV14",
+    "keyPoints": [
+      "颈后区，第七颈椎棘突下凹陷中，后正中线上。",
+      "督脉颈背交界处腧穴。椎体序数需结合体表标志辨认，三维模型仅作区域示意。"
+    ]
   }
 ]

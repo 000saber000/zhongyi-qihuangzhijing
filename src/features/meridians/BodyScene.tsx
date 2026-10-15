@@ -6,6 +6,7 @@ import type {OrbitControls as OrbitControlsImpl} from 'three-stdlib';
 import {Group,Mesh,Vector3,Raycaster,SRGBColorSpace,ACESFilmicToneMapping} from 'three';
 import type {AcupointAnchor,ModelVariant,Selection} from './types';
 import {definitions} from './data';
+import {markerIsVisible} from './state';
 import AcupointGlow,{makeGlowTexture} from './AcupointGlow';
 import {Organs} from './AnatomyLayers';
 import {MeridianNetwork} from './MeridianNetwork';
@@ -22,13 +23,13 @@ export function loadBody(variant:ModelVariant):Promise<GLTF>{
   });cache.set(variant,promise);promise.catch(()=>{if(cache.get(variant)===promise)cache.delete(variant);});
  }return promise;
 }
-type Props={xray:boolean;showOrgans:boolean;showMeridians:boolean;bodyOpacity:number;pointNames:Record<string,string>;onOrganLoad:(ok:boolean)=>void;variant:ModelVariant;requestId:number;anchors:AcupointAnchor[];selection:Selection;view:View;viewVersion:number;showMarkers:boolean;cameraMode:'point'|'view';interactive:boolean;onSelect:(selection:Selection)=>void;onLoad:(id:number,ok:boolean)=>void;onLost:()=>void;onSettled:(key:string)=>void};
+type Props={visibleMeridians:string[];revealAllMarkers:boolean;xray:boolean;showOrgans:boolean;showMeridians:boolean;bodyOpacity:number;pointNames:Record<string,string>;onOrganLoad:(ok:boolean)=>void;variant:ModelVariant;requestId:number;anchors:AcupointAnchor[];selection:Selection;view:View;viewVersion:number;showMarkers:boolean;cameraMode:'point'|'view';interactive:boolean;onSelect:(selection:Selection)=>void;onLoad:(id:number,ok:boolean)=>void;onLost:()=>void;onSettled:(key:string)=>void};
 export default function BodyScene(props:Props){
  return <Canvas frameloop="demand" camera={{position:[0,.89,3],fov:45,near:.01,far:30}} dpr={[1,1.5]} gl={{antialias:true,alpha:true,powerPreference:'high-performance'}} onCreated={({gl})=>{gl.outputColorSpace=SRGBColorSpace;gl.toneMapping=ACESFilmicToneMapping;gl.toneMappingExposure=.94;}}>
   <World {...props}/>
  </Canvas>;
 }
-function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers,cameraMode,interactive,onSelect,onLoad,onLost,onSettled,xray,showOrgans,showMeridians,bodyOpacity,pointNames,onOrganLoad}:Props){
+function World({visibleMeridians,revealAllMarkers,variant,requestId,anchors,selection,view,viewVersion,showMarkers,cameraMode,interactive,onSelect,onLoad,onLost,onSettled,xray,showOrgans,showMeridians,bodyOpacity,pointNames,onOrganLoad}:Props){
  const [hovered,setHovered]=useState<string|null>(null);
  const glow=useMemo(makeGlowTexture,[]);useEffect(()=>()=>glow.dispose(),[glow]);
  const [loaded,setLoaded]=useState<{variant:ModelVariant;scene:Group}|null>(null);
@@ -62,7 +63,9 @@ function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers
  const meshes=useMemo(()=>{const result:Mesh[]=[];object?.traverse(o=>{if(o instanceof Mesh)result.push(o);});return result;},[object]);
  const raycaster=useMemo(()=>new Raycaster(),[]);
  const visible=(event:ThreeEvent<MouseEvent|PointerEvent>,anchor:AcupointAnchor)=>{
-  if(!interactive)return false;
+  const detail=definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.detailLevel==='detail';
+  const emphasized=revealAllMarkers||(selection?.knowledgeId===anchor.knowledgeId&&selection.side===anchor.side)||hovered===anchor.knowledgeId+':'+anchor.side;
+  if(!interactive||!showMarkers||!markerIsVisible(detail,camera.position.distanceTo(new Vector3(...anchor.position)),emphasized))return false;
   const normal=new Vector3().fromArray(anchor.outwardNormal),towardCamera=event.ray.origin.clone().sub(new Vector3().fromArray(anchor.position));
   if(normal.dot(towardCamera)<=0)return false;
   const markerKey=anchor.knowledgeId+':'+anchor.side,center=new Vector3().fromArray(anchor.position);
@@ -78,8 +81,8 @@ function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers
   <directionalLight position={[-2,3,3]} intensity={2} color="#f7ecd2"/><directionalLight position={[2,2,-2]} intensity={2.6} color="#7eb9a4"/><directionalLight position={[2,.6,2]} intensity={.7} color="#c7e3d5"/>
   {object&&<primitive object={object} onClick={(e:ThreeEvent<MouseEvent>)=>e.stopPropagation()}/>}
   {object&&xray&&showOrgans&&<Organs variant={loaded!.variant} onLoad={onOrganLoad}/>}
-  {object&&showMeridians&&<MeridianNetwork variant={loaded!.variant} texture={glow} activeMeridian={selection?definitions.find(d=>d.knowledgeId===selection.knowledgeId)?.meridianId??null:null}/>}
-  {object&&showMarkers&&anchors.map((anchor,index)=>{const key=anchor.knowledgeId+':'+anchor.side;return <AcupointGlow key={key} anchor={anchor} texture={glow} index={index} selected={anchor===activeAnchor} hovered={hovered===key} name={pointNames[anchor.knowledgeId]??''} code={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.referenceCode??''} onEnter={e=>enter(e,anchor)} onLeave={()=>setHovered(current=>current===key?null:current)} onChoose={e=>choose(e,anchor)}/>;})}
+  {object&&showMeridians&&<MeridianNetwork variant={loaded!.variant} texture={glow} visibleMeridians={visibleMeridians}/>}
+  {object&&showMarkers&&anchors.map((anchor,index)=>{const key=anchor.knowledgeId+':'+anchor.side;return <AcupointGlow key={key} anchor={anchor} texture={glow} index={index} detail={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.detailLevel==='detail'} revealAll={revealAllMarkers} selected={anchor===activeAnchor} hovered={hovered===key} name={pointNames[anchor.knowledgeId]??''} code={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.referenceCode??''} onEnter={e=>enter(e,anchor)} onLeave={()=>setHovered(current=>current===key?null:current)} onChoose={e=>choose(e,anchor)}/>;})}
   <AtlasStage/>
   <GentleMotion/>
   <OrbitControls ref={controls} makeDefault enableDamping dampingFactor={.09} enablePan minDistance={.18} maxDistance={6} minPolarAngle={.06} maxPolarAngle={Math.PI-.06} target={[0,.89,0]} onStart={()=>{flight.current=null;setHovered(null);}}/>

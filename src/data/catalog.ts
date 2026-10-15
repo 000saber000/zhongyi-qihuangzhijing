@@ -1,6 +1,6 @@
 import raw from './knowledge.json';
 export type Chapter={title:string;body:string};
-export type Knowledge = typeof raw[number] & {body?:string;chapters?:Chapter[];keyPoints?:string[]};
+export type Knowledge = Omit<typeof raw[number],'body'|'chapters'|'keyPoints'> & {body?:string;chapters?:Chapter[];keyPoints?:string[]};
 export const seedKnowledge:Knowledge[]=raw;
 export let knowledge:Knowledge[]=seedKnowledge;
 const listeners=new Set<()=>void>();

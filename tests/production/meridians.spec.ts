@@ -17,3 +17,25 @@ test('packaged paired models, point camera and three licenses work in both outpu
  for(const path of ['/licenses/mpfb-CC0.txt','/licenses/shiyun-MIT.txt','/licenses/react-bits.txt','/licenses/lux3d-models.txt']){const response=await request.get(path);expect(response.ok()).toBe(true);expect(response.headers()['content-type']).not.toContain('text/html');}
  await page.getByRole('button',{name:'展开穴位介绍'}).click();await page.getByRole('button',{name:'阅读完整穴位知识'}).click();await expect(page.getByRole('heading',{name:'足三里',exact:true})).toBeVisible();await expect(page.getByTestId('body-scene')).toHaveCount(0);
 });
+test('packaged expanded directory and contextual xray work on a phone',async({page})=>{
+ const items=JSON.parse(await readFile(new URL('../../src/data/knowledge.json',import.meta.url),'utf8'));
+ await page.route('**/api/knowledge',route=>route.fulfill({json:{items}}));
+ await page.goto('/#meridians');const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-status','ready');
+ await page.getByRole('switch',{name:'人体透视'}).click();await expect(page.locator('.network-context')).toContainText('经脉预览');
+ await page.getByRole('button',{name:'展开穴位目录'}).click();
+ await expect(page.getByRole('combobox',{name:'筛选经脉'}).locator('option')).toHaveCount(16);
+ await page.getByRole('searchbox',{name:'搜索穴位'}).fill('LU7');
+ await page.getByRole('button',{name:'选择 列缺 LU7',exact:true}).click();await expect(scene).toHaveAttribute('data-focus','point-lieque:left');
+ await expect(page.locator('.network-context')).toHaveText('当前经脉：手太阴肺经');
+ await page.getByRole('button',{name:'展开穴位介绍'}).click();
+ await expect(page.getByTestId('point-panel')).toContainText('肱桡肌腱');
+ await page.getByRole('button',{name:'阅读完整穴位知识'}).scrollIntoViewIfNeeded();await page.getByRole('button',{name:'阅读完整穴位知识'}).click();
+ await expect(page.getByRole('heading',{name:'列缺',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'开始阅读',exact:true}).click();
+ await expect(page.getByText(/定位线索：前臂桡侧/)).toBeVisible();
+ await page.goto('/#library');
+ const art=page.getByRole('button',{name:'阅读 中府',exact:true}).locator('[data-image-id="point-zhongfu"]');
+ await expect(art).toBeVisible();
+ const src=await art.getAttribute('data-image-src');
+ expect(await page.evaluate(async src=>{const image=new Image();image.src=src!;await image.decode();return image.naturalWidth===1400&&image.naturalHeight===2240;},src)).toBe(true);
+});

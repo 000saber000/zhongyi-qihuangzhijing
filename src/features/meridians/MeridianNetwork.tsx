@@ -5,14 +5,14 @@ import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {paths} from './data';
 import type {ModelVariant} from './types';
 
-export function MeridianNetwork({variant,activeMeridian,texture}:{variant:ModelVariant;activeMeridian:string|null;texture:CanvasTexture}){
+export function MeridianNetwork({variant,visibleMeridians,texture}:{variant:ModelVariant;visibleMeridians:readonly string[];texture:CanvasTexture}){
  const data=useMemo(()=>{
   const primary:BufferGeometry[]=[],secondary:BufferGeometry[]=[],halos:BufferGeometry[]=[];
   const streams:{curve:CatmullRomCurve3;phase:number;color:Color}[]=[];
-  for(const path of paths.filter(p=>p.variant===variant)){
-   const fine=path.role==='secondary',dim=activeMeridian&&path.meridianId!==activeMeridian;
+  for(const path of paths.filter(p=>p.variant===variant&&visibleMeridians.includes(p.meridianId))){
+   const fine=path.role==='secondary';
    const curve=new CatmullRomCurve3(path.points.map(p=>new Vector3(...p)),false,'centripetal');
-   const color=new Color(path.color).multiplyScalar(dim?.24:1);
+   const color=new Color(path.color);
    const steps=Math.min(700,Math.max(8,path.points.length));
    const tube=(radius:number,isHalo=false)=>{
     const geometry=new TubeGeometry(curve,steps,radius,5,false);
@@ -27,7 +27,7 @@ export function MeridianNetwork({variant,activeMeridian,texture}:{variant:ModelV
    tube(fine?.00055:.00125);
    if(!fine){
     tube(.0042,true);
-    if(!dim)streams.push({curve,phase:streams.length*.37,color});
+    streams.push({curve,phase:streams.length*.37,color});
    }
   }
   const merge=(items:BufferGeometry[])=>{
@@ -37,7 +37,7 @@ export function MeridianNetwork({variant,activeMeridian,texture}:{variant:ModelV
   const moving=new BufferGeometry().setAttribute('position',new Float32BufferAttribute(new Float32Array(streams.length*6),3));
   moving.setAttribute('color',new Float32BufferAttribute(streams.flatMap(({color})=>[color.r,color.g,color.b,color.r,color.g,color.b]),3));
   return {primary:merge(primary),secondary:merge(secondary),halo:merge(halos),moving,streams};
- },[variant,activeMeridian]);
+ },[variant,visibleMeridians]);
  useEffect(()=>()=>{data.primary.dispose();data.secondary.dispose();data.halo.dispose();data.moving.dispose();},[data]);
  useFrame(({clock})=>{
   const position=data.moving.getAttribute('position');
