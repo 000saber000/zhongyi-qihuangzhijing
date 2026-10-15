@@ -1,18 +1,18 @@
 [
   {
     "knowledgeId": "point-zusanli",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.189623,
-      0.424458,
-      0.054684
+      0.152491,
+      0.446784,
+      0.01343
     ],
     "outwardNormal": [
-      0.348228,
-      -0.060584,
-      0.93545
+      0.171462,
+      0.088647,
+      0.981194
     ],
     "viewDirection": [
       0.0,
@@ -28,18 +28,18 @@
   },
   {
     "knowledgeId": "point-zusanli",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.189623,
-      0.424458,
-      0.054684
+      -0.152519,
+      0.446789,
+      0.013521
     ],
     "outwardNormal": [
-      -0.348227,
-      -0.060584,
-      0.93545
+      -0.182457,
+      0.090509,
+      0.979039
     ],
     "viewDirection": [
       0.0,
@@ -55,18 +55,18 @@
   },
   {
     "knowledgeId": "point-baihui",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      9.7e-05,
-      1.780289,
-      0.034527
+      0.00085,
+      1.776796,
+      -9.8e-05
     ],
     "outwardNormal": [
-      0.038987,
-      0.992124,
-      -0.119038
+      0.340177,
+      0.940081,
+      0.022969
     ],
     "viewDirection": [
       0.0,
@@ -82,18 +82,18 @@
   },
   {
     "knowledgeId": "point-yintang",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.00012,
-      1.659825,
-      0.153485
+      0.000179,
+      1.646257,
+      0.128096
     ],
     "outwardNormal": [
-      0.04789,
-      0.090256,
-      0.994767
+      0.071512,
+      0.502844,
+      0.861414
     ],
     "viewDirection": [
       0.0,
@@ -109,18 +109,18 @@
   },
   {
     "knowledgeId": "point-fengchi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.048166,
-      1.564515,
-      -0.004075
+      0.056866,
+      1.543592,
+      -0.070316
     ],
     "outwardNormal": [
-      0.713163,
-      0.205948,
-      -0.670063
+      0.594363,
+      0.668825,
+      -0.446549
     ],
     "viewDirection": [
       0.14762036502361298,
@@ -136,18 +136,18 @@
   },
   {
     "knowledgeId": "point-fengchi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.048201,
-      1.564477,
-      -0.004001
+      -0.056769,
+      1.54342,
+      -0.069355
     ],
     "outwardNormal": [
-      -0.729251,
-      0.192303,
-      -0.656667
+      -0.615488,
+      0.639951,
+      -0.460041
     ],
     "viewDirection": [
       -0.14762036502361298,
@@ -163,18 +163,18 @@
   },
   {
     "knowledgeId": "point-jianjing",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.106561,
-      1.4995,
-      -0.011956
+      0.11368,
+      1.49045,
+      -0.02459
     ],
     "outwardNormal": [
-      0.355359,
-      0.909106,
-      -0.21736
+      0.372176,
+      0.674849,
+      0.637231
     ],
     "viewDirection": [
       0.0,
@@ -190,18 +190,18 @@
   },
   {
     "knowledgeId": "point-jianjing",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.106561,
-      1.4995,
-      -0.011956
+      -0.113697,
+      1.490936,
+      -0.024762
     ],
     "outwardNormal": [
-      -0.355366,
-      0.909104,
-      -0.217358
+      -0.378706,
+      0.703564,
+      0.601315
     ],
     "viewDirection": [
       0.0,
@@ -217,18 +217,18 @@
   },
   {
     "knowledgeId": "point-quchi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.322304,
-      1.165224,
-      0.047464
+      0.327675,
+      1.131262,
+      0.001948
     ],
     "outwardNormal": [
-      0.920896,
-      0.387381,
-      -0.04343
+      0.763736,
+      0.504853,
+      0.402281
     ],
     "viewDirection": [
       0.7592566013336182,
@@ -244,18 +244,18 @@
   },
   {
     "knowledgeId": "point-quchi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.322304,
-      1.165225,
-      0.047464
+      -0.327681,
+      1.131278,
+      0.002063
     ],
     "outwardNormal": [
-      -0.920752,
-      0.38771,
-      -0.043541
+      -0.744366,
+      0.511233,
+      0.429606
     ],
     "viewDirection": [
       -0.7592566013336182,
@@ -271,18 +271,18 @@
   },
   {
     "knowledgeId": "point-hegu",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.369206,
-      0.995257,
-      0.249821
+      0.349254,
+      0.770599,
+      0.010207
     ],
     "outwardNormal": [
-      0.731421,
-      0.637617,
-      0.241801
+      -0.440055,
+      0.340203,
+      -0.831032
     ],
     "viewDirection": [
       0.0,
@@ -298,18 +298,18 @@
   },
   {
     "knowledgeId": "point-hegu",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.369216,
-      0.995246,
-      0.249823
+      -0.353098,
+      0.770233,
+      0.008922
     ],
     "outwardNormal": [
-      -0.735182,
-      0.632894,
-      0.242804
+      0.297277,
+      0.193686,
+      -0.93494
     ],
     "viewDirection": [
       0.0,
@@ -325,18 +325,18 @@
   },
   {
     "knowledgeId": "point-neiguan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.341722,
-      1.022438,
-      0.212526
+      0.354646,
+      0.896909,
+      0.075538
     ],
     "outwardNormal": [
-      -0.426089,
-      0.55763,
-      0.712389
+      -0.00841,
+      0.096789,
+      0.995269
     ],
     "viewDirection": [
       0.0,
@@ -352,18 +352,18 @@
   },
   {
     "knowledgeId": "point-neiguan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.341728,
-      1.022437,
-      0.21247
+      -0.354705,
+      0.897313,
+      0.075504
     ],
     "outwardNormal": [
-      0.423892,
-      0.55711,
-      0.714104
+      -0.015396,
+      0.258562,
+      0.965872
     ],
     "viewDirection": [
       0.0,
@@ -379,18 +379,18 @@
   },
   {
     "knowledgeId": "point-waiguan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.343348,
-      1.019168,
-      0.129617
+      0.352715,
+      0.896392,
+      0.002195
     ],
     "outwardNormal": [
-      0.224288,
-      -0.750331,
-      -0.621851
+      -0.780862,
+      -0.109695,
+      -0.614997
     ],
     "viewDirection": [
       0.0,
@@ -406,18 +406,18 @@
   },
   {
     "knowledgeId": "point-waiguan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.343348,
-      1.019168,
-      0.129618
+      -0.352728,
+      0.896274,
+      0.001762
     ],
     "outwardNormal": [
-      -0.224298,
-      -0.750329,
-      -0.621849
+      0.775472,
+      -0.157119,
+      -0.61152
     ],
     "viewDirection": [
       0.0,
@@ -433,18 +433,18 @@
   },
   {
     "knowledgeId": "point-shenmen",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.367549,
-      0.994076,
-      0.256579
+      0.382166,
+      0.850756,
+      0.073658
     ],
     "outwardNormal": [
-      0.665469,
-      0.669672,
-      0.329683
+      0.86642,
+      0.302347,
+      0.397369
     ],
     "viewDirection": [
       0.0,
@@ -460,18 +460,18 @@
   },
   {
     "knowledgeId": "point-shenmen",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.367543,
-      0.994083,
-      0.256629
+      -0.382147,
+      0.850907,
+      0.07402
     ],
     "outwardNormal": [
-      -0.663216,
-      0.672537,
-      0.328387
+      -0.858759,
+      0.362927,
+      0.361687
     ],
     "viewDirection": [
       0.0,
@@ -487,18 +487,18 @@
   },
   {
     "knowledgeId": "point-shanzhong",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.000222,
-      1.312085,
-      0.129169
+      7.9e-05,
+      1.311532,
+      0.098903
     ],
     "outwardNormal": [
-      0.08864,
-      0.090011,
-      0.991988
+      0.03148,
+      -0.130988,
+      0.990884
     ],
     "viewDirection": [
       0.0,
@@ -514,18 +514,18 @@
   },
   {
     "knowledgeId": "point-zhongwan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.000117,
-      1.165611,
-      0.129499
+      4e-05,
+      1.165672,
+      0.11249
     ],
     "outwardNormal": [
-      -0.046647,
-      -0.115555,
-      0.992205
+      0.015956,
+      -0.091118,
+      0.995712
     ],
     "viewDirection": [
       0.0,
@@ -541,18 +541,18 @@
   },
   {
     "knowledgeId": "point-guanyuan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -3e-06,
-      0.925078,
-      0.119388
+      -2.2e-05,
+      0.925834,
+      0.112599
     ],
     "outwardNormal": [
-      -0.00114,
-      -0.208951,
-      0.977925
+      -0.008818,
+      0.093523,
+      0.995578
     ],
     "viewDirection": [
       0.0,
@@ -568,18 +568,18 @@
   },
   {
     "knowledgeId": "point-qihai",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "midline",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -4.6e-05,
-      0.987624,
-      0.129569
+      -9e-05,
+      0.987971,
+      0.11249
     ],
     "outwardNormal": [
-      -0.018569,
-      -0.11022,
-      0.993734
+      -0.036036,
+      0.028317,
+      0.998949
     ],
     "viewDirection": [
       0.0,
@@ -595,18 +595,18 @@
   },
   {
     "knowledgeId": "point-yanglingquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.208193,
-      0.451195,
-      0.037711
+      0.181862,
+      0.475469,
+      -0.010522
     ],
     "outwardNormal": [
-      0.816359,
-      0.17483,
-      0.550447
+      0.901806,
+      0.187503,
+      0.389344
     ],
     "viewDirection": [
       0.847998321056366,
@@ -622,18 +622,18 @@
   },
   {
     "knowledgeId": "point-yanglingquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.208193,
-      0.451195,
-      0.037711
+      -0.182581,
+      0.475473,
+      -0.010194
     ],
     "outwardNormal": [
-      -0.81636,
-      0.174831,
-      0.550445
+      -0.917222,
+      0.189361,
+      0.350493
     ],
     "viewDirection": [
       -0.847998321056366,
@@ -649,18 +649,18 @@
   },
   {
     "knowledgeId": "point-yinlingquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.11214,
-      0.479764,
-      0.027425
+      0.063651,
+      0.503925,
+      -0.023636
     ],
     "outwardNormal": [
-      -0.831948,
-      -0.397716,
-      0.38689
+      -0.902533,
+      -0.430152,
+      0.020103
     ],
     "viewDirection": [
       -0.3805330693721771,
@@ -676,18 +676,18 @@
   },
   {
     "knowledgeId": "point-yinlingquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.11214,
-      0.479764,
-      0.027425
+      -0.064379,
+      0.503946,
+      -0.023406
     ],
     "outwardNormal": [
-      0.831949,
-      -0.397716,
-      0.386889
+      0.893449,
+      -0.421786,
+      0.154418
     ],
     "viewDirection": [
       0.3805330693721771,
@@ -703,18 +703,18 @@
   },
   {
     "knowledgeId": "point-sanyinjiao",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.166922,
-      0.172175,
-      0.014231
+      0.126273,
+      0.18763,
+      -0.028745
     ],
     "outwardNormal": [
-      -0.941815,
-      -0.265971,
-      0.205532
+      -0.864458,
+      -0.02476,
+      0.502094
     ],
     "viewDirection": [
       -0.3805330693721771,
@@ -730,18 +730,18 @@
   },
   {
     "knowledgeId": "point-sanyinjiao",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.167073,
-      0.172238,
-      0.014359
+      -0.126513,
+      0.187648,
+      -0.02886
     ],
     "outwardNormal": [
-      0.936113,
-      -0.240423,
-      0.25669
+      0.889897,
+      -0.017733,
+      0.455817
     ],
     "viewDirection": [
       0.3805330693721771,
@@ -757,18 +757,18 @@
   },
   {
     "knowledgeId": "point-taichong",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.189418,
-      0.059837,
-      0.10755
+      0.144215,
+      0.073317,
+      0.076813
     ],
     "outwardNormal": [
-      0.02,
-      0.86674,
-      0.49836
+      0.28593,
+      0.840648,
+      0.459951
     ],
     "viewDirection": [
       0.0,
@@ -784,18 +784,18 @@
   },
   {
     "knowledgeId": "point-taichong",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.189451,
-      0.059899,
-      0.107454
+      -0.144282,
+      0.073419,
+      0.076828
     ],
     "outwardNormal": [
-      -0.033073,
-      0.887707,
-      0.459218
+      -0.312622,
+      0.833,
+      0.456485
     ],
     "viewDirection": [
       0.0,
@@ -811,18 +811,18 @@
   },
   {
     "knowledgeId": "point-yongquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.203426,
-      0.004237,
-      0.153859
+      0.150066,
+      -0.001959,
+      0.076048
     ],
     "outwardNormal": [
-      0.062997,
-      -0.894925,
-      0.441747
+      0.026261,
+      -0.997277,
+      -0.068907
     ],
     "viewDirection": [
       0.0,
@@ -838,18 +838,18 @@
   },
   {
     "knowledgeId": "point-yongquan",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.203427,
-      0.004237,
-      0.153859
+      -0.150185,
+      -0.002222,
+      0.076411
     ],
     "outwardNormal": [
-      -0.063175,
-      -0.89492,
-      0.441731
+      -0.073836,
+      -0.995436,
+      0.060459
     ],
     "viewDirection": [
       0.0,
@@ -865,23 +865,23 @@
   },
   {
     "knowledgeId": "point-taixi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "left",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      0.17665,
-      0.073147,
-      -0.016908
+      0.106708,
+      0.084309,
+      -0.060123
     ],
     "outwardNormal": [
-      -0.915378,
-      0.073249,
-      -0.395876
+      -0.871745,
+      -0.276206,
+      -0.404686
     ],
     "viewDirection": [
-      -0.9950371384620667,
-      0.0,
-      -0.09950371831655502
+      -0.5889855623245239,
+      0.029588991776108742,
+      0.8076016902923584
     ],
     "viewDistance": 0.38,
     "review": {
@@ -892,23 +892,23 @@
   },
   {
     "knowledgeId": "point-taixi",
-    "modelId": "adult-male-v2",
+    "modelId": "adult-male-v3",
     "side": "right",
-    "modelSha256": "60ddca83eebca629e323f013f179ee7bcd4508214c7587382aee9baa3e116ddd",
+    "modelSha256": "6130b5fe5de2a6627721e6d49e5ad331ac632847a2a75b7f28330ef57bdcb552",
     "position": [
-      -0.176608,
-      0.07318,
-      -0.016922
+      -0.106288,
+      0.084416,
+      -0.05943
     ],
     "outwardNormal": [
-      0.912635,
-      0.086266,
-      -0.399568
+      0.964934,
+      -0.233455,
+      -0.120002
     ],
     "viewDirection": [
-      0.9950371384620667,
-      0.0,
-      -0.09950371831655502
+      0.3805330693721771,
+      0.08011222630739212,
+      0.9212906360626221
     ],
     "viewDistance": 0.38,
     "review": {
@@ -919,18 +919,18 @@
   },
   {
     "knowledgeId": "point-zusanli",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.171544,
-      0.401309,
-      0.082115
+      0.146887,
+      0.438079,
+      0.001533
     ],
     "outwardNormal": [
-      0.115475,
-      0.004251,
-      0.993301
+      0.663469,
+      -0.021246,
+      0.747902
     ],
     "viewDirection": [
       0.0,
@@ -946,18 +946,18 @@
   },
   {
     "knowledgeId": "point-zusanli",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.171544,
-      0.401309,
-      0.082115
+      -0.146703,
+      0.438237,
+      0.001554
     ],
     "outwardNormal": [
-      -0.115476,
-      0.004251,
-      0.993301
+      -0.589835,
+      0.042106,
+      0.806425
     ],
     "viewDirection": [
       0.0,
@@ -973,18 +973,18 @@
   },
   {
     "knowledgeId": "point-baihui",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.000106,
-      1.700266,
-      0.040148
+      -5.5e-05,
+      1.697466,
+      0.000156
     ],
     "outwardNormal": [
-      0.042464,
-      0.992969,
-      -0.110494
+      -0.021844,
+      0.994403,
+      0.103372
     ],
     "viewDirection": [
       0.0,
@@ -1000,18 +1000,18 @@
   },
   {
     "knowledgeId": "point-yintang",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -5.8e-05,
-      1.591026,
-      0.147263
+      -0.000182,
+      1.572627,
+      0.11636
     ],
     "outwardNormal": [
-      -0.023384,
-      -0.111971,
-      0.993436
+      -0.072982,
+      0.623645,
+      0.778293
     ],
     "viewDirection": [
       0.0,
@@ -1027,18 +1027,18 @@
   },
   {
     "knowledgeId": "point-fengchi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.043696,
-      1.480858,
-      0.006163
+      0.053114,
+      1.471883,
+      -0.055816
     ],
     "outwardNormal": [
-      0.824354,
-      0.316205,
-      -0.469527
+      0.793066,
+      0.174452,
+      -0.58362
     ],
     "viewDirection": [
       0.14762036502361298,
@@ -1054,18 +1054,18 @@
   },
   {
     "knowledgeId": "point-fengchi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.0437,
-      1.480864,
-      0.00615
+      -0.053148,
+      1.471904,
+      -0.055139
     ],
     "outwardNormal": [
-      -0.825123,
-      0.317877,
-      -0.467039
+      -0.836114,
+      0.202623,
+      -0.509763
     ],
     "viewDirection": [
       -0.14762036502361298,
@@ -1081,18 +1081,18 @@
   },
   {
     "knowledgeId": "point-jianjing",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.091344,
-      1.43068,
-      -0.009207
+      0.103681,
+      1.418712,
+      -0.022602
     ],
     "outwardNormal": [
-      0.484774,
-      0.850371,
-      0.204607
+      0.500533,
+      0.64094,
+      0.581947
     ],
     "viewDirection": [
       0.0,
@@ -1108,18 +1108,18 @@
   },
   {
     "knowledgeId": "point-jianjing",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.091344,
-      1.43068,
-      -0.009207
+      -0.10361,
+      1.419016,
+      -0.02259
     ],
     "outwardNormal": [
-      -0.48478,
-      0.850368,
-      0.204605
+      -0.47221,
+      0.633795,
+      0.612635
     ],
     "viewDirection": [
       0.0,
@@ -1135,18 +1135,18 @@
   },
   {
     "knowledgeId": "point-quchi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.286306,
-      1.116812,
-      0.055267
+      0.260522,
+      1.118875,
+      -0.00747
     ],
     "outwardNormal": [
-      0.862347,
-      0.484044,
-      0.148521
+      0.653894,
+      0.583532,
+      0.481574
     ],
     "viewDirection": [
       0.7592566013336182,
@@ -1162,18 +1162,18 @@
   },
   {
     "knowledgeId": "point-quchi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.286307,
-      1.116812,
-      0.055267
+      -0.260357,
+      1.118934,
+      -0.007578
     ],
     "outwardNormal": [
-      -0.862452,
-      0.483965,
-      0.148171
+      -0.634395,
+      0.607134,
+      0.478468
     ],
     "viewDirection": [
       -0.7592566013336182,
@@ -1189,18 +1189,18 @@
   },
   {
     "knowledgeId": "point-hegu",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.322001,
-      0.956941,
-      0.202317
+      0.295662,
+      0.860394,
+      -0.017741
     ],
     "outwardNormal": [
-      0.683315,
-      0.629333,
-      0.370164
+      -0.162284,
+      0.268187,
+      -0.9496
     ],
     "viewDirection": [
       0.0,
@@ -1216,18 +1216,18 @@
   },
   {
     "knowledgeId": "point-hegu",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.321955,
-      0.957004,
-      0.202309
+      -0.295748,
+      0.86049,
+      -0.017895
     ],
     "outwardNormal": [
-      -0.664688,
-      0.649106,
-      0.369934
+      0.127919,
+      0.219367,
+      -0.96722
     ],
     "viewDirection": [
       0.0,
@@ -1243,18 +1243,18 @@
   },
   {
     "knowledgeId": "point-neiguan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.300848,
-      0.981229,
-      0.176813
+      0.289873,
+      0.907074,
+      0.03799
     ],
     "outwardNormal": [
-      -0.310433,
-      0.519322,
-      0.796201
+      -0.249329,
+      0.226771,
+      0.941493
     ],
     "viewDirection": [
       0.0,
@@ -1270,18 +1270,18 @@
   },
   {
     "knowledgeId": "point-neiguan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.3008,
-      0.981224,
-      0.176742
+      -0.290038,
+      0.907106,
+      0.038133
     ],
     "outwardNormal": [
-      0.329524,
-      0.517079,
-      0.789964
+      0.183159,
+      0.239388,
+      0.953492
     ],
     "viewDirection": [
       0.0,
@@ -1297,18 +1297,18 @@
   },
   {
     "knowledgeId": "point-waiguan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.302076,
-      0.978144,
-      0.10835
+      0.290539,
+      0.905697,
+      -0.028029
     ],
     "outwardNormal": [
-      0.180693,
-      -0.715032,
-      -0.675336
+      0.016956,
+      -0.324026,
+      -0.945896
     ],
     "viewDirection": [
       0.0,
@@ -1324,18 +1324,18 @@
   },
   {
     "knowledgeId": "point-waiguan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.302076,
-      0.978144,
-      0.10835
+      -0.290641,
+      0.905585,
+      -0.027581
     ],
     "outwardNormal": [
-      -0.180701,
-      -0.71503,
-      -0.675337
+      -0.057744,
+      -0.36899,
+      -0.927638
     ],
     "viewDirection": [
       0.0,
@@ -1351,18 +1351,18 @@
   },
   {
     "knowledgeId": "point-shenmen",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.322949,
-      0.95437,
-      0.204938
+      0.314385,
+      0.865536,
+      0.052049
     ],
     "outwardNormal": [
-      0.683315,
-      0.629333,
-      0.370164
+      0.450667,
+      0.483975,
+      0.750112
     ],
     "viewDirection": [
       0.0,
@@ -1378,18 +1378,18 @@
   },
   {
     "knowledgeId": "point-shenmen",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.323085,
-      0.954247,
-      0.204986
+      -0.314246,
+      0.865616,
+      0.052207
     ],
     "outwardNormal": [
-      -0.737614,
-      0.580107,
-      0.345544
+      -0.395033,
+      0.516098,
+      0.759994
     ],
     "viewDirection": [
       0.0,
@@ -1405,18 +1405,18 @@
   },
   {
     "knowledgeId": "point-shanzhong",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      8.5e-05,
-      1.253389,
-      0.148415
+      -3.4e-05,
+      1.25291,
+      0.113384
     ],
     "outwardNormal": [
-      0.033977,
-      0.195756,
-      0.980064
+      -0.013563,
+      0.004066,
+      0.9999
     ],
     "viewDirection": [
       0.0,
@@ -1432,18 +1432,18 @@
   },
   {
     "knowledgeId": "point-zhongwan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -6.2e-05,
-      1.113402,
-      0.155603
+      -5.1e-05,
+      1.112991,
+      0.095208
     ],
     "outwardNormal": [
-      -0.024963,
-      -0.038984,
-      0.998928
+      -0.0202,
+      -0.203541,
+      0.978858
     ],
     "viewDirection": [
       0.0,
@@ -1459,18 +1459,18 @@
   },
   {
     "knowledgeId": "point-guanyuan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -4e-06,
-      0.883397,
-      0.132018
+      1.6e-05,
+      0.883167,
+      0.071673
     ],
     "outwardNormal": [
-      -0.001621,
-      -0.241215,
-      0.97047
+      0.006269,
+      -0.33319,
+      0.942839
     ],
     "viewDirection": [
       0.0,
@@ -1486,18 +1486,18 @@
   },
   {
     "knowledgeId": "point-qihai",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "midline",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -2e-06,
-      0.942847,
-      0.146165
+      9.4e-05,
+      0.942778,
+      0.090381
     ],
     "outwardNormal": [
-      -0.000927,
-      -0.261243,
-      0.965272
+      0.03743,
+      -0.288623,
+      0.956711
     ],
     "viewDirection": [
       0.0,
@@ -1513,18 +1513,18 @@
   },
   {
     "knowledgeId": "point-yanglingquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.195394,
-      0.424875,
-      0.068616
+      0.162712,
+      0.468304,
+      -0.015759
     ],
     "outwardNormal": [
-      0.799387,
-      0.135082,
-      0.585434
+      0.681821,
+      0.130423,
+      0.719799
     ],
     "viewDirection": [
       0.847998321056366,
@@ -1540,18 +1540,18 @@
   },
   {
     "knowledgeId": "point-yanglingquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.195394,
-      0.424875,
-      0.068616
+      -0.162927,
+      0.468345,
+      -0.015528
     ],
     "outwardNormal": [
-      -0.799387,
-      0.135082,
-      0.585435
+      -0.654512,
+      0.146964,
+      0.741631
     ],
     "viewDirection": [
       -0.847998321056366,
@@ -1567,18 +1567,18 @@
   },
   {
     "knowledgeId": "point-yinlingquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.092644,
-      0.452097,
-      0.057107
+      0.062597,
+      0.496233,
+      -0.02123
     ],
     "outwardNormal": [
-      -0.862891,
-      -0.436789,
-      0.254233
+      -0.745476,
+      -0.158364,
+      0.647446
     ],
     "viewDirection": [
       -0.3805330693721771,
@@ -1594,18 +1594,18 @@
   },
   {
     "knowledgeId": "point-yinlingquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.092644,
-      0.452097,
-      0.057107
+      -0.062844,
+      0.496199,
+      -0.021203
     ],
     "outwardNormal": [
-      0.862891,
-      -0.436788,
-      0.254233
+      0.722269,
+      -0.17218,
+      0.669837
     ],
     "viewDirection": [
       0.3805330693721771,
@@ -1621,18 +1621,18 @@
   },
   {
     "knowledgeId": "point-sanyinjiao",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.147142,
-      0.165794,
-      0.037766
+      0.126045,
+      0.182502,
+      -0.026826
     ],
     "outwardNormal": [
-      -0.963599,
-      -0.172728,
-      0.204064
+      -0.682574,
+      -0.024183,
+      0.730416
     ],
     "viewDirection": [
       -0.3805330693721771,
@@ -1648,18 +1648,18 @@
   },
   {
     "knowledgeId": "point-sanyinjiao",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.147118,
-      0.165773,
-      0.037809
+      -0.125918,
+      0.182462,
+      -0.026877
     ],
     "outwardNormal": [
-      0.958271,
-      -0.181125,
-      0.221158
+      0.703264,
+      -0.040217,
+      0.709791
     ],
     "viewDirection": [
       0.3805330693721771,
@@ -1675,18 +1675,18 @@
   },
   {
     "knowledgeId": "point-taichong",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.165059,
-      0.052819,
-      0.121317
+      0.136839,
+      0.061112,
+      0.071981
     ],
     "outwardNormal": [
-      -0.243792,
-      0.871303,
-      0.425907
+      -0.084698,
+      0.796295,
+      0.598949
     ],
     "viewDirection": [
       0.0,
@@ -1702,18 +1702,18 @@
   },
   {
     "knowledgeId": "point-taichong",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.165059,
-      0.052819,
-      0.121317
+      -0.135937,
+      0.061135,
+      0.071439
     ],
     "outwardNormal": [
-      0.243796,
-      0.871302,
-      0.425906
+      0.445373,
+      0.809332,
+      0.382915
     ],
     "viewDirection": [
       0.0,
@@ -1729,18 +1729,18 @@
   },
   {
     "knowledgeId": "point-yongquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.18138,
-      0.003354,
-      0.163554
+      0.14317,
+      -0.001688,
+      0.073539
     ],
     "outwardNormal": [
-      0.138664,
-      -0.989965,
-      -0.027241
+      -0.035487,
+      -0.950526,
+      0.308611
     ],
     "viewDirection": [
       0.0,
@@ -1756,18 +1756,18 @@
   },
   {
     "knowledgeId": "point-yongquan",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.181378,
-      0.003354,
-      0.163577
+      -0.143211,
+      -0.001071,
+      0.073036
     ],
     "outwardNormal": [
-      -0.13773,
-      -0.990312,
-      -0.017692
+      0.01887,
+      -0.9885,
+      0.150039
     ],
     "viewDirection": [
       0.0,
@@ -1783,23 +1783,23 @@
   },
   {
     "knowledgeId": "point-taixi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "left",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      0.1631,
-      0.072613,
-      0.006649
+      0.108118,
+      0.079979,
+      -0.056851
     ],
     "outwardNormal": [
-      -0.752222,
-      -0.144207,
-      -0.642936
+      -0.779791,
+      -0.480342,
+      -0.401494
     ],
     "viewDirection": [
-      -0.9950371384620667,
-      0.0,
-      -0.09950371831655502
+      -0.3620181977748871,
+      -0.07443881034851074,
+      -0.9291941523551941
     ],
     "viewDistance": 0.38,
     "review": {
@@ -1810,23 +1810,23 @@
   },
   {
     "knowledgeId": "point-taixi",
-    "modelId": "adult-female-v2",
+    "modelId": "adult-female-v3",
     "side": "right",
-    "modelSha256": "b0bb5fbd65fa1f90924ac4b419db979413abcce88c811c0f308c7e3116244c78",
+    "modelSha256": "e1bf87c25648f652ee2c81a88fa36a15e4a0cdcd7b2fcb890c6cc4e9753372ce",
     "position": [
-      -0.162932,
-      0.072628,
-      0.006865
+      -0.108371,
+      0.080162,
+      -0.056533
     ],
     "outwardNormal": [
-      0.819195,
-      -0.138375,
-      -0.556572
+      0.865113,
+      -0.407171,
+      -0.292902
     ],
     "viewDirection": [
-      0.9950371384620667,
-      0.0,
-      -0.09950371831655502
+      0.5510693192481995,
+      -0.05552714690566063,
+      0.8326098918914795
     ],
     "viewDistance": 0.38,
     "review": {
