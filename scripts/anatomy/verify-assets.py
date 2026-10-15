@@ -33,7 +33,7 @@ def verify_folder(folder):
  manifest=json.loads((folder/'models.manifest.json').read_text())
  for variant in ['male','female']:
   m=manifest[variant];p=folder/m['sourceFile']
-  results[variant]=inspect_glb(p,320000,14000000) if m['id'].endswith('-v3') else inspect_glb(p)
+  results[variant]=inspect_glb(p,320000,14000000) if m['id'].endswith(('-v3','-v4')) else inspect_glb(p)
   if not 1.4<results[variant]['height']<2.1:raise ValueError(f'{variant}: incorrect metre/Y-up convention')
   if abs(results[variant]['min'][1])>.02:raise ValueError(f'{variant}: feet are not at origin')
   for view in ['front','side','back']:

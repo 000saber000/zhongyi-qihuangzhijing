@@ -44,7 +44,7 @@ for variant,m in manifest.items():
    direction.normalize();origin=blender(seed+direction*ray_offset);ray=blender(-direction)
    position,normal,idx,length=tree.ray_cast(origin,ray,ray_offset*2)
    local_projection=False
-   if position is None and m['id'].endswith('-v3'):
+   if position is None and m['id'].endswith(('-v3','-v4')):
     # Generated hands need not share the planar palm orientation of the old
     # procedural body. A bounded local surface search handles that difference
     # without stretching a ray onto a remote limb or inventing a coordinate.

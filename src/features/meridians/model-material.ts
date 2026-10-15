@@ -4,7 +4,7 @@ import {Material,MeshPhysicalMaterial,MeshStandardMaterial} from 'three';
 export function createJadeMaterial(source:Material):MeshPhysicalMaterial{
  const original=source instanceof MeshStandardMaterial?source:null;
  const material=new MeshPhysicalMaterial({
-  color:original?.color??'#c5d4b8',map:original?.map??null,
+  color:original?.color??'#c5d4b8',map:original?.map??null,vertexColors:original?.vertexColors??false,
   normalMap:original?.normalMap??null,normalScale:original?.normalScale,
   roughnessMap:original?.roughnessMap??null,metalnessMap:original?.metalnessMap??null,
   roughness:original?.roughness??.38,metalness:.025,clearcoat:.32,clearcoatRoughness:.3,

@@ -32,7 +32,7 @@ test('actual visible point is clickable and a rear point is occluded until camer
  const bounds=(await page.locator('canvas').boundingBox())!;
  // Same public full-body preset, projected through a real perspective camera.
  const camera=new PerspectiveCamera(45,bounds.width/bounds.height,.01,30);const pose=fullBodyPose('front',bounds.width/bounds.height);camera.position.fromArray(pose.position);camera.lookAt(...pose.target);camera.updateMatrixWorld();
- const xy=(id:string)=>{const a=anchors.find((a:any)=>a.modelId==='adult-male-v3'&&a.knowledgeId===id&&(a.side==='left'||a.side==='midline'));const p=new Vector3(...a.position as [number,number,number]).project(camera);return {x:bounds.x+(p.x+1)*bounds.width/2,y:bounds.y+(1-p.y)*bounds.height/2};};
+ const xy=(id:string)=>{const a=anchors.find((a:any)=>a.modelId==='adult-male-v4'&&a.knowledgeId===id&&(a.side==='left'||a.side==='midline'));const p=new Vector3(...a.position as [number,number,number]).project(camera);return {x:bounds.x+(p.x+1)*bounds.width/2,y:bounds.y+(1-p.y)*bounds.height/2};};
  await page.mouse.click(xy('point-fengchi').x,xy('point-fengchi').y);
  await expect(page.getByTestId('point-panel')).not.toContainText('GB20 / ACUPOINT');
  await page.mouse.move(xy('point-shanzhong').x,xy('point-shanzhong').y);
@@ -162,7 +162,7 @@ test('a short mobile screen can read knowledge while xray layers remain availabl
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 
-test('full-detail textured bodies load lazily and surface meridians can be hidden independently',async({page})=>{
+test('full-detail textured bodies load lazily and meridian lines appear only in xray mode',async({page})=>{
  await page.emulateMedia({reducedMotion:'reduce'});
  await page.setViewportSize({width:1440,height:1000});
  await page.goto('/#library');
@@ -170,15 +170,16 @@ test('full-detail textured bodies load lazily and surface meridians can be hidde
  await page.getByRole('button',{name:'经络云图',exact:true}).click();
  const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-focus','full:front');
  const requests=await page.evaluate(()=>performance.getEntriesByType('resource').map(r=>r.name).filter(u=>{const p=new URL(u).searchParams;return !p.has('url')&&!p.has('import');}));
- expect(requests.some(u=>u.includes('adult-male-v3')&&u.includes('.glb'))).toBe(true);
- expect(requests.some(u=>u.includes('adult-female-v3')&&u.includes('.glb'))).toBe(false);
+ expect(requests.some(u=>u.includes('adult-male-v4')&&u.includes('.glb'))).toBe(true);
+ expect(requests.some(u=>u.includes('adult-female-v4')&&u.includes('.glb'))).toBe(false);
  expect(requests.some(u=>u.includes('viscera')&&u.includes('.glb'))).toBe(false);
- const shown=await page.locator('canvas').screenshot();
- await page.getByRole('button',{name:'隐藏经脉',exact:true}).click();
- await expect(page.getByRole('button',{name:'显示经脉',exact:true})).toHaveAttribute('aria-pressed','false');
- const hidden=await page.locator('canvas').screenshot();expect(shown.equals(hidden)).toBe(false);
+ await expect(page.getByRole('button',{name:/经脉$/})).toHaveCount(0);
+ await expect(page.getByRole('button',{name:'隐藏穴位标记'})).toHaveCount(1);
  await page.getByRole('button',{name:'女性人体',exact:true}).click();await expect(scene).toHaveAttribute('data-variant','female');await expect(scene).toHaveAttribute('data-status','ready');
- await page.getByRole('switch',{name:'人体透视'}).click();await expect(page.getByRole('checkbox',{name:'经脉',exact:true})).not.toBeChecked();
- await page.getByRole('checkbox',{name:'经脉',exact:true}).check();await page.getByRole('switch',{name:'人体透视'}).click();
- await expect(page.getByRole('button',{name:'隐藏经脉',exact:true})).toHaveAttribute('aria-pressed','true');
+ await page.getByRole('switch',{name:'人体透视'}).click();
+ const meridians=page.getByRole('checkbox',{name:'经脉',exact:true});await expect(meridians).toBeChecked();
+ const linesShown=await page.locator('canvas').screenshot();await meridians.uncheck();
+ const linesHidden=await page.locator('canvas').screenshot();expect(linesShown.equals(linesHidden)).toBe(false);
+ await page.getByRole('switch',{name:'人体透视'}).click();
+ await expect(page.getByRole('button',{name:/经脉$/})).toHaveCount(0);
 });

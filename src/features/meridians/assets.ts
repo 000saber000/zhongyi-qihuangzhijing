@@ -1,5 +1,5 @@
-import male from '../../assets/anatomy/adult-male-v3.glb?url';
-import female from '../../assets/anatomy/adult-female-v3.glb?url';
+import male from '../../assets/anatomy/adult-male-v4.glb?url';
+import female from '../../assets/anatomy/adult-female-v4.glb?url';
 import maleFront from '../../assets/anatomy/male-front.png';
 import maleSide from '../../assets/anatomy/male-side.png';
 import maleBack from '../../assets/anatomy/male-back.png';
