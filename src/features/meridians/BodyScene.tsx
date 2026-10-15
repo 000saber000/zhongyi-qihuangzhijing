@@ -3,11 +3,13 @@ import {Canvas,useFrame,useThree,type ThreeEvent} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
 import {GLTFLoader,type GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import type {OrbitControls as OrbitControlsImpl} from 'three-stdlib';
-import {Group,Mesh,MeshStandardMaterial,MeshPhysicalMaterial,Vector3,Raycaster,SRGBColorSpace,ACESFilmicToneMapping} from 'three';
+import {Group,Mesh,Vector3,Raycaster,SRGBColorSpace,ACESFilmicToneMapping} from 'three';
 import type {AcupointAnchor,ModelVariant,Selection} from './types';
 import {definitions} from './data';
 import AcupointGlow,{makeGlowTexture} from './AcupointGlow';
-import {Organs,MeridianNetwork} from './AnatomyLayers';
+import {Organs} from './AnatomyLayers';
+import {MeridianNetwork} from './MeridianNetwork';
+import {createJadeMaterial} from './model-material';
 import {modelUrls} from './assets';
 import {cameraPose,fullBodyPose,interpolateOrbit,nearestVisibleMarker,type CameraPose,type View} from './camera';
 // Bounded to the two immutable, same-origin assets. Failed requests are evicted for retry.
@@ -15,7 +17,7 @@ const cache=new Map<ModelVariant,Promise<GLTF>>();
 export function loadBody(variant:ModelVariant):Promise<GLTF>{
  let promise=cache.get(variant);if(!promise){
   promise=new Promise<GLTF>((resolve,reject)=>{
-   const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),20000);
+   const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),45000);
    fetch(modelUrls[variant],{signal:controller.signal}).then(async response=>{if(!response.ok)throw Error('模型资源未能读取');return response.arrayBuffer();}).then(buffer=>new GLTFLoader().parseAsync(buffer,'')).then(resolve,reject).finally(()=>clearTimeout(timer));
   });cache.set(variant,promise);promise.catch(()=>{if(cache.get(variant)===promise)cache.delete(variant);});
  }return promise;
@@ -39,22 +41,7 @@ function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers
   const copy=loaded.scene.clone(true);
   copy.traverse(child=>{if(child instanceof Mesh){
    const originals=Array.isArray(child.material)?child.material:[child.material];
-   const materials=originals.map(original=>{
-    const m=new MeshPhysicalMaterial({color:original instanceof MeshStandardMaterial?original.color:'#b5cdb1',roughness:.26,metalness:.07,clearcoat:.45,clearcoatRoughness:.28});
-    m.userData.xrayUniform={value:0};
-    m.onBeforeCompile=shader=>{
-     shader.uniforms.uJadeXray=m.userData.xrayUniform;
-     shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vJadePosition;').replace('#include <begin_vertex>','#include <begin_vertex>\nvJadePosition = position;');
-     shader.fragmentShader=shader.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vJadePosition;\nuniform float uJadeXray;').replace('#include <color_fragment>',`#include <color_fragment>
-       float jade = sin(vJadePosition.x*90.0 + sin(vJadePosition.y*38.0)*3.0 + vJadePosition.z*45.0);
-       float vein = pow(0.5 + 0.5*jade, 25.0);
-       diffuseColor.rgb *= 0.96 + 0.035*sin(vJadePosition.y*65.0 + vJadePosition.x*70.0);
-       diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.45,0.47,0.27), vein*0.12);`).replace('#include <emissivemap_fragment>',`#include <emissivemap_fragment>
-       float jadeRim = pow(1.0 - abs(dot(normal, normalize(vViewPosition))), 2.0);
-       totalEmissiveRadiance += uJadeXray * vec3(0.10,0.20,0.13) * (0.6 + jadeRim);
-       diffuseColor.a *= mix(1.0, 0.7 + jadeRim*1.1, uJadeXray);`);
-    };return m;
-   });child.material=Array.isArray(child.material)?materials:materials[0];child.castShadow=false;child.receiveShadow=false;
+   const materials=originals.map(createJadeMaterial);child.material=Array.isArray(child.material)?materials:materials[0];child.castShadow=false;child.receiveShadow=false;
   }});return copy;
  },[loaded]);
  useEffect(()=>()=>{object?.traverse(child=>{if(child instanceof Mesh){for(const m of Array.isArray(child.material)?child.material:[child.material])m.dispose();}});},[object]);
@@ -90,7 +77,7 @@ function World({variant,requestId,anchors,selection,view,viewVersion,showMarkers
   <directionalLight position={[-2,3,3]} intensity={2} color="#f7ecd2"/><directionalLight position={[2,2,-2]} intensity={2.6} color="#7eb9a4"/><directionalLight position={[2,.6,2]} intensity={.7} color="#c7e3d5"/>
   {object&&<primitive object={object} onClick={(e:ThreeEvent<MouseEvent>)=>e.stopPropagation()}/>}
   {object&&xray&&showOrgans&&<Organs variant={loaded!.variant} onLoad={onOrganLoad}/>}
-  {object&&xray&&showMeridians&&<MeridianNetwork variant={loaded!.variant}/>}
+  {object&&showMeridians&&<MeridianNetwork variant={loaded!.variant} texture={glow} activeMeridian={selection?definitions.find(d=>d.knowledgeId===selection.knowledgeId)?.meridianId??null:null}/>}
   {object&&showMarkers&&anchors.map((anchor,index)=>{const key=anchor.knowledgeId+':'+anchor.side;return <AcupointGlow key={key} anchor={anchor} texture={glow} index={index} selected={anchor===activeAnchor} hovered={hovered===key} name={pointNames[anchor.knowledgeId]??''} code={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.referenceCode??''} onEnter={e=>enter(e,anchor)} onLeave={()=>setHovered(current=>current===key?null:current)} onChoose={e=>choose(e,anchor)}/>;})}
   <AtlasStage/>
   <GentleMotion/>

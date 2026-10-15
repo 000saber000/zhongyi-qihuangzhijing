@@ -2,7 +2,7 @@
 import hashlib,json,struct,sys
 from pathlib import Path
 
-def inspect_glb(path):
+def inspect_glb(path,triangle_budget=50000,byte_budget=4000000):
  path=Path(path);raw=path.read_bytes()
  if len(raw)<20:raise ValueError('broken GLB header')
  magic,version,total=struct.unpack_from('<III',raw)
@@ -22,22 +22,23 @@ def inspect_glb(path):
    else:count=position['count']
    triangles+=count//3
    if 'min' in position and 'max' in position:bounds.append((position['min'],position['max']))
- if triangles<1 or triangles>50000:raise ValueError('triangle budget exceeded or empty geometry')
- if len(raw)>4000000:raise ValueError('file exceeds 4 MB budget')
+ if triangles<1 or triangles>triangle_budget:raise ValueError('triangle budget exceeded or empty geometry')
+ if len(raw)>byte_budget:raise ValueError('file exceeds byte budget')
  if not bounds:raise ValueError('missing geometry bounds')
  minimum=[min(b[0][i] for b in bounds) for i in range(3)];maximum=[max(b[1][i] for b in bounds) for i in range(3)]
  return {'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'triangles':triangles,'height':maximum[1]-minimum[1],'min':minimum,'max':maximum}
 
 def verify_folder(folder):
  folder=Path(folder);results={}
+ manifest=json.loads((folder/'models.manifest.json').read_text())
  for variant in ['male','female']:
-  p=folder/f'adult-{variant}-v2.glb';results[variant]=inspect_glb(p)
+  m=manifest[variant];p=folder/m['sourceFile']
+  results[variant]=inspect_glb(p,320000,14000000) if m['id'].endswith('-v3') else inspect_glb(p)
   if not 1.4<results[variant]['height']<2.1:raise ValueError(f'{variant}: incorrect metre/Y-up convention')
   if abs(results[variant]['min'][1])>.02:raise ValueError(f'{variant}: feet are not at origin')
   for view in ['front','side','back']:
    if not (folder/f'{variant}-{view}.png').is_file():raise ValueError(f'missing {variant} {view} preview')
  if results['male']['sha256']==results['female']['sha256']:raise ValueError('male and female models are identical')
- manifest=json.loads((folder/'models.manifest.json').read_text())
  for variant in ['male','female']:
   if manifest[variant]['sha256']!=results[variant]['sha256']:raise ValueError('stale model manifest digest')
  return results
