@@ -1,11 +1,13 @@
 import pointData from './acupoints.json';
 import anchorData from './anchors.json';
 import modelData from './models.json';
-import type {AcupointDefinition,AcupointAnchor,BodyModel} from './types';
+import pathData from './paths.json';
+import type {AcupointDefinition,AcupointAnchor,BodyModel,MeridianPath,ModelVariant} from './types';
 import {validateRegistry} from './registry';
 export const definitions=pointData as AcupointDefinition[];
 export const anchors=anchorData as unknown as AcupointAnchor[];
 export const models=modelData as BodyModel[];
-export const registryProblems=validateRegistry(models,definitions,anchors,[]);
+export const paths=pathData as unknown as (MeridianPath&{variant:ModelVariant;color:string;segment:number})[];
+export const registryProblems=validateRegistry(models,definitions,anchors,paths);
 export const meridianColors:Record<string,string>={'meridian-stomach':'#ddb973','meridian-du':'#e2c997',extra:'#e9e1c2','meridian-gallbladder':'#83ceb0','meridian-largeintestine':'#e9ad85','meridian-pericardium':'#d3a3bc','meridian-sanjiao':'#9bbbe5','meridian-heart':'#e7a2a5','meridian-ren':'#e8cf9c','meridian-spleen':'#ccb676','meridian-liver':'#9dcca0','meridian-kidney':'#9cbdcc'};
 export const colorFor=(id:string|null)=>meridianColors[id??'extra']??'#e2c997';

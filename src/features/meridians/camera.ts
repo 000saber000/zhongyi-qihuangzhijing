@@ -2,7 +2,7 @@ import type {AcupointAnchor,Vec3} from './types';
 export type CameraPose={position:Vec3;target:Vec3};
 export type View='front'|'back'|'left'|'right';
 export function fullBodyPose(view:View,aspect:number,height=1.78):CameraPose{
- const radius=Math.max(2.5,height/(2*Math.tan(Math.PI/8))*1.22,1.12/(2*Math.tan(Math.PI/8)*aspect)*1.2);
+ const radius=Math.max(2.35,height/(2*Math.tan(Math.PI/8))*1.08,.9/(2*Math.tan(Math.PI/8)*aspect)*1.12);
  const direction:Vec3=view==='back'?[0,0,-1]:view==='left'?[1,0,0]:view==='right'?[-1,0,0]:[0,0,1];
  const target:Vec3=[0,height*.5,0];return {target,position:[direction[0]*radius,target[1],direction[2]*radius]};
 }

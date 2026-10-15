@@ -13,14 +13,14 @@ const anchors=JSON.parse(fs.readFileSync('src/features/meridians/anchors.json','
 const epsilon=1e-5; // 0.01 mm, only to absorb numerical rounding; markers sit 2.5 mm off the mesh.
 let failures=0;
 for(const variant of ['male','female']){
- const buffer=fs.readFileSync(`src/assets/anatomy/adult-${variant}-v1.glb`);
+ const buffer=fs.readFileSync(`src/assets/anatomy/adult-${variant}-v2.glb`);
  const gltf=await new GLTFLoader().parseAsync(buffer.buffer.slice(buffer.byteOffset,buffer.byteOffset+buffer.byteLength),'');
  gltf.scene.updateMatrixWorld(true);
  const meshes=[];
  gltf.scene.traverse(object=>{if(object.isMesh)meshes.push(object);});
  for(const aspect of aspects){
   const blocked=[];
-  const relevant=anchors.filter(anchor=>anchor.modelId===`adult-${variant}-v1`);
+  const relevant=anchors.filter(anchor=>anchor.modelId===`adult-${variant}-v2`);
   for(const anchor of relevant){
    // Matches cameraPose()'s current narrow-viewport distance adjustment.
    const distance=anchor.viewDistance*Math.max(1,.72/Math.max(.15,aspect));

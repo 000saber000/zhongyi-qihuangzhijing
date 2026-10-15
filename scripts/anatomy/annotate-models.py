@@ -13,7 +13,7 @@ definitions=json.loads((root/'src/features/meridians/acupoints.json').read_text(
 def blender(v):return Vector((v[0],-v[2],v[1]))
 def yup(v):return [round(v[0],6),round(v[2],6),round(-v[1],6)]
 for variant,m in manifest.items():
- bpy.ops.wm.open_mainfile(filepath=str(root/f'art/model-sources/adult-{variant}-v1.blend'))
+ bpy.ops.wm.open_mainfile(filepath=str(root/f'art/model-sources/{m["id"]}.blend'))
  body=bpy.data.objects['TeachingBody'];tree=BVHTree.FromObject(body,bpy.context.evaluated_depsgraph_get())
  j={k:Vector(v) for k,v in m['joints'].items()};height=m['height'];unit=height/1.78
  for d in definitions:
