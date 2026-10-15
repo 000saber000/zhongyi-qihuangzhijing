@@ -72,4 +72,31 @@ edited and unpublished entries, and a repeated migration.
 - 20 atlas unit checks pass, including coverage, immutable asset hashes, camera
   headroom, distance visibility, xray context, and distinct point separation.
 - 72 service checks pass, including the database upgrade regression.
-- Browser and production verification is recorded with the release commit.
+- All 16 atlas browser scenarios pass, including the distance/hidden-hit regression;
+  the transparency case was rechecked independently after a timeout in the full run.
+- 18 production-output checks pass. After the final asset/hover refresh, all four
+  packaged atlas checks pass again across Vite dist and Render-compatible output,
+  including the new card atlas decoding and expanded point article.
+- Frontend/backend TypeScript checks and the configured production release build pass.
+- Independent review has no unresolved findings.
+
+### Broader regression limits
+
+The full 125-case browser run completed with 119 passes and six failures. The
+missing image coverage was fixed, and image coverage, navigation shell, and
+transparency all passed a focused rerun (three of three). Three broader tests
+remain red; this is not a claim that the whole suite is green:
+
+- `tests/chapters.spec.ts`: chapter editor and reader at 1440 px and 820 px.
+- `tests/contributions.spec.ts`: member comments/suggests, administrator merges and
+  publishes, member reads the result.
+
+The desktop chapter workflow and the community workflow also time out at their
+reading/navigation clicks on the unchanged base commit `0b0d9a9`. The comparison
+used the same dependencies and browser, a separate Vite/API port pair with matching
+allowed origins, and local disposable test data. The baseline community test copy
+only adapts the hardcoded local URLs. No chapter/community product code was
+changed for this atlas release. Baseline navigation passes; navigation also passes
+in the final feature-branch recheck. These existing reading-interaction test
+failures remain separately documented rather than being hidden by timeout or
+assertion changes.
