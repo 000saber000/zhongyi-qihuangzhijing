@@ -13,14 +13,14 @@
 @media(prefers-reduced-motion:reduce){.library-navigation,:is(.unified-content,.library-header-anchor) .library-navigation button{transition:none}}
 
  .library-nav-slot.is-in-header{pointer-events:none}
- .library-header-anchor{display:block;position:absolute;top:104px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 100px));pointer-events:none}
+ .library-header-anchor{display:block;position:absolute;top:84px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 100px));pointer-events:none}
  .library-header-nav{pointer-events:auto}
  .library-header-nav .library-navigation{animation:header-categories-arrive .25s ease-out}
 /* Categories dock below the shared main menu; they never displace it. */
 @media(min-width:701px){
- .universe.has-library-header-nav .universe-header{height:164px}
- .universe.has-library-header-nav.content-mode .universe-search{top:176px}
- .universe.has-library-header-nav .cosmic-content-scroll{top:232px}
+ .universe.has-library-header-nav .universe-header{height:144px}
+ .universe.has-library-header-nav.content-mode .universe-search{top:156px}
+ .universe.has-library-header-nav .cosmic-content-scroll{top:212px}
 }
 @media(min-width:951px){
  .universe.has-library-header-nav .universe-brand{align-self:flex-start;margin-top:26px}
