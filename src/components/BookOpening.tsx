@@ -60,7 +60,7 @@ export default function BookOpening({selection,onReveal,onFinish,onCancel}:{sele
      const sweep=art.querySelector<SVGPathElement>('.meridian-sweep')!;
      const length=sweep.getTotalLength();
      effects.push(animate(sweep,[{strokeDasharray:`${length*.14} ${length}`,strokeDashoffset:length*.14,opacity:0},{opacity:.85,offset:.4},{strokeDasharray:`${length*.14} ${length}`,strokeDashoffset:-length,opacity:0}],{duration:850,easing:'ease-in-out'}));
-     effects.push(animate(art.querySelector('.meridian-pulse')!,[{opacity:.2,transform:'scale(.65)'},{opacity:1,transform:'scale(1.4)'},{opacity:.4,transform:'scale(1)'}],{duration:800}));
+     effects.push(animate(art.querySelector('.meridian-pulse')!,[{opacity:.9,transform:'scale(1)'},{opacity:1,transform:'scale(1.4)'},{opacity:.9,transform:'scale(1)'}],{duration:800}));
     }else if(kind==='theory'){
      effects.push(animate(art.querySelector('.jade-halves')!,[{transform:'rotate(0deg)'},{transform:'rotate(24deg)'}],{duration:750,easing:'ease-in-out'}));
      effects.push(animate(art.querySelector('.jade-orbit')!,[{transform:'rotate(0deg)'},{transform:'rotate(-12deg)'}],{duration:750,easing:'ease-out'}));

@@ -13,7 +13,7 @@ export function MeridianDrawing({id}:{id:string}){
    <pattern id={`${key}-foil`} patternUnits="userSpaceOnUse" width="96" height="96"><image className="meridian-gold-texture" href={goldLeaf} width="96" height="96" preserveAspectRatio="xMidYMid slice"/></pattern>
    <linearGradient id={`${key}-metal`} x1="65" y1="20" x2="188" y2="238" gradientUnits="userSpaceOnUse"><stop stopColor="#8b693c"/><stop offset=".18" stopColor="#e8d49c"/><stop offset=".37" stopColor="#fff0c0"/><stop offset=".56" stopColor="#b19457"/><stop offset=".78" stopColor="#f2dfa8"/><stop offset="1" stopColor="#a07c43"/></linearGradient>
    <linearGradient id={`${key}-edge`} x1="140" y1="20" x2="125" y2="240" gradientUnits="userSpaceOnUse"><stop stopColor="#fff2c9" stopOpacity=".3"/><stop offset=".35" stopColor="#fff4d0"/><stop offset=".65" stopColor="#e8d29a" stopOpacity=".35"/><stop offset="1" stopColor="#fff0ba" stopOpacity=".6"/></linearGradient>
-   <radialGradient id={`${key}-glow`}><stop stopColor="#f4dfa9" stopOpacity=".5"/><stop offset="1" stopColor="#d6ba76" stopOpacity="0"/></radialGradient>
+   <radialGradient id={`${key}-glow`}><stop stopColor="#fff2b8" stopOpacity=".95"/><stop offset=".35" stopColor="#f3ce76" stopOpacity=".65"/><stop offset="1" stopColor="#e8bc59" stopOpacity="0"/></radialGradient>
    <filter id={`${key}-relief`} x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx=".35" dy=".55" stdDeviation=".4" floodColor="#153a32" floodOpacity=".65"/></filter>
    <mask id={`${key}-reveal`} maskUnits="userSpaceOnUse" x="0" y="0" width="260" height="260" style={{maskType:'alpha'}}><path className="meridian-route" d={center} stroke="white" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/></mask>
   </defs>
@@ -25,7 +25,8 @@ export function MeridianDrawing({id}:{id:string}){
    <path d={center} stroke={`url(#${key}-edge)`} strokeWidth=".6" strokeLinecap="round" opacity=".7"/>
    <path className="meridian-sweep" d={center} stroke="#fff3cc" strokeWidth="1.8" strokeLinecap="round" opacity="0"/>
   </g>
-  <circle className="meridian-pulse" cx={x} cy={y} r="12" fill={`url(#${key}-glow)`} opacity=".35"/>
-  <circle className="meridian-focus" cx={x} cy={y} r="1.5" fill="#fff1c6" stroke="#d8bc78" strokeWidth=".45"/>
+  <circle className="meridian-pulse" cx={x} cy={y} r="17" fill={`url(#${key}-glow)`} opacity=".9"/>
+  <circle className="meridian-focus-ring" cx={x} cy={y} r="5.5" fill="#c19a48" stroke="#405044" strokeWidth="1"/>
+  <circle className="meridian-focus" cx={x} cy={y} r="3.8" fill="#fff9dd" stroke="#f4d884" strokeWidth="1"/>
  </svg>;
 }
