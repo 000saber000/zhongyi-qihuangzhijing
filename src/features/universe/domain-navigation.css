@@ -1,0 +1,7 @@
+.domain-pill-nav .pill-nav__bar,.domain-pill-nav .pill-nav__track,.domain-pill-nav .pill-nav__list{height:auto}
+.domain-pill-nav .pill-nav__list{flex-direction:column;gap:10px}
+.domain-pill-nav .pill-nav__slot{width:30px;height:30px}
+.domain-pill-nav .pill-nav__item{width:100%;font-family:var(--serif);color:var(--pn-text)}
+.domain-pill-nav .pill-nav__slot:first-child .pill-nav__item{font-family:system-ui;font-size:8px}
+.domain-pill-nav .pill-nav__measure{display:none}
+@media(max-height:650px) and (min-width:701px){.domain-pill-nav .pill-nav__list{gap:7px}}

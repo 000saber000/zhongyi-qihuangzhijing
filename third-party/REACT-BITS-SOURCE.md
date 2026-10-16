@@ -23,3 +23,10 @@
 - 保留 WebGL 液滴融合和文字遮罩；仅适配分类按钮的受控状态、`aria-pressed`、焦点恢复和墨绿配色。分类栏保留既有导航 landmark，组件内部改为普通容器，避免嵌套导航。
 - 缺少 WebGL 时立即显示静态选中背景；开启减少动画时停止液滴动画，并响应运行中的系统偏好变化。切换路由时清理动画、事件和图形资源。
 - 修改基线：已核实前端/API 同时运行的 `723a28ec2fcb6bf5359a8db350f2087fbed49125`；保留该版本的课程 CardSwap、经络和导航布局。
+
+## PillNav（2026-10-16）
+
+- 来源：用户提供的 React Bits PillNav JavaScript + CSS 完整导出（860 行 JSX、460 行 CSS）。此导出不同于技能固定上游 `496968c4117e21278f13917201b7d615bc5e7450` 的旧版 PillNav，未混用旧版 GSAP/router 实现；当前导出仅使用 React、CSS 和浏览器动画 API，不新增依赖，沿用上述许可。
+- 项目位置：`src/components/react-bits/PillNav.jsx`、`PillNav.css`、`PillNav.d.ts`；知识宇宙左侧领域栏接入在 `src/features/universe/DomainNavigation.tsx`。
+- 竖排使用填充悬停与文字翻动，保留原有简写、完整可访问名称和分类回调；增加受控按钮选中索引及 `aria-pressed`，支持外部搜索选中知识后重置分类。保留原版 CSS 减少动画处理，并防止字体异步加载在组件卸载后重启动画。
+- 修改基线：线上与远端 `main` 的 `ff071b8e42316e59a40ac5a6ffa85616085cbf8c`；保留已上线的知识库 GooeyNav 及滚轮修复。
