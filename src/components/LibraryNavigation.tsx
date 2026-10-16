@@ -1,7 +1,9 @@
 import {useEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {categories} from '../data/catalog';
+import GooeyNav from './react-bits/GooeyNav';
 import './library-navigation.css';
+const items=categories.map(item=>({label:item.label,value:item.type}));
 export default function LibraryNavigation({category,onChange,onHeaderDockedChange}:{category:string;onChange:(category:string)=>void;onHeaderDockedChange:(docked:boolean)=>void}){
  const sentinel=useRef<HTMLDivElement>(null),slot=useRef<HTMLDivElement>(null),bar=useRef<HTMLElement>(null),[docked,setDocked]=useState(false);
  const [header,setHeader]=useState<HTMLElement|null>(null),focusToRestore=useRef<string|null>(null),focusedCategory=useRef<string|null>(null),dockedRef=useRef(docked);dockedRef.current=docked;
@@ -32,6 +34,6 @@ export default function LibraryNavigation({category,onChange,onHeaderDockedChang
  const navigation=<nav ref={bar} className="library-navigation" aria-label="知识库分类" onFocus={event=>{focusedCategory.current=(event.target as HTMLElement).dataset.category??null;}} onBlur={event=>{
   if(event.relatedTarget instanceof Node&&event.currentTarget.contains(event.relatedTarget))return;
   if(!focusToRestore.current)focusedCategory.current=null;
- }}>{categories.map(item=><button type="button" key={item.type} data-category={item.type} aria-pressed={category===item.type} onClick={()=>onChange(item.type)}>{item.label}</button>)}</nav>;
+ }}><GooeyNav items={items} activeIndex={Math.max(0,categories.findIndex(item=>item.type===category))} onChange={index=>onChange(categories[index].type)} theme="dark" frame={false} color="#a6b48a" activeTextColor="#142d28" colors={['#a6b48a','#d1c393','#7f9e88']} animationTime={600} particleCount={15} spread={24} timeVariance={200} gooeyness={.5} wobble={.5} className="library-gooey-nav"/></nav>;
  return <><div ref={sentinel} className="library-nav-sentinel" aria-hidden="true"/><div ref={slot} className={`library-nav-slot${docked?' is-docked':''}${inHeader?' is-in-header':''}`}>{!inHeader&&navigation}</div>{inHeader&&header&&createPortal(<div className="library-header-nav is-docked">{navigation}</div>,header)}</>;
 }

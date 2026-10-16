@@ -15,3 +15,11 @@
 - 项目位置：`src/components/react-bits/CardSwap.jsx`、`CardSwap.css`、`CardSwap.d.ts`；课程接入在 `src/features/courses/CourseDeck.tsx`。
 - 保留卡片堆叠、拖拽、轮播和前后切换机制；移除未使用的示例照片和图标依赖，适配墨绿配色、嵌套课程按钮、键盘和动态减少动画偏好，开启减少动画时取消正在进行的拖拽。
 - 三张课程图使用内置 imagegen 生成，原图、生成提示词和 WebP 资源说明见 `art/course-card-swap/README.md`。课程卡片继续使用已有课程和学习进度，不替换人体模型或经络内容。
+
+## GooeyNav（2026-10-16）
+
+- 来源：用户提供的 JavaScript + CSS 完整导出，已逐字比对上游 `496968c4117e21278f13917201b7d615bc5e7450` 的 `GooeyNav-JS-CSS` registry；不新增运行依赖，沿用本文件记录的 MIT + Commons Clause 许可。
+- 项目位置：`src/components/react-bits/GooeyNav.jsx`、`GooeyNav.css`、`GooeyNav.d.ts`；知识库分类栏接入在 `src/components/LibraryNavigation.tsx`。
+- 保留 WebGL 液滴融合和文字遮罩；仅适配分类按钮的受控状态、`aria-pressed`、焦点恢复和墨绿配色。分类栏保留既有导航 landmark，组件内部改为普通容器，避免嵌套导航。
+- 缺少 WebGL 时立即显示静态选中背景；开启减少动画时停止液滴动画，并响应运行中的系统偏好变化。切换路由时清理动画、事件和图形资源。
+- 修改基线：已核实前端/API 同时运行的 `723a28ec2fcb6bf5359a8db350f2087fbed49125`；保留该版本的课程 CardSwap、经络和导航布局。

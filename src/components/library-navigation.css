@@ -1,15 +1,16 @@
 .library-nav-sentinel{height:1px;pointer-events:none}
 .library-nav-slot{position:sticky;top:76px;z-index:20;height:64px;display:flex;align-items:flex-start;justify-content:center;margin-bottom:5px}
-.library-navigation{display:flex;align-items:center;justify-content:safe center;gap:6px;width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;box-sizing:border-box;padding:4px 0;border:1px solid transparent;border-radius:18px;background:transparent;transition:max-width .28s ease,padding .28s ease,background-color .28s ease,border-color .28s ease,box-shadow .28s ease;border-bottom-color:#8eaa8525}
+.library-navigation{display:flex;align-items:center;justify-content:safe center;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:none;box-sizing:border-box;padding:8px 0;border:1px solid transparent;border-radius:18px;background:transparent;transition:max-width .28s ease,padding .28s ease,background-color .28s ease,border-color .28s ease,box-shadow .28s ease;border-bottom-color:#8eaa8525}
 .library-navigation::-webkit-scrollbar{display:none}
-:is(.unified-content,.library-header-anchor) .library-navigation button{flex:0 0 auto;min-height:40px;padding:10px 14px;border:1px solid #96b08d23;border-radius:12px;background:#162a2ccc;color:#b0c2ae;font-size:11px;white-space:nowrap;transition:background-color .2s,border-color .2s,color .2s;cursor:pointer}
-:is(.unified-content,.library-header-anchor) .library-navigation button:hover{background:#2a443bc7;border-color:#b1c89d65;color:#edf0d8}
-:is(.unified-content,.library-header-anchor) .library-navigation button[aria-pressed="true"]{background:linear-gradient(130deg,#53644b,#364b40);border-color:#ccca9877;color:#f1ebc8;box-shadow:0 2px 10px #b1be8710}
+.library-gooey-nav{--gn-gap:6px;--gn-font:11px;--gn-x:14px;--gn-y:12px;flex:0 0 auto;width:max-content;max-width:none}
+.library-gooey-nav .gooey-nav__list{flex-wrap:nowrap}
+.library-gooey-nav .gooey-nav__stage{flex:none;overflow-x:clip}
+.library-gooey-nav .gooey-nav__link{min-height:40px;box-sizing:border-box}
+.library-gooey-nav .gooey-nav__list:not(.gooey-nav__list--active) .gooey-nav__link{color:#b0c2ae}
+.library-gooey-nav .gooey-nav__item[data-active] .gooey-nav__link{color:#e8edce}
 :is(.unified-content,.library-header-anchor) .library-navigation button:focus-visible{outline:2px solid #d7cfa2;outline-offset:-3px}
 .is-docked .library-navigation{max-width:960px;padding:8px;border-radius:24px;background:#11282aeb;border-color:#b6c1a03d;backdrop-filter:blur(18px);box-shadow:0 12px 32px #020b1166,inset 0 1px 0 #e1e7c409}
-.is-docked .library-navigation button{background:transparent;border-color:transparent}
-.is-docked .library-navigation button[aria-pressed="true"]{border-color:#ccca9877;background:linear-gradient(130deg,#53644b,#364b40)}
-@media(max-width:700px){.library-nav-slot{top:74px;height:64px}.library-navigation{justify-content:flex-start}:is(.unified-content,.library-header-anchor) .library-navigation button{min-height:40px;padding:10px 13px}.is-docked .library-navigation{border-radius:20px}}
+@media(max-width:700px){.library-nav-slot{top:74px;height:64px}.library-navigation{justify-content:flex-start}.library-gooey-nav{--gn-x:13px}.is-docked .library-navigation{border-radius:20px}}
 @media(prefers-reduced-motion:reduce){.library-navigation,:is(.unified-content,.library-header-anchor) .library-navigation button{transition:none}}
 
  .library-nav-slot.is-in-header{pointer-events:none}
@@ -37,7 +38,8 @@
 @media(max-width:700px){
  .library-header-anchor{top:102px;left:20px;transform:none;width:calc(100% - 40px)}
  .library-header-nav .library-navigation{padding:4px;border-radius:18px}
- .library-header-nav .library-navigation button{min-height:36px;padding:8px 13px}
+ .library-header-nav .library-gooey-nav{--gn-y:10px}
+ .library-header-nav .gooey-nav__link{min-height:36px}
  .universe.has-library-header-nav .universe-header{height:148px}
  .universe.has-library-header-nav.content-mode .universe-search{top:164px}
  .universe.has-library-header-nav .cosmic-content-scroll{top:148px}

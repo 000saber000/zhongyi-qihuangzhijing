@@ -9,16 +9,16 @@ test('library categories gather in the center while scrolling and still filter c
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-desktop.png'});
  await expect(nav.getByRole('button',{name:'全部知识',exact:true})).toHaveAttribute('aria-pressed','true');
  const initial=await nav.boundingBox();await root.evaluate(e=>{e.scrollTop=650;});
- await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBeLessThan(Math.round(initial!.y));
- await expect.poll(async()=>(await nav.boundingBox())!.width).toBeLessThan(initial!.width);
+ await expect.poll(async()=>Math.round((await nav.boundingBox())?.y??Infinity)).toBeLessThan(Math.round(initial!.y));
+ await expect.poll(async()=>(await nav.boundingBox())?.width??Infinity).toBeLessThan(initial!.width);
  const floated=await nav.boundingBox(),header=await page.locator('.universe-header').boundingBox(),siteNav=await page.locator('.universe-nav').boundingBox();
  expect(floated!.y).toBeGreaterThanOrEqual(header!.y);expect(floated!.y+floated!.height).toBeLessThanOrEqual(header!.y+header!.height);expect(floated!.y).toBeGreaterThanOrEqual(siteNav!.y+siteNav!.height);expect(Math.abs(floated!.x+floated!.width/2-720)).toBeLessThan(3);
  expect(floated!.width).toBeLessThan(initial!.width);
  await page.screenshot({path:'/workspace/artifacts/qihuang-ui/library-desktop-docked.png'});
- await root.evaluate(e=>{e.scrollTop=950;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(floated!.y));
+ await root.evaluate(e=>{e.scrollTop=950;});await expect.poll(async()=>Math.round((await nav.boundingBox())?.y??Infinity)).toBe(Math.round(floated!.y));
  await nav.getByRole('button',{name:'本草药物',exact:true}).click();await expect(nav.getByRole('button',{name:'本草药物',exact:true})).toHaveAttribute('aria-pressed','true');
  await expect(page.locator('.library-grid .knowledge-card').first()).toHaveClass(/tone-药/);
- await root.evaluate(e=>{e.scrollTop=0;});await expect.poll(async()=>Math.round((await nav.boundingBox())!.y)).toBe(Math.round(initial!.y));
+ await root.evaluate(e=>{e.scrollTop=0;});await expect.poll(async()=>{const box=await nav.boundingBox();return box?Math.round(box.y):null;}).toBe(Math.round(initial!.y));
  await page.getByRole('button',{name:'学习路径',exact:true}).click();await expect(nav).toHaveCount(0);
 });
 test('desktop library uses real starfield and distinct illustrations for the requested cards',async({page})=>{
