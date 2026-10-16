@@ -1,0 +1,20 @@
+{
+  "male": {
+    "modelId": "adult-male-v4",
+    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "umbilicusY": 1.096,
+    "xiphoidY": 1.256,
+    "pubicSymphysisY": 0.935,
+    "midclavicularX": 0.092,
+    "method": "Umbilicus: textured orthographic inspection and front-centerline mesh dimple. Xiphoid/pubic reference levels are region estimates on the stylized clothed mesh; abdominal B-cun is interpolated separately above and below the umbilicus, not from total height."
+  },
+  "female": {
+    "modelId": "adult-female-v4",
+    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "umbilicusY": 1.053,
+    "xiphoidY": 1.209,
+    "pubicSymphysisY": 0.895,
+    "midclavicularX": 0.086,
+    "method": "Umbilicus: textured orthographic inspection and front-centerline mesh dimple. Xiphoid/pubic reference levels are region estimates under clothing, not palpable bony landmarks; abdominal B-cun is interpolated separately above and below the umbilicus."
+  }
+}

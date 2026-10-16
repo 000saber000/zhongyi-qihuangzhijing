@@ -9,6 +9,7 @@ from mathutils.bvhtree import BVHTree
 parser=argparse.ArgumentParser();parser.add_argument('--root',required=True);parser.add_argument('--sources')
 opts=parser.parse_args(sys.argv[sys.argv.index('--')+1:]);root=Path(opts.root).resolve()
 manifest=json.loads((root/'src/assets/anatomy/models.manifest.json').read_text())
+landmarks=json.loads((root/'src/assets/anatomy/surface-landmarks.json').read_text())
 definitions=json.loads((root/'src/features/meridians/acupoints.json').read_text());anchors=[]
 def blender(v):return Vector((v[0],-v[2],v[1]))
 def yup(v):return [round(v[0],6),round(v[2],6),round(-v[1],6)]
@@ -16,6 +17,9 @@ for variant,m in manifest.items():
  bpy.ops.wm.open_mainfile(filepath=str((Path(opts.sources) if opts.sources else root/'art/model-sources')/f'{m["id"]}.blend'))
  body=bpy.data.objects['TeachingBody'];tree=BVHTree.FromObject(body,bpy.context.evaluated_depsgraph_get())
  j={k:Vector(v) for k,v in m['joints'].items()};height=m['height'];unit=height/1.78
+ anatomy=landmarks[variant]
+ if anatomy['modelSha256']!=m['sha256']:raise ValueError('Stale anatomical calibration')
+ navel=anatomy['umbilicusY'];lower_cun=(navel-anatomy['pubicSymphysisY'])/5;upper_cun=(anatomy['xiphoidY']-navel)/8
  for d in definitions:
   code=d['referenceCode']
   for side in d['sides']:
@@ -31,8 +35,9 @@ for variant,m in manifest.items():
    elif code=='HT7':seed=wrist+Vector((sign*.01*unit,0,-.01*unit));ray_offset=.12;distance=.35
    elif code=='LI4':seed=j[f'joint-{letter}-hand-2'].lerp(j[f'joint-{letter}-finger-2-1'],.55);direction=Vector((0,1,-.5));ray_offset=.12;distance=.33
    elif code.startswith('CV'):
-    # The mannequins have no clinical landmarks; trunk ratios define a teaching schematic.
-    ratios={'CV17':.737,'CV12':.655,'CV8':.59,'CV6':.555,'CV4':.52,'CV22':.833};seed=Vector((0,height*ratios[code],0));distance=.68
+    # Use the visible umbilicus and regional bone-proportional references.
+    levels={'CV8':navel,'CV6':navel-1.5*lower_cun,'CV4':navel-3*lower_cun,'CV12':navel+4*upper_cun,'CV17':height*.737,'CV22':height*.833}
+    seed=Vector((0,levels[code],0));distance=.68
    elif code=='ST36':seed=knee.lerp(ankle,3/16)+Vector((sign*.024*unit,0,.015*unit));ray_offset=.12;distance=.52
    elif code=='GB34':seed=knee+Vector((sign*.027*unit,-.055*unit,0));direction=Vector((sign*.8,0,.5));ray_offset=.12;distance=.5
    elif code=='SP9':seed=knee+Vector((-sign*.015*unit,-.025*unit,0));direction=Vector((-sign,0,.15));ray_offset=.10;distance=.48
@@ -53,7 +58,7 @@ for variant,m in manifest.items():
    elif code in ['LI15','TE14']:
     seed=shoulder+Vector((sign*.012*unit,.025*unit,0));direction=Vector((sign*.45,.1,1 if code=='LI15' else -1));ray_offset=.16;distance=.6
    elif code=='LI20':seed=j['joint-head']+Vector((sign*.025*unit,.015*unit,0));ray_offset=.2;distance=.44
-   elif code=='ST25':seed=Vector((sign*.055*unit,height*.59,0));distance=.7
+   elif code=='ST25':seed=Vector((sign*anatomy['midclavicularX']/2,navel,0));distance=.7
    elif code=='ST35':seed=knee+Vector((sign*.016*unit,-.01*unit,.015*unit));ray_offset=.12;distance=.48
    elif code=='ST40':seed=ankle.lerp(knee,.5)+Vector((sign*.035*unit,0,0));direction=Vector((sign*.3,0,1));ray_offset=.12;distance=.5
    elif code in ['ST44','GB41']:
