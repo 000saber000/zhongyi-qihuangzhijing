@@ -26,3 +26,9 @@ export function interpolateOrbit(from:CameraPose,to:CameraPose,t:number):CameraP
 export function nearestVisibleMarker(hits:readonly {kind:'body'|'marker';distance:number;id?:string}[]):string|null{
  const first=[...hits].sort((a,b)=>a.distance-b.distance)[0];return first?.kind==='marker'?first.id??null:null;
 }
+export function advanceIdleRotation(speed:number,delta:number){
+ // Integrate both eased speed and yaw over elapsed time. A small per-frame
+ // clamp makes a slow device rotate slower; only cap unusually long stalls.
+ const dt=Math.max(0,Math.min(delta,1)),decay=Math.exp(-2*dt),target=.11;
+ return {speed:target+(speed-target)*decay,angle:target*dt+(speed-target)*(1-decay)/2};
+}

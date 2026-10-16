@@ -15,8 +15,10 @@ focus, raycasting, loading/retry, jade materials or calibrated model assets.
 - A keyboard-accessible **自动旋转** button toggles the preference. The system
   reduced-motion preference disables it and is observed dynamically.
 - Hidden documents and offscreen canvases pause idle rotation. Event listeners
-  and the intersection observer are removed on unmount. Frame delta is capped
-  to prevent a sudden angular jump after a long frame.
+  and the intersection observer are removed on unmount. Eased yaw is integrated
+  over elapsed time, including low frame rates; only stalls longer than one
+  second are capped to avoid a large jump. Hidden-view restoration resets idle
+  timing before any rotation resumes.
 - Compact controls use closer spacing below 360 px, keeping xray controls inside
   the viewer without wrapping their labels onto two rows.
 
@@ -40,9 +42,17 @@ exist. The compact-layout regression failed at 34 px button height before the
 spacing correction. Existing broader chapter/community test limitations remain
 documented in `acupoint-expansion-validation.md`.
 
-Final verification: all 23 atlas unit checks, all 21 atlas browser scenarios,
+Initial verification: all 23 atlas unit checks, all 21 atlas browser scenarios,
 and all 18 production-output browser checks pass. TypeScript and the configured
 release build pass; the existing large-chunk advisory remains a build warning.
 Independent source review has no unresolved findings, and diff whitespace checks
 pass. Browser checks use local servers and production files. The exact merged
 commit's Render deployment state is verified separately before reporting.
+
+The subsequent real-page recording exposed an overaggressive 50 ms frame cap:
+at software-rendering frame rates it slowed angular progress substantially.
+The corrected integration has a regression comparing ten seconds at 1, 4 and
+60 fps, requiring the same total yaw, and guards unusually long stalls.
+For this timing correction, all 24 atlas unit checks, all four motion browser
+scenarios, and all four packaged atlas checks across both outputs pass again.
+TypeScript, the configured release build, and independent review also pass.

@@ -12,7 +12,7 @@ import {Organs} from './AnatomyLayers';
 import {MeridianNetwork} from './MeridianNetwork';
 import {createJadeMaterial} from './model-material';
 import {modelUrls} from './assets';
-import {cameraPose,fullBodyPose,interpolateOrbit,nearestVisibleMarker,type CameraPose,type View} from './camera';
+import {advanceIdleRotation,cameraPose,fullBodyPose,interpolateOrbit,nearestVisibleMarker,type CameraPose,type View} from './camera';
 // Bounded to the two immutable, same-origin assets. Failed requests are evicted for retry.
 const cache=new Map<ModelVariant,Promise<GLTF>>();
 export function loadBody(variant:ModelVariant):Promise<GLTF>{
@@ -79,8 +79,8 @@ function World({autoRotate,visibleMeridians,revealAllMarkers,variant,requestId,a
   if(now-m.lastInput<2000)return;
   // React Bits-style delayed, eased idle spin. Orbit the camera so every layer
   // stays in the same calibrated coordinates, including raycast and point focus.
-  const dt=Math.min(delta,.05);m.speed+=(.11-m.speed)*(1-Math.exp(-dt*2));
-  orbitOffset.copy(camera.position).sub(c.target).applyAxisAngle(up,-m.speed*dt);
+  const step=advanceIdleRotation(m.speed,delta);m.speed=step.speed;
+  orbitOffset.copy(camera.position).sub(c.target).applyAxisAngle(up,-step.angle);
   camera.position.copy(c.target).add(orbitOffset);c.update();invalidate();
  });
  const meshes=useMemo(()=>{const result:Mesh[]=[];object?.traverse(o=>{if(o instanceof Mesh)result.push(o);});return result;},[object]);
