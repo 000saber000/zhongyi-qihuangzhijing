@@ -88,3 +88,4 @@
 .point-result-count{font-size:8px;color:#a7b89d;margin-bottom:5px;flex:none}
 .atlas-layer-controls .network-context{color:#e4ce94;font-size:9px;line-height:1.8}
 @media(max-width:760px){.atlas-layer-controls .network-context{font-size:8px}.point-density{margin-bottom:7px}}
+@media(max-width:360px){.body-view-controls{gap:2px}.body-view-controls button{padding:6px 7px;white-space:nowrap}}

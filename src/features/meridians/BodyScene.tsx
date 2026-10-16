@@ -23,18 +23,30 @@ export function loadBody(variant:ModelVariant):Promise<GLTF>{
   });cache.set(variant,promise);promise.catch(()=>{if(cache.get(variant)===promise)cache.delete(variant);});
  }return promise;
 }
-type Props={visibleMeridians:string[];revealAllMarkers:boolean;xray:boolean;showOrgans:boolean;showMeridians:boolean;bodyOpacity:number;pointNames:Record<string,string>;onOrganLoad:(ok:boolean)=>void;variant:ModelVariant;requestId:number;anchors:AcupointAnchor[];selection:Selection;view:View;viewVersion:number;showMarkers:boolean;cameraMode:'point'|'view';interactive:boolean;onSelect:(selection:Selection)=>void;onLoad:(id:number,ok:boolean)=>void;onLost:()=>void;onSettled:(key:string)=>void};
+type Props={autoRotate:boolean;visibleMeridians:string[];revealAllMarkers:boolean;xray:boolean;showOrgans:boolean;showMeridians:boolean;bodyOpacity:number;pointNames:Record<string,string>;onOrganLoad:(ok:boolean)=>void;variant:ModelVariant;requestId:number;anchors:AcupointAnchor[];selection:Selection;view:View;viewVersion:number;showMarkers:boolean;cameraMode:'point'|'view';interactive:boolean;onSelect:(selection:Selection)=>void;onLoad:(id:number,ok:boolean)=>void;onLost:()=>void;onSettled:(key:string)=>void};
 export default function BodyScene(props:Props){
  return <Canvas frameloop="demand" camera={{position:[0,.89,3],fov:45,near:.01,far:30}} dpr={[1,1.5]} gl={{antialias:true,alpha:true,powerPreference:'high-performance'}} onCreated={({gl})=>{gl.outputColorSpace=SRGBColorSpace;gl.toneMapping=ACESFilmicToneMapping;gl.toneMappingExposure=.94;}}>
   <World {...props}/>
  </Canvas>;
 }
-function World({visibleMeridians,revealAllMarkers,variant,requestId,anchors,selection,view,viewVersion,showMarkers,cameraMode,interactive,onSelect,onLoad,onLost,onSettled,xray,showOrgans,showMeridians,bodyOpacity,pointNames,onOrganLoad}:Props){
+function World({autoRotate,visibleMeridians,revealAllMarkers,variant,requestId,anchors,selection,view,viewVersion,showMarkers,cameraMode,interactive,onSelect,onLoad,onLost,onSettled,xray,showOrgans,showMeridians,bodyOpacity,pointNames,onOrganLoad}:Props){
  const [hovered,setHovered]=useState<string|null>(null);
  const glow=useMemo(makeGlowTexture,[]);useEffect(()=>()=>glow.dispose(),[glow]);
  const [loaded,setLoaded]=useState<{variant:ModelVariant;scene:Group}|null>(null);
  const {camera,size,gl,invalidate}=useThree();const controls=useRef<OrbitControlsImpl>(null);
  const flight=useRef<{from:CameraPose;to:CameraPose;startedAt:number;key:string}|null>(null);
+ const idle=useRef({lastInput:performance.now(),speed:0,inside:false,dragging:false,inView:true});
+ const up=useMemo(()=>new Vector3(0,1,0),[]),orbitOffset=useMemo(()=>new Vector3(),[]);
+ useEffect(()=>{
+  const element=gl.domElement,media=matchMedia('(prefers-reduced-motion: reduce)');
+  const wake=()=>{idle.current.lastInput=performance.now();idle.current.speed=0;invalidate();};
+  const enter=(event:PointerEvent)=>{if(event.pointerType!=='touch'){idle.current.inside=true;wake();}};
+  const leave=()=>{idle.current.inside=false;wake();};
+  const observer=new IntersectionObserver(entries=>{idle.current.inView=entries.some(entry=>entry.isIntersecting);wake();});observer.observe(element);
+  element.addEventListener('pointerenter',enter);element.addEventListener('pointerleave',leave);
+  document.addEventListener('visibilitychange',wake);media.addEventListener('change',wake);
+  return()=>{observer.disconnect();element.removeEventListener('pointerenter',enter);element.removeEventListener('pointerleave',leave);document.removeEventListener('visibilitychange',wake);media.removeEventListener('change',wake);};
+ },[gl,invalidate]);
  useEffect(()=>{let active=true;loadBody(variant).then(gltf=>{if(active){setLoaded({variant,scene:gltf.scene});onLoad(requestId,true);}},()=>{if(active)onLoad(requestId,false);});return()=>{active=false;};},[variant,requestId,onLoad]);
  useEffect(()=>{const lost=(e:Event)=>{e.preventDefault();onLost();};const el=gl.domElement;el.addEventListener('webglcontextlost',lost);return()=>{el.removeEventListener('webglcontextlost',lost);};},[gl,onLost]);
  const object=useMemo(()=>{
@@ -49,6 +61,7 @@ function World({visibleMeridians,revealAllMarkers,variant,requestId,anchors,sele
  useEffect(()=>{object?.traverse(o=>{if(o instanceof Mesh){o.renderOrder=xray?3:0;for(const m of Array.isArray(o.material)?o.material:[o.material]){if(m.transparent!==xray){m.transparent=xray;m.needsUpdate=true;}m.opacity=xray?bodyOpacity:1;m.depthWrite=!xray;m.userData.xrayUniform.value=xray?1:0;}}});invalidate();},[object,xray,bodyOpacity,invalidate]);
  useEffect(()=>{setHovered(null);},[loaded,showMarkers,interactive,viewVersion]);
  const activeAnchor=selection?anchors.find(a=>a.knowledgeId===selection.knowledgeId&&a.side===selection.side)??null:null;
+ useEffect(()=>{idle.current.lastInput=performance.now();idle.current.speed=0;invalidate();},[autoRotate,object,selection,viewVersion,invalidate]);
  useEffect(()=>{
   if(!object||!controls.current)return;
   const height=loaded?.variant==='female'?1.70:1.78;
@@ -59,7 +72,17 @@ function World({visibleMeridians,revealAllMarkers,variant,requestId,anchors,sele
   else flight.current={from,to:target,startedAt:performance.now(),key};
   invalidate();
  },[object,activeAnchor,view,viewVersion,size.width,size.height,camera,loaded?.variant,onSettled,selection,cameraMode,invalidate]);
- useFrame(()=>{const f=flight.current,c=controls.current;if(!f||!c)return;const elapsed=(performance.now()-f.startedAt)/1000;const pose=interpolateOrbit(f.from,f.to,elapsed/.85);camera.position.fromArray(pose.position);c.target.fromArray(pose.target);c.update();if(elapsed>=.85){flight.current=null;onSettled(f.key);}else invalidate();});
+ useFrame((_,delta)=>{
+  const f=flight.current,c=controls.current,m=idle.current,now=performance.now();if(!c)return;
+  if(f){m.lastInput=now;m.speed=0;const elapsed=(now-f.startedAt)/1000;const pose=interpolateOrbit(f.from,f.to,elapsed/.85);camera.position.fromArray(pose.position);c.target.fromArray(pose.target);c.update();if(elapsed>=.85){flight.current=null;onSettled(f.key);}else invalidate();return;}
+  if(!object||!autoRotate||selection||hovered||!interactive||m.inside||m.dragging||!m.inView||document.hidden||matchMedia('(prefers-reduced-motion: reduce)').matches){m.lastInput=now;m.speed=0;return;}
+  if(now-m.lastInput<2000)return;
+  // React Bits-style delayed, eased idle spin. Orbit the camera so every layer
+  // stays in the same calibrated coordinates, including raycast and point focus.
+  const dt=Math.min(delta,.05);m.speed+=(.11-m.speed)*(1-Math.exp(-dt*2));
+  orbitOffset.copy(camera.position).sub(c.target).applyAxisAngle(up,-m.speed*dt);
+  camera.position.copy(c.target).add(orbitOffset);c.update();invalidate();
+ });
  const meshes=useMemo(()=>{const result:Mesh[]=[];object?.traverse(o=>{if(o instanceof Mesh)result.push(o);});return result;},[object]);
  const raycaster=useMemo(()=>new Raycaster(),[]);
  const visible=(event:ThreeEvent<MouseEvent|PointerEvent>,anchor:AcupointAnchor)=>{
@@ -85,7 +108,7 @@ function World({visibleMeridians,revealAllMarkers,variant,requestId,anchors,sele
   {object&&showMarkers&&anchors.map((anchor,index)=>{const key=anchor.knowledgeId+':'+anchor.side;return <AcupointGlow key={key} anchor={anchor} texture={glow} index={index} detail={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.detailLevel==='detail'} revealAll={revealAllMarkers} selected={anchor===activeAnchor} hovered={hovered===key} name={pointNames[anchor.knowledgeId]??''} code={definitions.find(d=>d.knowledgeId===anchor.knowledgeId)?.referenceCode??''} onEnter={e=>enter(e,anchor)} onLeave={()=>setHovered(current=>current===key?null:current)} onChoose={e=>choose(e,anchor)}/>;})}
   <AtlasStage/>
   <GentleMotion/>
-  <OrbitControls ref={controls} makeDefault enableDamping dampingFactor={.09} enablePan minDistance={.18} maxDistance={6} minPolarAngle={.06} maxPolarAngle={Math.PI-.06} target={[0,.89,0]} onStart={()=>{flight.current=null;setHovered(null);}}/>
+  <OrbitControls ref={controls} makeDefault enableDamping dampingFactor={.09} enablePan minDistance={.18} maxDistance={6} minPolarAngle={.06} maxPolarAngle={Math.PI-.06} target={[0,.89,0]} onStart={()=>{flight.current=null;setHovered(null);idle.current.dragging=true;idle.current.speed=0;}} onEnd={()=>{idle.current.dragging=false;idle.current.lastInput=performance.now();invalidate();}}/>
  </>;
 }
 
