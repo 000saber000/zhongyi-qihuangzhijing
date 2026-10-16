@@ -3,6 +3,7 @@ const expect=baseExpect.configure({timeout:15000});
 import {readFile} from 'node:fs/promises';
 import {Vector3,PerspectiveCamera} from 'three';
 import {fullBodyPose} from '../src/features/meridians/camera';
+import {changedScenePixels} from './helpers/scene-pixels';
 test('model viewer uses the space below navigation on desktop and compact phones',async({page})=>{
  const items=JSON.parse(await readFile(new URL('../src/data/knowledge.json',import.meta.url),'utf8'));
  await page.route('**/api/knowledge',route=>route.fulfill({json:{items}}));
@@ -291,4 +292,53 @@ test('female organ loading uses its fitted asset and never keeps the male layer 
  await Promise.all([page.waitForResponse(r=>r.url().includes('viscera-female-v2')&&!new URL(r.url()).searchParams.has('url')&&!new URL(r.url()).searchParams.has('import')&&r.ok()),page.getByRole('checkbox',{name:'内脏',exact:true}).check()]);
  await expect(page.getByRole('alert')).toHaveCount(0);
  expect(await changedPixels(await canvas.screenshot()),'successful retry must visibly add the female organs').toBeGreaterThan(500);
+});
+
+test('overview naturally rotates and pauses with its switch',async({page})=>{
+ await page.emulateMedia({reducedMotion:'no-preference'});await page.goto('/#meridians');
+ const scene=page.getByTestId('body-scene'),canvas=page.locator('canvas'),rotate=page.getByRole('button',{name:'自动旋转',exact:true});
+ await expect(scene).toHaveAttribute('data-focus','full:front');await expect(rotate).toHaveAttribute('aria-pressed','true');
+ await page.getByRole('button',{name:'隐藏穴位标记'}).click();await page.mouse.move(0,0);
+ const initial=await canvas.screenshot();
+ await expect.poll(async()=>changedScenePixels(page,initial,await canvas.screenshot()),{timeout:12000,intervals:[500,1000]}).toBeGreaterThan(500);
+ await rotate.click();await expect(rotate).toHaveAttribute('aria-pressed','false');const paused=await canvas.screenshot();
+ await page.waitForTimeout(1200);expect(await changedScenePixels(page,paused,await canvas.screenshot())).toBe(0);
+});
+
+test('pointer inspection holds the view and rotation resumes after leaving',async({page})=>{
+ await page.emulateMedia({reducedMotion:'no-preference'});await page.goto('/#meridians');
+ const scene=page.getByTestId('body-scene'),canvas=page.locator('canvas');await expect(scene).toHaveAttribute('data-focus','full:front');
+ await page.getByRole('button',{name:'隐藏穴位标记'}).click();
+ const rect=(await canvas.boundingBox())!;await page.mouse.move(rect.x+rect.width/2,rect.y+rect.height/2);
+ const hovered=await canvas.screenshot();await page.waitForTimeout(2800);
+ expect(await changedScenePixels(page,hovered,await canvas.screenshot()),'pointer inspection must hold the view').toBe(0);
+ await page.mouse.move(0,0);
+ await expect.poll(async()=>changedScenePixels(page,hovered,await canvas.screenshot()),{timeout:12000,intervals:[500,1000]}).toBeGreaterThan(500);
+});
+
+test('point focus remains stationary while automatic rotation is enabled',async({page})=>{
+ await page.emulateMedia({reducedMotion:'no-preference'});await page.goto('/#meridians');
+ const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-status','ready');
+ await page.getByRole('button',{name:'隐藏穴位标记'}).click();
+ await page.getByRole('button',{name:'选择 神阙 CV8',exact:true}).click();await expect(scene).toHaveAttribute('data-focus','point-shenque:midline');
+ await page.mouse.move(0,0);const focused=await page.locator('canvas').screenshot();await page.waitForTimeout(3000);
+ expect(await changedScenePixels(page,focused,await page.locator('canvas').screenshot())).toBe(0);
+ await expect(page.getByRole('button',{name:'自动旋转',exact:true})).toHaveAttribute('aria-pressed','true');
+});
+
+test('reduced motion disables idle rotation including after switching to female xray',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/#meridians');
+ const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-status','ready');
+ await expect(page.getByRole('button',{name:'自动旋转',exact:true})).toBeDisabled();
+ await page.getByRole('button',{name:'女性人体',exact:true}).click();await expect(scene).toHaveAttribute('data-variant','female');
+ await page.getByRole('button',{name:'隐藏穴位标记'}).click();
+ await Promise.all([page.waitForResponse(r=>r.url().includes('viscera-female-v2')&&!new URL(r.url()).searchParams.has('url')&&!new URL(r.url()).searchParams.has('import')&&r.ok()),page.getByRole('switch',{name:'人体透视'}).click()]);
+ await page.getByRole('checkbox',{name:'经脉',exact:true}).uncheck();await page.mouse.move(0,0);
+ const still=await page.locator('canvas').screenshot();await page.waitForTimeout(2800);
+ expect(await changedScenePixels(page,still,await page.locator('canvas').screenshot())).toBe(0);
+ await page.setViewportSize({width:320,height:640});
+ const viewer=(await page.getByRole('region',{name:'人体观察区'}).boundingBox())!;
+ for(const button of await page.getByRole('group',{name:'人体观察角度'}).getByRole('button').all()){
+  const bounds=(await button.boundingBox())!;expect(bounds.x,await button.getAttribute('aria-label')??'control').toBeGreaterThanOrEqual(viewer.x);expect(bounds.x+bounds.width).toBeLessThanOrEqual(viewer.x+viewer.width);expect(bounds.height,'compact controls must not turn labels into two rows').toBeLessThan(33);
+ }
 });
