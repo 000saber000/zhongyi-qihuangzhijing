@@ -1,0 +1,30 @@
+{
+  "male": {
+    "sourceFile": "viscera-male-v2.glb",
+    "sha256": "2585731e27aaaf7f42cf0c9eb8713d1a9a5a13dc515d7bf24833658f6753c0ce",
+    "bodyModelId": "adult-male-v4",
+    "bodySha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "authoredSourceSha256": "0249a7e661a02b903bd36fb351f0c373c9d4fa5ee342a12769ed2211fade1561",
+    "margin": 0.008,
+    "heightScale": 1.0,
+    "heightOffset": 0.0,
+    "minWidthScale": 0.7974356202214348,
+    "minDepthScale": 0.6848097927033788,
+    "localWidthAdjustments": 0,
+    "method": "Measured frontal torso envelopes; per-height width fit and local depth/centerline adaptation. Educational layout; no clinical segmentation claim."
+  },
+  "female": {
+    "sourceFile": "viscera-female-v2.glb",
+    "sha256": "6c6d7ab4f4c52eaf052a60b50f873815efae5e40f6c159219cf7d71e34aa78d8",
+    "bodyModelId": "adult-female-v4",
+    "bodySha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "authoredSourceSha256": "0249a7e661a02b903bd36fb351f0c373c9d4fa5ee342a12769ed2211fade1561",
+    "margin": 0.008,
+    "heightScale": 0.9550561797752809,
+    "heightOffset": 0.0062584269662919745,
+    "minWidthScale": 0.5757058810403907,
+    "minDepthScale": 0.4905695042168157,
+    "localWidthAdjustments": 1,
+    "method": "Measured frontal torso envelopes; per-height width fit and local depth/centerline adaptation. Educational layout; no clinical segmentation claim."
+  }
+}

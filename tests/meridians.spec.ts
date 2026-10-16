@@ -259,3 +259,36 @@ test('a distant detail marker stays unclickable until all points or its meridian
  await page.getByRole('combobox',{name:'筛选经脉'}).selectOption('meridian-ren');
  await page.mouse.move(x,y);await expect(page.getByRole('tooltip')).toContainText('神阙');
 });
+
+test('female organ loading uses its fitted asset and never keeps the male layer on failure',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
+ let fail=true;
+ await page.route('**/*viscera-female-v2*.glb*',async route=>{
+  const params=new URL(route.request().url()).searchParams;
+  if(params.has('import')||params.has('url'))return route.continue();
+  if(fail)return route.abort();return route.continue();
+ });
+ await page.goto('/#meridians');const scene=page.getByTestId('body-scene');await expect(scene).toHaveAttribute('data-status','ready');
+ await Promise.all([page.waitForResponse(r=>r.url().includes('viscera-male-v2')&&!new URL(r.url()).searchParams.has('url')&&!new URL(r.url()).searchParams.has('import')&&r.ok()),page.getByRole('switch',{name:'人体透视'}).click()]);
+ await page.getByRole('button',{name:'隐藏穴位标记'}).click();await page.getByRole('checkbox',{name:'经脉',exact:true}).uncheck();
+ await page.getByRole('button',{name:'女性人体',exact:true}).click();await expect(scene).toHaveAttribute('data-variant','female');
+ await expect(page.getByRole('alert')).toContainText('内脏层暂未加载');
+ const canvas=page.locator('canvas'),failed=await canvas.screenshot({path:test.info().outputPath('failed.png')});
+ const changedPixels=async(other:Buffer)=>page.evaluate(async({a,b})=>{
+  const decode=async(value:string)=>{
+   const bytes=Uint8Array.from(atob(value),c=>c.charCodeAt(0));const image=await createImageBitmap(new Blob([bytes],{type:'image/png'}));
+   const surface=document.createElement('canvas');surface.width=image.width;surface.height=image.height;const context=surface.getContext('2d')!;context.drawImage(image,0,0);image.close();return context.getImageData(0,0,surface.width,surface.height).data;
+  };
+  const first=await decode(a),second=await decode(b);if(first.length!==second.length)throw Error('canvas dimensions changed');let changed=0;
+  // SwiftShader compositing can round a few background channels by 1/255.
+  for(let i=0;i<first.length;i+=4)if(Math.max(...[0,1,2].map(c=>Math.abs(first[i+c]-second[i+c])))>2)changed++;
+  return changed;
+ },{a:failed.toString('base64'),b:other.toString('base64')});
+ await page.getByRole('checkbox',{name:'内脏',exact:true}).uncheck();
+ const hidden=await canvas.screenshot({path:test.info().outputPath('hidden.png')});
+ expect(await changedPixels(hidden),'failed female layer must be empty, not the old male organs').toBe(0);
+ fail=false;
+ await Promise.all([page.waitForResponse(r=>r.url().includes('viscera-female-v2')&&!new URL(r.url()).searchParams.has('url')&&!new URL(r.url()).searchParams.has('import')&&r.ok()),page.getByRole('checkbox',{name:'内脏',exact:true}).check()]);
+ await expect(page.getByRole('alert')).toHaveCount(0);
+ expect(await changedPixels(await canvas.screenshot()),'successful retry must visibly add the female organs').toBeGreaterThan(500);
+});

@@ -4,7 +4,7 @@ Combine the PNG cells with Pillow outside Blender; retain transparency.
 """
 import sys,argparse,json
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--out',required=True);p.add_argument('--pack',action='store_true')
+p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--out',required=True);p.add_argument('--pack',action='store_true');p.add_argument('--codes',nargs='*')
 opts=p.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else sys.argv[1:]);root=Path(opts.root).resolve();out=Path(opts.out);out.mkdir(parents=True,exist_ok=True)
 if opts.pack:
  from PIL import Image
@@ -38,6 +38,7 @@ shader=material.node_tree.nodes.get('Principled BSDF');shader.inputs['Base Color
 bpy.ops.mesh.primitive_uv_sphere_add(segments=16,ring_count=8,radius=.006);marker=bpy.context.object;marker.data.materials.append(material)
 bpy.ops.mesh.primitive_torus_add(major_radius=.012,minor_radius=.0008,major_segments=40,minor_segments=6);ring=bpy.context.object;ring.data.materials.append(material)
 for index,point in enumerate(points):
+ if opts.codes and point['referenceCode'] not in opts.codes:continue
  anchor=next(a for a in anchors if a['modelId']==model['id'] and a['knowledgeId']==point['knowledgeId'] and a['side'] in ['left','midline'])
  target=blender(anchor['position']);normal=blender(anchor['outwardNormal']).normalized();direction=blender(anchor['viewDirection']).normalized()
  marker.location=target+normal*.002;ring.location=target+normal*.003;ring.rotation_euler=normal.to_track_quat('Z','Y').to_euler()

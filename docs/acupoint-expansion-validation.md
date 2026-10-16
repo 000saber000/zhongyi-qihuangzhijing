@@ -1,5 +1,9 @@
 # First acupoint expansion batch
 
+Historical batch report: the subsequent abdominal landmark and organ-fit
+correction is documented in [anatomy-alignment-validation.md](anatomy-alignment-validation.md).
+Its targeted anchor corrections supersede the preservation statement below.
+
 The meridian atlas now contains 60 named point types: 59 points on the fourteen
 meridians and the extra point Yintang. This is a curated learning subset, not the
 complete set of 361 standard meridian points. Bilateral points have independent
