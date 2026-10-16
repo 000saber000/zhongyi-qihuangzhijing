@@ -6,8 +6,11 @@ test('search, read, bookmark and restore',async({page})=>{
  await page.getByRole('button',{name:'阅读 桂枝汤',exact:true}).click();
  await expect(page.getByRole('heading',{name:'桂枝汤',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'收藏知识',exact:true}).click();
+ await expect(page.getByRole('button',{name:'取消收藏',exact:true})).toBeVisible();
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('qihuang-bookmarks')||'[]'))).toContain('formula-guizhi');
  await page.reload();
  await page.getByRole('button',{name:'我的书斋',exact:true}).click();
+ await page.locator('.cosmic-content-scroll').evaluate(element=>element.scrollTop=element.scrollHeight);
  await expect(page.getByRole('button',{name:'阅读 桂枝汤',exact:true})).toBeVisible();
 });
 test('empty search and graph relation navigation',async({page})=>{

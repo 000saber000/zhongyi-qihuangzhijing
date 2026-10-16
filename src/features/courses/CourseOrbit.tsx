@@ -1,9 +1,9 @@
 import {lazy,Suspense,useEffect,useRef,useState} from 'react';
-import {ArrowUpRight,Check,Pause,Play} from 'lucide-react';
+import {Pause,Play} from 'lucide-react';
 import {courses,type Course} from '../../data/catalog';
 import {courseBookTitle} from './courseTitle';
 import type {CourseVisualRef} from './sceneTypes';
-import SpotlightCard from '../../components/react-bits/SpotlightCard';
+import CourseDeck from './CourseDeck';
 const CourseScene=lazy(()=>import('./CourseScene'));
 import useReducedMotion from './useReducedMotion';
 import './courses.css';
@@ -43,7 +43,7 @@ export default function CourseOrbit({completed,activeCourse,onStart,visual}:Prop
  const focus=(course:Course,element:HTMLElement)=>{if(element.matches(':focus-visible'))setFocused(course.id);};
  return <section className="course-orbit" aria-label="古籍环绕学习路径" data-motion={paused?'paused':'running'}>
   <div className="course-orbit-toolbar"><span>三卷医理 · 一片星海</span><button type="button" disabled={reduced} onClick={()=>{setHeld(!held);setFocused(null);}} aria-label={held?'继续古籍公转':'暂停古籍公转'}>{held?<Play size={13}/>:<Pause size={13}/>}<span>{reduced?'静阅模式':held?'继续公转':'暂停公转'}</span></button></div>
-  <div className="course-orbit-scene" ref={scene}>
+  <div className="course-orbit-layout"><div className="course-orbit-scene" ref={scene}>
    {!failed&&<Suspense fallback={<div className="course-3d-status">正在展开三卷医理…</div>}><CourseScene paused={paused} reduced={reduced} highlight={hovered??focused} books={books} visual={visual} onReady={()=>setReady(true)} onError={()=>{setFailed(true);setReady(false);}}/></Suspense>}
    {failed&&<div className="course-3d-status">当前设备无法显示三维古籍，可从下方选择课程继续学习。</div>}
    <span className="course-nebula-label" aria-hidden="true">岐黄 · 知识星云</span>
@@ -58,14 +58,7 @@ export default function CourseOrbit({completed,activeCourse,onStart,visual}:Prop
     </button>;
    })}
   </div>
-  <div className="course-orbit-navigation" aria-label="选择学习路径">{courses.map((course,index)=>{
-   const count=course.lessons.filter((_,i)=>completed.includes(`${course.id}-${i}`)).length;
-   return <SpotlightCard key={course.id} className="course-choice-glow" spotlightColor="#cce9b7" intensity={.15} borderGlow={.3} proximity={20} flare={false}>
-    <button type="button" data-course-id={course.id} aria-label={`开始学习 ${course.title}`} onClick={event=>start(course,index,event.currentTarget)} onFocus={event=>focus(course,event.currentTarget)} onBlur={()=>setFocused(null)}><span>{course.glyph}</span>{courseBookTitle(course)}<ArrowUpRight size={13}/></button>
-    <div className="course-orbit-nodes" aria-label={`${course.title}学习节点`}>{course.lessons.map((title,i)=><span className={completed.includes(`${course.id}-${i}`)?'done':''} key={title} title={title}><i>{completed.includes(`${course.id}-${i}`)?<Check size={8}/>:i+1}</i></span>)}</div>
-    <span className="course-orbit-count">{count?`${count} / 5 单元已完成`:'开启你的学习之旅'}</span><div className="course-orbit-progress"><i style={{width:`${count*20}%`}}/></div>
-   </SpotlightCard>;
-  })}</div>
+  <CourseDeck completed={completed} paused={paused} activeCourse={activeCourse} onStart={(course,index,trigger)=>start(course,index,trigger)} onHighlight={setHovered} onFocus={setFocused}/></div>
   <p className="course-orbit-hint">轻触古籍，展开学习。悬停或键盘选中时，星海暂驻。</p>
  </section>;
 }

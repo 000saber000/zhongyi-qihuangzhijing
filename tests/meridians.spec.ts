@@ -38,7 +38,9 @@ test('independent page loads one canvas, keeps side on model switch and shares b
  await expect(page.getByRole('button',{name:'人体右侧',exact:true})).toHaveAttribute('aria-pressed','true');
  await page.getByRole('button',{name:'收藏穴位',exact:true}).click();
  await expect(page.getByRole('button',{name:'取消穴位收藏',exact:true})).toBeVisible();
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('qihuang-bookmarks')||'[]'))).toContain('point-zusanli');
  await page.getByRole('button',{name:'我的书斋',exact:true}).click();
+ await page.locator('.cosmic-content-scroll').evaluate(element=>element.scrollTop=element.scrollHeight);
  await expect(page.getByRole('button',{name:'阅读 足三里'})).toBeVisible();
  await expect(page.getByTestId('body-scene')).toHaveCount(0);
  await page.getByRole('button',{name:'经络云图',exact:true}).click();
