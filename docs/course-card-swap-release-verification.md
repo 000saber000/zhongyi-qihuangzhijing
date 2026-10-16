@@ -22,9 +22,8 @@ Release source: `origin/main` at `7b0adc5ac5cb9a3bd85c793f4fcea68da91f3845` (mer
 
 ## Full-suite observations
 
-One full `npm test` run completed 134/137 tests. Three failures were:
+One full `npm test` run completed 134/137 tests. The three failures were a missing legacy course-card selector, a guest favorite not visible in `demo.spec.ts`, and a guest acupoint favorite not visible after a model switch in `meridians.spec.ts`.
 
-- `demo.spec.ts` no longer found the expected course selector after the card component class had changed. Added the existing `.course-choice-glow` class to each new card; the affected `all sections keep the same cosmos shell and canvas` regression passed afterward.
-- `demo.spec.ts` and `meridians.spec.ts` did not see guest bookmark cards in the full run. The demo case passed an isolated browser rerun after waiting for the saved state and scrolling the inner study view to the saved card. A diagnostic against the same app and disposable database showed both expected IDs and cards. The model-switched meridian favorite still does not appear in the isolated existing browser test, although its bookmark ID is persisted.
+Afterward, adding the legacy selector and scrolling the inner study view before checking the offscreen cards fixed the course-layout and `demo.spec.ts` checks; both pass in isolated reruns. The meridian test's bookmark ID is present in localStorage, and a separate simple guest-favorite flow restores a card. The model-switched meridian test still does not show the card in its isolated Playwright rerun. This is the remaining browser regression caveat; the full 137-test command was not rerun after the two isolated fixes.
 
-The deployment proceeds with the remaining model-switched meridian bookmark browser-test failure. All 72 API tests, all 18 release-package tests, all 18 course integration tests, the targeted study-loading regression, and course/card compatibility browser checks passed.
+All 72 API tests, all 18 release-package tests, all 18 course integration tests, the targeted study-loading regression, and the isolated demo and legacy-selector reruns passed. The deployment proceeds with the recorded model-switched meridian browser-test failure.
