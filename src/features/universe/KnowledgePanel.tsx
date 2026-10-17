@@ -2,6 +2,7 @@ import {useLayoutEffect,useRef,useState} from 'react';
 import {ArrowUpRight,BookOpen,Bookmark,ChevronRight,Sparkles,X} from 'lucide-react';
 import {categoryLabel,knowledge,keyPoints,type Knowledge} from '../../data/catalog';
 import {fieldColors,nodeById} from '../../three/knowledgeSpace';
+import type {ClickSparkEvent} from '../../components/react-bits/ClickSpark';
 
 // Retain the outgoing content until its animation finishes. Selection and camera
 // updates remain immediate; interrupted animations can never commit stale content.
@@ -46,8 +47,8 @@ function usePanelTransition(next:Knowledge|null){
  return {item:displayed,shell,content};
 }
 
-type Props={item:Knowledge|null;bookmarks:string[];studyReady:boolean;pendingBookmarks:Set<string>;onToggle:(id:string)=>void;onSelect:(id:string)=>void;onClose:()=>void;onNavigate:(route:string)=>void;onExplain?:(item:Knowledge)=>void};
-export default function KnowledgePanel({item:next,bookmarks,studyReady,pendingBookmarks,onToggle,onSelect:select,onClose:clear,onNavigate,onExplain}:Props){
+type Props={item:Knowledge|null;bookmarks:string[];studyReady:boolean;pendingBookmarks:Set<string>;onToggle:(id:string)=>void;onSpark?:(event:ClickSparkEvent)=>void;onSelect:(id:string)=>void;onClose:()=>void;onNavigate:(route:string)=>void;onExplain?:(item:Knowledge)=>void};
+export default function KnowledgePanel({item:next,bookmarks,studyReady,pendingBookmarks,onToggle,onSpark,onSelect:select,onClose:clear,onNavigate,onExplain}:Props){
  const {item,shell,content}=usePanelTransition(next);
  return <aside ref={shell} className="cosmic-panel" aria-label="知识详情" aria-hidden={!next} hidden={!item}><div ref={content} className="panel-content">{item&&<>
 <div className="panel-top"><span><i style={{background:fieldColors[item.type]}}/>{categoryLabel(item.type)} · KNOWLEDGE STAR</span><button onClick={clear} aria-label="关闭知识详情"><X size={19}/></button></div>
@@ -57,6 +58,6 @@ export default function KnowledgePanel({item:next,bookmarks,studyReady,pendingBo
  <div className="panel-relations">{item.relations.map(id=>{const related=nodeById.get(id)?.item;return related&&<button key={id} onClick={()=>select(id)} aria-label={`关联知识 ${related.title}`}><i style={{background:fieldColors[related.type]}}/><span>{related.title}<small>{categoryLabel(related.type)}</small></span><ChevronRight size={14}/></button>})}</div>
  {onExplain&&<button className="ai-explain" onClick={()=>onExplain(item)}><Sparkles size={14}/>请 AI 讲解</button>}
  <div className="panel-source"><BookOpen size={13}/><div>{item.source}<small>用户提供素材 · 具体出处待核对</small></div></div>
- <div className="panel-bottom"><button className={bookmarks.includes(item.id)?'saved':''} disabled={!studyReady||pendingBookmarks.has('bookmark:'+item.id)} onClick={()=>onToggle(item.id)} aria-label={bookmarks.includes(item.id)?'取消收藏':'收藏知识'}><Bookmark size={15} fill={bookmarks.includes(item.id)?'currentColor':'none'}/>{bookmarks.includes(item.id)?'已收入书斋':'收藏知识'}</button><button onClick={()=>onNavigate(`knowledge/${item.id}`)}>深入研读 <ArrowUpRight size={14}/></button></div>
+ <div className="panel-bottom"><button className={bookmarks.includes(item.id)?'saved':''} disabled={!studyReady||pendingBookmarks.has('bookmark:'+item.id)} onClick={event=>{onSpark?.(event);onToggle(item.id);}} aria-label={bookmarks.includes(item.id)?'取消收藏':'收藏知识'}><Bookmark size={15} fill={bookmarks.includes(item.id)?'currentColor':'none'}/>{bookmarks.includes(item.id)?'已收入书斋':'收藏知识'}</button><button onClick={()=>onNavigate(`knowledge/${item.id}`)}>深入研读 <ArrowUpRight size={14}/></button></div>
  </>}</div></aside>;
 }

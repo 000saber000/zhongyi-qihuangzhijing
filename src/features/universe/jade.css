@@ -55,3 +55,8 @@
  .unified-content .study-resume-copy p{font-size:13px}
  .unified-content .study-resume-action{width:100%;grid-template-columns:1fr auto;align-items:center;justify-items:start}
 }
+
+.unified-content :is(.study-resume,.account-card,.study-stats>div,.my-suggestions){position:relative}
+.unified-content :is(.study-resume,.account-card,.study-stats>div,.my-suggestions)::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;box-shadow:0 0 0 1px #d8ca9266,0 0 26px #d8ca921f;transition:opacity .28s ease}
+.unified-content :is(.study-resume,.account-card,.study-stats>div,.my-suggestions):hover::after,.unified-content :is(.study-resume,.account-card,.study-stats>div,.my-suggestions):focus-within::after{opacity:1}
+@media(prefers-reduced-motion:reduce){.unified-content :is(.study-resume,.account-card,.study-stats>div,.my-suggestions)::after{transition:none}}
