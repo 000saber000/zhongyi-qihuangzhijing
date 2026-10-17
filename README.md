@@ -71,6 +71,25 @@
 
 岐黄知境希望陪你慢慢读、认真想，把零散的知识连接起来，让每一步学习有所收获。
 
+## 创作说明
+
+**想解决的问题**：中医知识本身是网络状的——经典指向理论，方剂指向本草，腧穴指向经络——但常见的学习材料按目录线性排列，初学者很难看到这些联系。岐黄知境把关系直接画成一片可以漫游的星海：每个条目是一颗星辰，每条关联是一道光束，从任意一点出发都能沿着联系继续走。
+
+**设计取舍**：
+
+- 用三维星海而不是列表作为入口，让「知识之间的联系」成为可感知的空间结构，而不只是文字描述。
+- 学习路径与自由漫游并存：路径给初学者一条确定路线，星海保留探索感，两者共享同一套条目和关联数据。
+- 内容保持可核对：每条知识标注来源说明，示意图与推断明确标为学习示意，不当作医学结论。
+
+**技术难点**：
+
+- 128 个条目、282 条关联在三维空间里的布局、点击拾取与镜头漫游，需要在低端设备上保持可用帧率。
+- 学习记录同时支持游客本地与登录云端，两种状态要保持一致，导入时还要处理与云端记录的合并。
+- AI 回答要与站内知识卡片打通，同时限制每日额度、支持中止生成。
+- 动效与可访问性兼顾：所有动画响应 `prefers-reduced-motion`，主要操作可键盘完成。
+
+**完成情况**：约 1.2 万行 TypeScript / TSX / CSS 前端代码，128 条知识与 282 条关联，24 个测试文件、133 个端到端用例，另有三维人体的 Blender 处理与资产校验脚本。
+
 ## 技术实现
 
 前端是 React 18 + TypeScript 的单页应用，由 Vite 6 构建；后端是 Express 5 + PostgreSQL 的 API 服务，两部分分别部署在 Render。
@@ -99,4 +118,4 @@ Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 
 修改建议的文本差异展示使用 [jsdiff](https://github.com/kpdecker/jsdiff)，遵循 BSD-3-Clause，许可证见 [JSDIFF-LICENSE.txt](third-party/JSDIFF-LICENSE.txt)。
 
-学习路径的课程卡片使用 React Bits CardSwap，我的书斋继续学习入口使用 [React Bits SpotlightCard](https://github.com/DavidHDev/react-bits/tree/496968c4117e21278f13917201b7d615bc5e7450)（Copyright © 2026 David Haz），遵循 MIT + Commons Clause，完整条款与来源见 [许可证](third-party/REACT-BITS-LICENSE.md) 和 [来源记录](third-party/REACT-BITS-SOURCE.md)。三张课程主题图的原图与生成记录见 [课程图片说明](art/course-card-swap/README.md)。三维古籍使用 Three.js 实体网格建模封面、纸页和订线，生成的布面图像仅用作材质；题签文字绘入三维材质纹理。中央星云复用主页的星云、知识星团和关联光线生成实现，以独立实例缩放展示。
+界面中的 [React Bits](https://github.com/DavidHDev/react-bits/tree/496968c4117e21278f13917201b7d615bc5e7450) 组件 CardSwap（学习路径课程卡片）、SpotlightCard（书斋继续学习入口）、GooeyNav（知识库分类栏）、PillNav（知识宇宙领域栏）与 ClickSpark（收藏按钮星火）均为 Copyright © 2026 David Haz，遵循 MIT + Commons Clause，完整条款与来源见 [许可证](third-party/REACT-BITS-LICENSE.md) 和 [来源记录](third-party/REACT-BITS-SOURCE.md)；书斋卡片的弹入与选中环参考了 AnimatedList 的交互语言，未复制其代码。三张课程主题图的原图与生成记录见 [课程图片说明](art/course-card-swap/README.md)。三维古籍使用 Three.js 实体网格建模封面、纸页和订线，生成的布面图像仅用作材质；题签文字绘入三维材质纹理。中央星云复用主页的星云、知识星团和关联光线生成实现，以独立实例缩放展示。

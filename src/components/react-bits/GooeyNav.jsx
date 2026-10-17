@@ -1,3 +1,4 @@
+// Copyright (c) 2026 David Haz.
 // React Bits GooeyNav, JS + CSS, commit 496968c4117e21278f13917201b7d615bc5e7450.
 // User-supplied source verified against upstream; see third-party/REACT-BITS-SOURCE.md.
 'use client';

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 David Haz.
 // React Bits ClickSpark: user-supplied JavaScript export.
 // Bookmark burst adaptation; see third-party/REACT-BITS-SOURCE.md.
 'use client';

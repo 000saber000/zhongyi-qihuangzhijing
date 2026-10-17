@@ -1,3 +1,4 @@
+// Copyright (c) 2026 David Haz.
 // React Bits PillNav: user-supplied JavaScript + CSS export.
 // Local controlled-button adaptation; see third-party/REACT-BITS-SOURCE.md.
 'use client';
