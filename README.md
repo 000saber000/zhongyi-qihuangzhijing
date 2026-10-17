@@ -110,6 +110,8 @@
 
 ## 致谢与版权
 
+项目自行编写的代码与文档以 [MIT 许可](LICENSE) 发布；第三方组件、三维模型等资产保留各自许可，具体范围见 [NOTICE](NOTICE.md)。
+
 知识星海的部分渲染代码与关联光束改编自 [Cohenjikan/shiyun · 诗云](https://github.com/Cohenjikan/shiyun/tree/928c79ed554204b0033300ecd6c2529cc4e55764) 的 MIT 授权版本 `928c79e`（2026-06-27），感谢原作者的创作与分享。
 
 Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud

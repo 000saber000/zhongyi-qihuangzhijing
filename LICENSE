@@ -19,20 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-## 适用范围说明 / Scope
-
-本许可证覆盖本仓库中由项目作者编写的源代码与文档。以下内容不适用本许可证，
-按各自原有的许可与来源说明处理，不应被本许可证视为再授权：
-
-- `src/components/react-bits/`：React Bits 组件，Copyright (c) 2026 David Haz，
-  遵循 MIT + Commons Clause，见 [third-party/REACT-BITS-LICENSE.md](third-party/REACT-BITS-LICENSE.md)。
-- `src/assets/anatomy/`、`src/assets/courses/`、`art/model-sources/` 中的三维模型与图像资产：
-  来源与使用限制见 [third-party/BODY-MODEL-SOURCE.md](third-party/BODY-MODEL-SOURCE.md)、
-  [third-party/LUX3D-MODELS.txt](third-party/LUX3D-MODELS.txt) 与
-  [third-party/MPFB-ASSETS-LICENSE.md](third-party/MPFB-ASSETS-LICENSE.md)。
-- 知识星海的星云与关联光束实现改编自 Cohenjikan/shiyun（MIT），
-  见 [third-party/SHIYUN-LICENSE.md](third-party/SHIYUN-LICENSE.md)。
-- `third-party/` 下的其余第三方许可与来源记录。
-
-站内知识条目的文本为学习用途的整理与概括，具体文献版本与出处仍在校对中。
