@@ -9,8 +9,9 @@ if(!assets.some(path=>path.endsWith('.js'))||!assets.some(path=>path.endsWith('.
 }
 for(const path of assets)await stat(new URL(path.slice(1),source));
 
-// The existing Render service publishes public/ and copies this historical entry.
-// Keep all Vite chunks together so that setting still serves a complete split build.
+// Local compatibility output for the `render-compatible` production test
+// project. The Render static site publishes dist/ directly, so public/ and the
+// generated qihuang-unified.html entry stay untracked.
 await mkdir(publish,{recursive:true});
 await rm(new URL('assets/',publish),{recursive:true,force:true});
 await cp(new URL('assets/',source),new URL('assets/',publish),{recursive:true});

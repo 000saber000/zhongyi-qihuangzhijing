@@ -68,20 +68,18 @@ VITE_API_BASE_URL=https://qihuang-api.onrender.com npm run build
 
 发布目录是 `dist/`：`index.html` 是轻量入口，`assets/` 保存带内容哈希的样式、入口脚本和三维场景脚本。`render.yaml` 的静态站点配置使用 `npm ci --include=dev && npm run build`，发布 `dist`，并设置公开构建变量 `VITE_API_BASE_URL=https://qihuang-api.onrender.com`。哈希资源可以长期缓存，HTML 入口应重新验证。
 
-### 现有站点的兼容发布
+### 静态站点发布
 
-当前 Render 服务仍使用 `mkdir -p public && cp qihuang-unified.html public/index.html`，发布目录为 `public`。修改 `render.yaml` 不会自动修改一个已有、未绑定 Blueprint 的服务设置。因此仓库保留完整的分离资源，现有自动发布流程可继续使用：
+Render 静态站点 `qihuang-zhijing` 使用标准构建：Build Command 为 `npm install; npm run build`（`render.yaml` 记录的是 `npm ci --include=dev && npm run build`），Publish Directory 为 `dist`，推送 `main` 即自动部署。仓库不再提交 `public/` 构建产物和 `qihuang-unified.html`，两者由 `npm run release:build` 在本地生成，已被 `.gitignore` 忽略。
+
+`release:build` 仍可用来生成兼容输出（`public/` 与根目录的 `qihuang-unified.html`），供 `npm run test:production` 的 `render-compatible` 项目在本地验证。生成后运行：
 
 ```sh
 VITE_API_BASE_URL=https://qihuang-api.onrender.com npm run release:build
 npm run test:production
 ```
 
-`release:build` 生成 `dist/`，将全部 JS/CSS 资源同步到 `public/assets/`，并生成轻量的 `qihuang-unified.html` 兼容入口和本地预览用的 `public/index.html`。历史文件名保留，但其内容已不再内嵌脚本和样式。提交源码、兼容入口及 `public/assets/` 到 `main`，Render 即可自动发布；`release:export` 与 `demo:export` 是该命令的兼容别名。
-
-生产浏览器检查分别访问标准 `dist/` 与兼容 `public/` 输出，验证外部资源、场景延迟/失败时的导航和游客学习记录。开发测试仍使用上方的独立测试数据库。
-
-以后若在 [静态站点设置](https://dashboard.render.com/static/srv-db5l3pvlk1mc73acpjpg/settings) 将 Build Command 改为 `npm ci --include=dev && npm run build`、Publish Directory 改为 `dist`，并添加上述 API 构建变量，就可以直接提交源码更新。在确认标准构建成功上线后，再移除兼容入口和已提交的 `public/assets/`；不需要重建站点。
+生产浏览器检查分别访问标准 `dist/`（端口 4173）与兼容 `public/`（端口 4174）输出，验证外部资源、场景延迟/失败时的导航和游客学习记录。开发测试使用上方的独立测试数据库。
 
 新增 Node API 的构建命令是 `npm ci --prefix server --include=dev && npm --prefix server run check`，启动命令是 `npm --prefix server start`。配置 `DATABASE_URL`、`ALLOWED_ORIGINS=https://qihuang-zhijing.onrender.com` 和 `SKIP_INSTALL_DEPS=true`。数据库与 API 应处于同一个 Render 工作区与区域，使用内部连接地址。
 

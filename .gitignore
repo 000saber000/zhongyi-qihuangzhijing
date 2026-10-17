@@ -1,6 +1,5 @@
-public/*
-!public/assets/
-!public/licenses/
+public/
+qihuang-unified.html
 .worktrees/
 .superpowers/
 node_modules/
