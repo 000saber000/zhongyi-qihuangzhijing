@@ -1461,7 +1461,7 @@
       block(0.34, 0.34, 0.34, skinMat, 0, 1.52, 0);
       block(0.36, 0.26, 0.08, hairMat, 0, 1.55, -0.17);
       // 发顶略前移并减薄，避免与额头共面产生深度闪烁。
-      block(0.36, 0.09, 0.34, hairMat, 0, 1.69, 0.01);
+      block(0.35, 0.09, 0.34, hairMat, 0, 1.69, 0.01);
       block(0.04, 0.16, 0.20, hairMat, -0.16, 1.55, 0.02);
       block(0.04, 0.16, 0.20, hairMat, 0.16, 1.55, 0.02);
 
@@ -1479,18 +1479,18 @@
         block(0.38, 0.03, 0.36, trimMat, 0, 1.72, -0.01);
         block(0.06, 0.08, 0.06, trimMat, 0, 1.82, -0.01);
       } else if (style.hat === 'headband') {
-        block(0.37, 0.06, 0.37, trimMat, 0, 1.66, 0);
-        block(0.05, 0.12, 0.04, trimMat, 0, 1.61, -0.19);
+        block(0.37, 0.06, 0.37, trimMat, 0, 1.665, 0.005);
+        block(0.05, 0.12, 0.04, trimMat, 0, 1.61, -0.18);
       } else if (style.hat === 'bun') {
-        block(0.13, 0.12, 0.10, hairMat, 0, 1.75, -0.14);
+        block(0.13, 0.12, 0.10, hairMat, 0, 1.755, -0.14);
         block(0.06, 0.06, 0.06, trimMat, 0, 1.83, -0.14);
       } else if (style.hat === 'straw') {
         block(0.52, 0.04, 0.52, strawMat, 0, 1.72, 0);
         block(0.28, 0.13, 0.28, strawMat, 0, 1.79, 0);
         block(0.29, 0.03, 0.29, trimMat, 0, 1.75, 0);
       } else if (style.hat === 'cap') {
-        block(0.37, 0.13, 0.36, capMat, 0, 1.74, 0);
-        block(0.30, 0.16, 0.04, capMat, 0, 1.64, -0.19);
+        block(0.37, 0.13, 0.34, capMat, 0, 1.74, 0.03);
+        block(0.30, 0.16, 0.04, capMat, 0, 1.64, -0.18);
       } else {
         block(0.09, 0.10, 0.09, hairMat, 0, 1.77, -0.02);
         block(0.10, 0.03, 0.10, trimMat, 0, 1.73, -0.02);
