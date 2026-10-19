@@ -11,4 +11,4 @@ function bundledShiyunLicense():Plugin{
  };
 }
 
-export default defineConfig({plugins:[react(),bundledShiyunLicense()],publicDir:false,server:{port:5173,strictPort:true}});
+export default defineConfig({plugins:[react(),bundledShiyunLicense()],publicDir:'static',server:{port:5173,strictPort:true}});

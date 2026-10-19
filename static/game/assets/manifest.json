@@ -1,0 +1,32 @@
+[
+  {
+    "file": "qihuang-cover.png",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2470221,
+    "sha256": "c3645d55a64ba8c4c4c86752843c979b06ab3ec211f13266c671375d0b4d5501",
+    "tool": "built-in imagegen",
+    "generatedDate": "2026-10-18",
+    "transparencyRequested": false
+  },
+  {
+    "file": "qihuang-room.png",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2009261,
+    "sha256": "4b0529bf354678a1a1ca5d40d203328a1d7f01b3bf43b5285d989463e2be4eb1",
+    "tool": "built-in imagegen",
+    "generatedDate": "2026-10-18",
+    "transparencyRequested": false
+  },
+  {
+    "file": "xuan-paper.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 2586697,
+    "sha256": "94c8b913a7124f33734ae8f1c88a3edc6467ce6a8eff977d922e027ed3956cca",
+    "tool": "built-in imagegen",
+    "generatedDate": "2026-10-18",
+    "transparencyRequested": false
+  }
+]

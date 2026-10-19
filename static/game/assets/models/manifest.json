@@ -1,0 +1,191 @@
+{
+  "generated": "2026-10-19",
+  "tools": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0"
+  },
+  "models": {
+    "jar": {
+      "source": "tripo_convert_c8fccbc5-1bf1-4c81-ab2a-b4f68db50501.glb",
+      "originalBytes": 62032960,
+      "sourceSHA256": "676fa123b6264ad385ad07777b0fde385c719d60c6a23c787e516e6be2acecf3",
+      "variants": {
+        "desktop": {
+          "file": "jar-desktop.glb",
+          "offlineFile": "jar-desktop.js",
+          "bytes": 237548,
+          "triangles": 18000,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "273b836b924f9d97e107dd2bf73306b3f860e27471858a4cfb68bc022c20bd0a"
+        },
+        "mobile": {
+          "file": "jar-mobile.glb",
+          "offlineFile": "jar-mobile.js",
+          "bytes": 100712,
+          "triangles": 3500,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "c7116526be8efe33a3e623013d061c84ef05ecdbee5477d5769fdfeab18e73d9"
+        }
+      },
+      "originalTriangles": 1915683
+    },
+    "mortar": {
+      "source": "tripo_convert_271d1d59-3655-4fa3-8d5c-0f08266bdc7e.glb",
+      "originalBytes": 65620060,
+      "sourceSHA256": "7d13d42beb483913df27f7319e2ae9e48cc99029fdffe5afc4d1a59d53b8c6e6",
+      "variants": {
+        "desktop": {
+          "file": "mortar-desktop.glb",
+          "offlineFile": "mortar-desktop.js",
+          "bytes": 429152,
+          "triangles": 30000,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "a2737ff58960769e62d5766f82ec4c028f09a92ad32c9d1b5e09b44bafa57cfb"
+        },
+        "mobile": {
+          "file": "mortar-mobile.glb",
+          "offlineFile": "mortar-mobile.js",
+          "bytes": 207368,
+          "triangles": 6500,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "0d5810c34fe97cb70c257501de4aae0d5d3f0dc26e8b81f2b4bf264b8e7a2d84"
+        }
+      },
+      "originalTriangles": 1997136
+    },
+    "pot": {
+      "source": "tripo_convert_4f4bd6ce-1856-4e80-973b-e448fa8c8c77.glb",
+      "originalBytes": 51853856,
+      "sourceSHA256": "b5e0ffab9f04e54d7afd4ba90584b9f47d671ced1cf04f22ff737ed9c9a6afe7",
+      "variants": {
+        "desktop": {
+          "file": "pot-desktop.glb",
+          "offlineFile": "pot-desktop.js",
+          "bytes": 366312,
+          "triangles": 24000,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "873ce7f846bcccf6282dfac1cbd8edf48ba62497fbbf5e4fce6939f121895cc2"
+        },
+        "mobile": {
+          "file": "pot-mobile.glb",
+          "offlineFile": "pot-mobile.js",
+          "bytes": 251208,
+          "triangles": 12000,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "4822bb00b240537b70bc9a5b48258242e8dd76132412259bc22226f58242fd60"
+        }
+      },
+      "originalTriangles": 1683444
+    },
+    "stove": {
+      "source": "tripo_convert_7d442a3f-a41e-40f7-864e-047172ac675c.glb",
+      "originalBytes": 62141308,
+      "sourceSHA256": "7ecb26f310627b1a024c77127cc0234ed87cc48496f71f95b461ba9228f3cb85",
+      "variants": {
+        "desktop": {
+          "file": "stove-desktop.glb",
+          "offlineFile": "stove-desktop.js",
+          "bytes": 353348,
+          "triangles": 24000,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "a000d65fca337653add67f3fb4774e5deb7995b7507fb3b3bfadaa540a0f4983"
+        },
+        "mobile": {
+          "file": "stove-mobile.glb",
+          "offlineFile": "stove-mobile.js",
+          "bytes": 165840,
+          "triangles": 4500,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "a2449030c17912fecc8339be4f6722d956232a04309a9bf8e8e713799030566d"
+        }
+      },
+      "originalTriangles": 1964616
+    },
+    "balance": {
+      "source": "tripo_convert_82a17241-a3a7-4bf5-a1d9-b632d9dff5a1.glb",
+      "originalBytes": 26117656,
+      "sourceSHA256": "d1cb0ed3271f6aad107c233b12f8c7e6a306272500f118a0f37cf855afcda195",
+      "variants": {
+        "desktop": {
+          "file": "balance-desktop.glb",
+          "offlineFile": "balance-desktop.js",
+          "bytes": 433964,
+          "triangles": 29998,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "1a8d5d51fd88cebc4b5ac5970959df80d0fbdef63d80108890de126d9878e68d"
+        },
+        "mobile": {
+          "file": "balance-mobile.glb",
+          "offlineFile": "balance-mobile.js",
+          "bytes": 285568,
+          "triangles": 15000,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "832b1fd4d3b6531f52a60fff471213c5e5d50a1b5fbf6cc9a7fbbe2d60fe9e54"
+        }
+      },
+      "originalTriangles": 835306
+    },
+    "book": {
+      "source": "tripo_convert_e8da7992-24ff-47b9-b0d1-42c723dec63f.glb",
+      "originalBytes": 50916972,
+      "sourceSHA256": "30a54c0a73c774fd3e7f1bfc94c8e28ac33109dda6b6d70b825dcbcf67c3007b",
+      "variants": {
+        "desktop": {
+          "file": "book-desktop.glb",
+          "offlineFile": "book-desktop.js",
+          "bytes": 303408,
+          "triangles": 15000,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "4261a74b8b14a56de013d1149535cb98f3084fe40776287363b5973878205845"
+        },
+        "mobile": {
+          "file": "book-mobile.glb",
+          "offlineFile": "book-mobile.js",
+          "bytes": 190872,
+          "triangles": 3500,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "7d2f906d8c9b947fb5fe0a4f9930a6bae57aea66d664dc089fa3697a058f86b2"
+        }
+      },
+      "originalTriangles": 1668475
+    },
+    "house": {
+      "source": "house_with_doors_thin.glb",
+      "originalBytes": 109894960,
+      "sourceSHA256": "0c263b9f51609d2c2e76431e5b414128152485d2a09f55b67711e3b4d0945d77",
+      "variants": {
+        "desktop": {
+          "file": "house-desktop.glb",
+          "offlineFile": "house-desktop.js",
+          "bytes": 7377736,
+          "triangles": 484906,
+          "geometrySimplified": true,
+          "textureMaxSize": null,
+          "sha256": "248ef03426fdcf456772a199c3e0b11e947ae1daa8e2fc0d5636a5087752ceae"
+        },
+        "mobile": {
+          "file": "house-mobile.glb",
+          "offlineFile": "house-mobile.js",
+          "bytes": 2794060,
+          "triangles": 62359,
+          "geometrySimplified": true,
+          "textureMaxSize": 512,
+          "sha256": "05bde702064120eff7636027c307f0c5fb45eacbccf58a122462c13a5adace60"
+        }
+      },
+      "originalTriangles": 3610363
+    }
+  }
+}

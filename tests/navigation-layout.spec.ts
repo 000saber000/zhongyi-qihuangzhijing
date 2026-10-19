@@ -12,7 +12,7 @@ async function boxes(page:Page){return page.getByRole('navigation',{name:'主导
 for(const width of [1440,1024,820,390])test(`main navigation stays fixed across routes and docked categories at ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:900});await page.goto('/#library');await expect(page.getByRole('heading',{name:'知识库',exact:true})).toBeVisible();
  const initial=await boxes(page);
- const assertStable=async(context:string)=>{const current=await boxes(page);expect(current).toHaveLength(5);for(let i=0;i<5;i++)for(const key of ['x','y','width','height'] as const)expect(Math.abs(current[i][key]-initial[i][key]),`${context}: button ${i} ${key}`).toBeLessThanOrEqual(1);};
+ const assertStable=async(context:string)=>{const current=await boxes(page);expect(current).toHaveLength(6);for(let i=0;i<6;i++)for(const key of ['x','y','width','height'] as const)expect(Math.abs(current[i][key]-initial[i][key]),`${context}: button ${i} ${key}`).toBeLessThanOrEqual(1);};
  for(const link of links){await page.getByRole('navigation',{name:'主导航'}).getByRole('button',{name:link.name,exact:true}).click();await expect(page.getByRole('heading',{name:link.title,exact:true})).toBeVisible();await assertStable(link.name);}
  await page.locator('.cosmic-content-scroll').evaluate(root=>{root.scrollTop=650;});await expect(page.locator('.library-header-nav')).toBeVisible();await assertStable('docked knowledge categories');
  const nav=page.getByRole('navigation',{name:'主导航'}),categories=page.getByRole('navigation',{name:'知识库分类'});

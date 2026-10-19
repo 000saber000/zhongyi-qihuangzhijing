@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1b20">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c1b20'/%3E%3Ctext x='32' y='45' font-size='40' text-anchor='middle' fill='%23d1b17a' font-family='serif'%3E岐%3C/text%3E%3C/svg%3E">
+<title>岐黄堂 · 急症候 / 行医录</title>
+<link rel="stylesheet" href="css/game.css?v=5.9">
+</head>
+<body class="boot">
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div id="fallback-bg" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
+
+  <div id="app-shell">
+    <header id="exterior-hud" class="topline">
+      <div class="brand-mini">
+        <span class="brand-seal">岐</span>
+        <span>岐黄堂 · 双门</span>
+      </div>
+      <div class="hud-actions">
+        <button type="button" class="btn ghost small mute-btn" data-action="mute">静音：关</button>
+        <button type="button" class="btn ghost small" id="motion-toggle">减少动态：跟随系统</button>
+      </div>
+    </header>
+
+    <section id="exterior" aria-label="岐黄堂外景与双门入口">
+      <div class="exterior-copy">
+        <p class="eyebrow">星海药馆 · 三日试炼</p>
+        <h1><span>岐黄堂</span></h1>
+        <p class="lead">一馆两门：一门看方取药，一门问诊辨证。<br>选择你的坐堂方式。</p>
+        <p class="tiny">教学情境，不用于实际诊疗。无需账号，刷新后本局重新开始。</p>
+      </div>
+
+      <div class="door-grid" role="group" aria-label="选择模式">
+        <button type="button" class="door-card door-chronicle" id="door-chronicle" data-door="chronicle">
+          <span class="door-tag">侧门</span>
+          <span class="door-name">行医录</span>
+          <span class="door-desc">问诊辨证，经营药馆</span>
+          <span class="door-meta">回合决策 · 三天六例</span>
+          <span class="door-go">进入侧门 →</span>
+        </button>
+        <button type="button" class="door-card door-acute" id="door-acute" data-door="acute">
+          <span class="door-tag">正门</span>
+          <span class="door-name">急症候</span>
+          <span class="door-desc">看方取药，兼顾火候</span>
+          <span class="door-meta">实时排程 · 三天十二单</span>
+          <span class="door-go">进入正门 →</span>
+        </button>
+      </div>
+
+      <p class="exterior-hint" id="exterior-hint">点击门前的入口，或用 Tab 选择后按 Enter。3D 门同样可点。</p>
+    </section>
+
+    <main id="mode-root" hidden></main>
+  </div>
+
+  <div id="intro-backdrop" hidden>
+    <section id="mode-intro" class="paper-panel" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+      <button type="button" class="icon-btn intro-close" id="intro-cancel-x" aria-label="关闭说明">×</button>
+      <p class="eyebrow" id="intro-kicker"></p>
+      <h2 id="intro-title"></h2>
+      <p class="intro-sub" id="intro-sub"></p>
+      <ul class="intro-list" id="intro-list"></ul>
+      <div class="seed-row">
+        <label for="seed-input">种子（0～4294967295，留空随机）</label>
+        <div class="seed-line">
+          <input id="seed-input" type="text" inputmode="numeric" autocomplete="off" placeholder="留空随机生成">
+          <button type="button" class="btn ghost small" id="seed-random">随机</button>
+        </div>
+        <p class="field-error" id="seed-error" hidden></p>
+      </div>
+      <p class="intro-note">本局刷新后重新开始；同种子重玩会得到同一日程。</p>
+      <div class="intro-actions">
+        <button type="button" class="btn primary" id="intro-start">开始</button>
+        <button type="button" class="btn ghost" id="intro-cancel">返回外景</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="transition-overlay" aria-hidden="true"><div class="overlay-mark">岐黄堂</div></div>
+
+  <div id="confirm-modal" hidden>
+    <section class="paper-panel confirm-panel" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">现在出门？</h2>
+      <p id="confirm-text"></p>
+      <div class="intro-actions">
+        <button type="button" class="btn primary" id="confirm-stay">继续坐堂</button>
+        <button type="button" class="btn danger" id="confirm-leave">确认出门</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast-stack" aria-hidden="true"></div>
+  <div id="sr-live" class="sr-only" aria-live="polite"></div>
+
+  <noscript><p style="color:#f0dfb7;padding:2rem">需要启用 JavaScript 才能游玩。</p></noscript>
+
+  <script defer src="js/shared-data.js?v=5.9"></script>
+  <script defer src="vendor/three.min.js"></script>
+  <script defer src="vendor/meshopt_decoder.js"></script>
+  <script defer src="vendor/GLTFLoader.js"></script>
+  <script defer src="js/models.js?v=5.9"></script>
+  <script defer src="js/scene.js?v=5.9"></script>
+  <script defer src="js/audio.js?v=5.9"></script>
+  <script defer src="js/chronicle.js?v=5.9"></script>
+  <script defer src="js/acute.js?v=5.9"></script>
+  <script defer src="js/app.js?v=5.9"></script>
+</body>
+</html>
