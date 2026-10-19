@@ -9,7 +9,7 @@ export default function GamePage({onBack}:{onBack:()=>void}){
   if(!document||document.querySelector('style[data-embed]'))return;
   const style=document.createElement('style');
   style.dataset.embed='';
-  style.textContent='#exterior-hud .brand-mini{visibility:hidden}';
+  style.textContent='#exterior-hud .brand-mini{display:none}.hud-left{margin-left:110px}@media(max-width:700px){.hud-left{margin-left:0;padding-left:108px}.hud-brand{display:none}}';
   document.head.append(style);
  };
  return <section className="game-page" aria-label="岐黄堂小游戏">
