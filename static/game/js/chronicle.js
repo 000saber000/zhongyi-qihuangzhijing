@@ -1102,7 +1102,7 @@
       this.drawersReady = true;
     }
     if (this.phase === 'dispensing' && c) {
-      scene.setView('cabinet');
+      scene.forceView('dispensing');
       scene.setDrawerMaterials(D.HERBS);
       var left = {};
       D.HERBS.forEach(function (h) { left[h.id] = this.leftStock(h.id); }, this);

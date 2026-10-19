@@ -1697,6 +1697,7 @@
     var VIEWS = {
       consult: { pos: new THREE.Vector3(-0.15, 2.55, 4.35), look: new THREE.Vector3(0.55, 0.30, 0.9) },
       cabinet: { pos: new THREE.Vector3(-2.9, 3.35, 1.05), look: new THREE.Vector3(-2.9, 3.02, -4.9) },
+      dispensing: { pos: new THREE.Vector3(-2.9, 3.3, 2.3), look: new THREE.Vector3(-1.5, 2.9, -4.85) },
       patients: { pos: new THREE.Vector3(0.0, 2.65, 5.4), look: new THREE.Vector3(0.0, 0.45, 1.0) },
       prep: { pos: new THREE.Vector3(3.95, 2.8, 4.8), look: new THREE.Vector3(3.95, 0.9, 1.15) },
       acute: { pos: new THREE.Vector3(0.6, 3.05, 7.4), look: new THREE.Vector3(0.8, 1.2, -0.2) },
