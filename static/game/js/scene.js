@@ -173,8 +173,8 @@
     var extLights = new THREE.Group();
     exterior.add(extLights);
 
-    scene.add(new THREE.AmbientLight(0x36544a, 0.55));
-    var extHemi = new THREE.HemisphereLight(0x7aa393, 0x0b1714, 0.5);
+    scene.add(new THREE.AmbientLight(0x36544a, 0.62));
+    var extHemi = new THREE.HemisphereLight(0x7aa393, 0x0b1714, 0.58);
     exterior.add(extHemi);
 
     var moon = new THREE.DirectionalLight(0xbfd8c8, 0.85);
@@ -186,6 +186,7 @@
     moon.shadow.camera.top = 12;
     moon.shadow.camera.bottom = -8;
     moon.shadow.bias = -0.0012;
+    moon.shadow.normalBias = 0.055;
     exterior.add(moon);
 
     // 星海
@@ -238,7 +239,7 @@
         var g = ctx.createLinearGradient(0, 0, 0, h);
         g.addColorStop(0, '#35483d');
         g.addColorStop(0.45, '#24342d');
-        g.addColorStop(1, '#141f1b');
+        g.addColorStop(1, '#1d2a24');
         ctx.fillStyle = g;
         ctx.fillRect(0, 0, w, h);
         // 层理
@@ -295,18 +296,24 @@
         { y: -0.95, r: 4.25, j: 0.22 },
         { y: -1.05, r: 4.58, j: 0.24 },
         { y: -1.65, r: 4.05, j: 0.28 },
+        { y: -2.00, r: 3.82, j: 0.30 },
+        { y: -2.70, r: 3.26, j: 0.33 },
         { y: -2.35, r: 3.55, j: 0.31 },
         { y: -3.10, r: 2.95, j: 0.34 },
+        { y: -3.52, r: 2.64, j: 0.35 },
+        { y: -4.38, r: 1.96, j: 0.35 },
         { y: -3.95, r: 2.30, j: 0.36 },
         { y: -4.85, r: 1.60, j: 0.34 },
+        { y: -5.30, r: 1.24, j: 0.32 },
+        { y: -6.04, r: 0.56, j: 0.20 },
         { y: -5.70, r: 0.85, j: 0.28 },
         { y: -6.40, r: 0.25, j: 0.10 }
       ];
       var pos = [], col = [], idx = [], uvs = [];
-      var cMoss = new THREE.Color(0x22372a).convertSRGBToLinear();
-      var cRock = new THREE.Color(0x1a2924).convertSRGBToLinear();
-      var cDark = new THREE.Color(0x0b1311).convertSRGBToLinear();
-      var cLight = new THREE.Color(0x304438).convertSRGBToLinear();
+      var cMoss = new THREE.Color(0x2a4132).convertSRGBToLinear();
+      var cRock = new THREE.Color(0x22332b).convertSRGBToLinear();
+      var cDark = new THREE.Color(0x17251f).convertSRGBToLinear();
+      var cLight = new THREE.Color(0x3a5044).convertSRGBToLinear();
       var cWarm = new THREE.Color(0x352b20).convertSRGBToLinear();
       var tmp = new THREE.Color();
 
@@ -368,15 +375,15 @@
         map: rockMap, color: 0xffffff, roughness: 1.0, metalness: 0.0, side: THREE.DoubleSide
       }));
       mesh.castShadow = true;
-      mesh.receiveShadow = true;
+      mesh.receiveShadow = false;
       group.add(mesh);
 
       // 大型岩脊，打破圆柱轮廓
       var buttressMat = new THREE.MeshStandardMaterial({
-        map: rockMap, color: 0x7f8c83, roughness: 1, metalness: 0, flatShading: true
+        map: rockMap, color: 0x87998d, roughness: 1, metalness: 0, flatShading: true, side: THREE.DoubleSide
       });
-      for (i = 0; i < 5; i++) {
-        var ba = i / 5 * Math.PI * 2 + 0.7;
+      for (i = 0; i < 7; i++) {
+        var ba = i / 7 * Math.PI * 2 + 0.7;
         var br = 3.15 + hash2(i, 151) * 0.7;
         var buttress = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), buttressMat);
         buttress.position.set(Math.cos(ba) * br, -1.15 - hash2(i, 153) * 1.6, Math.sin(ba) * br);
@@ -423,8 +430,8 @@
       // 垂根与藤叶
       var rootMat = new THREE.MeshStandardMaterial({ color: 0x3b2f22, roughness: 0.98 });
       var leafMat = new THREE.MeshStandardMaterial({ color: 0x2f513f, roughness: 0.95 });
-      for (i = 0; i < 8; i++) {
-        var va = i / 8 * Math.PI * 2 + 0.4;
+      for (i = 0; i < 12; i++) {
+        var va = i / 12 * Math.PI * 2 + 0.4;
         var vr = 3.65 + hash2(i, 71) * 0.5;
         var len = 1.1 + hash2(i, 73) * 2.1;
         var root = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.05, len, 5), rootMat);
@@ -446,8 +453,8 @@
       var shardMat = new THREE.MeshStandardMaterial({
         map: rockMap, color: 0xd2dad2, roughness: 0.96, flatShading: true
       });
-      for (i = 0; i < 9; i++) {
-        var sa = i / 9 * Math.PI * 2 + 0.8;
+      for (i = 0; i < 12; i++) {
+        var sa = i / 12 * Math.PI * 2 + 0.8;
         var sr = 5.0 + hash2(i, 111) * 2.4;
         var shard = new THREE.Mesh(new THREE.IcosahedronGeometry(0.45, 0), shardMat);
         shard.position.set(Math.cos(sa) * sr, -1.4 - hash2(i, 113) * 3.4, Math.sin(sa) * sr);
@@ -662,9 +669,12 @@
     exterior.add(extDoorLight);
 
     // 浮岛前侧冷色补光：只提亮岩壁，不抢建筑主光
-    var islandFill = new THREE.PointLight(0x5c8f7d, 1.05, 15, 1.8);
+    var islandFill = new THREE.PointLight(0x5c8f7d, 1.65, 16, 1.8);
     islandFill.position.set(0.4, -2.7, 4.2);
     exterior.add(islandFill);
+    var islandFillBack = new THREE.PointLight(0x4f7f70, 0.75, 16, 1.8);
+    islandFillBack.position.set(0.4, -3.3, -3.5);
+    exterior.add(islandFillBack);
     var islandRim = new THREE.PointLight(0x3f6f66, 0.4, 14, 1.8);
     islandRim.position.set(-5.5, -2.2, 2.5);
     exterior.add(islandRim);
