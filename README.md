@@ -4,7 +4,15 @@
 
 岐黄知境是一个面向中医学习者与爱好者的知识探索网站。它将经典、理论、本草、方剂、经络与医家放进一片可以漫游的知识星海，让你从一个感兴趣的问题出发，沿着知识之间的联系，逐步建立自己的理解。
 
-**[进入岐黄知境 →](https://qihuang-zhijing.onrender.com)**
+[![在线体验](https://img.shields.io/badge/%E2%96%B6%20%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-QIHUANG--ZHIZHING.ONRENDER.COM-D9A441?style=for-the-badge&labelColor=3A3A3A)](https://qihuang-zhijing.onrender.com)
+
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+![Three.js](https://img.shields.io/badge/Three.js-r169-black?style=flat-square&logo=threedotjs)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express)
+[![stars](https://img.shields.io/github/stars/000saber000/zhongyi-qihuangzhijing?style=flat-square&logo=github&label=stars)](https://github.com/000saber000/zhongyi-qihuangzhijing/stargazers)
 
 ![岐黄知境首页：中医知识化作星辰，组成可漫游的三维知识宇宙](docs/images/knowledge-universe.gif)
 
@@ -148,15 +156,3 @@ Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud
 修改建议的文本差异展示使用 [jsdiff](https://github.com/kpdecker/jsdiff)，遵循 BSD-3-Clause，许可证见 [JSDIFF-LICENSE.txt](third-party/JSDIFF-LICENSE.txt)。
 
 界面中的 [React Bits](https://github.com/DavidHDev/react-bits/tree/496968c4117e21278f13917201b7d615bc5e7450) 组件 CardSwap（学习路径课程卡片）、SpotlightCard（书斋继续学习入口）、GooeyNav（知识库分类栏）、PillNav（知识宇宙领域栏）与 ClickSpark（收藏按钮星火）均为 Copyright © 2026 David Haz，遵循 MIT + Commons Clause，完整条款与来源见 [许可证](third-party/REACT-BITS-LICENSE.md) 和 [来源记录](third-party/REACT-BITS-SOURCE.md)；书斋卡片的弹入与选中环参考了 AnimatedList 的交互语言，未复制其代码。三张课程主题图的原图与生成记录见 [课程图片说明](art/course-card-swap/README.md)。三维古籍使用 Three.js 实体网格建模封面、纸页和订线，生成的布面图像仅用作材质；题签文字绘入三维材质纹理。中央星云复用主页的星云、知识星团和关联光线生成实现，以独立实例缩放展示。
-
-## 在线体验
-
-[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
-![Three.js](https://img.shields.io/badge/Three.js-r169-black?style=flat-square&logo=threedotjs)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express)
-[![stars](https://img.shields.io/github/stars/000saber000/zhongyi-qihuangzhijing?style=flat-square&logo=github&label=stars)](https://github.com/000saber000/zhongyi-qihuangzhijing/stargazers)
-
-[![在线体验](https://img.shields.io/badge/%E2%96%B6%20%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-QIHUANG--ZHIZHING.ONRENDER.COM-D9A441?style=for-the-badge&labelColor=3A3A3A)](https://qihuang-zhijing.onrender.com)
