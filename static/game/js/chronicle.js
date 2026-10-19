@@ -718,7 +718,7 @@
           return '<span class="tray-chip">' + esc(D.herbName(id)) +
             '<button type="button" class="chip-x" data-act="tray-remove" data-id="' + id + '" aria-label="移除' + esc(D.herbName(id)) + '">×</button></span>';
         }).join('')
-      : '<span class="tray-empty">药盘为空。点 3D 抽屉或下方 HTML 药柜取药。</span>';
+      : '<span class="tray-empty">药盘为空。可从抽屉或下方药柜取药。</span>';
 
     var herbs = D.HERBS.map(function (h) {
       var left = self.leftStock(h.id);
@@ -745,24 +745,26 @@
           '<div class="panel-head"><h2>取药 · ' + esc(f.name) + '</h2>' +
             '<span class="tiny">目标：' + f.herbs.length + ' 张 · ' + csvNames(f.herbs) + '</span></div>' +
           '<div class="target-checklist" aria-label="方内材料清单">' + targetChips + '</div>' +
-          '<p class="tiny">3D 抽屉与下方 HTML 药柜调用同一动作。取药只改药盘，交付前不改正式库存。</p>' +
+          '<p class="tiny">抽屉与下方药柜均可取药；取药仅放入药盘，交付前不扣减库存。</p>' +
         '</div>' +
         '<div class="tray-bar paper-panel">' +
           '<div class="tray-head"><span class="mini-title">药盘 ' + trayIds.length + ' / 6</span>' +
             '<button type="button" class="btn ghost small" data-act="tray-clear">清空重配</button></div>' +
           '<div class="tray-list">' + tray + '</div>' +
         '</div>' +
-        '<div class="dispensing-stage" aria-hidden="true"><span>3D 药柜 · 可直接点击抽屉取药</span></div>' +
-        '<div class="cabinet-html paper-panel">' +
-          '<div class="panel-head"><h3>HTML 药柜</h3><span class="tiny">键盘与降级视图</span></div>' +
+        '<div class="dispensing-stage" aria-hidden="true"><span>药柜 · 可直接点击抽屉取药</span></div>' +
+        '<div class="dispensing-side">' +
+        '<details class="cabinet-html paper-panel cabinet-fallback"' + (this.app.is3D ? '' : ' open') + '>' +
+          '<summary class="panel-head"><h3>药柜清单</h3><span class="tiny">键盘操作与备用视图</span></summary>' +
           '<div class="herb-grid">' + herbs + '</div>' +
           supplyNote +
-        '</div>' +
+        '</details>' +
         '<div class="dispense-actions paper-panel">' +
           '<p class="tiny action-count">药盘 ' + trayIds.length + ' / 6 · 目标 ' + f.herbs.length + ' 张</p>' +
           missing +
           '<button type="button" class="btn primary large" data-act="deliver">核对并交付</button>' +
           '<button type="button" class="btn ghost" data-act="referral">请师长接诊</button>' +
+        '</div>' +
         '</div>' +
       '</section>';
   };
@@ -1077,7 +1079,7 @@
           '<li>每位病人有主诉与三条隐藏线索。免费问诊两次；之后可花 3 文再问一次。</li>' +
           '<li>点击方证卡只作选择；按“按此方取药”后直接进入配药，不会即时提示对错。交付时才揭晓方证是否匹配。</li>' +
           '<li>方证不符：来访者离开、误诊赔偿 12 文（最多扣到 0）、声望 -1。配药材料与所选方剂不一致时只退回调整，不判误诊。</li>' +
-          '<li>正确后按方剂材料卡配药。3D 抽屉与 HTML 药柜等效；取药只改药盘，交付时才扣库存。</li>' +
+          '<li>按方剂材料卡配药。抽屉与药柜均可取药；取药仅放入药盘，交付时才扣减库存。</li>' +
           '<li>交付成功获得诊金（材料数 × 2 + 16），声望 +1；转介声望 -1，药材不变。</li>' +
           '<li>第一、二天第二位病人结束后进入固定药市；第三天结束后直接总评。</li>' +
           '<li>不设现实时间惩罚。刷新页面会重新开始，不保存进度。</li>' +
