@@ -22,7 +22,7 @@ services:
     runtime: node
     name: qihuang-api
     branch: main
-    plan: free
+    plan: 0.5c-512mb
     region: singapore
     buildCommand: npm ci --prefix server --include=dev && npm --prefix server run check
     startCommand: npm --prefix server start
@@ -46,6 +46,7 @@ services:
           property: connectionString
 databases:
   - name: qihuang-study
-    plan: free
+    plan: 0.1c-256mb
     region: singapore
+    diskSizeGB: 1
     postgresMajorVersion: "16"

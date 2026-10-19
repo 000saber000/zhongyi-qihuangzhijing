@@ -85,13 +85,13 @@ npm run test:production
 
 `render.yaml` 提供可复现的服务配置。为现有资源重建 Blueprint 前，先确认已有服务映射，避免重复创建资源。数据库连接串只保存在 Render 环境设置中，不提交 GitHub。
 
-### 免费套餐限制与备份
+### 当前付费部署与备份
 
-根据 [Render 免费套餐文档](https://render.com/docs/free)，免费 PostgreSQL 创建后 30 天到期，到期后不可访问；额外 14 天宽限期后会删除数据。免费数据库没有自动备份，适合开发与预览。本次创建的数据库将在 **2026-11-10 17:55（北京时间，09:55 UTC）** 到期，长期使用必须在到期前升级或迁移。
+Render 控制台已确认：`qihuang-api` 使用付费 Web Service 规格 `0.5c-512mb`（0.5 CPU / 512 MB RAM）；`qihuang-study` 使用付费 PostgreSQL 规格 `0.1c-256mb`（0.1 CPU / 256 MB RAM，1 GB 磁盘，PostgreSQL 16）。`render.yaml` 与这些运行规格保持一致。付费数据库不受免费 PostgreSQL 创建后 30 天到期的规则限制，但仍需维持有效的账单支付方式。
 
-免费 Web Service 闲置 15 分钟后会休眠，首次重新访问可能需要约一分钟。若连接超时，页面会保留现有记录并提示重试，不宣称已保存。免费额度为整个工作区共享。
+付费后端不会因为闲置 15 分钟而自动休眠；部署、维护或故障仍可能造成短暂不可用。若连接超时，页面会保留现有记录并提示重试，不宣称已保存。
 
-到期前使用 Render 提供的外部连接地址，通过启用 TLS 的 PostgreSQL 客户端导出：
+无论是否付费，都应定期进行独立数据库备份。使用 Render 提供的外部连接地址，通过启用 TLS 的 PostgreSQL 客户端导出：
 
 ```sh
 PGSSLMODE=require pg_dump --dbname="$DATABASE_URL" --format=custom --file=qihuang-backup.dump
