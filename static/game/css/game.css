@@ -473,10 +473,10 @@ body.is-transitioning #mode-root * { pointer-events: none !important; }
 /* 取药 */
 .dispensing-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 440px);
   grid-template-areas:
-    "head head"
-    "tray tray"
+    "stage head"
+    "stage tray"
     "stage side";
   column-gap: 12px;
   row-gap: 0;
@@ -498,6 +498,7 @@ body.is-transitioning #mode-root * { pointer-events: none !important; }
 .dispensing-stage {
   grid-area: stage;
   min-height: 320px;
+  align-self: stretch;
   display: flex;
   align-items: flex-end;
   justify-content: center;
