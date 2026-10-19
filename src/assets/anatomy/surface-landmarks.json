@@ -1,7 +1,7 @@
 {
   "male": {
     "modelId": "adult-male-v4",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "umbilicusY": 1.096,
     "xiphoidY": 1.256,
     "pubicSymphysisY": 0.935,
@@ -10,7 +10,7 @@
   },
   "female": {
     "modelId": "adult-female-v4",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "umbilicusY": 1.053,
     "xiphoidY": 1.209,
     "pubicSymphysisY": 0.895,

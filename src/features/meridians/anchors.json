@@ -3,7 +3,7 @@
     "knowledgeId": "point-zusanli",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.152774,
       0.446136,
@@ -30,7 +30,7 @@
     "knowledgeId": "point-zusanli",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.152412,
       0.446068,
@@ -57,7 +57,7 @@
     "knowledgeId": "point-baihui",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.000368,
       1.781711,
@@ -84,7 +84,7 @@
     "knowledgeId": "point-yintang",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.000409,
       1.645995,
@@ -111,7 +111,7 @@
     "knowledgeId": "point-fengchi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.056181,
       1.542063,
@@ -138,7 +138,7 @@
     "knowledgeId": "point-fengchi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.056169,
       1.541889,
@@ -165,7 +165,7 @@
     "knowledgeId": "point-jianjing",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.112758,
       1.464412,
@@ -192,7 +192,7 @@
     "knowledgeId": "point-jianjing",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.112781,
       1.46444,
@@ -219,7 +219,7 @@
     "knowledgeId": "point-quchi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.326486,
       1.131261,
@@ -246,7 +246,7 @@
     "knowledgeId": "point-quchi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.327113,
       1.131186,
@@ -273,7 +273,7 @@
     "knowledgeId": "point-hegu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.347259,
       0.77087,
@@ -300,7 +300,7 @@
     "knowledgeId": "point-hegu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.346677,
       0.769618,
@@ -327,7 +327,7 @@
     "knowledgeId": "point-neiguan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.356284,
       0.897103,
@@ -354,7 +354,7 @@
     "knowledgeId": "point-neiguan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.356087,
       0.897192,
@@ -381,7 +381,7 @@
     "knowledgeId": "point-waiguan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.354262,
       0.895822,
@@ -408,7 +408,7 @@
     "knowledgeId": "point-waiguan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.354181,
       0.895872,
@@ -435,7 +435,7 @@
     "knowledgeId": "point-shenmen",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.382148,
       0.850616,
@@ -462,7 +462,7 @@
     "knowledgeId": "point-shenmen",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.382135,
       0.850579,
@@ -489,7 +489,7 @@
     "knowledgeId": "point-shanzhong",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.000117,
       1.311633,
@@ -516,7 +516,7 @@
     "knowledgeId": "point-zhongwan",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.000255,
       1.176025,
@@ -543,7 +543,7 @@
     "knowledgeId": "point-guanyuan",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       2.6e-05,
       0.998892,
@@ -570,7 +570,7 @@
     "knowledgeId": "point-qihai",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       7e-06,
       1.047759,
@@ -597,7 +597,7 @@
     "knowledgeId": "point-yanglingquan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.179272,
       0.47598,
@@ -624,7 +624,7 @@
     "knowledgeId": "point-yanglingquan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.179588,
       0.475982,
@@ -651,7 +651,7 @@
     "knowledgeId": "point-yinlingquan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.067556,
       0.504208,
@@ -678,7 +678,7 @@
     "knowledgeId": "point-yinlingquan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.068121,
       0.504109,
@@ -705,7 +705,7 @@
     "knowledgeId": "point-sanyinjiao",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.12204,
       0.187732,
@@ -732,7 +732,7 @@
     "knowledgeId": "point-sanyinjiao",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.122443,
       0.187721,
@@ -759,7 +759,7 @@
     "knowledgeId": "point-taichong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.142713,
       0.0732,
@@ -786,7 +786,7 @@
     "knowledgeId": "point-taichong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.143223,
       0.072961,
@@ -813,7 +813,7 @@
     "knowledgeId": "point-yongquan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.150076,
       0.004187,
@@ -840,7 +840,7 @@
     "knowledgeId": "point-yongquan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.150144,
       0.00396,
@@ -867,7 +867,7 @@
     "knowledgeId": "point-taixi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.116642,
       0.085016,
@@ -894,7 +894,7 @@
     "knowledgeId": "point-taixi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.117526,
       0.084968,
@@ -921,7 +921,7 @@
     "knowledgeId": "point-zhongfu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.141056,
       1.391542,
@@ -948,7 +948,7 @@
     "knowledgeId": "point-zhongfu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.141166,
       1.391483,
@@ -975,7 +975,7 @@
     "knowledgeId": "point-chize",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.286715,
       1.131122,
@@ -1002,7 +1002,7 @@
     "knowledgeId": "point-chize",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.286722,
       1.131155,
@@ -1029,7 +1029,7 @@
     "knowledgeId": "point-lieque",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.348075,
       0.885607,
@@ -1056,7 +1056,7 @@
     "knowledgeId": "point-lieque",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.348064,
       0.885568,
@@ -1083,7 +1083,7 @@
     "knowledgeId": "point-taiyuan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.359048,
       0.850972,
@@ -1110,7 +1110,7 @@
     "knowledgeId": "point-taiyuan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.35893,
       0.850815,
@@ -1137,7 +1137,7 @@
     "knowledgeId": "point-shousanli",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.347552,
       1.08369,
@@ -1164,7 +1164,7 @@
     "knowledgeId": "point-shousanli",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.348246,
       1.083751,
@@ -1191,7 +1191,7 @@
     "knowledgeId": "point-jianyu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.227015,
       1.404765,
@@ -1218,7 +1218,7 @@
     "knowledgeId": "point-jianyu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.226743,
       1.404712,
@@ -1245,7 +1245,7 @@
     "knowledgeId": "point-yingxiang",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.02554,
       1.618041,
@@ -1272,7 +1272,7 @@
     "knowledgeId": "point-yingxiang",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.025509,
       1.618104,
@@ -1299,7 +1299,7 @@
     "knowledgeId": "point-tianshu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.047043,
       1.096623,
@@ -1326,7 +1326,7 @@
     "knowledgeId": "point-tianshu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.047149,
       1.09657,
@@ -1353,7 +1353,7 @@
     "knowledgeId": "point-dubi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.139615,
       0.519247,
@@ -1380,7 +1380,7 @@
     "knowledgeId": "point-dubi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.139563,
       0.51926,
@@ -1407,7 +1407,7 @@
     "knowledgeId": "point-fenglong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.181708,
       0.3072,
@@ -1434,7 +1434,7 @@
     "knowledgeId": "point-fenglong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.1818,
       0.307157,
@@ -1461,7 +1461,7 @@
     "knowledgeId": "point-neiting",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.150494,
       0.047944,
@@ -1488,7 +1488,7 @@
     "knowledgeId": "point-neiting",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.150397,
       0.047788,
@@ -1515,7 +1515,7 @@
     "knowledgeId": "point-taibai",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.120472,
       0.040931,
@@ -1542,7 +1542,7 @@
     "knowledgeId": "point-taibai",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.120676,
       0.040715,
@@ -1569,7 +1569,7 @@
     "knowledgeId": "point-xuehai",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.092834,
       0.60915,
@@ -1596,7 +1596,7 @@
     "knowledgeId": "point-xuehai",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.092883,
       0.609141,
@@ -1623,7 +1623,7 @@
     "knowledgeId": "point-shaohai",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.255092,
       1.128509,
@@ -1650,7 +1650,7 @@
     "knowledgeId": "point-shaohai",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.255517,
       1.128505,
@@ -1677,7 +1677,7 @@
     "knowledgeId": "point-tongli",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.370914,
       0.874476,
@@ -1704,7 +1704,7 @@
     "knowledgeId": "point-tongli",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.37053,
       0.874382,
@@ -1731,7 +1731,7 @@
     "knowledgeId": "point-houxi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.364136,
       0.776883,
@@ -1758,7 +1758,7 @@
     "knowledgeId": "point-houxi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.365525,
       0.776859,
@@ -1785,7 +1785,7 @@
     "knowledgeId": "point-jianzhen",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.181671,
       1.321753,
@@ -1812,7 +1812,7 @@
     "knowledgeId": "point-jianzhen",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.181707,
       1.32167,
@@ -1839,7 +1839,7 @@
     "knowledgeId": "point-tianzong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.115512,
       1.334804,
@@ -1866,7 +1866,7 @@
     "knowledgeId": "point-tianzong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.115388,
       1.334794,
@@ -1893,7 +1893,7 @@
     "knowledgeId": "point-tianzhu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.02715,
       1.510983,
@@ -1920,7 +1920,7 @@
     "knowledgeId": "point-tianzhu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.027126,
       1.511002,
@@ -1947,7 +1947,7 @@
     "knowledgeId": "point-feishu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.039488,
       1.395779,
@@ -1974,7 +1974,7 @@
     "knowledgeId": "point-feishu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.039507,
       1.395754,
@@ -2001,7 +2001,7 @@
     "knowledgeId": "point-pishu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.038643,
       1.188865,
@@ -2028,7 +2028,7 @@
     "knowledgeId": "point-pishu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.038633,
       1.188928,
@@ -2055,7 +2055,7 @@
     "knowledgeId": "point-shenshu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.040184,
       1.104412,
@@ -2082,7 +2082,7 @@
     "knowledgeId": "point-shenshu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.040167,
       1.104415,
@@ -2109,7 +2109,7 @@
     "knowledgeId": "point-weizhong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.122459,
       0.530557,
@@ -2136,7 +2136,7 @@
     "knowledgeId": "point-weizhong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.122571,
       0.530591,
@@ -2163,7 +2163,7 @@
     "knowledgeId": "point-chengshan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.137575,
       0.284928,
@@ -2190,7 +2190,7 @@
     "knowledgeId": "point-chengshan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.137662,
       0.284905,
@@ -2217,7 +2217,7 @@
     "knowledgeId": "point-kunlun",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.186572,
       0.083858,
@@ -2244,7 +2244,7 @@
     "knowledgeId": "point-kunlun",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.18731,
       0.083813,
@@ -2271,7 +2271,7 @@
     "knowledgeId": "point-fuliu",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.114342,
       0.153308,
@@ -2298,7 +2298,7 @@
     "knowledgeId": "point-fuliu",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.114928,
       0.15335,
@@ -2325,7 +2325,7 @@
     "knowledgeId": "point-quze",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.272693,
       1.129915,
@@ -2352,7 +2352,7 @@
     "knowledgeId": "point-quze",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.27231,
       1.12999,
@@ -2379,7 +2379,7 @@
     "knowledgeId": "point-daling",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.371019,
       0.851138,
@@ -2406,7 +2406,7 @@
     "knowledgeId": "point-daling",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.371311,
       0.851217,
@@ -2433,7 +2433,7 @@
     "knowledgeId": "point-laogong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.347663,
       0.780761,
@@ -2460,7 +2460,7 @@
     "knowledgeId": "point-laogong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.34763,
       0.780754,
@@ -2487,7 +2487,7 @@
     "knowledgeId": "point-yangchi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.371372,
       0.849934,
@@ -2514,7 +2514,7 @@
     "knowledgeId": "point-yangchi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.371395,
       0.849969,
@@ -2541,7 +2541,7 @@
     "knowledgeId": "point-jianliao",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.250519,
       1.410352,
@@ -2568,7 +2568,7 @@
     "knowledgeId": "point-jianliao",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.250395,
       1.410396,
@@ -2595,7 +2595,7 @@
     "knowledgeId": "point-huantiao",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.169929,
       0.930009,
@@ -2622,7 +2622,7 @@
     "knowledgeId": "point-huantiao",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.170082,
       0.929814,
@@ -2649,7 +2649,7 @@
     "knowledgeId": "point-xuanzhong",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.179397,
       0.168074,
@@ -2676,7 +2676,7 @@
     "knowledgeId": "point-xuanzhong",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.180017,
       0.168094,
@@ -2703,7 +2703,7 @@
     "knowledgeId": "point-zulinqi",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.184906,
       0.047933,
@@ -2730,7 +2730,7 @@
     "knowledgeId": "point-zulinqi",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.184841,
       0.047796,
@@ -2757,7 +2757,7 @@
     "knowledgeId": "point-ququan",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.0629,
       0.539782,
@@ -2784,7 +2784,7 @@
     "knowledgeId": "point-ququan",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.063117,
       0.539814,
@@ -2811,7 +2811,7 @@
     "knowledgeId": "point-qimen",
     "modelId": "adult-male-v4",
     "side": "left",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       0.100663,
       1.263283,
@@ -2838,7 +2838,7 @@
     "knowledgeId": "point-qimen",
     "modelId": "adult-male-v4",
     "side": "right",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.10056,
       1.263281,
@@ -2865,7 +2865,7 @@
     "knowledgeId": "point-shenque",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.000541,
       1.097266,
@@ -2892,7 +2892,7 @@
     "knowledgeId": "point-tiantu",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -4.9e-05,
       1.481743,
@@ -2919,7 +2919,7 @@
     "knowledgeId": "point-mingmen",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       -0.000163,
       1.104623,
@@ -2946,7 +2946,7 @@
     "knowledgeId": "point-dazhui",
     "modelId": "adult-male-v4",
     "side": "midline",
-    "modelSha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "modelSha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "position": [
       1.3e-05,
       1.491495,
@@ -2973,7 +2973,7 @@
     "knowledgeId": "point-zusanli",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.146347,
       0.437515,
@@ -3000,7 +3000,7 @@
     "knowledgeId": "point-zusanli",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.146375,
       0.437483,
@@ -3027,7 +3027,7 @@
     "knowledgeId": "point-baihui",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       6.2e-05,
       1.702465,
@@ -3054,7 +3054,7 @@
     "knowledgeId": "point-yintang",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.000373,
       1.572338,
@@ -3081,7 +3081,7 @@
     "knowledgeId": "point-fengchi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.053712,
       1.471797,
@@ -3108,7 +3108,7 @@
     "knowledgeId": "point-fengchi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.053552,
       1.47166,
@@ -3135,7 +3135,7 @@
     "knowledgeId": "point-jianjing",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.104297,
       1.390832,
@@ -3162,7 +3162,7 @@
     "knowledgeId": "point-jianjing",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.104377,
       1.389524,
@@ -3189,7 +3189,7 @@
     "knowledgeId": "point-quchi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.247992,
       1.118684,
@@ -3216,7 +3216,7 @@
     "knowledgeId": "point-quchi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.247525,
       1.118719,
@@ -3243,7 +3243,7 @@
     "knowledgeId": "point-hegu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.294608,
       0.858879,
@@ -3270,7 +3270,7 @@
     "knowledgeId": "point-hegu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.294804,
       0.859546,
@@ -3297,7 +3297,7 @@
     "knowledgeId": "point-neiguan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.28931,
       0.906971,
@@ -3324,7 +3324,7 @@
     "knowledgeId": "point-neiguan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.289747,
       0.907154,
@@ -3351,7 +3351,7 @@
     "knowledgeId": "point-waiguan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.289964,
       0.905498,
@@ -3378,7 +3378,7 @@
     "knowledgeId": "point-waiguan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.2901,
       0.905541,
@@ -3405,7 +3405,7 @@
     "knowledgeId": "point-shenmen",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.315172,
       0.864933,
@@ -3432,7 +3432,7 @@
     "knowledgeId": "point-shenmen",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.315165,
       0.864955,
@@ -3459,7 +3459,7 @@
     "knowledgeId": "point-shanzhong",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -4e-05,
       1.253646,
@@ -3486,7 +3486,7 @@
     "knowledgeId": "point-zhongwan",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       7.2e-05,
       1.130568,
@@ -3513,7 +3513,7 @@
     "knowledgeId": "point-guanyuan",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -5.3e-05,
       0.957639,
@@ -3540,7 +3540,7 @@
     "knowledgeId": "point-qihai",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       2.9e-05,
       1.005447,
@@ -3567,7 +3567,7 @@
     "knowledgeId": "point-yanglingquan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.166307,
       0.468664,
@@ -3594,7 +3594,7 @@
     "knowledgeId": "point-yanglingquan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.165364,
       0.468708,
@@ -3621,7 +3621,7 @@
     "knowledgeId": "point-yinlingquan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.063148,
       0.496217,
@@ -3648,7 +3648,7 @@
     "knowledgeId": "point-yinlingquan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.062359,
       0.496163,
@@ -3675,7 +3675,7 @@
     "knowledgeId": "point-sanyinjiao",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.12375,
       0.182638,
@@ -3702,7 +3702,7 @@
     "knowledgeId": "point-sanyinjiao",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.122918,
       0.182658,
@@ -3729,7 +3729,7 @@
     "knowledgeId": "point-taichong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.135521,
       0.063639,
@@ -3756,7 +3756,7 @@
     "knowledgeId": "point-taichong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.135897,
       0.064228,
@@ -3783,7 +3783,7 @@
     "knowledgeId": "point-yongquan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.143297,
       0.002547,
@@ -3810,7 +3810,7 @@
     "knowledgeId": "point-yongquan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.143382,
       0.002627,
@@ -3837,7 +3837,7 @@
     "knowledgeId": "point-taixi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.113126,
       0.081102,
@@ -3864,7 +3864,7 @@
     "knowledgeId": "point-taixi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.112296,
       0.08104,
@@ -3891,7 +3891,7 @@
     "knowledgeId": "point-zhongfu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.134963,
       1.329013,
@@ -3918,7 +3918,7 @@
     "knowledgeId": "point-zhongfu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.135011,
       1.328942,
@@ -3945,7 +3945,7 @@
     "knowledgeId": "point-chize",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.235019,
       1.117082,
@@ -3972,7 +3972,7 @@
     "knowledgeId": "point-chize",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.234972,
       1.11721,
@@ -3999,7 +3999,7 @@
     "knowledgeId": "point-lieque",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.280326,
       0.895914,
@@ -4026,7 +4026,7 @@
     "knowledgeId": "point-lieque",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.280299,
       0.896044,
@@ -4053,7 +4053,7 @@
     "knowledgeId": "point-taiyuan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.292603,
       0.866022,
@@ -4080,7 +4080,7 @@
     "knowledgeId": "point-taiyuan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.292401,
       0.866066,
@@ -4107,7 +4107,7 @@
     "knowledgeId": "point-shousanli",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.275462,
       1.076224,
@@ -4134,7 +4134,7 @@
     "knowledgeId": "point-shousanli",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.274839,
       1.076302,
@@ -4161,7 +4161,7 @@
     "knowledgeId": "point-jianyu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.196023,
       1.338848,
@@ -4188,7 +4188,7 @@
     "knowledgeId": "point-jianyu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.195622,
       1.338742,
@@ -4215,7 +4215,7 @@
     "knowledgeId": "point-yingxiang",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.024572,
       1.545642,
@@ -4242,7 +4242,7 @@
     "knowledgeId": "point-yingxiang",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.024444,
       1.545548,
@@ -4269,7 +4269,7 @@
     "knowledgeId": "point-tianshu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.043953,
       1.053489,
@@ -4296,7 +4296,7 @@
     "knowledgeId": "point-tianshu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.044086,
       1.05341,
@@ -4323,7 +4323,7 @@
     "knowledgeId": "point-dubi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.133197,
       0.510178,
@@ -4350,7 +4350,7 @@
     "knowledgeId": "point-dubi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.133209,
       0.510195,
@@ -4377,7 +4377,7 @@
     "knowledgeId": "point-fenglong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.170773,
       0.300482,
@@ -4404,7 +4404,7 @@
     "knowledgeId": "point-fenglong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.170846,
       0.300516,
@@ -4431,7 +4431,7 @@
     "knowledgeId": "point-neiting",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.143448,
       0.04608,
@@ -4458,7 +4458,7 @@
     "knowledgeId": "point-neiting",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.143588,
       0.046,
@@ -4485,7 +4485,7 @@
     "knowledgeId": "point-taibai",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.120273,
       0.033113,
@@ -4512,7 +4512,7 @@
     "knowledgeId": "point-taibai",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.11793,
       0.035507,
@@ -4539,7 +4539,7 @@
     "knowledgeId": "point-xuehai",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.08848,
       0.596482,
@@ -4566,7 +4566,7 @@
     "knowledgeId": "point-xuehai",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.088816,
       0.596593,
@@ -4593,7 +4593,7 @@
     "knowledgeId": "point-shaohai",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.202295,
       1.116516,
@@ -4620,7 +4620,7 @@
     "knowledgeId": "point-shaohai",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.202261,
       1.116546,
@@ -4647,7 +4647,7 @@
     "knowledgeId": "point-tongli",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.304781,
       0.885743,
@@ -4674,7 +4674,7 @@
     "knowledgeId": "point-tongli",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.304827,
       0.885697,
@@ -4701,7 +4701,7 @@
     "knowledgeId": "point-houxi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.343172,
       0.792703,
@@ -4728,7 +4728,7 @@
     "knowledgeId": "point-houxi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.343072,
       0.792927,
@@ -4755,7 +4755,7 @@
     "knowledgeId": "point-jianzhen",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.161497,
       1.262592,
@@ -4782,7 +4782,7 @@
     "knowledgeId": "point-jianzhen",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.161465,
       1.262594,
@@ -4809,7 +4809,7 @@
     "knowledgeId": "point-tianzong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.11039,
       1.274119,
@@ -4836,7 +4836,7 @@
     "knowledgeId": "point-tianzong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.110426,
       1.274141,
@@ -4863,7 +4863,7 @@
     "knowledgeId": "point-tianzhu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.026497,
       1.443351,
@@ -4890,7 +4890,7 @@
     "knowledgeId": "point-tianzhu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.026553,
       1.443281,
@@ -4917,7 +4917,7 @@
     "knowledgeId": "point-feishu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.037728,
       1.332466,
@@ -4944,7 +4944,7 @@
     "knowledgeId": "point-feishu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.037631,
       1.332522,
@@ -4971,7 +4971,7 @@
     "knowledgeId": "point-pishu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.038152,
       1.136245,
@@ -4998,7 +4998,7 @@
     "knowledgeId": "point-pishu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.038167,
       1.13623,
@@ -5025,7 +5025,7 @@
     "knowledgeId": "point-shenshu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.039498,
       1.055376,
@@ -5052,7 +5052,7 @@
     "knowledgeId": "point-shenshu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.039552,
       1.055326,
@@ -5079,7 +5079,7 @@
     "knowledgeId": "point-weizhong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.116774,
       0.521061,
@@ -5106,7 +5106,7 @@
     "knowledgeId": "point-weizhong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.116821,
       0.52107,
@@ -5133,7 +5133,7 @@
     "knowledgeId": "point-chengshan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.131384,
       0.278431,
@@ -5160,7 +5160,7 @@
     "knowledgeId": "point-chengshan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.131434,
       0.278384,
@@ -5187,7 +5187,7 @@
     "knowledgeId": "point-kunlun",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.178218,
       0.080335,
@@ -5214,7 +5214,7 @@
     "knowledgeId": "point-kunlun",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.177551,
       0.080486,
@@ -5241,7 +5241,7 @@
     "knowledgeId": "point-fuliu",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.113633,
       0.148921,
@@ -5268,7 +5268,7 @@
     "knowledgeId": "point-fuliu",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.11257,
       0.148879,
@@ -5295,7 +5295,7 @@
     "knowledgeId": "point-quze",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.220975,
       1.116743,
@@ -5322,7 +5322,7 @@
     "knowledgeId": "point-quze",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.22111,
       1.116755,
@@ -5349,7 +5349,7 @@
     "knowledgeId": "point-daling",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.303291,
       0.865955,
@@ -5376,7 +5376,7 @@
     "knowledgeId": "point-daling",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.303421,
       0.865986,
@@ -5403,7 +5403,7 @@
     "knowledgeId": "point-laogong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.302416,
       0.792554,
@@ -5430,7 +5430,7 @@
     "knowledgeId": "point-laogong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.299676,
       0.79034,
@@ -5457,7 +5457,7 @@
     "knowledgeId": "point-yangchi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.302956,
       0.864703,
@@ -5484,7 +5484,7 @@
     "knowledgeId": "point-yangchi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.303258,
       0.864496,
@@ -5511,7 +5511,7 @@
     "knowledgeId": "point-jianliao",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.206226,
       1.338793,
@@ -5538,7 +5538,7 @@
     "knowledgeId": "point-jianliao",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.205605,
       1.339088,
@@ -5565,7 +5565,7 @@
     "knowledgeId": "point-huantiao",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.179124,
       0.889049,
@@ -5592,7 +5592,7 @@
     "knowledgeId": "point-huantiao",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.178382,
       0.889057,
@@ -5619,7 +5619,7 @@
     "knowledgeId": "point-xuanzhong",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.168032,
       0.16341,
@@ -5646,7 +5646,7 @@
     "knowledgeId": "point-xuanzhong",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.167152,
       0.16333,
@@ -5673,7 +5673,7 @@
     "knowledgeId": "point-zulinqi",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.174669,
       0.038442,
@@ -5700,7 +5700,7 @@
     "knowledgeId": "point-zulinqi",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.175198,
       0.040106,
@@ -5727,7 +5727,7 @@
     "knowledgeId": "point-ququan",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.057674,
       0.529875,
@@ -5754,7 +5754,7 @@
     "knowledgeId": "point-ququan",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.05676,
       0.529844,
@@ -5781,7 +5781,7 @@
     "knowledgeId": "point-qimen",
     "modelId": "adult-female-v4",
     "side": "left",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.094069,
       1.207358,
@@ -5808,7 +5808,7 @@
     "knowledgeId": "point-qimen",
     "modelId": "adult-female-v4",
     "side": "right",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -0.096821,
       1.207774,
@@ -5835,7 +5835,7 @@
     "knowledgeId": "point-shenque",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.00014,
       1.05308,
@@ -5862,7 +5862,7 @@
     "knowledgeId": "point-tiantu",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       -9e-05,
       1.415346,
@@ -5889,7 +5889,7 @@
     "knowledgeId": "point-mingmen",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       0.000386,
       1.055788,
@@ -5916,7 +5916,7 @@
     "knowledgeId": "point-dazhui",
     "modelId": "adult-female-v4",
     "side": "midline",
-    "modelSha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "modelSha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "position": [
       8.5e-05,
       1.423814,

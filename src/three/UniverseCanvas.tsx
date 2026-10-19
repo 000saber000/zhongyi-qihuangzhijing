@@ -3,6 +3,7 @@ import {Canvas} from '@react-three/fiber';
 import UniverseScene from './UniverseScene';
 
 type UniverseCanvasProps={
+ active:boolean;
  reading:boolean;
  selected:string|null;
  filter:string;
@@ -15,8 +16,8 @@ type UniverseCanvasProps={
  fallback:ReactNode;
 };
 
-export default function UniverseCanvas({quality,fallback,...scene}:UniverseCanvasProps){
- return <Canvas camera={{position:[1500,3900,6500],fov:51,near:1,far:26000}} dpr={[1,quality==='high'?1.5:1]} gl={{antialias:false,alpha:false,powerPreference:'high-performance'}} fallback={fallback}>
+export default function UniverseCanvas({quality,fallback,active,...scene}:UniverseCanvasProps){
+ return <Canvas frameloop={active?'always':'demand'} camera={{position:[1500,3900,6500],fov:51,near:1,far:26000}} dpr={[1,quality==='high'?1.5:1]} gl={{antialias:false,alpha:false,powerPreference:'high-performance'}} fallback={fallback}>
   <UniverseScene {...scene}/>
  </Canvas>;
 }

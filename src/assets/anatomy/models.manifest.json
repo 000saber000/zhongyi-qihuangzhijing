@@ -3,7 +3,7 @@
     "id": "adult-male-v4",
     "variant": "male",
     "sourceFile": "adult-male-v4.glb",
-    "sha256": "ff348b8539c7550590408ae8ee8641f12cfc2b3ac6f3178a7b60b95ad595dd89",
+    "sha256": "cfd6b16722a82d5faa94dd317ad600a830cc1f4117830d305c0652f2adbd87cf",
     "sourceSha256": "e424fa36daf8f2d4c1fa8d1a093aa9c05431b5cc1b50fa66ee251589f326aca6",
     "source": "User-provided GLB export (绿色人形3d模型.glb); no source license file was included",
     "previewFiles": {
@@ -143,7 +143,7 @@
     "id": "adult-female-v4",
     "variant": "female",
     "sourceFile": "adult-female-v4.glb",
-    "sha256": "b9861315af08c4be26b7e32579421d3bea27def2837d87d16416c7c608095549",
+    "sha256": "6df6347e9553767f75bc0cbab1811a9650dd9a40c40b472827c672a30914e909",
     "sourceSha256": "9a7822de7df91b333ec7e5eeab06e61f82793ec5a7666c8039619f0359928e73",
     "source": "User-provided GLB export (3d人类模型.glb); no source license file was included",
     "previewFiles": {

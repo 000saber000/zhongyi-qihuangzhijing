@@ -2,6 +2,7 @@ import {useEffect,useMemo,useRef,useState} from 'react';
 import {Canvas,useFrame,useThree,type ThreeEvent} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
 import {GLTFLoader,type GLTF} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type {OrbitControls as OrbitControlsImpl} from 'three-stdlib';
 import {Group,Mesh,Vector3,Raycaster,SRGBColorSpace,ACESFilmicToneMapping} from 'three';
 import type {AcupointAnchor,ModelVariant,Selection} from './types';
@@ -19,7 +20,7 @@ export function loadBody(variant:ModelVariant):Promise<GLTF>{
  let promise=cache.get(variant);if(!promise){
   promise=new Promise<GLTF>((resolve,reject)=>{
    const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),45000);
-   fetch(modelUrls[variant],{signal:controller.signal}).then(async response=>{if(!response.ok)throw Error('模型资源未能读取');return response.arrayBuffer();}).then(buffer=>new GLTFLoader().parseAsync(buffer,'')).then(resolve,reject).finally(()=>clearTimeout(timer));
+   fetch(modelUrls[variant],{signal:controller.signal}).then(async response=>{if(!response.ok)throw Error('模型资源未能读取');return response.arrayBuffer();}).then(buffer=>new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(buffer,'')).then(resolve,reject).finally(()=>clearTimeout(timer));
   });cache.set(variant,promise);promise.catch(()=>{if(cache.get(variant)===promise)cache.delete(variant);});
  }return promise;
 }
