@@ -9,13 +9,14 @@ import MarkdownText from './MarkdownText';
 import type {AiStatus,Message,Source} from './types';
 import './ai.css';
 type Exchange={id:number;question:string;answer:string;sources:Source[];state:'loading'|'complete'|'error'|'stopped';thinking?:boolean;error?:string};
-export default function ChatPanel({study,open,context,onClose,onClearContext,onNavigate}:{study:Study;open:boolean;context:Knowledge|null;onClose:()=>void;onClearContext:()=>void;onNavigate:(route:string)=>void}){
+export default function ChatPanel({study,open,context,draftPrompt,onClose,onClearContext,onNavigate}:{study:Study;open:boolean;context:Knowledge|null;draftPrompt:{id:number;text:string}|null;onClose:()=>void;onClearContext:()=>void;onNavigate:(route:string)=>void}){
  const [exchanges,setExchanges]=useState<Exchange[]>([]),[text,setText]=useState(''),[busy,setBusy]=useState(false),[status,setStatus]=useState<AiStatus|null>(null),[statusError,setStatusError]=useState('');
  const panel=useRef<HTMLElement>(null),input=useRef<HTMLTextAreaElement>(null),scroll=useRef<HTMLDivElement>(null),controller=useRef<AbortController|null>(null),sequence=useRef(0),mounted=useRef(true),statusRead=useRef(0),counter=useRef(0),focusPending=useRef(false);
  const refresh=async()=>{if(!study.sessionToken)return;const read=++statusRead.current;setStatusError('');try{const value=await api<AiStatus>('/api/ai/status',{token:study.sessionToken});if(mounted.current&&read===statusRead.current)setStatus(value);}catch(cause){if(mounted.current&&read===statusRead.current){setStatus(null);setStatusError(cause instanceof Error?cause.message:'无法读取助手状态。');}}};
  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;sequence.current++;statusRead.current++;controller.current?.abort();};},[]);
  useEffect(()=>{if(open){if(study.user&&!study.user.mustChangePassword)void refresh();const previous=document.activeElement as HTMLElement|null;focusPending.current=Boolean(study.user&&input.current?.disabled);const field=input.current&&!input.current.disabled?input.current:panel.current?.querySelector<HTMLElement>('button');field?.focus();return()=>previous?.focus();}controller.current?.abort();},[open]);
  useEffect(()=>{if(context){setText('请用初学者能理解的话讲解“'+context.title+'”，并给出学习线索。');input.current?.focus();}},[context?.id]);
+ useEffect(()=>{if(draftPrompt){setText(draftPrompt.text);input.current?.focus();}},[draftPrompt?.id]);
  useEffect(()=>{if(scroll.current)scroll.current.scrollTop=scroll.current.scrollHeight;},[exchanges]);
  const available=study.user&&!study.user.mustChangePassword&&status?.enabled&&status.globalAvailable&&status.remaining>0;
  useEffect(()=>{if(open&&available&&focusPending.current){focusPending.current=false;input.current?.focus();}},[open,available]);
