@@ -1,0 +1,848 @@
+{
+  "theory-yinyang": {
+    "bvid": "BV135411P7vc",
+    "title": "阴阳 · 中医基础理论第6讲",
+    "page": 6,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "theory-five-elements": {
+    "bvid": "BV135411P7vc",
+    "title": "五行 · 中医基础理论第10讲",
+    "page": 10,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "theory-zangxiang": {
+    "bvid": "BV135411P7vc",
+    "title": "藏象 · 中医基础理论第22讲",
+    "page": 22,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "concept-qi": {
+    "bvid": "BV135411P7vc",
+    "title": "气 · 中医基础理论第15讲",
+    "page": 15,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "concept-blood": {
+    "bvid": "BV135411P7vc",
+    "title": "血 · 中医基础理论第18讲",
+    "page": 18,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "concept-jinye": {
+    "bvid": "BV135411P7vc",
+    "title": "津液 · 中医基础理论第19讲",
+    "page": 19,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "concept-qi-blood": {
+    "bvid": "BV135411P7vc",
+    "title": "气血津液 · 中医基础理论第21讲",
+    "page": 21,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "concept-yingwei": {
+    "bvid": "BV135411P7vc",
+    "title": "营卫 · 中医基础理论第17讲",
+    "page": 17,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "theory-jingluo": {
+    "bvid": "BV135411P7vc",
+    "title": "经络理论 · 中医基础理论第34讲",
+    "page": 34,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "herb-guizhi": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "桂枝 · 中药学第19讲",
+    "page": 19,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-baishao": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "白芍 · 中药学第73讲",
+    "page": 73,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-chaihu": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "柴胡 · 中药学第24讲",
+    "page": 24,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-gancao": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "甘草 · 中药学第69讲",
+    "page": 69,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-shengjiang": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "生姜 · 中药学第20讲",
+    "page": 20,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-dazao": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "大枣 · 中药学第70讲",
+    "page": 70,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-renshen": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "人参 · 中药学第67讲",
+    "page": 67,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-huangqi": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "黄芪 · 中药学第68讲",
+    "page": 68,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-huanglian": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "黄连 · 中药学第27讲",
+    "page": 27,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-danggui": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "当归 · 中药学第73讲",
+    "page": 73,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-chuanxiong": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "川芎 · 中药学第52讲",
+    "page": 52,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-fuling": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "茯苓 · 中药学第42讲",
+    "page": 42,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-baizhu": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "白术 · 中药学第69讲",
+    "page": 69,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-banxia": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "半夏 · 中药学第56讲",
+    "page": 56,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-chenpi": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "陈皮 · 中药学第46讲",
+    "page": 46,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-bohe": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "薄荷 · 中药学第22讲",
+    "page": 22,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-juhua": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "菊花 · 中药学第23讲",
+    "page": 23,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-gouqizi": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "枸杞子 · 中药学第75讲",
+    "page": 75,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-maidong": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "麦冬 · 中药学第75讲",
+    "page": 75,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "herb-wuweizi": {
+    "bvid": "BV1Qz4y1z7w4",
+    "title": "五味子 · 中药学第76讲",
+    "page": 76,
+    "source": "成都中医药大学 · 张廷模《中药学》"
+  },
+  "method-four-diagnostics": {
+    "bvid": "BV1j8411t7iF",
+    "title": "四诊入门：望诊 · 中医诊断学",
+    "page": 2,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-bazheng": {
+    "bvid": "BV1j8411t7iF",
+    "title": "八纲辨证 · 中医诊断学",
+    "page": 21,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-six-channel": {
+    "bvid": "BV1j8411t7iF",
+    "title": "六经辨证 · 中医诊断学",
+    "page": 39,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-weiying": {
+    "bvid": "BV1j8411t7iF",
+    "title": "卫气营血辨证 · 中医诊断学",
+    "page": 42,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-sanjiao": {
+    "bvid": "BV1j8411t7iF",
+    "title": "三焦辨证 · 中医诊断学",
+    "page": 41,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu": {
+    "bvid": "BV1j8411t7iF",
+    "title": "脏腑辨证概说 · 中医诊断学",
+    "page": 28,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-fei": {
+    "bvid": "BV1j8411t7iF",
+    "title": "肺与大肠病辨证 · 中医诊断学",
+    "page": 35,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-gandan": {
+    "bvid": "BV1j8411t7iF",
+    "title": "肝与胆病辨证 · 中医诊断学",
+    "page": 28,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-jianzheng": {
+    "bvid": "BV1j8411t7iF",
+    "title": "脏腑兼证辨证 · 中医诊断学",
+    "page": 37,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-piwei": {
+    "bvid": "BV1j8411t7iF",
+    "title": "脾与胃病辨证 · 中医诊断学",
+    "page": 33,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-shenpangguang": {
+    "bvid": "BV1j8411t7iF",
+    "title": "肾与膀胱病辨证 · 中医诊断学",
+    "page": 36,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "method-zangfu-xin": {
+    "bvid": "BV1j8411t7iF",
+    "title": "心与小肠病辨证 · 中医诊断学",
+    "page": 30,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "case-learning": {
+    "bvid": "BV1j8411t7iF",
+    "title": "医案阅读与病历书写 · 中医诊断学",
+    "page": 45,
+    "source": "江西中医药大学 ·《中医诊断学》教学课程"
+  },
+  "meridian-chong": {
+    "bvid": "BV135411P7vc",
+    "title": "冲脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "meridian-dai": {
+    "bvid": "BV135411P7vc",
+    "title": "带脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "meridian-yangqiao": {
+    "bvid": "BV135411P7vc",
+    "title": "阳跷脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "meridian-yinqiao": {
+    "bvid": "BV135411P7vc",
+    "title": "阴跷脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "meridian-yangwei": {
+    "bvid": "BV135411P7vc",
+    "title": "阳维脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "meridian-yinwei": {
+    "bvid": "BV135411P7vc",
+    "title": "阴维脉 · 奇经八脉专题",
+    "page": 37,
+    "source": "辽宁中医药大学 · 郑洪新《中医基础理论》"
+  },
+  "classic-huangdi": {
+    "bvid": "BV1KE41137iu",
+    "title": "黄帝内经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-shanghan": {
+    "bvid": "BV1X3aEzzE9x",
+    "title": "伤寒论 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "person-zhangzhongjing": {
+    "bvid": "BV1X3aEzzE9x",
+    "title": "张仲景 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-guizhi": {
+    "bvid": "BV1E7cHz5EDU",
+    "title": "桂枝汤 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-xiaochaihu": {
+    "bvid": "BV1PYNs6xEgT",
+    "title": "小柴胡汤 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-jingui": {
+    "bvid": "BV1JT4y1S7XD",
+    "title": "金匮要略 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-shennong": {
+    "bvid": "BV1rigtzZESq",
+    "title": "神农本草经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-nanjing": {
+    "bvid": "BV13v4y137dV",
+    "title": "难经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-qianjin": {
+    "bvid": "BV1BLHPz5ErN",
+    "title": "千金方 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-bencao": {
+    "bvid": "BV1RR4y1D75f",
+    "title": "本草纲目 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "classic-wenbing": {
+    "bvid": "BV1jaZtBEEAd",
+    "title": "温病条辨 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "person-sunsimiao": {
+    "bvid": "BV16K411w7LC",
+    "title": "孙思邈 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "person-lishizhen": {
+    "bvid": "BV1vk4y1Z7ze",
+    "title": "李时珍 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "person-huatuo": {
+    "bvid": "BV1H64y1u7H1",
+    "title": "华佗 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "person-yetianshi": {
+    "bvid": "BV1pi4y1m7E4",
+    "title": "叶天士 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-mahuang": {
+    "bvid": "BV1LGo3BPEnk",
+    "title": "麻黄汤 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-sijunzi": {
+    "bvid": "BV1Xj421S77i",
+    "title": "四君子汤 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-liuwei": {
+    "bvid": "BV1Aqe9z4EcV",
+    "title": "六味地黄丸 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "formula-yinqiao": {
+    "bvid": "BV1pR4y1N7qv",
+    "title": "银翘散 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-stomach": {
+    "bvid": "BV1SN4y1c7rw",
+    "title": "足阳明胃经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-lung": {
+    "bvid": "BV1Xt421H7JY",
+    "title": "手太阴肺经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-largeintestine": {
+    "bvid": "BV1Dk4y1u7wM",
+    "title": "手阳明大肠经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-spleen": {
+    "bvid": "BV1HM4m1U7MH",
+    "title": "足太阴脾经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-heart": {
+    "bvid": "BV19FTyz2EwN",
+    "title": "手少阴心经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-smallintestine": {
+    "bvid": "BV16K4y197v2",
+    "title": "手太阳小肠经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-bladder": {
+    "bvid": "BV1wP41197EB",
+    "title": "足太阳膀胱经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-kidney": {
+    "bvid": "BV1Q44y1i7Q1",
+    "title": "足少阴肾经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-pericardium": {
+    "bvid": "BV136g7zLEZy",
+    "title": "手厥阴心包经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-sanjiao": {
+    "bvid": "BV1sx4y1r7ds",
+    "title": "手少阳三焦经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-gallbladder": {
+    "bvid": "BV1jyZAYXEJP",
+    "title": "足少阳胆经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-liver": {
+    "bvid": "BV15A41157Wj",
+    "title": "足厥阴肝经 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-du": {
+    "bvid": "BV1AD4y1g7m2",
+    "title": "督脉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "meridian-ren": {
+    "bvid": "BV1AD4y1g7m2",
+    "title": "任脉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-zusanli": {
+    "bvid": "BV1BR4y1m7di",
+    "title": "足三里 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yintang": {
+    "bvid": "BV1f7411C7W7",
+    "title": "印堂 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-fengchi": {
+    "bvid": "BV11a4y1c7Cr",
+    "title": "风池 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-jianjing": {
+    "bvid": "BV11h411P7SW",
+    "title": "肩井 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-quchi": {
+    "bvid": "BV1fF411B7hd",
+    "title": "曲池 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-neiguan": {
+    "bvid": "BV1E7411V7Bo",
+    "title": "内关 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shenmen": {
+    "bvid": "BV1nA411o7u9",
+    "title": "神门 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shanzhong": {
+    "bvid": "BV1NM4m1U7Mz",
+    "title": "膻中 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-zhongwan": {
+    "bvid": "BV19L411K7qt",
+    "title": "中脘 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-guanyuan": {
+    "bvid": "BV1eZSFB7EH6",
+    "title": "关元 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-qihai": {
+    "bvid": "BV1eZSFB7EH6",
+    "title": "气海 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yanglingquan": {
+    "bvid": "BV1CQ4y1v73Z",
+    "title": "阳陵泉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yinlingquan": {
+    "bvid": "BV1GS4y1A7aF",
+    "title": "阴陵泉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-sanyinjiao": {
+    "bvid": "BV1vA411Q745",
+    "title": "三阴交 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-taichong": {
+    "bvid": "BV17L411K7yQ",
+    "title": "太冲 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yongquan": {
+    "bvid": "BV17N411M7sA",
+    "title": "涌泉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-taixi": {
+    "bvid": "BV17N411M7sA",
+    "title": "太溪 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-zhongfu": {
+    "bvid": "BV1JP4y1R7ku",
+    "title": "中府 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-chize": {
+    "bvid": "BV1sJ411V7nL",
+    "title": "尺泽 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-lieque": {
+    "bvid": "BV1T741157AV",
+    "title": "列缺 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-taiyuan": {
+    "bvid": "BV19W4y1H7tn",
+    "title": "太渊 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shousanli": {
+    "bvid": "BV1Ty4y1n7AY",
+    "title": "手三里 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-jianyu": {
+    "bvid": "BV1Ye4y1u7Zz",
+    "title": "肩髃 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-tianshu": {
+    "bvid": "BV1Xj411c7pV",
+    "title": "天枢 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-dubi": {
+    "bvid": "BV1ue411c7cP",
+    "title": "犊鼻 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-fenglong": {
+    "bvid": "BV1EM4m127G2",
+    "title": "丰隆 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-neiting": {
+    "bvid": "BV1xg411b7bd",
+    "title": "内庭 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-taibai": {
+    "bvid": "BV1KM4y1x7j3",
+    "title": "太白 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-xuehai": {
+    "bvid": "BV1mA411S7y4",
+    "title": "血海 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shaohai": {
+    "bvid": "BV1eK411C72t",
+    "title": "少海 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-tongli": {
+    "bvid": "BV1284y187Mw",
+    "title": "通里 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-jianzhen": {
+    "bvid": "BV1Fs4y1b72U",
+    "title": "肩贞 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-tianzong": {
+    "bvid": "BV1Qm42137HV",
+    "title": "天宗 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-tianzhu": {
+    "bvid": "BV1xE411V75F",
+    "title": "天柱 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-feishu": {
+    "bvid": "BV19M411W7rj",
+    "title": "肺俞 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-pishu": {
+    "bvid": "BV1Mj411P7kb",
+    "title": "脾俞 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shenshu": {
+    "bvid": "BV18x4y1F7Vh",
+    "title": "肾俞 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-weizhong": {
+    "bvid": "BV18E411N7Nd",
+    "title": "委中 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-chengshan": {
+    "bvid": "BV1bv4y1G7co",
+    "title": "承山 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-kunlun": {
+    "bvid": "BV1WL411f7eG",
+    "title": "昆仑 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-fuliu": {
+    "bvid": "BV1im4y1y7bz",
+    "title": "复溜 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-quze": {
+    "bvid": "BV1wh4y1t7Yb",
+    "title": "曲泽 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-daling": {
+    "bvid": "BV1dJ411n7PZ",
+    "title": "大陵 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-laogong": {
+    "bvid": "BV1HL411T7qD",
+    "title": "劳宫 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yangchi": {
+    "bvid": "BV1114y1K72p",
+    "title": "阳池 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-jianliao": {
+    "bvid": "BV1ch411T7bH",
+    "title": "肩髎 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-huantiao": {
+    "bvid": "BV1fk4y1N74E",
+    "title": "环跳 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-xuanzhong": {
+    "bvid": "BV1x14y1o7Gz",
+    "title": "悬钟 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-zulinqi": {
+    "bvid": "BV1Au41187QG",
+    "title": "足临泣 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-ququan": {
+    "bvid": "BV1Wm4y1n7UR",
+    "title": "曲泉 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-qimen": {
+    "bvid": "BV16e411U7f7",
+    "title": "期门 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-shenque": {
+    "bvid": "BV1AE411H7Bh",
+    "title": "神阙 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-mingmen": {
+    "bvid": "BV1xp4y177tG",
+    "title": "命门 · 视频讲解",
+    "page": 1,
+    "source": "哔哩哔哩 · 教学视频"
+  },
+  "point-yingxiang": {
+    "bvid": "BV12H64BWEzE",
+    "title": "迎香穴 · 常用穴位教学",
+    "page": 15,
+    "source": "南方医科大学 ·《常用穴位》"
+  },
+  "point-hegu": {
+    "bvid": "BV12H64BWEzE",
+    "title": "合谷穴 · 常用穴位教学",
+    "page": 12,
+    "source": "南方医科大学 ·《常用穴位》"
+  },
+  "point-houxi": {
+    "bvid": "BV12H64BWEzE",
+    "title": "后溪穴 · 常用穴位教学",
+    "page": 32,
+    "source": "南方医科大学 ·《常用穴位》"
+  },
+  "point-waiguan": {
+    "bvid": "BV12H64BWEzE",
+    "title": "外关穴 · 常用穴位教学",
+    "page": 52,
+    "source": "南方医科大学 ·《常用穴位》"
+  },
+  "point-baihui": {
+    "bvid": "BV1jGo5YnEeV",
+    "title": "百会穴 · 穴位解剖学",
+    "page": 4,
+    "source": "山东中医药大学 ·《穴位解剖学》"
+  },
+  "point-tiantu": {
+    "bvid": "BV1jGo5YnEeV",
+    "title": "天突穴 · 穴位解剖学",
+    "page": 10,
+    "source": "山东中医药大学 ·《穴位解剖学》"
+  },
+  "point-dazhui": {
+    "bvid": "BV1jGo5YnEeV",
+    "title": "大椎穴 · 穴位解剖学",
+    "page": 25,
+    "source": "山东中医药大学 ·《穴位解剖学》"
+  }
+}

@@ -1,3 +1,4 @@
+import KnowledgeVideo from '../../components/KnowledgeVideo';
 import {useLayoutEffect,useRef,useState} from 'react';
 import {ArrowUpRight,BookOpen,Bookmark,ChevronRight,Sparkles,X} from 'lucide-react';
 import {categoryLabel,knowledge,keyPoints,type Knowledge} from '../../data/catalog';
@@ -56,6 +57,7 @@ export default function KnowledgePanel({item:next,bookmarks,studyReady,pendingBo
  <div className="panel-tags">{item.tags.map(t=><span key={t}>{t}</span>)}</div>
  <div className="panel-divider"><span>知识导读</span><i/></div><p className="panel-summary">{item.summary}</p>{keyPoints[item.id]&&<div className="panel-points">{keyPoints[item.id].slice(0,2).map((p,i)=><p key={p}><span>0{i+1}</span>{p}</p>)}</div>}<div className="panel-divider"><span>关联星辰</span><i/><small>{item.relations.length}</small></div>
  <div className="panel-relations">{item.relations.map(id=>{const related=nodeById.get(id)?.item;return related&&<button key={id} onClick={()=>select(id)} aria-label={`关联知识 ${related.title}`}><i style={{background:fieldColors[related.type]}}/><span>{related.title}<small>{categoryLabel(related.type)}</small></span><ChevronRight size={14}/></button>})}</div>
+ <KnowledgeVideo key={item.id} item={item}/>
  {onExplain&&<button className="ai-explain" onClick={()=>onExplain(item)}><Sparkles size={14}/>请 AI 讲解</button>}
  <div className="panel-source"><BookOpen size={13}/><div>{item.source}<small>用户提供素材 · 具体出处待核对</small></div></div>
  <div className="panel-bottom"><button className={bookmarks.includes(item.id)?'saved':''} disabled={!studyReady||pendingBookmarks.has('bookmark:'+item.id)} onClick={event=>{onSpark?.(event);onToggle(item.id);}} aria-label={bookmarks.includes(item.id)?'取消收藏':'收藏知识'}><Bookmark size={15} fill={bookmarks.includes(item.id)?'currentColor':'none'}/>{bookmarks.includes(item.id)?'已收入书斋':'收藏知识'}</button><button onClick={()=>onNavigate(`knowledge/${item.id}`)}>深入研读 <ArrowUpRight size={14}/></button></div>
