@@ -96,7 +96,7 @@ const [menu,setMenu]=useState(false);const [lesson,setLesson]=useState<{course:C
  const search=(e:React.FormEvent)=>{e.preventDefault();setCategory('全部');location.hash='library';};
  const active=route.startsWith('knowledge/')?'library':route;
  const detail=route.startsWith('knowledge/')?knowledge.find(k=>k.id===route.slice(10)):null;
- const petContext=detail??(route.startsWith('universe/')?knowledge.find(k=>k.id===route.slice(9)):null)??chatContext;
+ const petContext=detail??(route.startsWith('universe/')?knowledge.find(k=>k.id===route.slice(9)):null)??null;
  const filtered=knowledge.filter(k=>(category==='全部'||k.type===category)&&`${k.title} ${k.subtitle} ${k.summary} ${k.tags.join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()));
  const toggle=(id:string)=>{void study.toggleBookmark(id);};
  const totalCompleted=completed.filter(id=>courses.some(c=>c.lessons.some((_,i)=>`${c.id}-${i}`===id))).length;
