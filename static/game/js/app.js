@@ -95,7 +95,7 @@
     try {
       api = global.QH_SCENE.create(el('gl'), {
         reducedMotion: this.reducedMotion(),
-        coverUrl: 'assets/qihuang-cover.png'
+        coverUrl: 'assets/qihuang-cover.webp'
       });
     } catch (e) {
       api = null;

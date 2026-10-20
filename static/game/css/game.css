@@ -60,14 +60,14 @@ canvas#gl {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(rgba(8, 20, 25, .08), rgba(8, 20, 25, .22)), url("../assets/qihuang-star-mountains.png") center / cover no-repeat;
+  background: linear-gradient(rgba(8, 20, 25, .08), rgba(8, 20, 25, .22)), url("../assets/qihuang-star-mountains.webp") center / cover no-repeat;
 }
 body.no-webgl #gl { display: none; }
 body.no-webgl #fallback-bg {
   display: block;
 }
 body.no-webgl.mode-active #fallback-bg {
-  background: linear-gradient(rgba(12, 27, 32, .45), rgba(12, 27, 32, .82)), url("../assets/qihuang-room.png") center / cover no-repeat;
+  background: linear-gradient(rgba(12, 27, 32, .45), rgba(12, 27, 32, .82)), url("../assets/qihuang-room.webp") center / cover no-repeat;
 }
 #grain {
   position: fixed;
@@ -150,7 +150,7 @@ body.no-webgl.mode-active #fallback-bg {
   position: relative;
   background:
     linear-gradient(rgba(240, 223, 183, .95), rgba(240, 223, 183, .9)),
-    url("../assets/xuan-paper.png") center / cover no-repeat;
+    url("../assets/xuan-paper.webp") center / cover no-repeat;
   color: var(--ink);
   border: 1px solid rgba(209, 177, 122, .75);
   border-radius: var(--radius);
@@ -307,7 +307,7 @@ body.mode-active #exterior, body.mode-active #exterior-hud { display: none !impo
   justify-content: center;
   background:
     linear-gradient(rgba(240, 223, 183, .97), rgba(240, 223, 183, .97)),
-    url("../assets/xuan-paper.png") center / cover no-repeat;
+    url("../assets/xuan-paper.webp") center / cover no-repeat;
   opacity: 0;
   pointer-events: none;
   transition: opacity .2s ease;
