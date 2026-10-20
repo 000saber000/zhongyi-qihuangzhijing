@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
-import KnowledgeVideo from '../src/components/KnowledgeVideo';
+import KnowledgeVideo,{videoPlayerUrl} from '../src/components/KnowledgeVideo';
 import videos from '../src/data/knowledge-videos.json';
 import knowledge from '../src/data/knowledge.json';
 import definitions from '../src/features/meridians/acupoints.json';
@@ -20,4 +20,8 @@ test('course selections account for gaps in diagnostic lecture numbers',()=>{
 });
 test('unknown published items have an explicit search fallback',()=>{
  const item={...knowledge[0],id:'future-item',title:'新条目 & 内容'},html=renderToStaticMarkup(<KnowledgeVideo item={item}/>);assert.ok(html.includes('此新增条目尚未收录讲解视频'));assert.ok(html.includes(encodeURIComponent(item.title+' 中医 教学')));assert.ok(!html.includes('player.bilibili.com'));
+});
+
+test('embedded player uses the current official p parameter for the selected lecture',()=>{
+ const url=new URL(videoPlayerUrl(videos['herb-baishao']));assert.equal(url.searchParams.get('p'),'73');assert.equal(url.searchParams.has('page'),false);assert.equal(url.searchParams.get('autoplay'),'0');
 });
