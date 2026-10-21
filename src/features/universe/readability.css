@@ -48,3 +48,35 @@
  .readable-mode .universe-nav button{font-size:10px}.readable-mode .universe-search input{font-size:12px}.readable-mode .universe-intro p{font-size:12px}.readable-mode .star-label{font-size:13px}.readable-mode .star-label.bright,.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:14px}
  .readable-mode .unified-content .page-title p{font-size:13px}.readable-mode .unified-content .card-copy p{font-size:12px}.readable-mode .unified-content .card-tags span{font-size:9px}.readable-mode .unified-content .reading-panel .lead,.readable-mode .chapter-reading-content .classic-body{font-size:17px!important}
 }
+
+/* Star names return to the original open-label style. Strong text rendering
+   replaces the boxes so nearby labels no longer cover one another. */
+.readable-mode .star-label,
+.readable-mode .star-label.bright,
+.readable-mode .star-label.chosen,
+.readable-mode .star-label:hover,
+.readable-mode .star-label:focus-visible{
+  background:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+  outline:0!important;
+  padding:3px 5px;
+  color:#fffde9!important;
+  -webkit-text-stroke:.35px #071519;
+  paint-order:stroke fill;
+  text-shadow:0 2px 3px #02090b,0 0 7px #02090b,0 0 13px #d7e4c05c;
+}
+.readable-mode .star-label{font-size:14px}.readable-mode .star-label.bright{font-size:15px}.readable-mode .star-label.chosen{font-size:17px}
+.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:15px;transform:translate(var(--label-x,0px),var(--label-y,-3px)) scale(1.12)}
+.readable-mode .star-label small{font-size:11px!important;color:#e5efe5}
+
+/* Recording-safe minimums across every page. These rules target captions,
+   metadata and controls without inflating primary headings. */
+.readable-mode small{font-size:max(12px,1em)!important;line-height:1.55}
+.readable-mode :is(input,select,textarea){font-size:max(13px,1em)!important}
+.readable-mode :is(.section-kicker,.eyebrow,.art-category,.course-volume-number,.course-orbit-count,.course-deck-hint,.breadcrumb,.results-info,.muted,.panel-no,.search-results-title,.universe-version){font-size:12px!important;line-height:1.55}
+.readable-mode :is(.card-tags span,.pill,.filters button,.course-step,.course-bottom,.relation-row small,.source-box small,.chapter-position,.chapter-pagination>span,footer,footer small){font-size:12px!important;line-height:1.55}
+.readable-mode .meridian-page :is(.meridian-eyebrow,.browser-title,.meridian-filter,.viewer-top,.viewer-bottom p,.point-results b,.browser-note,.point-panel-content h3,.point-panel-content section small,.point-source,.point-actions button,.point-learning-note,.point-quick>span,.meridian-footnote,.body-variant button small){font-size:12px!important;line-height:1.55}
+.readable-mode .meridian-page :is(.point-search input,.meridian-filter select,.point-results small,.body-view-controls button,.point-side,.point-related button,.static-message,.model-switch-notice,.atlas-notice){font-size:13px!important;line-height:1.55}
+.readable-mode :is(.qihuang-pet-action,.qihuang-pet-bubble p,.qihuang-pet-prompts button,.qihuang-pet-restore){font-size:13px!important}
+@media(max-width:700px){.readable-mode small{font-size:11px!important}.readable-mode .star-label{font-size:12px}.readable-mode .star-label.bright,.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:13px}.readable-mode .star-label.chosen{font-size:14px}.readable-mode .meridian-page :is(.meridian-eyebrow,.browser-title,.meridian-filter,.viewer-top,.viewer-bottom p,.point-results b,.browser-note,.point-panel-content h3,.point-panel-content section small,.point-source,.point-actions button,.point-learning-note,.point-quick>span,.meridian-footnote){font-size:10px!important}}
