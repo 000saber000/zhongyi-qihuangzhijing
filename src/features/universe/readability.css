@@ -61,13 +61,16 @@
   box-shadow:none!important;
   outline:0!important;
   padding:3px 5px;
-  color:#fffde9!important;
+  color:var(--star-color,#fffde9)!important;
   -webkit-text-stroke:.35px #071519;
   paint-order:stroke fill;
-  text-shadow:0 2px 3px #02090b,0 0 7px #02090b,0 0 13px #d7e4c05c;
+  font-weight:900;
+  text-shadow:0 2px 3px #02090b,0 0 7px #02090b,0 0 14px currentColor;
+  transform:translate(calc(var(--label-layout-x,0px) + var(--label-pointer-x,0px)),calc(var(--label-layout-y,-3px) + var(--label-pointer-y,0px)));
+  transition:color .16s ease,text-shadow .16s ease,filter .16s ease;
 }
 .readable-mode .star-label{font-size:14px}.readable-mode .star-label.bright{font-size:15px}.readable-mode .star-label.chosen{font-size:17px}
-.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:15px;transform:translate(var(--label-x,0px),var(--label-y,-3px)) scale(1.12)}
+.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:15px;filter:brightness(1.35) saturate(1.18)}
 .readable-mode .star-label small{font-size:11px!important;color:#e5efe5}
 
 /* Recording-safe minimums across every page. These rules target captions,
