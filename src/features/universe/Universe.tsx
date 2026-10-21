@@ -1,5 +1,5 @@
 import {Component,lazy,ReactNode,Suspense,useEffect,useState} from 'react';
-import {ArrowRight,ArrowUpRight,Maximize2,Minus,Mouse,Network,Pause,Play,Plus,RotateCcw,Search,SlidersHorizontal,Sparkles,X} from 'lucide-react';
+import {ArrowRight,ArrowUpRight,Maximize2,Minus,Mouse,Network,Pause,Play,Plus,RotateCcw,Search,SlidersHorizontal,Sparkles,Sun,X} from 'lucide-react';
 import {categoryLabel,knowledge,type Knowledge} from '../../data/catalog';
 import {fieldColors,nodeById,relationEdges} from '../../three/knowledgeSpace';
 import {useStore} from '../../state/store';
@@ -10,12 +10,14 @@ import DomainNavigation from './DomainNavigation';
 import './universe.css';
 import './content.css';
 import './transitions.css';
+import './readability.css';
 const UniverseCanvas=lazy(()=>import('../../three/UniverseCanvas'));
 const JadePageMotion=lazy(()=>import('../../components/JadePageMotion'));
 class SceneBoundary extends Component<{children:ReactNode;fallback:ReactNode},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true}}render(){return this.state.failed?this.props.fallback:this.props.children}}
 export default function Universe({pendingBookmarks=new Set(),studyReady=true,onExplain,initialId,bookmarks,onToggle,onSpark,onNavigate,contentMode=false,sceneMode='cosmos',libraryHeaderDocked=false,activePage="home",contentKey="home",queryValue="",onQueryChange,onQuerySubmit,children}:{pendingBookmarks?:Set<string>;studyReady?:boolean;onExplain?:(item:Knowledge)=>void;initialId:string|null;bookmarks:string[];onToggle:(id:string)=>void;onSpark?:(event:ClickSparkEvent)=>void;onNavigate:(id:string)=>void;contentMode?:boolean;sceneMode?:'cosmos'|'body';libraryHeaderDocked?:boolean;activePage?:string;contentKey?:string;queryValue?:string;onQueryChange?:(q:string)=>void;onQuerySubmit?:(e:React.FormEvent)=>void;children?:ReactNode}){
  const selected=initialId&&nodeById.has(initialId)?initialId:null;const item=selected?nodeById.get(selected)?.item:null;
  const [filter,setFilter]=useState('全部');const [query,setQuery]=useState('');const [searchOpen,setSearchOpen]=useState(false);const [ready,setReady]=useState(false);const [reset,setReset]=useState(0);const [zoom,setZoom]=useState(0);const [showLines,setShowLines]=useState(true);const [settings,setSettings]=useState(false);const [notice,setNotice]=useState('');
+ const [readable,setReadable]=useState(()=>{try{return localStorage.getItem('qihuang-readable')!=='off'}catch{return true}});
  useEffect(()=>{setReady(false);},[sceneMode]);
  const paused=useStore(s=>s.cinema),quality=useStore(s=>s.quality),setPaused=useStore(s=>s.setPaused),setQuality=useStore(s=>s.setQuality);
  const [canvasActive,setCanvasActive]=useState(true);
@@ -23,13 +25,14 @@ export default function Universe({pendingBookmarks=new Set(),studyReady=true,onE
  useEffect(()=>{if(!contentMode){setCanvasActive(true);return;}const timer=setTimeout(()=>setCanvasActive(false),2600);return()=>clearTimeout(timer);},[contentMode]);
  useEffect(()=>{useStore.getState().setReading(contentMode);setSearchOpen(false);setSettings(false)},[contentMode]);
  useEffect(()=>{document.body.classList.add('universe-body');return()=>{document.body.classList.remove('universe-body');document.body.style.cursor='auto'}},[]);
+ useEffect(()=>{try{localStorage.setItem('qihuang-readable',readable?'on':'off')}catch{}},[readable]);
  useEffect(()=>{const f=(e:KeyboardEvent)=>{if(e.key==='Escape'){setSearchOpen(false);setSettings(false);if(selected&&!contentMode)location.hash='home'}};window.addEventListener('keydown',f);return()=>window.removeEventListener('keydown',f)},[selected,contentMode]);
  const select=(id:string)=>{setFilter('全部');setSearchOpen(false);setQuery('');location.hash=`universe/${id}`};
  const clear=()=>{location.hash='home';setReset(r=>r+1)};
  const results=knowledge.filter(k=>(filter==='全部'||k.type===filter)&&`${k.title} ${k.summary} ${k.tags.join(' ')}`.includes(query.trim()));
  const fullscreen=async()=>{try{if(document.fullscreenElement){if(typeof document.exitFullscreen!=='function'){setNotice('当前浏览器不支持全屏');return}await document.exitFullscreen();screen.orientation?.unlock()}else{const enter=document.documentElement.requestFullscreen;if(typeof enter!=='function'){setNotice('当前浏览器不支持全屏');return}const mobile=window.matchMedia('(max-width:700px)').matches;const orientation=screen.orientation as ScreenOrientation&{lock?:(value:'portrait')=>Promise<void>};const lockPortrait=orientation.lock;if(mobile&&typeof lockPortrait!=='function'){setNotice('当前浏览器不支持放大锁定');return}await enter.call(document.documentElement);if(mobile){try{await lockPortrait!.call(orientation,'portrait')}catch{try{await document.exitFullscreen()}catch{}setNotice('当前浏览器不支持放大锁定')}}}}catch{setNotice('当前浏览器不支持全屏')}};
  const fallback=<div className="universe-fallback"><Sparkles size={35}/><h2>当前设备无法显示三维星系</h2><p>仍可通过搜索或知识库，阅读全部中医知识。</p><button onClick={()=>onNavigate('library')}>打开知识库 <ArrowRight size={15}/></button></div>;
- return <div className={`universe ${sceneMode==='body'?'body-mode':''} ${selected?'has-selection':''} ${contentMode?'content-mode':''} ${libraryHeaderDocked?'has-library-header-nav':''}`}>
+ return <div className={`universe ${readable?'readable-mode':''} ${sceneMode==='body'?'body-mode':''} ${selected?'has-selection':''} ${contentMode?'content-mode':''} ${libraryHeaderDocked?'has-library-header-nav':''}`}>
  {sceneMode==='cosmos'&&<div className="universe-stage" data-ready={ready} data-particles={quality==='high'?88500:28000}><SceneBoundary fallback={fallback}><Suspense fallback={<div className="universe-loading">正在点亮知识星辰…</div>}><UniverseCanvas active={canvasActive} reading={contentMode} selected={selected} filter={filter} select={select} showLines={showLines} reset={reset} zoom={zoom} onReady={()=>setReady(true)} quality={quality} fallback={fallback}/></Suspense></SceneBoundary></div>}
  {contentMode&&sceneMode==='cosmos'&&<div className="jade-starfield" aria-hidden="true"/>}
  <div className="universe-vignette"/>
@@ -41,7 +44,7 @@ export default function Universe({pendingBookmarks=new Set(),studyReady=true,onE
  {!contentMode&&<div className="cosmic-controls"><button onClick={()=>setZoom(z=>z+1)} aria-label="放大星系" title="放大"><Plus size={17}/></button><button onClick={()=>setZoom(z=>z-1)} aria-label="缩小星系" title="缩小"><Minus size={17}/></button><span/><button onClick={clear} aria-label="回到星系全景" title="回到全景"><RotateCcw size={16}/></button><button onClick={()=>setPaused(!paused)} aria-label={paused?'播放粒子动画':'暂停粒子动画'} title={paused?'播放':'暂停'}>{paused?<Play size={16}/>:<Pause size={16}/>}</button><button className={showLines?'enabled':''} onClick={()=>setShowLines(!showLines)} aria-label={showLines?'隐藏关系连线':'显示关系连线'} title="关系连线"><Network size={16}/></button></div>}
  {contentMode&&<div className="cosmic-content-scroll" data-reading={contentKey.startsWith('knowledge/')||undefined} key={contentKey}>{contentKey==='study'?<Suspense fallback={<div className="jade-motion-scope" role="status">正在打开书斋…</div>}><JadePageMotion>{children}</JadePageMotion></Suspense>:children}</div>}
  {sceneMode==='cosmos'&&contentKey!=='game'&&<footer className="cosmic-footer"><div className="universe-status"><span className={ready?'live':'loading'}/><span>{ready?'知识星系已点亮':'正在点亮星系'}</span><b>{knowledge.length}</b><small>颗知识星辰</small><i/><b>{relationEdges.length}</b><small>条知识关联</small></div><div className="cosmic-mouse">{contentMode?<span>静阅模式 · 星海相伴</span>:<><Mouse size={15}/><span>左键拖动旋转</span><i>·</i><span>右键拖动平移</span><i>·</i><span>滚轮缩放</span><i>·</i><span>左键点击星辰探索</span></>}</div><span className="universe-version">QIHUANG COSMOS / 03</span></footer>}
- {settings&&<div className="cosmic-settings"><div><b>星系效果</b><button onClick={()=>setSettings(false)} aria-label="关闭效果设置"><X size={15}/></button></div><button onClick={()=>setQuality(quality==='high'?'low':'high')}>粒子画质 <span>{quality==='high'?'精细 · 88,500 粒子':'轻量 · 28,000 粒子'}</span></button><button onClick={()=>setPaused(!paused)}>动态流转 <span>{paused?'已暂停':'已开启'}</span></button><button onClick={()=>setShowLines(!showLines)}>关联光束 <span>{showLines?'已开启':'已关闭'}</span></button><p>星云渲染改编自诗云<br/>Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud<br/>MIT License<br/><a href="/licenses/shiyun-MIT.txt" target="_blank" rel="noreferrer">查看许可证 ↗</a></p></div>}
+ {settings&&<div className="cosmic-settings"><div><b>显示与星系效果</b><button onClick={()=>setSettings(false)} aria-label="关闭效果设置"><X size={15}/></button></div><button className="readability-setting" onClick={()=>setReadable(value=>!value)}><span className="setting-label"><Sun size={15}/> 清晰展示</span><span>{readable?'已开启':'沉浸深色'}</span></button><button onClick={()=>setQuality(quality==='high'?'low':'high')}>粒子画质 <span>{quality==='high'?'精细 · 88,500 粒子':'轻量 · 28,000 粒子'}</span></button><button onClick={()=>setPaused(!paused)}>动态流转 <span>{paused?'已暂停':'已开启'}</span></button><button onClick={()=>setShowLines(!showLines)}>关联光束 <span>{showLines?'已开启':'已关闭'}</span></button><p>“清晰展示”适合截图、投屏与视频录制，并会记住你的选择。<br/><br/>星云渲染改编自诗云<br/>Copyright (c) 2026 Cohenjikan — 诗云 / Poetry Cloud<br/>MIT License<br/><a href="/licenses/shiyun-MIT.txt" target="_blank" rel="noreferrer">查看许可证 ↗</a></p></div>}
  {notice&&<div className="cosmic-notice" role="status" onClick={()=>setNotice('')}>{notice}</div>}
  </div>
 }
