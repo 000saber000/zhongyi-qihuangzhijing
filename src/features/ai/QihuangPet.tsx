@@ -29,9 +29,10 @@ export default function QihuangPet({route,context,chatOpen,onOpen,onAsk}:{route:
  useEffect(()=>{try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved&&Number.isFinite(saved.x)&&Number.isFinite(saved.y))setPosition(clamp(saved));}catch{}},[]);
  useEffect(()=>{const resize=()=>setPosition(value=>value?clamp(value):value);window.addEventListener('resize',resize);return()=>window.removeEventListener('resize',resize);},[]);
  useEffect(()=>{if(!chatOpen)setBubble(true);},[route,context?.id]);
- if(hidden)return <button className="qihuang-pet-restore" onClick={()=>{setHidden(false);setBubble(true);}} aria-label="唤回小岐桌宠"><span>岐</span>唤回小岐</button>;
- const style=position?{left:position.x,top:position.y,right:'auto',bottom:'auto'}:undefined;
- return <aside className={`qihuang-pet${chatOpen?' is-chatting':''}${dragging?' is-dragging':''}`} style={style} aria-label="小岐学习桌宠">
+ const cosmosRoute=route==='home'||route.startsWith('universe/');
+ if(hidden)return <button className={`qihuang-pet-restore${cosmosRoute?' is-cosmos-route':''}`} onClick={()=>{setHidden(false);setBubble(true);}} aria-label="唤回小岐桌宠"><span>岐</span>唤回小岐</button>;
+ const style=!cosmosRoute&&position?{left:position.x,top:position.y,right:'auto',bottom:'auto'}:undefined;
+ return <aside className={`qihuang-pet${cosmosRoute?' is-cosmos-route':''}${chatOpen?' is-chatting':''}${dragging?' is-dragging':''}`} style={style} aria-label="小岐学习桌宠">
   {bubble&&!chatOpen&&<div className="qihuang-pet-bubble" role="status">
    <div className="qihuang-pet-bubble-head"><b>小岐伴读</b><button aria-label="收起小岐提示" onClick={()=>setBubble(false)}><ChevronDown size={15}/></button></div>
    <p>{copy.greeting}</p>
