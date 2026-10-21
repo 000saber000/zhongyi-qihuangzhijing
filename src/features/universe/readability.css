@@ -83,3 +83,12 @@
 .readable-mode .meridian-page :is(.point-search input,.meridian-filter select,.point-results small,.body-view-controls button,.point-side,.point-related button,.static-message,.model-switch-notice,.atlas-notice){font-size:13px!important;line-height:1.55}
 .readable-mode :is(.qihuang-pet-action,.qihuang-pet-bubble p,.qihuang-pet-prompts button,.qihuang-pet-restore){font-size:13px!important}
 @media(max-width:700px){.readable-mode small{font-size:11px!important}.readable-mode .star-label{font-size:12px}.readable-mode .star-label.bright,.readable-mode .star-label:hover,.readable-mode .star-label:focus-visible{font-size:13px}.readable-mode .star-label.chosen{font-size:14px}.readable-mode .meridian-page :is(.meridian-eyebrow,.browser-title,.meridian-filter,.viewer-top,.viewer-bottom p,.point-results b,.browser-note,.point-panel-content h3,.point-panel-content section small,.point-source,.point-actions button,.point-learning-note,.point-quick>span,.meridian-footnote){font-size:10px!important}}
+
+/* Knowledge-library category row: clearer in screenshots and recordings. */
+.readable-mode .unified-content .filters button{
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",SimHei,sans-serif;
+  font-size:15px!important;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+@media(max-width:700px){.readable-mode .unified-content .filters button{font-size:13px!important}}
