@@ -17,3 +17,13 @@
 @keyframes pet-breathe{50%{transform:translateY(-4px) scale(1.05);opacity:.85}}@keyframes pet-shadow{50%{transform:scale(.86);opacity:.65}}@keyframes pet-blink{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.12)}}@keyframes pet-bubble-in{from{opacity:0;transform:translate(8px,6px) scale(.97)}to{opacity:1;transform:none}}
 @media(max-width:640px){.qihuang-pet{right:12px;bottom:12px;transform:scale(.78);transform-origin:right bottom}.qihuang-pet.is-chatting{display:none}.qihuang-pet-bubble{right:96px;bottom:58px;width:min(270px,calc(100vw - 105px));transform-origin:right bottom}.qihuang-pet-prompts button:nth-child(n+3){display:none}.qihuang-pet-restore{bottom:16px}.qihuang-pet-controls{opacity:1}}
 @media(prefers-reduced-motion:reduce){.qihuang-pet *{animation:none!important;transition:none!important}}
+
+/* Keep the cosmos composition balanced: the companion lives at lower-left
+   only on the knowledge-universe routes. Reading pages retain lower-right. */
+.qihuang-pet.is-cosmos-route{left:25px;right:auto}
+.qihuang-pet.is-cosmos-route.is-chatting{left:25px;right:auto}
+.qihuang-pet.is-cosmos-route .qihuang-pet-bubble{left:102px;right:auto;border-radius:14px 14px 14px 3px}
+.qihuang-pet.is-cosmos-route .qihuang-pet-bubble:after{left:-8px;right:auto;transform:rotate(135deg)}
+.qihuang-pet.is-cosmos-route .qihuang-pet-drag{display:none}
+.qihuang-pet-restore.is-cosmos-route{left:-5px;right:auto;border-radius:0 22px 22px 0;padding:7px 8px 7px 12px}
+@media(max-width:640px){.qihuang-pet.is-cosmos-route{left:12px;right:auto;transform-origin:left bottom}.qihuang-pet.is-cosmos-route .qihuang-pet-bubble{left:96px;right:auto;transform-origin:left bottom}.qihuang-pet-restore.is-cosmos-route{left:-5px;right:auto}}
