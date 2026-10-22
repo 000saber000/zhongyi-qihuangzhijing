@@ -16,8 +16,10 @@ import herbs from '../assets/jade/cards-herbs.webp';
 import formulas from '../assets/jade/cards-formulas.webp';
 import meridians from '../assets/jade/cards-meridians.webp';
 import extraMeridians from '../assets/jade/cards-meridians-extra.webp';
+import extraordinaryMeridians from '../assets/jade/cards-meridians-extraordinary.webp';
 import acupoints from '../assets/jade/cards-acupoints.webp';
 import diagnosis from '../assets/jade/cards-diagnosis.webp';
+import zangfuDiagnosis from '../assets/jade/cards-diagnosis-zangfu.webp';
 import expandedAcupoints from '../assets/jade/cards-acupoints-expanded.webp';
 
 export const knowledgeIllustrations:Record<string,string>={
@@ -41,8 +43,10 @@ addAtlas(herbs,4,4,1254,1254,['herb-shengjiang','herb-dazao','herb-renshen','her
 addAtlas(formulas,3,2,1500,1000,['formula-xiaochaihu','formula-mahuang','formula-sijunzi','formula-liuwei','formula-yinqiao']);
 addAtlas(meridians,4,4,1254,1254,['meridian-stomach','meridian-lung','meridian-largeintestine','meridian-spleen','meridian-heart','meridian-smallintestine','meridian-bladder','meridian-kidney','meridian-pericardium','meridian-sanjiao','meridian-gallbladder','meridian-liver','meridian-du','meridian-ren']);
 addAtlas(extraMeridians,2,1,1024,512,['meridian-chong','meridian-dai']);
+addAtlas(extraordinaryMeridians,2,2,1024,1024,['meridian-yinwei','meridian-yangwei','meridian-yinqiao','meridian-yangqiao']);
 addAtlas(acupoints,4,5,1122,1402,['point-zusanli','point-baihui','point-yintang','point-fengchi','point-jianjing','point-quchi','point-hegu','point-neiguan','point-waiguan','point-shenmen','point-shanzhong','point-zhongwan','point-guanyuan','point-qihai','point-yanglingquan','point-yinlingquan','point-sanyinjiao','point-taichong','point-yongquan','point-taixi']);
 addAtlas(diagnosis,3,2,1500,1000,['method-bazheng','method-four-diagnostics','method-six-channel','method-weiying','method-sanjiao']);
+addAtlas(zangfuDiagnosis,4,2,1536,768,['method-zangfu','method-zangfu-xin','method-zangfu-fei','method-zangfu-piwei','method-zangfu-gandan','method-zangfu-shenpangguang','method-zangfu-jianzheng']);
 
 // Hand-painted landmark illustrations, in the same order as the point catalog.
 addAtlas(expandedAcupoints,5,8,1400,2240,["point-zhongfu","point-chize","point-lieque","point-taiyuan","point-shousanli","point-jianyu","point-yingxiang","point-tianshu","point-dubi","point-fenglong","point-neiting","point-taibai","point-xuehai","point-shaohai","point-tongli","point-houxi","point-jianzhen","point-tianzong","point-tianzhu","point-feishu","point-pishu","point-shenshu","point-weizhong","point-chengshan","point-kunlun","point-fuliu","point-quze","point-daling","point-laogong","point-yangchi","point-jianliao","point-huantiao","point-xuanzhong","point-zulinqi","point-ququan","point-qimen","point-shenque","point-tiantu","point-mingmen","point-dazhui"]);
