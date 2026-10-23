@@ -44,7 +44,7 @@ addAtlas(formulas,3,2,1500,1000,['formula-xiaochaihu','formula-mahuang','formula
 addAtlas(meridians,4,4,1254,1254,['meridian-stomach','meridian-lung','meridian-largeintestine','meridian-spleen','meridian-heart','meridian-smallintestine','meridian-bladder','meridian-kidney','meridian-pericardium','meridian-sanjiao','meridian-gallbladder','meridian-liver','meridian-du','meridian-ren']);
 addAtlas(extraMeridians,2,1,1024,512,['meridian-chong','meridian-dai']);
 addAtlas(extraordinaryMeridians,2,2,1024,1024,['meridian-yinwei','meridian-yangwei','meridian-yinqiao','meridian-yangqiao']);
-addAtlas(acupoints,4,5,1122,1402,['point-zusanli','point-baihui','point-yintang','point-fengchi','point-jianjing','point-quchi','point-hegu','point-neiguan','point-waiguan','point-shenmen','point-shanzhong','point-zhongwan','point-guanyuan','point-qihai','point-yanglingquan','point-yinlingquan','point-sanyinjiao','point-taichong','point-yongquan','point-taixi']);
+addAtlas(acupoints,4,5,1120,1400,['point-zusanli','point-baihui','point-yintang','point-fengchi','point-jianjing','point-quchi','point-hegu','point-neiguan','point-waiguan','point-shenmen','point-shanzhong','point-zhongwan','point-guanyuan','point-qihai','point-yanglingquan','point-yinlingquan','point-sanyinjiao','point-taichong','point-yongquan','point-taixi']);
 addAtlas(diagnosis,3,2,1500,1000,['method-bazheng','method-four-diagnostics','method-six-channel','method-weiying','method-sanjiao']);
 addAtlas(zangfuDiagnosis,4,2,1536,768,['method-zangfu','method-zangfu-xin','method-zangfu-fei','method-zangfu-piwei','method-zangfu-gandan','method-zangfu-shenpangguang','method-zangfu-jianzheng']);
 
